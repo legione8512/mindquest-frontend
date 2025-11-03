@@ -16,7 +16,7 @@ html {
 
 /********** HEADER STYLING *****/
 header {
-    background-color: rgb(80, 160, 214);
+    background-color: #73C7E3;
     padding: 1.3rem;
     position: relative;
     display: flex;
@@ -27,7 +27,7 @@ header {
 
 /**** LOGO ****/
 .logo {
-    color: rgb(226, 226, 47);
+    color: #013C58;
     align-self: center;
     margin-left: 1rem;
 }
@@ -56,7 +56,7 @@ header {
 }
 
 .nav-bar a:hover .top-nav-button {
-    background-color: rgb(194, 155, 70);
+    background-color: #013C58;
     transform: scale(1.2);
 }
 
@@ -72,7 +72,7 @@ header {
     font-size: 0.8rem;
     color: white;
     border: 0;
-    background: rgb(61, 54, 54);
+    background: #013C58;
     border-radius: 5px;
     padding: 0.9rem;
     width: 100px;
@@ -81,7 +81,7 @@ header {
 }
 
 #login:hover {
-    background-color: rgb(194, 155, 70);
+    background-color: #F5A201;
     transform: scale(1.1);
 }
 
@@ -103,8 +103,8 @@ header {
         left: -100%;
         width: 20vw;
         height: 118vh;
-        background-color: rgb(122, 177, 214);
-        transition: .4s ease;
+        background-color: #013C58;
+        transition: none;
         opacity: 0;
     }
     /* Hide the navbar by default */
@@ -128,7 +128,7 @@ header {
         height: 10vh;
         width: 100%;
         text-align: left;
-        background-color: rgb(122, 177, 214);
+        background-color: #013C58;
         border-radius: 0;
         color: white;
         cursor: pointer;
@@ -136,10 +136,11 @@ header {
         transition: 0.2s ease-in-out;
     }
     .nav-bar a:hover .top-nav-button {
-        background-color: rgb(194, 155, 70);
-        transform: translateX(1vh);
-        transition: 0.4s ease-in-out;
+        background-color: #F5A201;
+        transform: translateX(0.5vw);
+        transition: 0.3s ease-in-out;
     }
+   
     .nav-bar a {
         display: block;
         width: 100%;
@@ -168,6 +169,6 @@ header {
         transition: 0.4s;
     }
     .menu-icon:hover {
-        background-color: rgb(194, 155, 70);
+        background-color: #F5A201;
     }
 }
