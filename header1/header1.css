@@ -16,7 +16,7 @@ html {
 
 /********** HEADER STYLING *****/
 header {
-    background-color: #73C7E3;
+    background-color: #89C7E7;
     padding: 1.3rem;
     position: relative;
     display: flex;
@@ -27,9 +27,12 @@ header {
 
 /**** LOGO ****/
 .logo {
-    color: #013C58;
     align-self: center;
-    margin-left: 1rem;
+    margin-left: -0.2rem;
+}
+
+.logo img {
+    zoom: 12%;
 }
 
 /**** NAV BAR ****/
@@ -41,10 +44,10 @@ header {
 .top-nav-button {
     background: none;
     border: none;
-    padding: 0.5rem 1.5rem 0.5rem 1.5rem;
+    padding: 0.5rem 1.2rem 0.5rem 1.2rem;
     margin: 0.4rem;
     text-decoration: none;
-    font-size: 1rem;
+    font-size: 1.1rem;
     border-radius: 10px;
     color: #013C58;
     cursor: pointer;
@@ -70,7 +73,7 @@ header {
 
 /** Login button **/
 #login {
-    font-size: 0.8rem;
+    font-size: 1.1rem;
     color: white;
     border: 0;
     background: #013C58;
@@ -86,8 +89,15 @@ header {
     transform: scale(1.1);
 }
 
+/* HIDE HOME BUTTON WHEN ZOOMING IN */
+@media screen and (max-width: 1500px) {
+    .nav-bar a:first-child {
+        display: none;
+    }
+}
+
 /** RESPONSIVE HEADER **/
-@media screen and (max-width: 1250px) {
+@media screen and (max-width: 1100px) {
 
     /* Left section of header */
     header {
@@ -105,15 +115,17 @@ header {
         width: 20vw;
         height: 118vh;
         background-color: #013C58;
-        transition: none;
+        transition: 0.5s ease;
         opacity: 0;
     }
+
     /* Hide the navbar by default */
     .nav-bar.closed {
         left: -100%;
         visibility: hidden;
         opacity: 0;
     }
+
     .nav-bar:not(.closed) {
         left: 0;
         visibility: visible;
@@ -134,19 +146,20 @@ header {
         color: white;
         cursor: pointer;
         font-size: 1.4vw;
-        transition: 0.2s ease-in-out;
     }
-    .nav-bar a:hover .top-nav-button {
-        background-color: #F5A201;
-        transform: translateX(0.5vw);
-        transition: 0.3s ease-in-out;
-    }
-   
+
     .nav-bar a {
         display: block;
         width: 100%;
         text-decoration: none;
     }
+
+    .nav-bar a:hover .top-nav-button {
+        background-color: #F5A201;
+        transform: translateX(0.5vw);
+        transition: 0.4s ease-in-out;
+    }
+
 
     /* Login button */
     #login {
@@ -156,8 +169,11 @@ header {
 
     /* Logo */
     .logo {
-        font-size: 0.85rem;
-        margin-left: 0;
+        margin-left: 0.75rem;
+    }
+
+    .logo img {
+        zoom: 10%;
     }
 
     /* Hamburger button */
@@ -165,11 +181,13 @@ header {
         display: block;
         font-size: 1.5rem;
         z-index: 1;
-        padding: 0 10px 0 10px;
         border-radius: 5px;
         transition: 0.4s;
+        margin-left: 0.1rem;
+        margin-bottom: 0.2rem;
     }
+
     .menu-icon:hover {
-        background-color: #F5A201;
+        cursor: pointer;
     }
 }
