@@ -113,21 +113,20 @@ header {
         position: fixed;
         top: 0;
         left: 0;
-        width: 25vw;
+        width: 30vw;
         height: 100vh;
         transform: translateX(-100%);
         transition: .3s ease;
         z-index: 5000;
 
-        /* Scaling variables */
+        /* Scaling variables for width and height */
         --bar-width: 250px;
         --bar-height: 800px;
         --visual-width: 30vw;
         --visual-height: 100vh;
         --scale-x: calc(var(--visual-width) / var(--bar-width));
         --scale-y: calc(var(--visual-height) / var(--bar-height));
-
-        --scale: min(var(--scale-x), var(--scale-y));
+        --scale: min(var(--scale-x), var(--scale-y)); /* Keeps consistent size */
     }
     .sidebar-wrapper:not(.closed) {
         transform: translate(0);
@@ -141,7 +140,6 @@ header {
         background-color: #013C58;
         display: flex;
         flex-direction: column;
-
         transform-origin: top left;
         transform: scale(var(--scale));
     }
