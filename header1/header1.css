@@ -51,7 +51,7 @@ header {
     border-radius: 10px;
     color: #013C58;
     cursor: pointer;
-    transition: .4s ease;
+    transition: .4s ease-out;
 }
 
 /* Hover animation */
@@ -89,14 +89,17 @@ header {
 }
 
 /* Hide home button when zooming in */
-@media screen and (max-width: 1500px) {
+@media screen and (max-width: 1300px) {
     .nav-bar a:first-child {
         display: none;
+    }
+    .top-nav-button {
+        font-size: 0.8rem;
     }
 }
 
 /********** MOBILE HEADER ******************************/
-@media (max-width: 1100px) {
+@media (max-width: 1200px) {
     #navigation-bar {
         display: none !important;
     }
@@ -106,19 +109,20 @@ header {
 }
 
 /********** SIDEBAR (For mobile and zoomed desktop) ******************************/
-@media (max-width: 1100px) {
+@media (max-width: 1300px) {
 
     /* Sidebar wrapper for scaling purposes */
     .sidebar-wrapper {
         position: fixed;
-        width: 300px;
+        width: 250px;
         height: 100vh;
         top: 0;
         left: 0;
         transform: translateX(-100%);
-        transition: .3s ease;
+        transition: .3s ease-out;
         z-index: 5000;
         overflow-y: auto;
+        background-color: #013C58;
     }
     .sidebar-wrapper:not(.closed) {
         transform: translate(0);
@@ -126,7 +130,6 @@ header {
 
     /* Sidebar */
     .sidebar {
-
         padding: 1rem;
         background-color: #013C58;
         display: flex;
@@ -137,10 +140,10 @@ header {
     #close-button {
         position: absolute;
         right: 1rem;
-        top: 0.7rem;
+        top: 0.9rem;
         background: none;
         border: none;
-        font-size: 2rem;
+        font-size: 1.75rem;
         color: #89C7E7;
         cursor: pointer;
         transition: .4s ease;
@@ -157,7 +160,7 @@ header {
         align-items: center;
         gap: 1rem;
         padding-bottom: 1rem;
-        margin-bottom: 0.1rem;
+        margin-bottom: 0.85rem;
         border-bottom: solid 1px #F5A201;
     }
 
@@ -168,7 +171,7 @@ header {
     /* Sidebar title and text section */
     .side-title h2 {
         color: white;
-        font-size: 0.7rem;
+        font-size: 0.8rem;
     }
 
     .side-title p {
@@ -187,10 +190,13 @@ header {
         text-decoration: none;
         border-radius: 8px;
         transition: 0.25s ease;
-        margin-top: 0.4rem;
+        font-weight: 600;
+        margin-top: 0.5rem;
     }
+
     .side-button i {
-        font-size: 1.2rem;
+        width: 20px;
+        font-size: 1rem;
         text-align: center;
         padding-left: 10px;
     }
@@ -205,9 +211,9 @@ header {
     /* Card section */
     .side-section h3 {
         color: #89C7E7;
+        margin-top: 2rem;
         margin-bottom: 0.6rem;
-        margin-top: 1rem;
-        font-size: 0.9rem;
+        font-size: 0.75rem;
     }
 
     /* Card styling */
@@ -229,13 +235,13 @@ header {
     /* Labels for cards */
     .points-label,
     .streak-label {
-        font-size: 0.9rem;
+        font-size: 0.75rem;
     }
 
     /* Values for cards */
     .points-value,
     .streak-value {
-        font-size: 1.3rem;
+        font-size: 1rem;
         font-weight: 700;
     }
 
@@ -247,13 +253,13 @@ header {
         display: flex;
         align-items: center;
         gap: 0.9rem;
-        margin-top: 0.39rem;
+        margin-top: auto;
     }
 
     /* User profile icon */
     .user-icon {
-        width: 40px;
-        height: 40px;
+        width: 35px;
+        height: 35px;
         background: #013C58;
         color: white;
         border-radius: 50%;
@@ -266,20 +272,20 @@ header {
     /* Username */
     .user-card h4 {
         color: #013C58;
-        font-size: 0.9rem;
+        font-size: 0.75rem;
         font-weight: 700;
         margin-bottom: 0.1rem;
     }
 
     /* User Level */
     .user-card p {
-        font-size: 0.7rem;
+        font-size: 0.65rem;
         opacity: 0.8;
     }
 }
 
 /* Hide sidebar on desktop */
-@media screen and (min-width: 1100px) {
+@media screen and (min-width: 1300px) {
     #sidebar {
         display: none;
     }
