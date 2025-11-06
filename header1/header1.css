@@ -118,12 +118,11 @@ header {
         transform: translateX(-100%);
         transition: .3s ease;
         z-index: 5000;
-        overflow: hidden;
 
         /* Scaling variables */
         --bar-width: 250px;
-        --bar-height: 900px;
-        --visual-width: 25vw;
+        --bar-height: 800px;
+        --visual-width: 30vw;
         --visual-height: 100vh;
         --scale-x: calc(var(--visual-width) / var(--bar-width));
         --scale-y: calc(var(--visual-height) / var(--bar-height));
@@ -142,7 +141,7 @@ header {
         background-color: #013C58;
         display: flex;
         flex-direction: column;
-        overflow: hidden;
+
         transform-origin: top left;
         transform: scale(var(--scale));
     }
@@ -151,17 +150,17 @@ header {
     #close-button {
         position: absolute;
         right: 1rem;
-        top: 0.5rem;
+        top: 0.7rem;
         background: none;
         border: none;
-        font-size: 1.2rem;
+        font-size: 2.5rem;
         color: #89C7E7;
         cursor: pointer;
         transition: .4s ease;
         z-index: 20;
     }
     #close-button:hover {
-        transform: scale(1.2);
+        transform: scale(1.1);
         color: #F5A201;
     }
 
@@ -171,23 +170,23 @@ header {
         align-items: center;
         gap: 1rem;
         padding-bottom: 1rem;
-        margin-bottom: 0.3rem;
+        margin-bottom: 1rem;
         border-bottom: solid 1px #F5A201;
     }
 
     .side-logo {
-        width: 60px;
+        width: 80px;
     }
 
     /* Sidebar title and text section */
     .side-title h2 {
         color: white;
-        font-size: 0.7rem;
+        font-size: 1rem;
     }
 
     .side-title p {
         color: #89C7E7;
-        font-size: 0.5rem;
+        font-size: 0.6rem;
     }
 
     /* Sidebar buttons */
@@ -196,14 +195,15 @@ header {
         align-items: center;
         gap: 1rem;
         padding: 0.6rem 0.3rem;
-        font-size: 0.6rem;
+        font-size: 1rem;
         color: white;
         text-decoration: none;
         border-radius: 8px;
         transition: 0.25s ease;
+        margin-top: 0.7rem;
     }
     .side-button i {
-        font-size: 1rem;
+        font-size: 2rem;
         text-align: center;
         padding-left: 10px;
     }
@@ -219,8 +219,8 @@ header {
     .side-section h3 {
         color: #89C7E7;
         margin-bottom: 0.6rem;
-        margin-top: 0.5rem;
-        font-size: 0.6em;
+        margin-top: 5rem;
+        font-size: 1rem;
     }
 
     /* Card styling */
@@ -242,30 +242,31 @@ header {
     /* Labels for cards */
     .points-label,
     .streak-label {
-        font-size: 0.6rem;
+        font-size: 1rem;
     }
 
     /* Values for cards */
     .points-value,
     .streak-value {
-        font-size: 0.9rem;
+        font-size: 1.5rem;
         font-weight: 700;
     }
 
     /* User card */
     .user-card {
         background: #F5A201;
-        padding: 0.5rem;
+        padding: 0.6rem;
         border-radius: 12px;
         display: flex;
         align-items: center;
         gap: 0.9rem;
+        margin-top: 1rem;
     }
 
     /* User profile icon */
     .user-icon {
-        width: 30px;
-        height: 30px;
+        width: 50px;
+        height: 50px;
         background: #013C58;
         color: white;
         border-radius: 50%;
@@ -278,14 +279,14 @@ header {
     /* Username */
     .user-card h4 {
         color: #013C58;
-        font-size: 0.6rem;
+        font-size: 1rem;
         font-weight: 700;
         margin-bottom: 0.1rem;
     }
 
     /* User Level */
     .user-card p {
-        font-size: 0.5rem;
+        font-size: 0.8rem;
         opacity: 0.8;
     }
 }
