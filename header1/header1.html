@@ -43,61 +43,65 @@
         </section>
 
         <section class="header-right">
-            <button id="login">Log in</button>
+            <button class="login">Log in</button>
         </section>
 
     </header>
 
     <!-- SIDEBAR MENU -->
-    <aside id="sidebar" class="sidebar closed">
+    <section class="sidebar-wrapper closed" id="sidebar-wrapper">
 
-        <button class="fa fa-arrow-circle-left" id="close-button" onclick="toggleSidebar()"></button><!-- Close button -->
+        <aside id="sidebar" class="sidebar">
 
-        <!-- Logo + title -->
-        <section class="side-header">
-            <img src="images/Mindquest_Logo_11.02.png" class="side-logo">
-            <section class="side-title">
-                <h2>Mind Quest</h2>
-                <p>Wellbeing Platform</p>
-            </section>
-            
-        </section>
+            <!-- Close button -->
+            <button class="fa fa-arrow-circle-left" id="close-button" onclick="toggleSidebar()"></button>
 
-        <!-- Sidebar menu -->
-        <section class="side-section">
-            <a class="side-button" href="#"><i class="fa fa-home"></i> Quick Calm</a>
-            <a class="side-button" href="#"><i class="fa fa-compass"></i> Mood Compass</a>
-            <a class="side-button" href="#"><i class="fa fa-users"></i> Hubs</a>
-            <a class="side-button" href="#"><i class="fa fa-graduation-cap"></i> Learning</a>
-            <a class="side-button" href="#"><i class="fa fa-user"></i> Profile</a>
-            <a class="side-button" href="#"><i class="fa fa-phone"></i> Contact Us</a>
-        </section>
-
-        <!-- Progress cards -->
-        <section class="side-section">
-            <h3>Progress</h3>
-
-            <section class="progress-card">
-                <p>Points</p>
-                <h2>0</h2>
+            <!-- Logo and title -->
+            <section class="side-header">
+                <img src="images/Mindquest_Logo_11.02.png" class="side-logo">
+                <section class="side-title">
+                    <h2>Mind Quest</h2>
+                    <p>Wellbeing Platform</p>
+                </section>
             </section>
 
-            <section class="progress-card">
-                <p>Streak</p>
-                <h2>0d</h2>
+            <!-- Sidebar menu -->
+            <section class="side-section">
+                <a class="side-button" href="#"><i class="fa fa-home"></i> Quick Calm</a>
+                <a class="side-button" href="#"><i class="fa fa-compass"></i> Mood Compass</a>
+                <a class="side-button" href="#"><i class="fa fa-users"></i> Hubs</a>
+                <a class="side-button" href="#"><i class="fa fa-graduation-cap"></i> Learning</a>
+                <a class="side-button" href="#"><i class="fa fa-user"></i> Profile</a>
+                <a class="side-button" href="#"><i class="fa fa-phone"></i> Contact Us</a>
             </section>
-        </section>
 
-        <!-- User card -->
-        <section class="user-card">
-            <section class="user-icon">U</section>
-            <section>
-                <h4>UserName</h4>
-                <p>Level 1</p>
+            <!-- Bottom Cards section -->
+            <section class="side-section">
+                <h3>Progress</h3>
+
+                <!-- Points card -->
+                <section class="points-card">
+                    <span class="points-label">Points</span>
+                    <span class="points-value">0</span>
+                </section>
+
+                <!-- Streak card -->
+                <section class="streak-card">
+                    <span class="streak-label">Streak</span>
+                    <span class="streak-value">0d</span>
+                </section>
             </section>
-        </section>
-    </aside>
 
+            <!-- User card section -->
+            <section class="user-card">
+                <section class="user-icon">U</section>
+                <section>
+                    <h4>UserName</h4>
+                    <p>Level 1</p>
+                </section>
+            </section>
+        </aside>
+    </section>
 </body>
 
 </html>
