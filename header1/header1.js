@@ -7,7 +7,7 @@ function toggleSidebar() {
 // Hide sidebar automatically when zooming out.
 window.addEventListener('resize', () => {
     const wrapper = document.getElementById("sidebar-wrapper");
-    if (window.innerWidth > 1300 && !wrapper.classList.contains('closed')) {
+    if (window.innerWidth > 1100 && !wrapper.classList.contains('closed')) {
         wrapper.classList.add('closed');
     }
 });

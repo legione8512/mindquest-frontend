@@ -25,6 +25,7 @@ header {
     justify-content: space-between;
     align-items: center;
     gap: 1rem;
+    height: 8vh;
 }
 
 /* Logo */
@@ -47,11 +48,11 @@ header {
     border: none;
     padding: 0.5rem 1.2rem;
     margin: 0.4rem;
-    font-size: 1.1rem;
+    font-size: 0.9vw;
     border-radius: 10px;
     color: #013C58;
     cursor: pointer;
-    transition: .4s ease-out;
+    transition: .3s ease-out;
 }
 
 /* Hover animation */
@@ -71,7 +72,7 @@ header {
 
 /* Login button */
 .login {
-    font-size: 1.1rem;
+    font-size: 1rem;
     color: white;
     border: 0;
     background: #013C58;
@@ -89,17 +90,14 @@ header {
 }
 
 /* Hide home button when zooming in */
-@media screen and (max-width: 1300px) {
+@media screen and (max-width: 1200px) {
     .nav-bar a:first-child {
         display: none;
-    }
-    .top-nav-button {
-        font-size: 0.8rem;
-    }
+    }    
 }
 
 /********** MOBILE HEADER ******************************/
-@media (max-width: 1200px) {
+@media (max-width: 1100px) {
     #navigation-bar {
         display: none !important;
     }
@@ -109,7 +107,7 @@ header {
 }
 
 /********** SIDEBAR (For mobile and zoomed desktop) ******************************/
-@media (max-width: 1300px) {
+@media (max-width: 1100px) {
 
     /* Sidebar wrapper for scaling purposes */
     .sidebar-wrapper {
@@ -119,7 +117,7 @@ header {
         top: 0;
         left: 0;
         transform: translateX(-100%);
-        transition: .3s ease-out;
+        transition: .3s ease;
         z-index: 5000;
         overflow-y: auto;
         background-color: #013C58;
@@ -140,7 +138,7 @@ header {
     #close-button {
         position: absolute;
         right: 1rem;
-        top: 0.9rem;
+        top: 1.25rem;
         background: none;
         border: none;
         font-size: 1.75rem;
@@ -160,12 +158,12 @@ header {
         align-items: center;
         gap: 1rem;
         padding-bottom: 1rem;
-        margin-bottom: 0.85rem;
+        margin-bottom: 0.6rem;
         border-bottom: solid 1px #F5A201;
     }
 
     .side-logo {
-        width: 80px;
+        width: 3.5vw;
     }
 
     /* Sidebar title and text section */
@@ -185,13 +183,13 @@ header {
         align-items: center;
         gap: 1rem;
         padding: 0.4rem 0.3rem;
-        font-size: 0.8rem;
+        font-size: 0.6rem;
         color: white;
         text-decoration: none;
         border-radius: 8px;
         transition: 0.25s ease;
         font-weight: 600;
-        margin-top: 0.5rem;
+        margin-top: 0.3rem;
     }
 
     .side-button i {
@@ -211,7 +209,7 @@ header {
     /* Card section */
     .side-section h3 {
         color: #89C7E7;
-        margin-top: 2rem;
+        margin-top: 1rem;
         margin-bottom: 0.6rem;
         font-size: 0.75rem;
     }
@@ -222,14 +220,14 @@ header {
         display: flex;
         justify-content: space-between;
         align-items: center;
-        background: #89C7E7;
+        background: #D1DFD2;
         padding: 0.5rem;
         border-radius: 12px;
         margin-bottom: 0.8rem;
         color: #013C58;
     }
     .streak-card {
-        background: rgb(221, 149, 161);
+        background: #F5A201;
     }
 
     /* Labels for cards */
@@ -247,7 +245,7 @@ header {
 
     /* User card */
     .user-card {
-        background: #F5A201;
+        background: #89C7E7;
         padding: 0.5rem;
         border-radius: 12px;
         display: flex;
@@ -285,7 +283,7 @@ header {
 }
 
 /* Hide sidebar on desktop */
-@media screen and (min-width: 1300px) {
+@media screen and (min-width: 1100px) {
     #sidebar {
         display: none;
     }
