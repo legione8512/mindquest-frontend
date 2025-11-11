@@ -2,7 +2,6 @@
 html {
     overflow-y: scroll;
     height: 100%;
-    background-color: rgb(200, 218, 230);
 }
 
 * {
@@ -25,6 +24,8 @@ header {
     justify-content: space-between;
     align-items: center;
     gap: 1rem;
+    border-bottom: 1px solid #013c5811;
+    box-shadow: 0 5px 20px rgba(59, 57, 57, 0.452);
 }
 
 /* Logo */
@@ -147,10 +148,10 @@ header {
     #close-button {
         position: absolute;
         right: 1rem;
-        top: 0.7rem;
+        top: 0.8rem;
         background: none;
         border: none;
-        font-size: 1.5rem;
+        font-size: 1.3rem;
         color: #54B5B2;
         cursor: pointer;
         transition: .4s ease;
