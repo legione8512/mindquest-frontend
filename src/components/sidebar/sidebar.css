@@ -1,26 +1,22 @@
 @media (max-width: 930px) {
     
-    /* Sidebar wrapper for scaling purposes */
-    .sidebar-wrapper {
+    .sidebar {
         position: fixed;
         top: 0;
         left: 0;
         width: 220px;
         height: 100vh;
         background-color: #013C58;
-        transform: translateX(-100%);
+        transform: translateX(-100%); /* Move off screen by default */
         transition: transform 0.3s ease;
         z-index: 5000;
-    }
-
-    .sidebar-wrapper.open {
-        transform: translateX(0);
-    }
-
-    /* Actual sidebar content */
-    .sidebar {
-        padding: 1rem;
+        padding: 0.5rem;
         color: white;
+    }
+
+    /* Open the sidebar when button clicked */
+    .sidebar.visible {
+        transform: translateX(0);
     }
 
     /* Close button */
@@ -31,13 +27,12 @@
         color: white;
         cursor: pointer;
         position: absolute;
-        top: 1rem;
+        top: 0.65rem;
         right: 1rem;
         transition: .3s ease;
     }
-
     #close-button:hover {
-        transform: scale(1.1);
+        transform: scale(1.2);
         color: #F5A201;
         
     }
@@ -52,8 +47,9 @@
         border-bottom: solid 1px #F5A201;
     }
 
+    /* Mobile logo */
     .side-logo {
-        width: 3.5vw;
+        width: 30px;
     }
 
     /* Sidebar title and text section */
@@ -70,17 +66,24 @@
 
     /* Sidebar buttons */
     .side-button {
+        border: none;
+        width: 100%;
         display: flex;
         align-items: center;
         gap: 0.5rem;
-        padding: 0.4rem 0.3rem;
+        padding: 0.4rem 0.4rem;
         font-size: 0.5rem;
         color: white;
-        text-decoration: none;
-        border-radius: 8px;
-        transition: 0.25s ease;
+        background: #013C58;
+        transition: 0.3s ease;
         font-weight: 600;
-        margin-top: 0.3rem;
+        margin-top: 0.1rem;
+    }
+
+    /* Remove default link styling for sidebar */
+    .side-nav a {
+        text-decoration: none;
+        display: block;
     }
 
     .side-button i {
@@ -95,6 +98,7 @@
         background-color: #54B5B2;
         color: #013C58;
         transform: translateX(5px);
+        border-radius: 5px;
     }
 
     /* Card section */
@@ -174,8 +178,8 @@
 }
 
 /* Hide sidebar on desktop */
-@media screen and (min-width: 930px) {
-    #sidebar {
+@media screen and (min-width: 900px) {
+    .sidebar {
         display: none;
     }
 }

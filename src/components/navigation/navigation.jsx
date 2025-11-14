@@ -1,6 +1,6 @@
-import React from 'react';
 import "./navigation.css";
 import logo from "../../assets/mindquest_logo.png";
+import { Link } from "react-router-dom";
 
 export default function Navigation({ toggleSidebar }) {
     return (
@@ -13,20 +13,22 @@ export default function Navigation({ toggleSidebar }) {
 
             {/* MindQuest Logo */}
             <section className="logo">
-                <img src={logo} alt="MindQuest Logo" />
+                <Link to="/"><img src={logo} alt="MindQuest Logo" /></Link>
             </section>
 
             {/* Navigation bar */}
             <section className="nav-bar">
-                <a href="#"><button className="top-nav-button">Home</button></a>
-                <a href="#"><button className="top-nav-button">Dashboard</button></a>
-                <a href="#"><button className="top-nav-button">Learning</button></a>
-                <a href="#"><button className="top-nav-button">Profile</button></a>
-                <a href="#"><button className="top-nav-button">Contact Us</button></a>
+                <Link to="/Home"><button className="top-nav-button">Home</button></Link>
+                <Link to="/dashboard"><button className="top-nav-button">Dashboard</button></Link>
+                <Link to="/learning"><button className="top-nav-button">Learning</button></Link>
+                <Link to="/profile"><button className="top-nav-button">Profile</button></Link>
+                <Link to="/contact"><button className="top-nav-button">Contact Us</button></Link>
             </section>
 
             {/* Login Button */}
-            <button className="login">Log in</button>
+            <Link to="/register">
+                <button className="login">Log in</button>
+            </Link>
         </header>
     );
 }

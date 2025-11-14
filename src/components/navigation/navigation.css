@@ -37,7 +37,11 @@ header {
     color: #013C58;
     cursor: pointer;
     transition: .3s ease-out;
-    
+}
+
+/* Remove default link styling for navigation */
+.nav-bar a {
+    text-decoration: none;
 }
 
 /* Hover animation */
