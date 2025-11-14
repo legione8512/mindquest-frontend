@@ -1,0 +1,23 @@
+@import url('https://fonts.googleapis.com/css2?family=Sora:wght@300;400;600;700&display=swap'); /* Fonts */
+@import url('https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css'); /* Icons */
+
+/********** BASE HTML ******************************/
+html {
+    overflow-y: scroll;
+    height: 100%;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    font-family: "Sora", sans-serif;
+    font-optical-sizing: auto;
+    font-weight: 600;
+    font-style: normal;
+}
+
+#root {
+  width: 100%;
+  margin: 0;
+  padding: 0;
+}
