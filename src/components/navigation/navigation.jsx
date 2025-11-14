@@ -1,32 +1,32 @@
 import React from 'react';
+import "./navigation.css";
+import logo from "../../assets/mindquest_logo.png";
 
-export default function Navigation({ onToggleSidebar }) {
+export default function Navigation({ toggleSidebar }) {
     return (
         <header>
 
             {/* Hamburger menu button */}
-            <a id="menu-icon" className="menu-icon" onClick={onToggleSidebar}>
+            <a className="menu-icon" onClick={toggleSidebar} >
                 <i className="fa fa-bars"></i>
             </a>
 
             {/* MindQuest Logo */}
             <section className="logo">
-                <img src="src/assets/mindquest_logo.png" alt="MindQuest Logo" />
+                <img src={logo} alt="MindQuest Logo" />
             </section>
 
             {/* Navigation bar */}
-            <section id="navigation-bar" className="nav-bar">
+            <section className="nav-bar">
                 <a href="#"><button className="top-nav-button">Home</button></a>
                 <a href="#"><button className="top-nav-button">Dashboard</button></a>
                 <a href="#"><button className="top-nav-button">Learning</button></a>
                 <a href="#"><button className="top-nav-button">Profile</button></a>
-                <a href="#"><button className="top-nav-button">Contact Us</button></a> 
+                <a href="#"><button className="top-nav-button">Contact Us</button></a>
             </section>
 
             {/* Login Button */}
-            <section className="header-right">
-                <button className="login">Log in</button>
-            </section>
+            <button className="login">Log in</button>
         </header>
     );
 }
