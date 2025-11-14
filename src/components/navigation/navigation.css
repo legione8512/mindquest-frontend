@@ -2,7 +2,7 @@ header {
     position: relative;
     top: 0;
     z-index: 2000;
-    background-color: #54B5B2;
+    background-color: #013C58;
     padding: 1.3rem;
     display: flex;
     justify-content: space-between;
@@ -14,16 +14,12 @@ header {
 
 /* Logo */
 .logo img {
-    zoom: 12%;
+    zoom: 15%;
 }
 
 /********** Top navigation (desktop) ******************************/
 .nav-bar {
     margin: auto;
-}
-
-.nav-bar a {
-    text-decoration: none;
 }
 
 /* Navigation buttons */
@@ -34,15 +30,15 @@ header {
     margin-left: 0.8rem;
     font-size: 1.2rem;
     border-radius: 10px;
-    color: #013C58;
+    color: white;
     cursor: pointer;
     transition: .3s ease-out;
 }
 
 /* Hover animation */
-.nav-bar a:hover .top-nav-button {
-    background-color: #013C58;
-    color: white;
+.top-nav-button:hover {
+    background-color: #c1eef9;
+    color: #013C58;
     transform: scale(1.2);
 }
 
@@ -69,12 +65,12 @@ header {
 /* Login button */
 .login {
     font-size: 1rem;
-    color: white;
+    color: #013C58;
     border: 0;
-    background: #013C58;
+    background: #c1eef9;
     border-radius: 5px;
     padding: 0.9rem;
-    width: 100px;
+    width: 180px;
     cursor: pointer;
     transition: .4s ease;
 }

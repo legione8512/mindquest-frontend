@@ -27,7 +27,7 @@ function App() {
       <Navigation toggleSidebar={toggleSidebar}/>
       <Sidebar isOpen={isOpen} toggleSidebar={toggleSidebar}/>
       <Routes>
-        <Route path="/Home" element={<Home />} />
+        <Route path="/" element={<Home />} />
         <Route path="/dashboard" element={<Dashboard />} />
         <Route path="/learning" element={<Learning />} />
         <Route path="/profile" element={<Profile />} />

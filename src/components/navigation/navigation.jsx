@@ -18,7 +18,7 @@ export default function Navigation({ toggleSidebar }) {
 
             {/* Navigation bar */}
             <section className="nav-bar">
-                <Link to="/Home"><button className="top-nav-button">Home</button></Link>
+                <Link to="/"><button className="top-nav-button">Home</button></Link>
                 <Link to="/dashboard"><button className="top-nav-button">Dashboard</button></Link>
                 <Link to="/learning"><button className="top-nav-button">Learning</button></Link>
                 <Link to="/profile"><button className="top-nav-button">Profile</button></Link>
@@ -27,7 +27,7 @@ export default function Navigation({ toggleSidebar }) {
 
             {/* Login Button */}
             <Link to="/register">
-                <button className="login">Log in</button>
+                <button className="login">Log in / Register</button>
             </Link>
         </header>
     );
