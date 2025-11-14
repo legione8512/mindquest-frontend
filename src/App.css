@@ -1,0 +1,197 @@
+
+/********** MOBILE HEADER ******************************/
+@media (max-width: 900px) {
+    #navigation-bar {
+        display: none !important;
+    }
+    .menu-icon {
+        display: block;
+    }
+}
+
+/********** SIDEBAR (For mobile and zoomed desktop) ******************************/
+@media (max-width: 900px) {
+
+    /* Sidebar wrapper for scaling purposes */
+    .sidebar-wrapper {
+        position: fixed;
+        width: 200px;
+        height: 100vh;
+        top: 0;
+        left: 0;
+        transform: translateX(-100%);
+        z-index: 5000;
+        overflow-x: hidden;
+        overflow-y: auto;
+        background-color: #013C58;
+        white-space: nowrap;
+    }
+    .sidebar-wrapper.animating {
+        transition: .3s ease-in-out;
+    }
+    .sidebar-wrapper:not(.closed) {
+        transform: translate(0);
+    }
+
+    /* Sidebar */
+    .sidebar {
+        padding: 0.7rem;
+        background-color: #013C58;
+        display: flex;
+        flex-direction: column;
+    }
+
+    /* Close button */
+    #close-button {
+        position: absolute;
+        right: 1rem;
+        top: 0.8rem;
+        background: none;
+        border: none;
+        font-size: 1.3rem;
+        color: #54B5B2;
+        cursor: pointer;
+        transition: .4s ease;
+        z-index: 20;
+    }
+    #close-button:hover {
+        transform: scale(1.1);
+        color: #F5A201;
+    }
+
+    /* Sidebar header and logo section */
+    .side-header {
+        display: flex;
+        align-items: center;
+        gap: 1rem;
+        padding-bottom: 0.7rem;
+        margin-bottom: 0.5rem;
+        border-bottom: solid 1px #F5A201;
+    }
+
+    .side-logo {
+        width: 3.5vw;
+    }
+
+    /* Sidebar title and text section */
+    .side-title h2 {
+        color: white;
+        font-size: 0.8rem;
+    }
+
+    .side-title p {
+        color: #89C7E7;
+        font-size: 0.45rem;
+        font-weight: 500;
+    }
+
+    /* Sidebar buttons */
+    .side-button {
+        display: flex;
+        align-items: center;
+        gap: 0.5rem;
+        padding: 0.4rem 0.3rem;
+        font-size: 0.5rem;
+        color: white;
+        text-decoration: none;
+        border-radius: 8px;
+        transition: 0.25s ease;
+        font-weight: 600;
+        margin-top: 0.3rem;
+    }
+
+    .side-button i {
+        width: 20px;
+        font-size: 0.8rem;
+        text-align: center;
+        padding-left: 10px;
+    }
+
+    /* Sidebar button hover animation */
+    .side-button:hover {
+        background-color: #54B5B2;
+        color: #013C58;
+        transform: translateX(5px);
+    }
+
+    /* Card section */
+    .side-section h3 {
+        color: #54B5B2;
+        margin-top: 0.9rem;
+        margin-bottom: 0.6rem;
+        font-size: 0.5rem;
+    }
+
+    /* Card styling */
+    .points-card,
+    .streak-card {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        background: #D1DFD2;
+        padding: 0.4rem;
+        border-radius: 8px;
+        margin-bottom: 0.5rem;
+        color: #013C58;
+    }
+    .streak-card {
+        background: #F5A201;
+    }
+
+    /* Labels for cards */
+    .points-label,
+    .streak-label {
+        font-size: 0.5rem;
+    }
+
+    /* Values for cards */
+    .points-value,
+    .streak-value {
+        font-size: 0.7rem;
+        font-weight: 700;
+    }
+
+    /* User card */
+    .user-card {
+        background: #54B5B2;
+        padding: 0.4rem;
+        border-radius: 12px;
+        display: flex;
+        align-items: center;
+        gap: 0.9rem;
+    }
+
+    /* User profile icon */
+    .user-icon {
+        width: 25px;
+        height: 25px;
+        background: #013C58;
+        color: white;
+        border-radius: 50%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        font-size: 0.6rem;
+    }
+
+    /* Username */
+    .user-card h4 {
+        color: #013C58;
+        font-size: 0.5rem;
+        font-weight: 700;
+        margin-bottom: 0.1rem;
+    }
+
+    /* User Level */
+    .user-card p {
+        font-size: 0.4rem;
+        opacity: 0.8;
+    }
+}
+
+/* Hide sidebar on desktop */
+@media screen and (min-width: 900px) {
+    #sidebar {
+        display: none;
+    }
+}
