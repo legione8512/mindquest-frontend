@@ -27,8 +27,8 @@ header {
     background: none;
     border: none;
     padding: 0.5rem 1.2rem;
-    margin-left: 0.8rem;
-    font-size: 1.2rem;
+    margin-left: 2rem;
+    font-size: 0.9rem;
     border-radius: 10px;
     color: white;
     cursor: pointer;
@@ -52,25 +52,16 @@ header {
     cursor: pointer;
 }
 
-@media (max-width: 900px) {
-    .menu-icon {
-        display: block;
-    }
-
-    .nav-bar {
-        display: none;
-    }
-}
 
 /* Login button */
 .login {
-    font-size: 1rem;
+    font-size: 0.9rem;
     color: #013C58;
     border: 0;
     background: #c1eef9;
-    border-radius: 5px;
-    padding: 0.9rem;
-    width: 180px;
+    border-radius: 10px;
+    padding: 0.8rem;
+    width: 150px;
     cursor: pointer;
     transition: .4s ease;
 }
@@ -82,8 +73,29 @@ header {
     transform: scale(1.1);
 }
 
+
+@media (max-width: 1000px) {
+    .menu-icon {
+        display: block;
+    }
+
+    .top-nav-button {
+        font-size: 0.2rem;
+    }
+
+    .nav-bar {
+        display: none;
+    }
+
+    .login {
+        padding: 1vw;
+        width: 20vw;
+        font-size: 0.8rem;
+    }
+}
+
 /* Hide home button when zooming in */
-@media screen and (max-width: 1200px) {
+@media screen and (max-width: 1250px) {
     .nav-bar a:first-child {
         display: none;
     }    
