@@ -1,9 +1,20 @@
+/********* TO DO ***********/
+/* Fix some content display issues when resizing screen */
+/****************************/
+
 footer {
+    position: relative;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    z-index: 2000;
     background-color: #013C58;
-    padding: 2rem;
+    padding: 1.3rem;
     display: flex;
-    gap: 10rem;
+    gap: 5rem;
     height: 15rem;
+    margin-top: auto;
+
 }
 
 /* Logo */
@@ -34,13 +45,12 @@ footer h3 {
 .footer_follow button {
     background: none;
     border: none;
-    border-radius: 100%;
-    width: 65px;
+    border-radius: 50%;
     color: #c1eef9;
     padding: 0.5rem;
     margin: 0.5rem;
     transition: 0.5s ease;
-    font-size: 2.5rem;
+    font-size: 1.5rem;
 }
 .footer_follow button:hover {
     animation: wiggle 0.3s ease;
