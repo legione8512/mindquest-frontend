@@ -54,12 +54,13 @@ export default function Sidebar({ isOpen, toggleSidebar }) {
                 <Link to="/learning" onClick={() => toggleSidebar(false)}>
                     <button className="side-button"><i className="fa fa-graduation-cap"></i>Learning</button>
                 </Link>
-                <Link to="/profile" onClick={() => toggleSidebar(false)}>
-                    <button className="side-button"><i className="fa fa-user"></i>Profile</button>
+                <Link to="/mood_compass" onClick={() => toggleSidebar(false)}>
+                    <button className="side-button"><i className="fa fa-compass"></i>Mood Compass</button>
                 </Link>
-                <Link to="/contact" onClick={() => toggleSidebar(false)}>
-                    <button className="side-button"><i className="fa fa-phone"></i>Contact</button>
+                <Link to="/account" onClick={() => toggleSidebar(false)}>
+                    <button className="side-button"><i className="fa fa-user"></i>Your Account</button>
                 </Link>
+                
             </section>
 
             {/* Bottom Cards */}

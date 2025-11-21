@@ -9,8 +9,8 @@ import Sidebar from "./components/sidebar/sidebar.jsx";
 import Home from "./pages/Home.jsx";
 import Dashboard from "./pages/Dashboard.jsx";
 import Learning from "./pages/Learning.jsx";
-import Profile from "./pages/Profile.jsx";
-import Contact from "./pages/Contact.jsx";
+import MoodCompass from "./pages/MoodCompass.jsx";
+import Account from "./pages/Account.jsx";
 import Register from "./pages/Register.jsx";
 
 import "./components/sidebar/sidebar.css";
@@ -30,8 +30,8 @@ function App() {
         <Route path="/" element={<Home />} />
         <Route path="/dashboard" element={<Dashboard />} />
         <Route path="/learning" element={<Learning />} />
-        <Route path="/profile" element={<Profile />} />
-        <Route path="/contact" element={<Contact />} />
+        <Route path="/account" element={<Account />} />
+        <Route path="/mood_compass" element={<MoodCompass />} />
         <Route path="/register" element={<Register />} />
       </Routes>
     </Router>
