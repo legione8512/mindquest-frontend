@@ -1,4 +1,20 @@
-.profile_page_body {
+/******************** SITE SETTINGS BANNER ********************/
+.site_settings_banner {
+    width: 100%;
+    text-align: center;
+    padding-top: 5vh;
+    padding-bottom: 5vh;
+    background: #c1eef9;
+}
+
+/* Banner text */
+.site_settings_banner h1 {
+    font-size: 3rem;
+    color: #013C58;
+}
+
+/******************** MAIN BODY ********************/
+.account_page_body {
     display: flex;
     justify-content: space-between;
     padding-left: 10vw;
@@ -6,20 +22,21 @@
 }
 
 
-/********** Profile Box Section **********/
-.profile_box {
+/***** Profile Box Section *****/
+.account_box {
     display: flex;
     align-items: center;
     justify-content: space-between;
     padding: 2rem;
-    margin: 5vw;
+    margin-top: 10vh;
+    margin-bottom: 10vh;
     background: #013C58;
     width: 15vw;
     border-radius: 10px;
 }
 
 /* Profile image */
-.profile_box img {
+.account_box img {
     width: 100px;
     height: 100px;
     object-fit: cover;
@@ -29,18 +46,18 @@
 }
 
 /* Username and Level Section */
-.profile_text_section {
+.account_text_section {
     text-align: right;
 }
 
 /* Username */
-.profile_text_section h3 {
+.account_text_section h3 {
     color: white;
     font-weight: 500;
     margin-bottom: 0.3rem;
 }
 
-.profile_text_section p {
+.account_text_section p {
     color: #c1eef9;
     font-weight: 300;
     font-size: 1rem;
