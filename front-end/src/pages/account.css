@@ -160,14 +160,15 @@
 /* Dropdown */
 .settings_form select {
     font-weight: 600;
-    width: 25vw;
-    height: 5vh;
+    font-size: 0.9rem;
+    min-width: 500px;
+    height: 60px;
     margin-left: 1rem;
     margin-bottom: 1.5rem;
     padding: 0.5rem;
     text-align: left;
-    border: 2px solid #013C58;
-    background: #c1eef9;
+    border: 1px solid rgb(196, 196, 196);
+    background: rgb(238, 238, 238);
     -webkit-appearance: none;
     -moz-appearance: none;
     appearance: none;
@@ -182,20 +183,22 @@
 /* Remove default border style when focused */
 .settings_form select:focus {
     outline-style: none !important;
-    border: 2px solid #F5A201;
+    border: 1px solid #F5A201;
 }
 
 /* Submit Buttons */
 .submit_buttons {
+    position: relative;
     display: flex;
-    width: 100%;
     gap: 1rem;
-    margin-left: 20rem;
+    justify-content: right;
+
 }
 .submit_buttons button{
-    width: 5rem;
-    height: 2rem;
+    width: 6rem;
+    height: 2.5rem;
     border-radius: 10px;
+    font-size: 1rem;
     font-weight: 400;
     transition: .3s ease;
     border: 1px;
