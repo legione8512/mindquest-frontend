@@ -16,13 +16,15 @@
 /******************** MAIN BODY ********************/
 .account_page_body {
     display: flex;
-    justify-content: space-between;
-    padding-left: 20vw;
-    padding-right: 20vw;
+    padding-left: 40vh;
+    padding-right: 40vh;
+    gap: 40vh;
 }
 
 /********** LEFT SIDE CONTENT **********/
-
+.site_settings_left {
+    width: 500px;
+}
 /***** Profile Box Section *****/
 .account_box {
     align-items: center;
