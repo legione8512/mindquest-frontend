@@ -186,7 +186,7 @@
 /* Remove default border style when focused */
 .settings_form select:focus {
     outline-style: none !important;
-    border: 1px solid #F5A201;
+    border: 1px solid #013C58;
 }
 
 /* Submit Buttons */
@@ -222,5 +222,6 @@
     transform: scale(1.2);
     background: #F5A201;
     color: black;
+    border: none;
 }
 
