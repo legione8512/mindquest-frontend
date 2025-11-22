@@ -102,7 +102,6 @@
     align-items: center;
     justify-content: space-between;
     padding-top: 4rem;
-    background: #c1eef9;
     margin-top: 10vh;
     margin-bottom: 10vh;
     width: 30vw;
@@ -125,16 +124,23 @@
     padding: 2rem;
 }
 
+.settings_form h4{
+    padding-left: 1rem;
+    padding-bottom: 0.5rem;
+}
+
+
 /* Dropdown */
 .settings_form select {
     font-weight: 600;
     width: 25vw;
     height: 5vh;
     margin-left: 1rem;
-    margin-bottom: 1rem;
+    margin-bottom: 1.5rem;
     padding: 0.5rem;
     text-align: left;
-    border: none;
+    border: 1px solid #013C58;
+    background: #c1eef9;
     -webkit-appearance: none;
     -moz-appearance: none;
     appearance: none;
