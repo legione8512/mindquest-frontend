@@ -31,6 +31,7 @@
     margin-bottom: 10vh;
     background: #013C58;
     width: 15vw;
+    height: 250px;
     border-radius: 10px;
 }
 
@@ -94,4 +95,57 @@
     padding: 1rem;
     border-radius: 10px;
     background: #F5A201;
+}
+
+/***** Your Settings Section *****/
+.site_settings_form_section {
+    align-items: center;
+    justify-content: space-between;
+    padding-top: 4rem;
+    background: #c1eef9;
+    margin-top: 10vh;
+    margin-bottom: 10vh;
+    width: 30vw;
+    border-radius: 10px;
+}
+
+/* Heading and subheading for site settings form section */
+.site_settings_form_top {
+    text-align: center;
+}
+
+.site_settings_form_top p {
+    font-weight: 400;
+    font-size: 1.rem;
+    color: grey;
+}
+
+/* Actual Form section */
+.site_settings_form_bottom {
+    padding: 2rem;
+}
+
+/* Dropdown */
+.settings_form select {
+    font-weight: 600;
+    width: 25vw;
+    height: 5vh;
+    margin-left: 1rem;
+    margin-bottom: 1rem;
+    padding: 0.5rem;
+    text-align: left;
+    border: none;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+    background-image: url('data:image/svg+xml;utf8,<svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M6 9L12 15L18 9" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" stroke="currentColor"/></svg>');
+    background-repeat: no-repeat;
+    background-position: right 10px center;
+    background-size: 20px;
+}
+
+/* Remove defauly border style when focused */
+.settings_form select:focus {
+    outline-style: none !important;
+    border: 1px solid #F5A201;
 }
