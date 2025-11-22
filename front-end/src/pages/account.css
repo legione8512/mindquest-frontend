@@ -17,14 +17,13 @@
 .account_page_body {
     display: flex;
     justify-content: space-between;
-    padding-left: 10vw;
-    padding-right: 10vw;
+    padding-left: 20vw;
+    padding-right: 20vw;
 }
 
 
 /***** Profile Box Section *****/
 .account_box {
-    display: flex;
     align-items: center;
     justify-content: space-between;
     padding: 2rem;
@@ -33,6 +32,15 @@
     background: #013C58;
     width: 15vw;
     border-radius: 10px;
+}
+
+/* Top section of account box */
+.account_box_top {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 100%;
+    margin-bottom: 1rem;
 }
 
 /* Profile image */
@@ -57,8 +65,33 @@
     margin-bottom: 0.3rem;
 }
 
+/* Level */
 .account_text_section p {
     color: #c1eef9;
     font-weight: 300;
     font-size: 1rem;
+}
+
+/* Top section of account box */
+.account_box_bottom {
+    align-items: center;
+    color: #013C58;
+}
+
+/* Points Bar */
+.Points_section {
+    display: flex;
+    justify-content: space-between;
+    padding: 1rem;
+    border-radius: 10px;
+    background: #c1eef9;
+    margin-bottom: 1rem;
+}
+
+.Streak_section {
+    display: flex;
+    justify-content: space-between;
+    padding: 1rem;
+    border-radius: 10px;
+    background: #F5A201;
 }

@@ -17,16 +17,31 @@ export default function Account() {
                 {/* Box containing profile picture, points, and streak */}
                 <section className="account_box">
 
-                    {/* Profile photo */}
-                    <section>
-                        <img src={profile} alt="Profile Picture" />
+                    <section className="account_box_top">
+                        {/* Profile photo */}
+                        <section>
+                            <img src={profile} alt="Profile Picture" />
+                        </section>
+
+                        {/* Username and level */}
+                        <section className="account_text_section">
+                            <h3>AdamD6567</h3>
+                            <p>Level 1</p>
+                        </section>
                     </section>
 
-                    {/* Username and level */}
-                    <section className="account_text_section">
-                        <h3>AdamD6567</h3>
-                        <p>Level 1</p>
+                    <section className="account_box_bottom">
+                        <section className="Points_section">
+                            <h3>My Points</h3>
+                            <h3>0</h3>
+                        </section>
+
+                        <section className="Streak_section">
+                            <h3>My Streak</h3>
+                            <h3>0d</h3>
+                        </section>
                     </section>
+
 
 
 
