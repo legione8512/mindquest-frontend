@@ -1,0 +1,47 @@
+.profile_page_body {
+    display: flex;
+    justify-content: space-between;
+    padding-left: 10vw;
+    padding-right: 10vw;
+}
+
+
+/********** Profile Box Section **********/
+.profile_box {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 2rem;
+    margin: 5vw;
+    background: #013C58;
+    width: 15vw;
+    border-radius: 10px;
+}
+
+/* Profile image */
+.profile_box img {
+    width: 100px;
+    height: 100px;
+    object-fit: cover;
+    object-position: center;
+    border-radius: 50%;
+
+}
+
+/* Username and Level Section */
+.profile_text_section {
+    text-align: right;
+}
+
+/* Username */
+.profile_text_section h3 {
+    color: white;
+    font-weight: 500;
+    margin-bottom: 0.3rem;
+}
+
+.profile_text_section p {
+    color: #c1eef9;
+    font-weight: 300;
+    font-size: 1rem;
+}
