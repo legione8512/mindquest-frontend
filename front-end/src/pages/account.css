@@ -21,16 +21,17 @@
     padding-right: 20vw;
 }
 
+/********** LEFT SIDE CONTENT **********/
 
 /***** Profile Box Section *****/
 .account_box {
     align-items: center;
     justify-content: space-between;
-    padding: 2rem;
+    padding: 1.5rem;
     margin-top: 10vh;
-    margin-bottom: 10vh;
+    margin-bottom: 5vh;
     background: #013C58;
-    width: 15vw;
+    width: 300px;
     height: 250px;
     border-radius: 10px;
 }
@@ -89,12 +90,38 @@
     margin-bottom: 1rem;
 }
 
+/* Streak Bar */
 .Streak_section {
     display: flex;
     justify-content: space-between;
     padding: 1rem;
     border-radius: 10px;
     background: #F5A201;
+}
+
+/***** Change Page and Logout Button Section *****/
+.change_page_buttons button{
+    border: 1px solid rgb(155, 155, 155);
+    border-radius: 10px;
+    width: 350px;
+    height: 50px;
+    padding: 10px;
+    margin-bottom: 1rem;
+    background: none;
+    transition: 0.3s ease;
+
+    /* Font */
+    color: rgb(155, 155, 155);
+    font-size: 0.9vw;
+    font-weight: 500;
+    text-align: left;
+}
+
+.change_page_buttons button:hover {
+    cursor: pointer;
+    background: #013C58;
+    color: #c1eef9;
+    border: 1px solid #c1eef9;
 }
 
 /***** Your Settings Section *****/
@@ -139,7 +166,7 @@
     margin-bottom: 1.5rem;
     padding: 0.5rem;
     text-align: left;
-    border: 1px solid #013C58;
+    border: 2px solid #013C58;
     background: #c1eef9;
     -webkit-appearance: none;
     -moz-appearance: none;
@@ -148,10 +175,41 @@
     background-repeat: no-repeat;
     background-position: right 10px center;
     background-size: 20px;
+    border-radius: 10px;
+    cursor: pointer;
 }
 
-/* Remove defauly border style when focused */
+/* Remove default border style when focused */
 .settings_form select:focus {
     outline-style: none !important;
-    border: 1px solid #F5A201;
+    border: 2px solid #F5A201;
+}
+
+/* Submit Buttons */
+.submit_buttons {
+    display: flex;
+    width: 100%;
+    gap: 1rem;
+    margin-left: 20rem;
+}
+.submit_buttons button{
+    width: 5rem;
+    height: 2rem;
+    border-radius: 10px;
+    font-weight: 400;
+    transition: .3s ease;
+    border: 1px;
+}
+.submit_buttons button:hover{
+    cursor: pointer;
+    transform: scale(1.2)
+}
+#cancel {
+    background: none;
+    border: 1px solid black;
+}
+#submit {
+    background: #013C58;
+    border: none;
+    color: white;
 }
