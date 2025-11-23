@@ -11,9 +11,10 @@ import Home from "./pages/Home.jsx";
 import Dashboard from "./pages/Dashboard.jsx";
 import Learning from "./pages/Learning.jsx";
 import MoodCompass from "./pages/MoodCompass.jsx";
-import Account from "./pages/Account.jsx";
+import Account from "./pages/Account/Account.jsx";
 import Register from "./pages/Register.jsx";
 
+/* Components Import */
 import "./components/sidebar/sidebar.css";
 import "./components/navigation/navigation.css";
 import "./components/footer/footer.css";
