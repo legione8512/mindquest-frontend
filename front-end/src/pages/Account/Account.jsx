@@ -29,6 +29,10 @@ export default function Account() {
         alert(`Your site settings were successfully updated!\n\nTheme: ${theme}\nNotification Preferences: ${notification}\nTimeZone: ${timeZone}`);
     };
 
+    const onLogOut =() => {
+        alert("Logging user out...");
+    }
+
     // State to handle forms
     const [currentForm, setcurrentForm] = useState('accountSettings')
 
@@ -85,7 +89,7 @@ export default function Account() {
                              onClick={() => handleFormButtonClick('siteSettings')}>
                             Site Settings
                         </button>
-                        <button>Logout</button>
+                        <button onClick={(onLogOut)}>Logout</button>
                     </section>
                 </section>
 
