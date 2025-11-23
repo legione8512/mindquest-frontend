@@ -3,18 +3,31 @@ import "./account.css";
 import profile from "../assets/example_profile_picture.jpg";
 
 export default function Account() {
-    
+
     // Setting default values for each dropdown option for demo purposes.
     const [values, setValues] = useState({
-        theme: 'Default', notification: 'None', timeZone: 'London'
+        theme: 'Default',
+        notification: 'None',
+        timeZone: 'London'
     });
 
     // Change handler for dropdown options.
     const set = name => {
         return ({ target: { value } }) => {
-            setValues(oldValues => ({...oldValues, [name]: value}));
+            setValues(oldValues => ({ ...oldValues, [name]: value }));
         }
     };
+
+    // Submit button logic.
+    const onSubmit = async (event) => {
+        event.preventDefault(); // Prevent default submission
+        try {
+            const {theme, notification, timeZone} = values;
+            alert(`Your site settings were successfully updated!\n\nTheme: ${theme}\nNotification Preferences: ${notification}\nTimeZone: ${timeZone}`);
+        } catch (e) {
+            alert(`Registration failed! ${e.message}`);
+        }
+    }
 
     return (
         <>
@@ -76,7 +89,7 @@ export default function Account() {
 
                 {/* Right side content */}
                 <section className="site_settings_right">
-                    
+
                     {/* Form for Site Settings */}
                     <section className="site_settings_form_section">
 
@@ -88,7 +101,7 @@ export default function Account() {
 
                         {/* Site Settings dropdown options */}
                         <section className="site_settings_form_bottom">
-                            <form className="settings_form">
+                            <form className="settings_form" onSubmit={onSubmit}>
 
                                 {/* Theme dropdown */}
                                 <h4>Theme:</h4>
