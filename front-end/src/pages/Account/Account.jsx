@@ -22,13 +22,14 @@ export default function Account() {
         }
     };
 
-    // Submit button.
+    // Submit button [FOR DEMO PURPOSES]
     const onSubmit = (event) => {
         event.preventDefault(); // Prevent default submission
         const { theme, notification, timeZone } = values;
         alert(`Your site settings were successfully updated!\n\nTheme: ${theme}\nNotification Preferences: ${notification}\nTimeZone: ${timeZone}`);
     };
 
+    // Logout button [FOR DEMO PURPOSES]
     const onLogOut =() => {
         alert("Logging user out...");
     }
