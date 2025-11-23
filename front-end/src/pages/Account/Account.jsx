@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import { useState } from "react";
 import "./Account.css";
 import profile from "../../assets/example_profile_picture.jpg";
 import SiteSettingsForm from "./SiteSettings_Form";
@@ -29,7 +29,13 @@ export default function Account() {
         alert(`Your site settings were successfully updated!\n\nTheme: ${theme}\nNotification Preferences: ${notification}\nTimeZone: ${timeZone}`);
     };
 
-    // TODO: ADD LOGIC FOR SWAPPING BETWEEN FORMS HERE.
+    // State to handle forms
+    const [currentForm, setcurrentForm] = useState('accountSettings')
+
+    // Form button click handler.
+    const handleFormButtonClick = (form) => {
+        setcurrentForm(form);
+    }
 
     return (
         <>
@@ -69,16 +75,16 @@ export default function Account() {
 
                     {/* Change form and logout buttons */}
                     <section className="change_page_buttons">
-                        <button>Site Settings</button>
-                        <button>Account Settings</button>
+                        <button onClick={() => handleFormButtonClick('accountSettings')}>Account Settings</button>
+                        <button onClick={() => handleFormButtonClick('siteSettings')}>Site Settings</button>
                         <button>Logout</button>
                     </section>
                 </section>
 
                 {/* RIGHT SIDE SECTION: FORMS */}
                 <section className="site_settings_right">
-                        <SiteSettingsForm values={values} set={set} onSubmit={onSubmit} />
-                        <AccountSettingsForm />
+                    {currentForm === 'accountSettings' && <AccountSettingsForm />}
+                    {currentForm === 'siteSettings' && <SiteSettingsForm values={values} set={set} onSubmit={onSubmit} />}
                 </section>
             </section>
         </>
