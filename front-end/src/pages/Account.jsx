@@ -8,7 +8,7 @@ export default function Account() {
     const [values, setValues] = useState({
         theme: 'Default',
         notification: 'None',
-        timeZone: 'London'
+        timeZone: 'London Time'
     });
 
     // Change handler for dropdown options.
@@ -102,7 +102,7 @@ export default function Account() {
                                 {/* Theme dropdown */}
                                 <h4>Theme:</h4>
                                 <select value={values.theme} onChange={set('theme')}>
-                                    <option value="Default">MindQuest Default</option>
+                                    <option value="MindQuest Default">MindQuest Default</option>
                                     <option value="Light">Light</option>
                                     <option value="Dark">Dark</option>
                                 </select>
@@ -111,19 +111,19 @@ export default function Account() {
                                 <h4>Notification Preferences:</h4>
                                 <select value={values.notification} onChange={set('notification')}>
                                     <option value="None">None</option>
-                                    <option value="Email">Email Only</option>
-                                    <option value="SMS">SMS Only</option>
-                                    <option value="Email_SMS">Email and SMS</option>
+                                    <option value="Email Only">Email Only</option>
+                                    <option value="SMS Only">SMS Only</option>
+                                    <option value="Email and SMS">Email and SMS</option>
                                 </select>
 
                                 {/* Time Zone dropdown */}
                                 <h4>Time Zone:</h4>
                                 <select value={values.timeZone} onChange={set('timeZone')}>
-                                    <option value="London">(UTC +00:00) Dublin, Edinburgh, Lisbon, London</option>
-                                    <option value="US_East">(UTC-05:00) Eastern Time, US and Canada</option>
-                                    <option value="US_Central">(UTC-06:00) Central Time, US and Canada</option>
-                                    <option value="US_West">(UTC -08:00) Pacific Time, US and Canada</option>
-                                    <option value="Austraila">(UTC+10:00) Brisbane, Austraila</option>
+                                    <option value="London Time">(UTC +00:00) Dublin, Edinburgh, Lisbon, London</option>
+                                    <option value="US Eastern Time">(UTC-05:00) Eastern Time, US and Canada</option>
+                                    <option value="US Central Time">(UTC-06:00) Central Time, US and Canada</option>
+                                    <option value="US Pacific Time">(UTC -08:00) Pacific Time, US and Canada</option>
+                                    <option value="Austraila Time">(UTC+10:00) Brisbane, Austraila</option>
                                 </select>
 
                                 {/* Submit and Cancel Button */}
