@@ -119,12 +119,21 @@
     text-align: left;
 }
 
+/* Button hover animation */
 .change_page_buttons button:hover {
     cursor: pointer;
     background: #013C58;
     color: #c1eef9;
     border: 1px solid #c1eef9;
     transform: translateX(1rem);
+}
+
+/* Form associated with button is active */
+.change_page_buttons button.active {
+    background: #013C58;
+    color: #c1eef9;
+    border: 1px solid #c1eef9;
+    cursor: default;
 }
 
 /***** Your Settings Section *****/

@@ -75,8 +75,16 @@ export default function Account() {
 
                     {/* Change form and logout buttons */}
                     <section className="change_page_buttons">
-                        <button onClick={() => handleFormButtonClick('accountSettings')}>Account Settings</button>
-                        <button onClick={() => handleFormButtonClick('siteSettings')}>Site Settings</button>
+                        <button className={
+                            currentForm === 'accountSettings' ? 'active' : ''} 
+                            onClick={() => handleFormButtonClick('accountSettings')}>
+                            Account Settings
+                        </button>
+                        <button className={
+                            currentForm === 'siteSettings' ? 'active' : ''}
+                             onClick={() => handleFormButtonClick('siteSettings')}>
+                            Site Settings
+                        </button>
                         <button>Logout</button>
                     </section>
                 </section>
