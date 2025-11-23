@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import "./Account.css";
 import profile from "../../assets/example_profile_picture.jpg";
 import SiteSettingsForm from "./SiteSettings_Form";
+import AccountSettingsForm from "./AccountSettings_Form";
 
 export default function Account() {
 
@@ -77,6 +78,7 @@ export default function Account() {
                 {/* RIGHT SIDE SECTION: FORMS */}
                 <section className="site_settings_right">
                         <SiteSettingsForm values={values} set={set} onSubmit={onSubmit} />
+                        <AccountSettingsForm />
                 </section>
             </section>
         </>
