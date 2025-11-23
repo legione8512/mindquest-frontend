@@ -1,7 +1,21 @@
+import React, { useState } from "react";
 import "./account.css";
 import profile from "../assets/example_profile_picture.jpg";
 
 export default function Account() {
+    
+    // Setting default values for each dropdown option for demo purposes.
+    const [values, setValues] = useState({
+        theme: 'Default', notification: 'None', timeZone: 'London'
+    });
+
+    // Change handler for dropdown options.
+    const set = name => {
+        return ({ target: { value } }) => {
+            setValues(oldValues => ({...oldValues, [name]: value}));
+        }
+    };
+
     return (
         <>
 
@@ -59,9 +73,11 @@ export default function Account() {
                     </section>
                 </section>
 
+
                 {/* Right side content */}
                 <section className="site_settings_right">
-                    {/* Box containing profile picture, points, and streak */}
+                    
+                    {/* Form for Site Settings */}
                     <section className="site_settings_form_section">
 
                         {/* Site Settings Heading and Subheading */}
@@ -70,13 +86,13 @@ export default function Account() {
                             <p>Site settings</p>
                         </section>
 
-                        {/* Site Settings form */}
+                        {/* Site Settings dropdown options */}
                         <section className="site_settings_form_bottom">
                             <form className="settings_form">
 
                                 {/* Theme dropdown */}
                                 <h4>Theme:</h4>
-                                <select>
+                                <select value={values.theme} onChange={set('theme')}>
                                     <option value="Default">MindQuest Default</option>
                                     <option value="Light">Light</option>
                                     <option value="Dark">Dark</option>
@@ -84,7 +100,8 @@ export default function Account() {
 
                                 {/* Notification Preferences dropdown */}
                                 <h4>Notification Preferences:</h4>
-                                <select>
+                                <select value={values.notification} onChange={set('notification')}>
+                                    <option value="None">None</option>
                                     <option value="Email">Email Only</option>
                                     <option value="SMS">SMS Only</option>
                                     <option value="Email_SMS">Email and SMS</option>
@@ -92,7 +109,7 @@ export default function Account() {
 
                                 {/* Time Zone dropdown */}
                                 <h4>Time Zone:</h4>
-                                <select>
+                                <select value={values.timeZone} onChange={set('timeZone')}>
                                     <option value="London">(UTC +00:00) Dublin, Edinburgh, Lisbon, London</option>
                                     <option value="US_East">(UTC-05:00) Eastern Time, US and Canada</option>
                                     <option value="US_Central">(UTC-06:00) Central Time, US and Canada</option>
@@ -102,8 +119,8 @@ export default function Account() {
 
                                 {/* Submit and Cancel Button */}
                                 <section className="submit_buttons">
-                                    <button id="cancel">Cancel</button>
-                                    <button id="submit">Submit</button>
+                                    <button type="button" id="cancel">Cancel</button>
+                                    <button type="submit" id="submit">Submit</button>
                                 </section>
                             </form>
                         </section>

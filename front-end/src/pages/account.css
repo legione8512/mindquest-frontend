@@ -16,9 +16,9 @@
 /******************** MAIN BODY ********************/
 .account_page_body {
     display: flex;
-    padding-left: 40vh;
-    padding-right: 40vh;
-    gap: 40vh;
+    padding-left: 25vw;
+    padding-right: 25vw;
+    gap: 10vw;
 }
 
 /********** LEFT SIDE CONTENT **********/
