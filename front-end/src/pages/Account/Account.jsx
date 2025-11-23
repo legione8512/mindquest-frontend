@@ -16,7 +16,7 @@ export default function Account() {
     });
 
     // Change handler to change dropdown values.
-    const set = name => {
+    const setSiteSetting = name => {
         return ({ target: { value } }) => {
             setValues(oldValues => ({ ...oldValues, [name]: value }));
         }
@@ -97,7 +97,7 @@ export default function Account() {
                 {/* RIGHT SIDE SECTION: FORMS */}
                 <section className="site_settings_right">
                     {currentForm === 'accountSettings' && <AccountSettingsForm />}
-                    {currentForm === 'siteSettings' && <SiteSettingsForm values={values} set={set} onSubmit={onSubmit} />}
+                    {currentForm === 'siteSettings' && <SiteSettingsForm values={values} setSiteSetting={setSiteSetting} onSubmit={onSubmit} />}
                 </section>
             </section>
         </>

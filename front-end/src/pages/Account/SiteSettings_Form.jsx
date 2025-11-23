@@ -1,4 +1,4 @@
-export default function SiteSettingsForm ({ values, set, onSubmit }) {
+export default function SiteSettingsForm ({ values, setSiteSetting, onSubmit }) {
     return (
         <section className="site_settings_form_section" >
 
@@ -14,7 +14,7 @@ export default function SiteSettingsForm ({ values, set, onSubmit }) {
 
                     {/* Theme */}
                     <h4>Theme:</h4>
-                    <select value={values.theme} onChange={set('theme')}>
+                    <select value={values.theme} onChange={setSiteSetting('theme')}>
                         <option value="MindQuest Default">MindQuest Default</option>
                         <option value="Light">Light</option>
                         <option value="Dark">Dark</option>
@@ -22,7 +22,7 @@ export default function SiteSettingsForm ({ values, set, onSubmit }) {
 
                     {/* Notification Preferences */}
                     <h4>Notification Preferences:</h4>
-                    <select value={values.notification} onChange={set('notification')}>
+                    <select value={values.notification} onChange={setSiteSetting('notification')}>
                         <option value="None">None</option>
                         <option value="Email Only">Email Only</option>
                         <option value="SMS Only">SMS Only</option>
@@ -31,7 +31,7 @@ export default function SiteSettingsForm ({ values, set, onSubmit }) {
 
                     {/* Time Zone */}
                     <h4>Time Zone:</h4>
-                    <select value={values.timeZone} onChange={set('timeZone')}>
+                    <select value={values.timeZone} onChange={setSiteSetting('timeZone')}>
                         <option value="London Time">(UTC +00:00) Dublin, Edinburgh, Lisbon, London</option>
                         <option value="US Eastern Time">(UTC-05:00) Eastern Time, US and Canada</option>
                         <option value="US Central Time">(UTC-06:00) Central Time, US and Canada</option>
