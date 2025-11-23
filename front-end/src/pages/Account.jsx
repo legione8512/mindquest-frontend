@@ -19,15 +19,11 @@ export default function Account() {
     };
 
     // Submit button logic.
-    const onSubmit = async (event) => {
+    const onSubmit = (event) => {
         event.preventDefault(); // Prevent default submission
-        try {
             const {theme, notification, timeZone} = values;
             alert(`Your site settings were successfully updated!\n\nTheme: ${theme}\nNotification Preferences: ${notification}\nTimeZone: ${timeZone}`);
-        } catch (e) {
-            alert(`Registration failed! ${e.message}`);
-        }
-    }
+        };
 
     return (
         <>
