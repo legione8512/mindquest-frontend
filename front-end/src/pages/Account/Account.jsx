@@ -72,6 +72,7 @@ export default function Account() {
                     <section className="account_box">
                         <section className="account_box_top">
                             <img src={profile} alt="Profile Picture" /> {/* Profile Picture */}
+                            <button><i class="fa fa-plus-circle" aria-hidden="true"></i></button> {/* Upload image button */}
                             <section className="account_text_section"> {/* Username and level */}
                                 <h3>AdamD6567</h3>
                                 <p>Level 1</p>

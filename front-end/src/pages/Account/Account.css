@@ -56,7 +56,29 @@
     object-fit: cover;
     object-position: center;
     border-radius: 50%;
+}
 
+/* Change Profile Icon button */
+.account_box button {
+    position: absolute;
+    margin-top: 4.8rem;
+    margin-left: 4.5rem;
+    font-size: 1.8rem;
+    color: #c1eef9;
+    border: 5px solid #013C58;
+    background: #013C58;
+    border-radius: 50%;
+    width: 2rem;
+    height: 2rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    transition: 0.3s ease;
+}
+.account_box button:hover {
+    transform: scale(1.2);
+    color: #F5A201;
 }
 
 /* Username and Level Section */
