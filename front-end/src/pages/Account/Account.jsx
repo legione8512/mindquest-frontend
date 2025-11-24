@@ -29,11 +29,11 @@ export default function Account() {
         alert(`Your site settings were successfully updated!\n\nTheme: ${theme}\nNotification Preferences: ${notification}\nTimeZone: ${timeZone}`);
     };
 
-    // Cancel button [FOR DEMO PURPOSES] ///////////////////////////////////////////////// TODO: Add functionality that reverts to previous submitted values, not default.
+    // Cancel button [FOR DEMO PURPOSES]
     const onCancel = (event) => {
         event.preventDefault(); // Prevent refresh of page.
 
-        // Reset the values to default (in practice, this will be the previous values entered)
+        // Reset the values to default // TODO: Add functionality that reverts to previous submitted values, not default.
         setValues({
             theme: 'Default',
             notification: 'None',

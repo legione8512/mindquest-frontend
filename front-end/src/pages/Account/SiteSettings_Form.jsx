@@ -44,7 +44,7 @@ export default function SiteSettingsForm({ values, setSiteSetting, onSubmit, onC
                     {/* Verify account section */}
                     <section className="verification_box">
                         <h5>Verify your account as an organisation.</h5>
-                        <Link className="verification_button" to="">Learn More</Link>
+                        <Link className="verification_button" title="Learn about Account Verification" to="">Learn More</Link>
                     </section>
 
                     {/* Submit and cancel button section */}
