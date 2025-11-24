@@ -8,7 +8,7 @@ export default function Account() {
 
     // *************** PROFILE PICTURE CHANGING LOGIC *************** //
     const [profileImage, setProfileImage] = useState(DefaultImage);
-    const fileUploadRef = useRef(null); // Reference to the hidden file input element.
+    const fileUploadRef = useRef(null);
 
     // Opening file explorer when button is pressed
     const openFileExplorer = (event) => {
@@ -93,7 +93,7 @@ export default function Account() {
                             <img src={profileImage} alt="Profile Picture" /> 
 
                             {/* Upload image button */}
-                            <button onClick={openFileExplorer}>
+                            <button alt="upload button" title="Change your Profile Photo" onClick={openFileExplorer}>
                                 <i class="fa fa-plus-circle"></i>
                             </button>
 
@@ -106,7 +106,7 @@ export default function Account() {
                                 <p>Level 1</p>
                             </section>
                         </section>
-                        
+
                         <section className="account_box_bottom">
                             {/* Points bar */}
                             <section className="Points_section">
