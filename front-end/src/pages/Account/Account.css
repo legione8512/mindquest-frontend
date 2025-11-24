@@ -142,7 +142,7 @@
     align-items: center;
     justify-content: space-between;
     padding-top: 4rem;
-    margin-top: 10vh;
+    margin-top: 10.5vh;
     margin-bottom: 10vh;
     width: 30vw;
     border-radius: 10px;
@@ -206,11 +206,13 @@
     align-items: flex-start;
     border: 1px solid rgb(196, 196, 196);
     border-radius: 10px;
+    padding: 0.8rem;
+    gap: 0.5rem;
+    box-sizing: border-box;
 }
 
 /* Verification text */
 .verification_box h5 {
-    padding: 0.8rem;
     font-weight: 600;
     font-size: 0.8rem;
     margin: 0;
@@ -218,7 +220,6 @@
 
 /* Learn more button */
 .verification_button {
-    padding: 0.8rem;
     color: blue;
     text-decoration: underline;
     border-radius: 5px;
