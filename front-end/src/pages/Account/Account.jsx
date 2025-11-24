@@ -1,10 +1,27 @@
-import { useState } from "react";
+import { useState, useRef } from "react";
 import "./Account.css";
-import profile from "../../assets/example_profile_picture.jpg";
+import DefaultImage from "../../assets/example_profile_picture.jpg";
 import SiteSettingsForm from "./SiteSettings_Form";
 import AccountSettingsForm from "./AccountSettings_Form";
 
 export default function Account() {
+
+    // *************** PROFILE PICTURE CHANGING LOGIC *************** //
+    const [profileImage, setProfileImage] = useState(DefaultImage);
+    const fileUploadRef = useRef(null); // Reference to the hidden file input element.
+
+    // Opening file explorer when button is pressed
+    const openFileExplorer = (event) => {
+        event.preventDefault();
+        fileUploadRef.current.click();
+    }
+
+    // Handler for changing the image
+    const handleImageChange = () => {
+        const uploadedFile = fileUploadRef.current.files[0];
+        const cachedURL = URL.createObjectURL(uploadedFile);
+        setProfileImage(cachedURL);
+    };
 
     // ***************  SITE SETTINGS FORM DROPDOWN LOGIC *************** //
 
@@ -43,7 +60,7 @@ export default function Account() {
     }
 
     // Logout button [FOR DEMO PURPOSES]
-    const onLogOut =() => {
+    const onLogOut = () => {
         alert("Logging user out...");
     }
 
@@ -71,13 +88,25 @@ export default function Account() {
                     {/* Left side box */}
                     <section className="account_box">
                         <section className="account_box_top">
-                            <img src={profile} alt="Profile Picture" /> {/* Profile Picture */}
-                            <button><i class="fa fa-plus-circle" aria-hidden="true"></i></button> {/* Upload image button */}
-                            <section className="account_text_section"> {/* Username and level */}
+
+                            {/* Profile Picture */}
+                            <img src={profileImage} alt="Profile Picture" /> 
+
+                            {/* Upload image button */}
+                            <button onClick={openFileExplorer}>
+                                <i class="fa fa-plus-circle"></i>
+                            </button>
+
+                            {/* Upload file button (hidden) */}
+                            <input type="file" ref={fileUploadRef} onChange={handleImageChange} hidden />
+
+                            {/* Username and Level */}
+                            <section className="account_text_section">
                                 <h3>AdamD6567</h3>
                                 <p>Level 1</p>
                             </section>
                         </section>
+                        
                         <section className="account_box_bottom">
                             {/* Points bar */}
                             <section className="Points_section">
@@ -95,13 +124,13 @@ export default function Account() {
                     {/* Change form and logout buttons */}
                     <section className="change_page_buttons">
                         <button className={
-                            currentForm === 'accountSettings' ? 'active' : ''} 
+                            currentForm === 'accountSettings' ? 'active' : ''}
                             onClick={() => handleFormButtonClick('accountSettings')}>
                             Account Settings
                         </button>
                         <button className={
                             currentForm === 'siteSettings' ? 'active' : ''}
-                             onClick={() => handleFormButtonClick('siteSettings')}>
+                            onClick={() => handleFormButtonClick('siteSettings')}>
                             Site Settings
                         </button>
                         <button onClick={(onLogOut)}>Logout</button>
