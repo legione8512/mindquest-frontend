@@ -1,4 +1,4 @@
-/******************** SITE SETTINGS BANNER ********************/
+/**************************************** SITE SETTINGS BANNER ****************************************/
 .site_settings_banner {
     width: 100%;
     text-align: center;
@@ -13,7 +13,7 @@
     color: #013C58;
 }
 
-/******************** MAIN BODY ********************/
+/**************************************** MAIN BODY ****************************************/
 .account_page_body {
     display: flex;
     padding-left: 25vw;
@@ -25,6 +25,7 @@
 .account_left {
     width: 500px;
 }
+
 /***** Profile Box Section *****/
 .account_box {
     align-items: center;
@@ -102,7 +103,7 @@
 }
 
 /***** Change Page and Logout Button Section *****/
-.change_page_buttons button{
+.change_page_buttons button {
     border: 1px solid rgb(155, 155, 155);
     border-radius: 10px;
     width: 350px;
@@ -136,7 +137,7 @@
     cursor: default;
 }
 
-/***** Your Settings Section *****/
+/**************************************** SITE SETTINGS FORM ****************************************/
 .site_settings_form_section {
     align-items: center;
     justify-content: space-between;
@@ -163,8 +164,7 @@
     padding: 2rem;
 }
 
-.settings_form h4{
-    padding-left: 1rem;
+.settings_form h4 {
     padding-bottom: 0.5rem;
 }
 
@@ -173,9 +173,8 @@
 .settings_form select {
     font-weight: 600;
     font-size: 0.9rem;
-    min-width: 500px;
+    width: 100%;
     height: 50px;
-    margin-left: 1rem;
     margin-bottom: 1.5rem;
     padding: 0.5rem;
     text-align: left;
@@ -198,15 +197,47 @@
     border: 1px solid #013C58;
 }
 
+/* Verification box */
+.verification_box {
+    width: 100%;
+    margin-bottom: 1.5rem;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    border: 1px solid rgb(196, 196, 196);
+    border-radius: 10px;
+}
+
+/* Verification text */
+.verification_box h5 {
+    padding: 0.8rem;
+    font-weight: 600;
+    font-size: 0.8rem;
+    margin: 0;
+}
+
+/* Learn more button */
+.verification_button {
+    padding: 0.8rem;
+    color: blue;
+    text-decoration: underline;
+    border-radius: 5px;
+    font-size: 0.8rem;
+    transition: 0.3s ease;
+}
+
+.verification_button:hover {
+    color: #F5A201;
+}
+
 /* Submit Buttons */
 .submit_buttons {
-    position: relative;
     display: flex;
     gap: 1rem;
-    justify-content: right;
-
+    justify-content: flex-end;
 }
-.submit_buttons button{
+
+.submit_buttons button {
     width: 6rem;
     height: 2.5rem;
     border-radius: 10px;
@@ -215,15 +246,18 @@
     transition: .3s ease;
     border: 1px;
 }
+
 #cancel {
     background: white;
     border: 1px solid black;
 }
+
 #submit {
     background: #013C58;
     border: none;
     color: white;
 }
+
 /* Hovering submit/cancel button */
 #cancel:hover,
 #submit:hover {
@@ -233,4 +267,3 @@
     color: black;
     border: none;
 }
-

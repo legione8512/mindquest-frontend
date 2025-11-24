@@ -1,4 +1,6 @@
-export default function SiteSettingsForm ({ values, setSiteSetting, onSubmit }) {
+import { Link } from "react-router-dom";
+
+export default function SiteSettingsForm({ values, setSiteSetting, onSubmit }) {
     return (
         <section className="site_settings_form_section" >
 
@@ -38,6 +40,12 @@ export default function SiteSettingsForm ({ values, setSiteSetting, onSubmit }) 
                         <option value="US Pacific Time">(UTC -08:00) Pacific Time, US and Canada</option>
                         <option value="Austraila Time">(UTC+10:00) Brisbane, Austraila</option>
                     </select>
+
+                    {/* Verify account section */}
+                    <section className="verification_box">
+                        <h5>Verify your account as an organisation.</h5>
+                        <Link className="verification_button" to="">Learn More</Link>
+                    </section>
 
                     {/* Submit and cancel button section */}
                     <section className="submit_buttons">
