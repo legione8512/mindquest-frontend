@@ -24,6 +24,7 @@
 /********** LEFT SIDE CONTENT **********/
 .account_left {
     width: 500px;
+    margin-bottom: 20vh;
 }
 
 /***** Profile Box Section *****/
@@ -143,7 +144,6 @@
     justify-content: space-between;
     padding-top: 4rem;
     margin-top: 10.5vh;
-    margin-bottom: 10vh;
     width: 30vw;
     border-radius: 10px;
 }
