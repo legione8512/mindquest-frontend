@@ -24,10 +24,23 @@ export default function Account() {
 
     // Submit button [FOR DEMO PURPOSES]
     const onSubmit = (event) => {
-        event.preventDefault(); // Prevent default submission
+        event.preventDefault(); // Prevent refresh of page.
         const { theme, notification, timeZone } = values;
         alert(`Your site settings were successfully updated!\n\nTheme: ${theme}\nNotification Preferences: ${notification}\nTimeZone: ${timeZone}`);
     };
+
+    // Cancel button [FOR DEMO PURPOSES] ///////////////////////////////////////////////// TODO: Add functionality that reverts to previous submitted values, not default.
+    const onCancel = (event) => {
+        event.preventDefault(); // Prevent refresh of page.
+
+        // Reset the values to default (in practice, this will be the previous values entered)
+        setValues({
+            theme: 'Default',
+            notification: 'None',
+            timeZone: 'London Time'
+        });
+        alert("Changes cancelled, no settings changed.")
+    }
 
     // Logout button [FOR DEMO PURPOSES]
     const onLogOut =() => {
@@ -97,7 +110,7 @@ export default function Account() {
                 {/* RIGHT SIDE SECTION: FORMS */}
                 <section className="site_settings_right">
                     {currentForm === 'accountSettings' && <AccountSettingsForm />}
-                    {currentForm === 'siteSettings' && <SiteSettingsForm values={values} setSiteSetting={setSiteSetting} onSubmit={onSubmit} />}
+                    {currentForm === 'siteSettings' && <SiteSettingsForm values={values} setSiteSetting={setSiteSetting} onSubmit={onSubmit} onCancel={onCancel} />}
                 </section>
             </section>
         </>

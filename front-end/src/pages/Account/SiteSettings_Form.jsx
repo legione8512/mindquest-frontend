@@ -1,6 +1,6 @@
 import { Link } from "react-router-dom";
 
-export default function SiteSettingsForm({ values, setSiteSetting, onSubmit }) {
+export default function SiteSettingsForm({ values, setSiteSetting, onSubmit, onCancel }) {
     return (
         <section className="site_settings_form_section" >
 
@@ -49,7 +49,7 @@ export default function SiteSettingsForm({ values, setSiteSetting, onSubmit }) {
 
                     {/* Submit and cancel button section */}
                     <section className="submit_buttons">
-                        <button type="button" id="cancel">Cancel</button>
+                        <button type="button" id="cancel" onClick={onCancel}>Cancel</button>
                         <button type="submit" id="submit">Submit</button>
                     </section>
                 </form>
