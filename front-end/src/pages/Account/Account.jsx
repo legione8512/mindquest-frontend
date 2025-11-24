@@ -46,7 +46,7 @@ export default function Account() {
         <>
             {/* BANNER */}
             <section className="site_settings_banner">
-                <h1>Site Settings</h1>
+                <h1>{currentForm === 'accountSettings' ? 'Account Settings' : 'Site Settings'}</h1>
             </section>
 
             {/* ACCOUNT PAGE CONTENT */}
