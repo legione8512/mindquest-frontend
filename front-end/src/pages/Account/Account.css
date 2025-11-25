@@ -22,7 +22,7 @@
 }
 
 /********** LEFT SIDE CONTENT **********/
-.account__page_left {
+.account_page_left {
     width: 500px;
     margin-bottom: 20vh;
 }
@@ -183,7 +183,6 @@
 
 .site_settings_form_top p {
     font-weight: 400;
-    font-size: 1.rem;
     color: grey;
 }
 

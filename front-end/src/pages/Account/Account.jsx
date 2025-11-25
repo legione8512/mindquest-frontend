@@ -24,6 +24,10 @@ export default function Account() {
         setProfileImage(cachedURL);
     };
 
+    // ==================== USERNAME AND LEVEL ==================== //
+    const [username, setUsername] = useState('AdamD6567');
+    const [userLevel, setUserLevel] = useState('1');
+
 
     // ==================== SWITCHING FORMS ==================== //
     const [currentForm, setCurrentForm] = useState('accountSettings')
@@ -38,7 +42,7 @@ export default function Account() {
 
     // Default values for demo purposes.
     const [values, setValues] = useState({
-        theme: 'Default',
+        theme: 'MindQuest Default',
         notification: 'None',
         timeZone: 'London Time'
     });
@@ -99,7 +103,7 @@ export default function Account() {
 
                             {/* Upload image button */}
                             <button title="Change your Profile Photo" onClick={openFileExplorer}>
-                                <i class="fa fa-plus-circle"></i>
+                                <i className="fa fa-plus-circle"></i>
                             </button>
 
                             {/* Upload file button (hidden) */}
@@ -112,8 +116,8 @@ export default function Account() {
 
                             {/* Username and Level */}
                             <section className="profile_text_box">
-                                <h3>AdamD6567</h3>
-                                <p>Level 1</p>
+                                <h3>{username}</h3>
+                                <p>Level {userLevel}</p>
                             </section>
                         </section>
 
@@ -148,7 +152,7 @@ export default function Account() {
                         </button>
 
                         {/* Logout Settings Button */}
-                        <button onClick={(onLogOut)}>Logout</button>
+                        <button onClick={onLogOut}>Logout</button>
                     </section>
                 </section>
 
