@@ -1,6 +1,6 @@
 import { Link } from "react-router-dom";
 
-export default function SiteSettingsForm({ values, setSiteSetting, onSubmit, onCancel }) {
+export default function SiteSettingsForm({ userSiteSettings, setSiteSetting, onSubmit, onCancel }) {
     return (
         <section className="site_settings_form_section" >
 
@@ -16,7 +16,7 @@ export default function SiteSettingsForm({ values, setSiteSetting, onSubmit, onC
 
                     {/* Theme */}
                     <h4>Theme:</h4>
-                    <select value={values.theme} onChange={setSiteSetting('theme')}>
+                    <select value={userSiteSettings.theme} onChange={setSiteSetting('theme')}>
                         <option value="MindQuest Default">MindQuest Default</option>
                         <option value="Light">Light</option>
                         <option value="Dark">Dark</option>
@@ -24,7 +24,7 @@ export default function SiteSettingsForm({ values, setSiteSetting, onSubmit, onC
 
                     {/* Notification Preferences */}
                     <h4>Notification Preferences:</h4>
-                    <select value={values.notification} onChange={setSiteSetting('notification')}>
+                    <select value={userSiteSettings.notification} onChange={setSiteSetting('notification')}>
                         <option value="None">None</option>
                         <option value="Email Only">Email Only</option>
                         <option value="SMS Only">SMS Only</option>
@@ -33,12 +33,12 @@ export default function SiteSettingsForm({ values, setSiteSetting, onSubmit, onC
 
                     {/* Time Zone */}
                     <h4>Time Zone:</h4>
-                    <select value={values.timeZone} onChange={setSiteSetting('timeZone')}>
+                    <select value={userSiteSettings.timeZone} onChange={setSiteSetting('timeZone')}>
                         <option value="London Time">(UTC +00:00) Dublin, Edinburgh, Lisbon, London</option>
                         <option value="US Eastern Time">(UTC-05:00) Eastern Time, US and Canada</option>
                         <option value="US Central Time">(UTC-06:00) Central Time, US and Canada</option>
                         <option value="US Pacific Time">(UTC -08:00) Pacific Time, US and Canada</option>
-                        <option value="Austraila Time">(UTC+10:00) Brisbane, Austraila</option>
+                        <option value="Austraila Time">(UTC+10:00) Brisbane, Australia</option>
                     </select>
 
                     {/* Verify account section */}
