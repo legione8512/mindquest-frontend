@@ -15,10 +15,16 @@ export default function Account() {
     const [userLevel, setUserLevel] = useState('1');
     const [currentForm, setCurrentForm] = useState('accountSettings')
 
+    // Default state settings [DEMO PURPOSES]
     const [userSiteSettings, setUserSiteSettings] = useState({
         theme: 'MindQuest Default',
         notification: 'None',
         timeZone: 'London Time'
+    });
+
+    // Tracks the state of the previously submitted settings [DEMO PURPOSES]
+    const [savedSiteSettings, setSavedSiteSettings] = useState({
+        userSiteSettings
     });
 
     // ==================== SWITCHING FORMS ==================== //
@@ -26,7 +32,7 @@ export default function Account() {
         setCurrentForm(formName);
     }
 
-     // Logout button. [Demo only]
+     // Logout button alert. [DEMO PURPOSES]
     const onLogOut = () => {
         alert("Logging user out...");
     }
@@ -43,19 +49,15 @@ export default function Account() {
     // Site settings form submit button.
     const onSubmitSiteSettings = (e) => {
         e.preventDefault();
-        const { theme, notification, timeZone } = userSiteSettings;
+        const { theme, notification, timeZone } = userSiteSettings; // Update current settings [DEMO PURPOSES]
+        setSavedSiteSettings(userSiteSettings); // Save the current settings temporarily [DEMO PURPOSES]
         alert(`Your site settings were successfully updated!\n\nTheme: ${theme}\nNotification Preferences: ${notification}\nTimeZone: ${timeZone}`);
     };
 
     // Site settings form cancel button.
     const onCancelSiteSettings = (e) => {
         e.preventDefault();
-
-        setUserSiteSettings({ // TODO: Return to previously entered values instead of returning to default.
-            theme: 'Default',
-            notification: 'None',
-            timeZone: 'London Time'
-        });
+        setUserSiteSettings(savedSiteSettings); // Reverts to previous settings [DEMO PURPOSES]
         alert("Changes cancelled, no settings changed.")
     }
 
