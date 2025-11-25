@@ -5,6 +5,7 @@ import DefaultImage from "../../assets/example_profile_picture.jpg";
 import SiteSettingsForm from "./SiteSettings_Form";
 import AccountSettingsForm from "./AccountSettings_Form";
 import ProfileBox from "./ProfileBox";
+import FormNavigation from "./FormNavigation";
 
 export default function Account() {
 
@@ -27,7 +28,6 @@ export default function Account() {
     const switchForm = (formName) => {
         setCurrentForm(formName);
     }
-
 
     // ====================  SITE SETTINGS FORM ==================== //
 
@@ -84,30 +84,15 @@ export default function Account() {
                         userLevel={userLevel}
                     />
 
-                    {/* Form change + Logout buttons */}
-                    <section className="change_form_buttons">
+                    <FormNavigation
+                        currentForm={currentForm}
+                        switchForm={switchForm}
+                        onLogOut={onLogOut} />
 
-                        {/* Account Settings Button */}
-                        <button
-                            className={currentForm === "accountSettings" ? "active" : ""}
-                            onClick={() => switchForm("accountSettings")}>
-                            Account Settings
-                        </button>
-
-                        {/* Site Settings Button */}
-                        <button
-                            className={currentForm === 'siteSettings' ? 'active' : ''}
-                            onClick={() => switchForm('siteSettings')}>
-                            Site Settings
-                        </button>
-
-                        {/* Logout Settings Button */}
-                        <button onClick={onLogOut}>Logout</button>
-                    </section>
                 </section>
 
                 {/* RIGHT SIDE: Forms */}
-                <section className="site_settings_right">
+                <section className="account_page_right">
                     {currentForm === 'accountSettings' && <AccountSettingsForm />}
                     {currentForm === 'siteSettings' &&
                         <SiteSettingsForm
