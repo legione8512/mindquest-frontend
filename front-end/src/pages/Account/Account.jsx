@@ -26,6 +26,11 @@ export default function Account() {
         setCurrentForm(formName);
     }
 
+     // Logout button. [Demo only]
+    const onLogOut = () => {
+        alert("Logging user out...");
+    }
+
     // ====================  SITE SETTINGS FORM ==================== //
 
     // Change handler for dropdown values.
@@ -35,14 +40,14 @@ export default function Account() {
         }
     };
 
-    // Site Submit button.
+    // Site settings form submit button.
     const onSubmitSiteSettings = (e) => {
         e.preventDefault();
         const { theme, notification, timeZone } = userSiteSettings;
         alert(`Your site settings were successfully updated!\n\nTheme: ${theme}\nNotification Preferences: ${notification}\nTimeZone: ${timeZone}`);
     };
 
-    // Cancel button.
+    // Site settings form cancel button.
     const onCancelSiteSettings = (e) => {
         e.preventDefault();
 
@@ -53,12 +58,6 @@ export default function Account() {
         });
         alert("Changes cancelled, no settings changed.")
     }
-
-    // Logout button. [Demo only]
-    const onLogOut = () => {
-        alert("Logging user out...");
-    }
-
 
     // ====================  ACCOUNT PAGE RENDER ==================== //
     return (

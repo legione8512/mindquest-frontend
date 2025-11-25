@@ -76,6 +76,7 @@
     cursor: pointer;
     transition: 0.3s ease;
 }
+
 .profile_box button:hover {
     animation: rotate 0.5s ease;
     color: #F5A201;
@@ -84,6 +85,7 @@
 /* Animation to make button rotate on hover */
 @keyframes rotate {
     0% {transform: rotate(0deg);}
+    
     100% {transform: rotate(360deg);}
 }
 
@@ -166,8 +168,9 @@
     cursor: default;
 }
 
-/**************************************** SITE SETTINGS FORM ****************************************/
-.site_settings_form_section {
+/**************************************** GENERAL FORM SETTINGS ****************************************/
+.site_settings_form_section,
+.account_settings_form_section {
     align-items: center;
     justify-content: space-between;
     padding-top: 4rem;
@@ -177,26 +180,74 @@
 }
 
 /* Heading and subheading for site settings form section */
-.site_settings_form_top {
+.site_settings_form_top,
+.account_settings_form_top {
     text-align: center;
 }
 
-.site_settings_form_top p {
+.site_settings_form_top p,
+.account_settings_form_top p {
     font-weight: 400;
     color: grey;
 }
 
 /* Actual Form section */
-.site_settings_form_bottom {
+.site_settings_form_bottom,
+.account_settings_form_bottom {
     padding: 2rem;
 }
 
-.settings_form h4 {
+/* Labels for each option */
+.settings_form h4,
+.account_settings_form h4 {
     padding-bottom: 0.5rem;
 }
 
+/* Button wrapper */
+.submit_buttons {
+    display: flex;
+    gap: 1rem;
+    justify-content: right;
+    align-items: center;
+}
 
-/* Dropdown */
+/* Cancel, submit, and delete account buttons */
+.submit_buttons button,
+.delete_account_button {
+    width: 6rem;
+    height: 2.5rem;
+    border-radius: 10px;
+    font-size: 1rem;
+    font-weight: 400;
+    transition: .3s ease;
+    border: 1px;
+}
+
+#cancel {
+    background: white;
+    border: 1px solid black;
+}
+
+#submit {
+    background: #013C58;
+    border: none;
+    color: white;
+}
+
+/* Hovering submit/cancel button */
+#cancel:hover,
+#submit:hover,
+#delete_account:hover {
+    cursor: pointer;
+    transform: scale(1.2);
+    background: #F5A201;
+    color: black;
+    border: none;
+}
+
+/******************** SITE SETTINGS FORM ********************/
+
+/* Dropdown options */
 .settings_form select {
     font-weight: 600;
     font-size: 0.9rem;
@@ -258,40 +309,35 @@
     color: #F5A201;
 }
 
-/* Submit Buttons */
-.submit_buttons {
-    display: flex;
-    gap: 1rem;
-    justify-content: flex-end;
-}
+/******************** ACCOUNT SETTINGS FORM ********************/
 
-.submit_buttons button {
-    width: 6rem;
-    height: 2.5rem;
+
+/* Text fields */
+.account_settings_form input {
+    font-weight: 600;
+    font-size: 0.9rem;
+    width: 100%;
+    height: 50px;
+    margin-bottom: 1.5rem;
+    padding-left: 0.5rem;
+    text-align: left;
+    border: 1px solid rgb(196, 196, 196);
     border-radius: 10px;
-    font-size: 1rem;
-    font-weight: 400;
-    transition: .3s ease;
-    border: 1px;
+    cursor: pointer;
+    box-sizing: border-box;
 }
 
-#cancel {
-    background: white;
-    border: 1px solid black;
+/* Remove default border style when focused */
+.account_settings_form input:focus {
+    outline-style: none !important;
+    border: 1px solid #013C58;
+    color: #F5A201;
 }
 
-#submit {
-    background: #013C58;
+#delete_account {
+    background: red;
+    width: 150px;
+    margin-right: 140px;
     border: none;
     color: white;
-}
-
-/* Hovering submit/cancel button */
-#cancel:hover,
-#submit:hover {
-    cursor: pointer;
-    transform: scale(1.2);
-    background: #F5A201;
-    color: black;
-    border: none;
 }
