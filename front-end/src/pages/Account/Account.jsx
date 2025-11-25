@@ -9,13 +9,12 @@ import FormNavigation from "./FormNavigation";
 
 export default function Account() {
 
-    // ==================== CONSTANTS ==================== //
+    // ==================== CONSTANTS/STATES THROUGHOUT PAGE ==================== //
     const [profileImage, setProfileImage] = useState(DefaultImage);
     const [username, setUsername] = useState('AdamD6567');
     const [userLevel, setUserLevel] = useState('1');
     const [currentForm, setCurrentForm] = useState('accountSettings')
 
-    // Default site setting values [DEMO PURPOSES]
     const [userSiteSettings, setUserSiteSettings] = useState({
         theme: 'MindQuest Default',
         notification: 'None',
@@ -23,30 +22,28 @@ export default function Account() {
     });
 
     // ==================== SWITCHING FORMS ==================== //
-
-    // Form switching handler.
     const switchForm = (formName) => {
         setCurrentForm(formName);
     }
 
     // ====================  SITE SETTINGS FORM ==================== //
 
-    // Change handler to change dropdown values.
+    // Change handler for dropdown values.
     const setSiteSetting = field => {
         return ({ target: { value } }) => {
             setUserSiteSettings(prevValue => ({ ...prevValue, [field]: value }));
         }
     };
 
-    // Submit button.
-    const onSubmit = (e) => {
+    // Site Submit button.
+    const onSubmitSiteSettings = (e) => {
         e.preventDefault();
         const { theme, notification, timeZone } = userSiteSettings;
         alert(`Your site settings were successfully updated!\n\nTheme: ${theme}\nNotification Preferences: ${notification}\nTimeZone: ${timeZone}`);
     };
 
     // Cancel button.
-    const onCancel = (e) => {
+    const onCancelSiteSettings = (e) => {
         e.preventDefault();
 
         setUserSiteSettings({ // TODO: Return to previously entered values instead of returning to default.
@@ -93,13 +90,15 @@ export default function Account() {
 
                 {/* RIGHT SIDE: Forms */}
                 <section className="account_page_right">
+
                     {currentForm === 'accountSettings' && <AccountSettingsForm />}
+
                     {currentForm === 'siteSettings' &&
                         <SiteSettingsForm
                             userSiteSettings={userSiteSettings}
                             setSiteSetting={setSiteSetting}
-                            onSubmit={onSubmit}
-                            onCancel={onCancel} />}
+                            onSubmit={onSubmitSiteSettings}
+                            onCancel={onCancelSiteSettings} />}
                 </section>
 
             </section>
