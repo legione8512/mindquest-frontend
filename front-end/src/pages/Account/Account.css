@@ -1,5 +1,5 @@
-/**************************************** SITE SETTINGS BANNER ****************************************/
-.site_settings_banner {
+/**************************************** ACCOUNT PAGE BANNER ****************************************/
+.account_page_banner {
     width: 100%;
     text-align: center;
     padding-top: 5vh;
@@ -8,13 +8,13 @@
 }
 
 /* Banner text */
-.site_settings_banner h1 {
+.account_page_banner h1 {
     font-size: 3rem;
     color: #013C58;
 }
 
 /**************************************** MAIN BODY ****************************************/
-.account_page_body {
+.account_page_main {
     display: flex;
     padding-left: 25vw;
     padding-right: 25vw;
@@ -22,13 +22,13 @@
 }
 
 /********** LEFT SIDE CONTENT **********/
-.account_left {
+.account__page_left {
     width: 500px;
     margin-bottom: 20vh;
 }
 
 /***** Profile Box Section *****/
-.account_box {
+.profile_box {
     align-items: center;
     justify-content: space-between;
     padding: 1.5rem;
@@ -41,7 +41,7 @@
 }
 
 /* Top section of account box */
-.account_box_top {
+.profile_box_top {
     display: flex;
     align-items: center;
     justify-content: space-between;
@@ -50,7 +50,7 @@
 }
 
 /* Profile image */
-.account_box img {
+.profile_box img {
     width: 100px;
     height: 100px;
     object-fit: cover;
@@ -59,7 +59,7 @@
 }
 
 /* Change Profile Icon button */
-.account_box button {
+.profile_box button {
     position: absolute;
     margin-top: 4.8rem;
     margin-left: 4.5rem;
@@ -76,7 +76,7 @@
     cursor: pointer;
     transition: 0.3s ease;
 }
-.account_box button:hover {
+.profile_box button:hover {
     animation: rotate 0.5s ease;
     color: #F5A201;
 }
@@ -88,32 +88,32 @@
 }
 
 /* Username and Level Section */
-.account_text_section {
+.profile_text_box {
     text-align: right;
 }
 
 /* Username */
-.account_text_section h3 {
+.profile_text_box h3 {
     color: white;
     font-weight: 500;
     margin-bottom: 0.3rem;
 }
 
 /* Level */
-.account_text_section p {
+.profile_text_box p {
     color: #c1eef9;
     font-weight: 300;
     font-size: 1rem;
 }
 
 /* Top section of account box */
-.account_box_bottom {
+.profile_box_bottom {
     align-items: center;
     color: #013C58;
 }
 
 /* Points Bar */
-.Points_section {
+.points_section {
     display: flex;
     justify-content: space-between;
     padding: 1rem;
@@ -123,7 +123,7 @@
 }
 
 /* Streak Bar */
-.Streak_section {
+.streak_section {
     display: flex;
     justify-content: space-between;
     padding: 1rem;
@@ -132,7 +132,7 @@
 }
 
 /***** Change Page and Logout Button Section *****/
-.change_page_buttons button {
+.change_form_buttons button {
     border: 1px solid rgb(155, 155, 155);
     border-radius: 10px;
     width: 350px;
@@ -150,7 +150,7 @@
 }
 
 /* Button hover animation */
-.change_page_buttons button:hover {
+.change_form_buttons button:hover {
     cursor: pointer;
     background: #013C58;
     color: #c1eef9;
@@ -159,7 +159,7 @@
 }
 
 /* Form associated with button is active */
-.change_page_buttons button.active {
+.change_form_buttons button.active {
     background: #013C58;
     color: #c1eef9;
     border: 1px solid #c1eef9;
