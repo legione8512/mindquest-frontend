@@ -15,7 +15,7 @@ export default function Account() {
     const [userLevel, setUserLevel] = useState('1');
     const dummyUserNames = ["Adam", "Marius", "Harshil", "Alex", "Aayisha"]; // Dummy usernames for other users (DEMO PURPOSES)
     const dummyEmails = ["Adam@brunel.ac.uk", "Marius@brunel.ac.uk", "Harshil@brunel.ac.uk", "Alex@brunel.ac.uk", "Aayisha@brunel.ac.uk"]; // Dummy emails for other users (DEMO PURPOSES).
-    
+
 
 
     // ======================================== SWITCHING FORMS ======================================== //
@@ -87,7 +87,7 @@ export default function Account() {
         };
     };
 
-    // Site settings form submit button.
+    // Account settings submit button.
     const onSubmitAccountSettings = (e) => {
         e.preventDefault();
 
@@ -119,17 +119,48 @@ export default function Account() {
 
         // Check if the username contains anything other than letters, numbers, or underscores.
         const usernamePattern = /^(?=.*[A-Za-z\d_])/;
+
         if (!usernamePattern.test(accountSettings.username)) {
             alert("Your username can only contain letters, numbers, and underscores. No spaces or special characters are allowed. Please enter another.")
             return;
         }
 
         // Check if the username contains atleast one letter or number.
-        const onlyUnderscores = /^(?=.*[A-Za-z\d])/; 
+        const onlyUnderscores = /^(?=.*[A-Za-z\d])/;
+
         if (!onlyUnderscores.test(accountSettings.username)) {
             alert("Your username cannot only contain underscores! It must contain atleast one letter or number. Please enter another.")
             return;
         }
+
+
+        // EMAIL VALIDATION //
+
+        // Check if the entered email is empty
+        if (!accountSettings.email.trim()) {
+            alert("Your email cannot be blank!")
+            return;
+        }
+
+        // Check if the entered email is already associated with an account in the "database"
+        if (dummyEmails.some(dataBaseEmail => dataBaseEmail.toLowerCase() === accountSettings.email.trim().toLowerCase())) {
+            alert("This email is already in use! Please try enter another.");
+            return;
+        }
+
+        // Check if the entered email is valid (within reason)
+        const emailPattern = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
+
+        if (!emailPattern.test(accountSettings.email)) {
+            alert("Your email is invalid. Please check this and try again.")
+            return;
+        }
+
+
+
+
+
+
 
 
         // Update current values if all validation checks passed.
@@ -184,7 +215,7 @@ export default function Account() {
                             setSiteSetting={setSiteSetting}
                             onSubmit={onSubmitSiteSettings}
                             onCancel={onCancelSiteSettings} />}
-                            
+
                 </section>
 
             </section>
