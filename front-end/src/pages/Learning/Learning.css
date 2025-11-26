@@ -1,0 +1,24 @@
+/* Wrapper for banner section */
+.learning_banner_wrapper {
+    display: relative;
+    width: 100%;
+}
+
+/* Banner image */
+.learn_banner {
+    width: 100%;
+    height: 28vh;
+    object-fit: cover;
+}
+
+/* Text overlay */
+.learning_banner_title {
+    padding: 1rem;
+    position: absolute;
+    top: 20%;
+    width: 100%;
+    color: white;
+    font-size: 2rem;
+    text-align: center;
+    background: #013c5891;
+}
