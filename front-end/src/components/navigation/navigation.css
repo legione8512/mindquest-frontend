@@ -4,12 +4,16 @@ header {
     z-index: 2000;
     background-color: #013C58;
     padding: 1.3rem;
+    border-bottom: 1px solid #013c5811;
+    box-shadow: 0 5px 20px rgba(59, 57, 57, 0.452);
+}
+
+/* Centred header content */
+.nav-inner {
     display: flex;
     justify-content: space-between;
     align-items: center;
     gap: 1rem;
-    border-bottom: 1px solid #013c5811;
-    box-shadow: 0 5px 20px rgba(59, 57, 57, 0.452);
 }
 
 /* Logo */
@@ -19,15 +23,18 @@ header {
 
 /********** Top navigation (desktop) ******************************/
 .nav-bar {
-    margin: auto;
+    flex: 1;
+    display: flex;
+    align-items: center;
+    justify-content: space-between; 
 }
 
 /* Navigation buttons */
 .top-nav-button {
     background: none;
     border: none;
-    padding: 0.5rem 1.2rem;
-    margin-left: 2rem;
+    padding: 0.4rem 0.9rem;  /* was 0.5rem 1.2rem */
+    margin-left: 0;          /* REMOVE the old 2rem margin */
     font-size: 0.9rem;
     border-radius: 10px;
     color: white;

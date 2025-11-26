@@ -5,7 +5,7 @@ import { Link } from "react-router-dom";
 export default function Navigation({ toggleSidebar }) {
     return (
         <header>
-
+            <section className="layout-container nav-inner">
             {/* Hamburger menu button */}
             <a className="menu-icon" onClick={toggleSidebar} >
                 <i className="fa fa-bars"></i>
@@ -31,6 +31,7 @@ export default function Navigation({ toggleSidebar }) {
             <Link to="/register">
                 <button className="login" title="Go to the login and registration page">Log in / Register</button>
             </Link>
+            </section>
         </header>
     );
 }

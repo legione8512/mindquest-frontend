@@ -5,6 +5,7 @@ import { Link } from "react-router-dom";
 export default function Footer() {
     return (
         <footer>
+            <section className="layout-container footer-inner">
             {/* MindQuest Footer Logo */}
             <section>
                 <Link to="/"><img src={logo} alt="MindQuest Logo" title="Go to the MindQuest Homepage" /></Link>
@@ -43,6 +44,7 @@ export default function Footer() {
                         <li><Link className="privacy_button" title="View our Terms and Conditions" to="" >Terms and Conditions</Link></li>
                     </ul>
                 </section>
+            </section>
             </section>
         </footer>
     );

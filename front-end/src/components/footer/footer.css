@@ -9,11 +9,18 @@ footer {
     right: 0;
     z-index: 2000;
     background-color: #013C58;
-    padding: 1.3rem;
-    display: flex;
-    gap: 5rem;
-    height: 12rem;
+    padding: 1.3rem 0;
     margin-top: auto;
+}
+
+/* Centred footer content */
+.footer-inner {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 1rem;
+    padding-top: 1rem;
+
 }
 
 /* Logo */
@@ -27,10 +34,19 @@ footer img {
     letter-spacing: 0.05rem;
     gap: 0.5rem;
     display: block;
+    margin-right: 0;    /* we use gap now */
     width: 300px;
 }
 
 /* Social media buttons */
+
+.footer_follow {
+    margin-top: 1rem;
+    display: flex;
+    flex-wrap: wrap;     /* allows wrapping on very small widths */
+    gap: 0.5rem;
+}
+
 .footer_follow button {
     background: none;
     border: none;
@@ -38,7 +54,6 @@ footer img {
     color: #c1eef9;
     padding: 0.5rem;
     width: 45px;
-    margin-right: 1rem;
     transition: 0.5s ease;
     font-size: 1.5rem;
 }
@@ -69,15 +84,15 @@ footer img {
 /**** FOOTER SECTION BLOCKS ****/
 .section_boxes {
     display: flex;
-    justify-content: right;
-    margin-left: 8vw;
+    gap: 3rem;
+    margin-left: 0;
 }
 .footer_section {
     color: #c1eef9;
     letter-spacing: 0.05rem;
     gap: 0.5rem;
     display: block;
-    margin-right: 5vw;
+    margin-right: 0;
 }
 
 /* Headers for footer sections */
