@@ -9,13 +9,17 @@ import FormNavigation from "./FormNavigation";
 
 export default function Account() {
 
-    // ==================== CONSTANTS/STATES THROUGHOUT PAGE ==================== //
+    // ==================== PROFILE BOX STATE LOGIC ==================== //
     const [profileImage, setProfileImage] = useState(DefaultImage);
     const [username, setUsername] = useState('AdamD6567');
     const [userLevel, setUserLevel] = useState('1');
-    const [currentForm, setCurrentForm] = useState('accountSettings')
+    
+
 
     // ==================== SWITCHING FORMS ==================== //
+    const [currentForm, setCurrentForm] = useState('accountSettings')
+
+    // Switching between forms functionality.
     const switchForm = (formName) => {
         setCurrentForm(formName);
     }
@@ -81,13 +85,23 @@ export default function Account() {
         };
     };
 
-    // Site settings form submit button.
+    // Site settings form submit button. // TODO: ADD VALDIATION/ ERROR HANDLING TO THE TEXT FIELDS.
     const onSubmitAccountSettings = (e) => {
         e.preventDefault();
+
+        // FORM VALIDATION //
+
+        // Check if username is empty
+        if (!accountSettings.username) {
+            alert("Your username cannot be blank!")
+            return;
+        }
+
         const { username, email, phone_no, password, verify_password } = accountSettings; // Update current values [DEMO PURPOSES]
         setUsername(accountSettings.username); // Update username in profile box AFTER submit.
         alert("Your account settings have been updated!");
     };
+
 
 
     // ====================  ACCOUNT PAGE RENDER ==================== //
@@ -134,6 +148,7 @@ export default function Account() {
                             setSiteSetting={setSiteSetting}
                             onSubmit={onSubmitSiteSettings}
                             onCancel={onCancelSiteSettings} />}
+                            
                 </section>
 
             </section>
