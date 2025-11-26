@@ -100,7 +100,7 @@ export default function Account() {
         }
 
         // Check if the entered username is already in the "database"
-        if (dummyUserNames.includes(accountSettings.username.trim())) {
+        if (dummyUserNames.some(dataBaseUsername => dataBaseUsername.toLowerCase() === accountSettings.username.trim().toLowerCase())) {
             alert("This username is already taken! Please enter another.");
             return;
         }
@@ -118,11 +118,19 @@ export default function Account() {
         }
 
         // Check if the username contains anything other than letters, numbers, or underscores.
-        const usernamePattern = /^[A-Za-z\d_]+$/;
+        const usernamePattern = /^(?=.*[A-Za-z\d_])/;
         if (!usernamePattern.test(accountSettings.username)) {
             alert("Your username can only contain letters, numbers, and underscores. No spaces or special characters are allowed. Please enter another.")
             return;
         }
+
+        // Check if the username contains atleast one letter or number.
+        const onlyUnderscores = /^(?=.*[A-Za-z\d])/; 
+        if (!onlyUnderscores.test(accountSettings.username)) {
+            alert("Your username cannot only contain underscores! It must contain atleast one letter or number. Please enter another.")
+            return;
+        }
+
 
         // Update current values if all validation checks passed.
         const { username, email, phone_no, password, verify_password } = accountSettings;
