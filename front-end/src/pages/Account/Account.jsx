@@ -176,30 +176,40 @@ export default function Account() {
 
         // UPDATE PASSWORD VALIDATION //
 
-        // Check if the password contains any white spaces
-        if (/\s/.test(accountSettings.password)) {
-            alert("Your password cannot contain any spaces!");
-            return;
-        }
+        if (accountSettings.password != "") {
 
-        // Check if the password is at minumum 8 characers long.
-        if (accountSettings.password.trim().length < 8) {
-            alert("Your password must be at least 8 characters long.");
-            return;
-        }
+            // Check if the password contains any white spaces
+            if (/\s+/.test(accountSettings.password)) {
+                alert("Your password cannot contain any spaces!");
+                return;
+            }
 
-        // Must contain at least one uppercase letter
-        if (!/[A-Z]/.test(accountSettings.password.trim())) {
-            alert("Your password must contain at least one uppercase letter!")
-            return;
-        }
+            // Check if the password is at minumum 8 characers long.
+            if (accountSettings.password.trim().length < 8) {
+                alert("Your password must be at least 8 characters long.");
+                return;
+            }
 
-        // Must contain at least one special character.
-        const specialCharacter = /[!@#$%^&*(),.?":{}|<>_\-+=/\[\]\\;'`~]$/;
+            // Must contain at least one uppercase letter.
+            if (!/[A-Z]/.test(accountSettings.password.trim())) {
+                alert("Your password must contain at least one uppercase letter!")
+                return;
+            }
 
-        if (!specialCharacter.test(accountSettings.password.trim())) {
-            alert("Your password must contain at least one special character!")
-            return;
+            // Must contain at least one special character.
+            const specialCharacter = /[!@#$%^&*(),.?":{}|<>_\-+=/\[\]\\;'`~]$/;
+
+            if (!specialCharacter.test(accountSettings.password.trim())) {
+                alert("Your password must contain at least one special character!")
+                return;
+            }
+
+            // Check if the new password is the same as the old password.
+            if (accountSettings.password.trim() == dummyPassword) {
+                alert("Your new password cannot be the same as your old password.")
+                return;
+            }
+
         }
 
 
@@ -212,9 +222,13 @@ export default function Account() {
 
         // UPDATE CURRENT VALUES IF ALL VALIDATION CHECKS PASSED //
         setUsername(accountSettings.username); // Update username in profile box AFTER successul submit.
-        setDummyPassword(accountSettings.password); // Update current password AFTER successful submit.
 
-        // Update settings
+        // Only update dummy password if the user changed it.
+        if (accountSettings.password.trim() != "") {
+            setDummyPassword(accountSettings.password);
+        }
+
+        // Update all settings
         setAccountSettings({
             username: accountSettings.username,
             email: accountSettings.email,
@@ -224,7 +238,9 @@ export default function Account() {
         });
 
         alert("Your account settings have been updated!");
+
     };
+
 
 
 
@@ -271,7 +287,8 @@ export default function Account() {
                             userSiteSettings={userSiteSettings}
                             setSiteSetting={setSiteSetting}
                             onSubmit={onSubmitSiteSettings}
-                            onCancel={onCancelSiteSettings} />}
+                            onCancel={onCancelSiteSettings}
+                        />}
 
                 </section>
 
