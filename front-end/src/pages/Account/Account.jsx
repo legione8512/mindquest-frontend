@@ -9,14 +9,16 @@ import FormNavigation from "./FormNavigation";
 
 export default function Account() {
 
-    // ==================== PROFILE BOX STATE LOGIC ==================== //
+    // ======================================== PROFILE BOX STATE LOGIC ======================================== //
     const [profileImage, setProfileImage] = useState(DefaultImage);
     const [username, setUsername] = useState('AdamD6567');
     const [userLevel, setUserLevel] = useState('1');
+    const dummyUserNames = ["Adam", "Marius", "Harshil", "Alex", "Aayisha"]; // Dummy usernames for other users (DEMO PURPOSES)
+    const dummyEmails = ["Adam@brunel.ac.uk", "Marius@brunel.ac.uk", "Harshil@brunel.ac.uk", "Alex@brunel.ac.uk", "Aayisha@brunel.ac.uk"]; // Dummy emails for other users (DEMO PURPOSES).
     
 
 
-    // ==================== SWITCHING FORMS ==================== //
+    // ======================================== SWITCHING FORMS ======================================== //
     const [currentForm, setCurrentForm] = useState('accountSettings')
 
     // Switching between forms functionality.
@@ -31,7 +33,7 @@ export default function Account() {
 
 
 
-    // ====================  SITE SETTINGS FORM ==================== //
+    // ========================================  SITE SETTINGS FORM ======================================== //
 
     // Default state settings [DEMO PURPOSES]
     const [userSiteSettings, setUserSiteSettings] = useState({
@@ -69,7 +71,7 @@ export default function Account() {
 
 
 
-    // ====================  ACCOUNT SETTINGS FORM ==================== //
+    // ========================================  ACCOUNT SETTINGS FORM ======================================== //
     const [accountSettings, setAccountSettings] = useState({
         username: "AdamD6567",
         email: "2425290@brunel.ac.uk",
@@ -85,26 +87,34 @@ export default function Account() {
         };
     };
 
-    // Site settings form submit button. // TODO: ADD VALDIATION/ ERROR HANDLING TO THE TEXT FIELDS.
+    // Site settings form submit button.
     const onSubmitAccountSettings = (e) => {
         e.preventDefault();
 
-        // FORM VALIDATION //
+        // USERNAME VALIDATION //
 
-        // Check if username is empty
+        // Check if the entered username is empty
         if (!accountSettings.username) {
             alert("Your username cannot be blank!")
             return;
         }
 
-        const { username, email, phone_no, password, verify_password } = accountSettings; // Update current values [DEMO PURPOSES]
+        // Check if the entered username is already in the "database"
+        if (dummyUserNames.includes(accountSettings.username.trim())) {
+            alert("This username is already taken! Please enter another.");
+            return;
+        }
+
+
+        // Update current values if all validation checks passed.
+        const { username, email, phone_no, password, verify_password } = accountSettings;
         setUsername(accountSettings.username); // Update username in profile box AFTER submit.
         alert("Your account settings have been updated!");
     };
 
 
 
-    // ====================  ACCOUNT PAGE RENDER ==================== //
+    // ========================================  ACCOUNT PAGE RENDER ======================================== //
     return (
         <>
             {/* BANNER */}
