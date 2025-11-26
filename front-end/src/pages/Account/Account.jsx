@@ -94,7 +94,7 @@ export default function Account() {
         // USERNAME VALIDATION //
 
         // Check if the entered username is empty
-        if (!accountSettings.username) {
+        if (!accountSettings.username.trim()) {
             alert("Your username cannot be blank!")
             return;
         }
@@ -105,6 +105,24 @@ export default function Account() {
             return;
         }
 
+        // Check if the username is greater than 12 characters.
+        if (accountSettings.username.trim().length > 12) {
+            alert("Usernames cannot be longer than 12 characters! Please enter another.")
+            return;
+        }
+
+        // Check if the username is less than 3 characters.
+        if (accountSettings.username.trim().length < 3) {
+            alert("Usernames must be at least 3 characters! Please enter another.")
+            return;
+        }
+
+        // Check if the username contains anything other than letters, numbers, or underscores.
+        const usernamePattern = /^[A-Za-z\d_]+$/;
+        if (!usernamePattern.test(accountSettings.username)) {
+            alert("Your username can only contain letters, numbers, and underscores. No spaces or special characters are allowed. Please enter another.")
+            return;
+        }
 
         // Update current values if all validation checks passed.
         const { username, email, phone_no, password, verify_password } = accountSettings;
