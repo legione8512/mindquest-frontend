@@ -51,6 +51,9 @@ export default function Sidebar({ isOpen, toggleSidebar }) {
                 <Link to="/dashboard" onClick={() => toggleSidebar(false)}>
                     <button className="side-button"><i className="fa fa-bar-chart"></i>Dashboard</button>
                 </Link>
+                <Link to="/hubs" onClick={() => toggleSidebar(false)}>
+                    <button className="side-button"><i className="fa fa-users"></i>Hubs</button>
+                </Link>
                 <Link to="/mood_compass" onClick={() => toggleSidebar(false)}>
                     <button className="side-button"><i className="fa fa-compass"></i>Mood Compass</button>
                 </Link>
