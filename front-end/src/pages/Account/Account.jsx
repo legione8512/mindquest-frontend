@@ -16,7 +16,7 @@ export default function Account() {
     const dummyUserNames = ["Adam", "Marius", "Harshil", "Alex", "Aayisha"]; // Dummy usernames for other users (DEMO PURPOSES)
     const dummyEmails = ["Adam@brunel.ac.uk", "Marius@brunel.ac.uk", "Harshil@brunel.ac.uk", "Alex@brunel.ac.uk", "Aayisha@brunel.ac.uk"]; // Dummy emails for other users (DEMO PURPOSES).
     const dummyPhones = ["07115201776", "07289994594", "07530773350", "07523697780", "07457319635"]; // Dummy emails for other users (DEMO PURPOSES).
-
+    const [dummyPassword, setDummyPassword] = useState ("Password123!"); // Dummy passoword (DEMO PURPOSES).
 
     // ======================================== SWITCHING FORMS ======================================== //
     const [currentForm, setCurrentForm] = useState('accountSettings')
@@ -174,12 +174,46 @@ export default function Account() {
         }
 
 
+        // UPDATE PASSWORD VALIDATION //
+
+        // Check if the password contains any white spaces
+        if (/\s/.test(accountSettings.password)) {
+            alert("Your password cannot contain any spaces!");
+            return;
+        }
+
+        // Check if the password is at minumum 8 characers long.
+        if (accountSettings.password.trim().length < 8) {
+            alert("Your password must be at least 8 characters long.");
+            return;
+        }
+
+        // Must contain at least one uppercase letter
+        if (!/[A-Z]/.test(accountSettings.password.trim())){
+            alert("Your password must contain at least one uppercase letter!")
+            return;
+        }
+
+        // Must contain at least one special character.
+        const specialCharacter = /[!@#$%^&*(),.?":{}|<>_\-+=/\[\]\\;'`~]$/;
+        
+        if (!specialCharacter.test(accountSettings.password.trim())){
+            alert("Your password must contain at least one special character!")
+            return;
+        }
 
 
+        // VERIFY PASSWORD BEFORE FORM SUBMISSION //
+        if (accountSettings.verify_password != dummyPassword) {
+            alert("Please verify your current password before submitting any changes.")
+            return;
+        }
 
-        // Update current values if all validation checks passed.
+
+        // UPDATE CURRENT VALUES IF ALL VALIDATION CHECKS PASSED //
         const { username, email, phone_no, password, verify_password } = accountSettings;
-        setUsername(accountSettings.username); // Update username in profile box AFTER submit.
+        setUsername(accountSettings.username); // Update username in profile box AFTER successul submit.
+        setDummyPassword(accountSettings.password); // Update current password AFTER successful submit.
         alert("Your account settings have been updated!");
     };
 
