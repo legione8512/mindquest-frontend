@@ -15,7 +15,7 @@ export default function Account() {
     const [userLevel, setUserLevel] = useState('1');
     const dummyUserNames = ["Adam", "Marius", "Harshil", "Alex", "Aayisha"]; // Dummy usernames for other users (DEMO PURPOSES)
     const dummyEmails = ["Adam@brunel.ac.uk", "Marius@brunel.ac.uk", "Harshil@brunel.ac.uk", "Alex@brunel.ac.uk", "Aayisha@brunel.ac.uk"]; // Dummy emails for other users (DEMO PURPOSES).
-
+    const dummyPhones = ["07115201776", "07289994594", "07530773350", "07523697780", "07457319635"]; // Dummy emails for other users (DEMO PURPOSES).
 
 
     // ======================================== SWITCHING FORMS ======================================== //
@@ -157,7 +157,21 @@ export default function Account() {
         }
 
 
+        // PHONE NUMBER VALIDATION //
 
+        // Check if the entered phone number is already in the "database"
+        if (dummyPhones.includes(accountSettings.phone_no.trim())) {
+            alert("This phone number is already taken! Please enter another.");
+            return;
+        }
+
+        // Check if the entered phone number is a valid UK phone number.
+        const phonePattern = /^((0|44|\+44|\+44\s*\(0\)|\+44\s*0)\s*)?7(\s*[0-9]){9}$/;
+
+        if (!phonePattern.test(accountSettings.phone_no)) {
+            alert("Your phone number is invalid. Please check this and try again.")
+            return;
+        }
 
 
 
