@@ -15,12 +15,6 @@ export default function Account() {
     const [username, setUsername] = useState('AdamD6567');
     const [userLevel, setUserLevel] = useState('1');
 
-    // Dummy values for Demo purposes.
-    const dummyUserNames = ["Adam", "Marius", "Harshil", "Alex", "Aayisha"];
-    const dummyEmails = ["Adam@brunel.ac.uk", "Marius@brunel.ac.uk", "Harshil@brunel.ac.uk", "Alex@brunel.ac.uk", "Aayisha@brunel.ac.uk"];
-    const dummyPhones = ["07115201776", "07289994594", "07530773350", "07523697780", "07457319635"];
-    const [dummyPassword, setDummyPassword] = useState("Password123!");
-
     // ======================================== SWITCHING FORMS ======================================== //
     const [currentForm, setCurrentForm] = useState('accountSettings')
 
@@ -60,6 +54,17 @@ export default function Account() {
     // Site settings form submit button.
     const onSubmitSiteSettings = (e) => {
         e.preventDefault();
+
+        // Check if the user has an attached phone number for notification preferences //
+        if (userSiteSettings.notification == "SMS Only" && accountSettings.phone_no == "" ||
+            userSiteSettings.notification === "Email and SMS" && accountSettings.phone_no == "") {
+
+            alert("You do not have an associated phone number. Enter a phone number, or select a different option.")
+            return;
+
+        }
+
+        // Successful Submission 
         const { theme, notification, timeZone } = userSiteSettings; // Update current settings [DEMO PURPOSES]
         setSavedSiteSettings(userSiteSettings); // Save the current settings temporarily [DEMO PURPOSES]
         alert(`Your site settings were successfully updated!\n\nTheme: ${theme}\nNotification Preferences: ${notification}\nTimeZone: ${timeZone}`);
@@ -74,7 +79,15 @@ export default function Account() {
 
 
 
+
     // ========================================  ACCOUNT SETTINGS FORM ======================================== //
+
+    // Dummy values for Demo purposes.
+    const dummyUserNames = ["Adam", "Marius", "Harshil", "Alex", "Aayisha"];
+    const dummyEmails = ["Adam@brunel.ac.uk", "Marius@brunel.ac.uk", "Harshil@brunel.ac.uk", "Alex@brunel.ac.uk", "Aayisha@brunel.ac.uk"];
+    const dummyPhones = ["07115201776", "07289994594", "07530773350", "07523697780", "07457319635"];
+    const [dummyPassword, setDummyPassword] = useState("Password123!");
+
     const [accountSettings, setAccountSettings] = useState({
         username: "AdamD6567",
         email: "2425290@brunel.ac.uk",
@@ -166,25 +179,28 @@ export default function Account() {
             return;
         }
 
+        // Let user have no attached phone number if they desire.
+        if (accountSettings.phone_no.trim() != "") {
 
-        // PHONE NUMBER VALIDATION //
+            // Check if the entered phone number is already in the "database"
+            if (dummyPhones.includes(accountSettings.phone_no.trim())) {
+                alert("This phone number is already taken! Please enter another.");
+                return;
+            }
 
-        // Check if the entered phone number is already in the "database"
-        if (dummyPhones.includes(accountSettings.phone_no.trim())) {
-            alert("This phone number is already taken! Please enter another.");
-            return;
+            // Check if the entered phone number is a valid UK phone number.
+            const phonePattern = /^((0|44|\+44|\+44\s*\(0\)|\+44\s*0)\s*)?7(\s*[0-9]){9}$/;
+
+            if (!phonePattern.test(accountSettings.phone_no)) {
+                alert("Your phone number is invalid. Please check this and try again.")
+                return;
+            }
+
         }
 
-        // Check if the entered phone number is a valid UK phone number.
-        const phonePattern = /^((0|44|\+44|\+44\s*\(0\)|\+44\s*0)\s*)?7(\s*[0-9]){9}$/;
-
-        if (!phonePattern.test(accountSettings.phone_no)) {
-            alert("Your phone number is invalid. Please check this and try again.")
-            return;
-        }
 
 
-        // UPDATE PASSWORD VALIDATION //
+        // PASSWORD VALIDATION //
 
         // Only checks if the user wants to verify password when there is actually characters in the field.
         if (accountSettings.password != "") {
@@ -224,7 +240,7 @@ export default function Account() {
         }
 
 
-        // VERIFY PASSWORD BEFORE FORM SUBMISSION //
+        // VERIFY CURRENT PASSWORD BEFORE FORM SUBMISSION //
         if (accountSettings.verify_password != dummyPassword) {
             alert("Please verify your current password has been entered correctly before submitting any changes.")
             return;
@@ -276,12 +292,12 @@ export default function Account() {
     }
 
 
-    // Account settings delete button.
+    // Delete button.
     const deleteAccount = (e) => {
         e.preventDefault();
         console.log("Delete account triggered!");
 
-        // Set as empty values
+        // Set all values as empty (Demo purposes only)
         setAccountSettings({
             username: "",
             email: "",
@@ -289,13 +305,13 @@ export default function Account() {
             password: "",
             verify_password: ""
         });
-
-        // Sets profile section username to empty
+        setUserSiteSettings({
+            theme: "",
+            notification: "",
+            timeZone: ""
+        });
         setUsername("");
-
-        // Reset profile image to default
         setProfileImage(EmptyImage);
-
         alert("You have deleted your account. Goodbye!")
     }
 
