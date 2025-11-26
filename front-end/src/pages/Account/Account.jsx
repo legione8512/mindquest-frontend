@@ -13,10 +13,12 @@ export default function Account() {
     const [profileImage, setProfileImage] = useState(DefaultImage);
     const [username, setUsername] = useState('AdamD6567');
     const [userLevel, setUserLevel] = useState('1');
-    const dummyUserNames = ["Adam", "Marius", "Harshil", "Alex", "Aayisha"]; // Dummy usernames for other users (DEMO PURPOSES)
-    const dummyEmails = ["Adam@brunel.ac.uk", "Marius@brunel.ac.uk", "Harshil@brunel.ac.uk", "Alex@brunel.ac.uk", "Aayisha@brunel.ac.uk"]; // Dummy emails for other users (DEMO PURPOSES).
-    const dummyPhones = ["07115201776", "07289994594", "07530773350", "07523697780", "07457319635"]; // Dummy emails for other users (DEMO PURPOSES).
-    const [dummyPassword, setDummyPassword] = useState("Password123!"); // Dummy password (DEMO PURPOSES).
+
+    // Dummy values for Demo purposes.
+    const dummyUserNames = ["Adam", "Marius", "Harshil", "Alex", "Aayisha"];
+    const dummyEmails = ["Adam@brunel.ac.uk", "Marius@brunel.ac.uk", "Harshil@brunel.ac.uk", "Alex@brunel.ac.uk", "Aayisha@brunel.ac.uk"];
+    const dummyPhones = ["07115201776", "07289994594", "07530773350", "07523697780", "07457319635"];
+    const [dummyPassword, setDummyPassword] = useState("Password123!");
 
     // ======================================== SWITCHING FORMS ======================================== //
     const [currentForm, setCurrentForm] = useState('accountSettings')
@@ -79,6 +81,13 @@ export default function Account() {
         password: "",
         verify_password: ""
     })
+
+    // Tracks the state of the previously submitted settings [DEMO PURPOSES]
+    const [savedAccountSettings, setSavedAccountSettings] = useState({
+        username: "AdamD6567",
+        email: "2425290@brunel.ac.uk",
+        phone_no: "07827753053"
+    });
 
     // Change handler for input values.
     const setAccountSetting = field => {
@@ -176,6 +185,7 @@ export default function Account() {
 
         // UPDATE PASSWORD VALIDATION //
 
+        // Only checks if the user wants to verify password when there is actually characters in the field.
         if (accountSettings.password != "") {
 
             // Check if the password contains any white spaces
@@ -228,18 +238,40 @@ export default function Account() {
             setDummyPassword(accountSettings.password);
         }
 
+        // Save new submitted account settings (DEMO PURPOSES)
+        setSavedAccountSettings({
+            username: accountSettings.username,
+            email: accountSettings.email,
+            phone_no: accountSettings.phone_no
+        });
+
+
         // Update all settings
         setAccountSettings({
             username: accountSettings.username,
             email: accountSettings.email,
             phone_no: accountSettings.phone_no,
-            password: "",        // Clear the new password field
-            verify_password: ""  // Clear the verify password field
+            password: "",
+            verify_password: ""
         });
 
         alert("Your account settings have been updated!");
 
     };
+
+    // Account settings form cancel button.
+    const onCancelAccountSettings = (e) => {
+        e.preventDefault();
+
+        // Revert to previous settings.
+        setAccountSettings({
+            ...savedAccountSettings,
+            password: "",
+            verify_password: ""
+        });
+
+        alert("Changes cancelled, no settings changed.")
+    }
 
 
 
@@ -280,6 +312,7 @@ export default function Account() {
                             accountSettings={accountSettings}
                             setAccountSetting={setAccountSetting}
                             onSubmit={onSubmitAccountSettings}
+                            onCancel={onCancelAccountSettings}
                         />}
 
                     {currentForm === 'siteSettings' &&

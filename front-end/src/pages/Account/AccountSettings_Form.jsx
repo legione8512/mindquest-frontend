@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { Eye, EyeOff } from "lucide-react";
 
-export default function AccountSettingsForm({ accountSettings, setAccountSetting, onSubmit }) {
+export default function AccountSettingsForm({ accountSettings, setAccountSetting, onSubmit, onCancel }) {
 
     // Toggle visibility function for password fields
     const [passwordVisible1, setPasswordVisible1] = useState(false); // Update pass field.
@@ -104,7 +104,7 @@ export default function AccountSettingsForm({ accountSettings, setAccountSetting
                     {/* Submit and cancel button section */}
                     <section className="submit_buttons">
                         <button type="button" id="delete_account">Delete Account</button>
-                        <button type="button" id="cancel">Cancel</button>
+                        <button type="button" id="cancel" onClick={onCancel}>Cancel</button>
                         <button type="submit" id="submit">Submit</button>
                     </section>
                 </form>
