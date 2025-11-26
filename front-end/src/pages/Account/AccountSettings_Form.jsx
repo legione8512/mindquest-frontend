@@ -64,6 +64,7 @@ export default function AccountSettingsForm({ accountSettings, setAccountSetting
                             <input
                                 type={passwordVisible1 ? "text" : "password"}
                                 placeholder="Enter new password"
+                                value={accountSettings.password}
                                 onChange={setAccountSetting("password")}
                             />
 

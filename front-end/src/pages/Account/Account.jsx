@@ -16,7 +16,7 @@ export default function Account() {
     const dummyUserNames = ["Adam", "Marius", "Harshil", "Alex", "Aayisha"]; // Dummy usernames for other users (DEMO PURPOSES)
     const dummyEmails = ["Adam@brunel.ac.uk", "Marius@brunel.ac.uk", "Harshil@brunel.ac.uk", "Alex@brunel.ac.uk", "Aayisha@brunel.ac.uk"]; // Dummy emails for other users (DEMO PURPOSES).
     const dummyPhones = ["07115201776", "07289994594", "07530773350", "07523697780", "07457319635"]; // Dummy emails for other users (DEMO PURPOSES).
-    const [dummyPassword, setDummyPassword] = useState ("Password123!"); // Dummy passoword (DEMO PURPOSES).
+    const [dummyPassword, setDummyPassword] = useState("Password123!"); // Dummy password (DEMO PURPOSES).
 
     // ======================================== SWITCHING FORMS ======================================== //
     const [currentForm, setCurrentForm] = useState('accountSettings')
@@ -76,7 +76,7 @@ export default function Account() {
         username: "AdamD6567",
         email: "2425290@brunel.ac.uk",
         phone_no: "07827753053",
-        password: "Password123!",
+        password: "",
         verify_password: ""
     })
 
@@ -189,15 +189,15 @@ export default function Account() {
         }
 
         // Must contain at least one uppercase letter
-        if (!/[A-Z]/.test(accountSettings.password.trim())){
+        if (!/[A-Z]/.test(accountSettings.password.trim())) {
             alert("Your password must contain at least one uppercase letter!")
             return;
         }
 
         // Must contain at least one special character.
         const specialCharacter = /[!@#$%^&*(),.?":{}|<>_\-+=/\[\]\\;'`~]$/;
-        
-        if (!specialCharacter.test(accountSettings.password.trim())){
+
+        if (!specialCharacter.test(accountSettings.password.trim())) {
             alert("Your password must contain at least one special character!")
             return;
         }
@@ -205,15 +205,24 @@ export default function Account() {
 
         // VERIFY PASSWORD BEFORE FORM SUBMISSION //
         if (accountSettings.verify_password != dummyPassword) {
-            alert("Please verify your current password before submitting any changes.")
+            alert("Please verify your current password has been entered correctly before submitting any changes.")
             return;
         }
 
 
         // UPDATE CURRENT VALUES IF ALL VALIDATION CHECKS PASSED //
-        const { username, email, phone_no, password, verify_password } = accountSettings;
         setUsername(accountSettings.username); // Update username in profile box AFTER successul submit.
         setDummyPassword(accountSettings.password); // Update current password AFTER successful submit.
+
+        // Update settings
+        setAccountSettings({
+            username: accountSettings.username,
+            email: accountSettings.email,
+            phone_no: accountSettings.phone_no,
+            password: "",        // Clear the new password field
+            verify_password: ""  // Clear the verify password field
+        });
+
         alert("Your account settings have been updated!");
     };
 
