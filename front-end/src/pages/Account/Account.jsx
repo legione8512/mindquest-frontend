@@ -15,6 +15,20 @@ export default function Account() {
     const [userLevel, setUserLevel] = useState('1');
     const [currentForm, setCurrentForm] = useState('accountSettings')
 
+    // ==================== SWITCHING FORMS ==================== //
+    const switchForm = (formName) => {
+        setCurrentForm(formName);
+    }
+
+    // Logout button alert. [DEMO PURPOSES]
+    const onLogOut = () => {
+        alert("Logging user out...");
+    }
+
+
+
+    // ====================  SITE SETTINGS FORM ==================== //
+
     // Default state settings [DEMO PURPOSES]
     const [userSiteSettings, setUserSiteSettings] = useState({
         theme: 'MindQuest Default',
@@ -26,18 +40,6 @@ export default function Account() {
     const [savedSiteSettings, setSavedSiteSettings] = useState({
         userSiteSettings
     });
-
-    // ==================== SWITCHING FORMS ==================== //
-    const switchForm = (formName) => {
-        setCurrentForm(formName);
-    }
-
-     // Logout button alert. [DEMO PURPOSES]
-    const onLogOut = () => {
-        alert("Logging user out...");
-    }
-
-    // ====================  SITE SETTINGS FORM ==================== //
 
     // Change handler for dropdown values.
     const setSiteSetting = field => {
@@ -60,6 +62,33 @@ export default function Account() {
         setUserSiteSettings(savedSiteSettings); // Reverts to previous settings [DEMO PURPOSES]
         alert("Changes cancelled, no settings changed.")
     }
+
+
+
+    // ====================  ACCOUNT SETTINGS FORM ==================== //
+    const [accountSettings, setAccountSettings] = useState({
+        username: "AdamD6567",
+        email: "2425290@brunel.ac.uk",
+        phone_no: "07827753053",
+        password: "Password123!",
+        verify_password: ""
+    })
+
+    // Change handler for input values.
+    const setAccountSetting = field => {
+        return ({ target: { value } }) => {
+            setAccountSettings(prevValue => ({ ...prevValue, [field]: value }));
+        };
+    };
+
+    // Site settings form submit button.
+    const onSubmitAccountSettings = (e) => {
+        e.preventDefault();
+        const { username, email, phone_no, password, verify_password } = accountSettings; // Update current values [DEMO PURPOSES]
+        setUsername(accountSettings.username); // Update username in profile box AFTER submit.
+        alert("Your account settings have been updated!");
+    };
+
 
     // ====================  ACCOUNT PAGE RENDER ==================== //
     return (
@@ -92,7 +121,12 @@ export default function Account() {
                 {/* RIGHT SIDE: Forms */}
                 <section className="account_page_right">
 
-                    {currentForm === 'accountSettings' && <AccountSettingsForm />}
+                    {currentForm === 'accountSettings' &&
+                        <AccountSettingsForm
+                            accountSettings={accountSettings}
+                            setAccountSetting={setAccountSetting}
+                            onSubmit={onSubmitAccountSettings}
+                        />}
 
                     {currentForm === 'siteSettings' &&
                         <SiteSettingsForm

@@ -321,6 +321,7 @@
     margin-bottom: 1.5rem;
     padding-left: 0.5rem;
     text-align: left;
+    color: rgb(196, 196, 196);
     border: 1px solid rgb(196, 196, 196);
     border-radius: 10px;
     cursor: pointer;
@@ -331,7 +332,7 @@
 .account_settings_form input:focus {
     outline-style: none !important;
     border: 1px solid #013C58;
-    color: #F5A201;
+    color: black;
 }
 
 #delete_account {
