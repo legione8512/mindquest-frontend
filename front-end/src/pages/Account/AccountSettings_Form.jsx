@@ -1,7 +1,25 @@
-
+import { useState } from "react";
+import { Eye, EyeOff } from "lucide-react";
 
 export default function AccountSettingsForm({ accountSettings, setAccountSetting, onSubmit }) {
 
+    // Toggle visibility function for password fields
+    const [passwordVisible1, setPasswordVisible1] = useState(false); // Update pass field.
+    const [passwordVisible2, setPasswordVisible2] = useState(false); // Verify pass field.
+
+    // Update Password field
+    const togglePassword1Visibility = () => {
+        setPasswordVisible1(visibile => !visibile);
+    };
+
+    // Verify Password field
+    const togglePassword2Visibility = () => {
+        setPasswordVisible2(visible => !visible);
+    };
+
+
+
+    // ========================================  ACCOUNT SETTINGS FORM ======================================== //s
     return (
         <section className="account_settings_form_section" >
 
@@ -39,22 +57,48 @@ export default function AccountSettingsForm({ accountSettings, setAccountSetting
                         onChange={setAccountSetting("phone_no")}
                     />
 
-                    {/* Password */}
-                    <h4>Update Password:</h4>
-                    <input
-                        type="text"
-                        value={accountSettings.password}
-                        name="password"
-                        onChange={setAccountSetting("password")}
-                    />
+                    {/* Update Password */}
+                    <section className="password-wrapper">
+                        <h4>Update Password:</h4>
+                        <section className="password-field">
+                            <input
+                                type={passwordVisible1 ? "text" : "password"}
+                                placeholder="Enter new password"
+                                onChange={setAccountSetting("password")}
+                            />
 
-                    {/* Password */}
-                    <h4>*Verify Current Password:</h4>
-                    <input
-                        type="text"
-                        value={accountSettings.verify_password}
-                        onChange={setAccountSetting("verify_password")}
-                    />
+                            {/* Visibility Icon*/}
+                            <span
+                                className="visibility-icon"
+                                data-testid="toggle-icon"
+                                onClick={togglePassword1Visibility}
+                            >
+                                {passwordVisible1 ? <Eye size={20} /> : <EyeOff size={20} />}
+                            </span>
+                        </section>
+                    </section>
+
+                    {/* Verify Password */}
+                    <section className="password-wrapper">
+                        <h4>*Verify Current Password:</h4>
+                        <section className="password-field">
+                            <input
+                                type={passwordVisible2 ? "text" : "password"}
+                                placeholder="Enter old password"
+                                value={accountSettings.verify_password}
+                                onChange={setAccountSetting("verify_password")}
+                            />
+
+                            {/* Visibility Icon */}
+                            <span
+                                className="visibility-icon"
+                                data-testid="toggle-icon"
+                                onClick={togglePassword2Visibility}
+                            >
+                                {passwordVisible2 ? <Eye size={20} /> : <EyeOff size={20} />}
+                            </span>
+                        </section>
+                    </section>
 
                     {/* Submit and cancel button section */}
                     <section className="submit_buttons">
