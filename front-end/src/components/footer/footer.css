@@ -13,6 +13,23 @@ footer {
     margin-top: auto;
 }
 
+.footer-phone {
+  text-decoration: none;
+  color: inherit;
+}
+
+.footer-email {
+  text-decoration: none;
+  color: inherit;
+  font: inherit;
+}
+
+.footer-contact {
+  text-decoration: none;
+  color: inherit;
+  font: inherit;
+}
+
 /* Centred footer content */
 .footer-inner {
     display: flex;
@@ -127,7 +144,7 @@ footer img {
 /**** Privacy and Security links ****/
 .privacy_button {
     background: none;
-    text-decoration: underline;
+    text-decoration: none;
     border: none;
     border-radius: 5px;
     color: #c1eef9;

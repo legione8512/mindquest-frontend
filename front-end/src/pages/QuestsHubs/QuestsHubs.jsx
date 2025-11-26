@@ -1,10 +1,28 @@
 import React from "react";
 import "./QuestsHubs.css";
 
+import img1 from "../../assets/Cards_Images/Webp/1.webp";
+import img2 from "../../assets/Cards_Images/Webp/2.webp";
+import img3 from "../../assets/Cards_Images/Webp/3.webp";
+import img4 from "../../assets/Cards_Images/Webp/4.webp";
+import img5 from "../../assets/Cards_Images/Webp/5.webp";
+import img6 from "../../assets/Cards_Images/Webp/6.webp";
+import img7 from "../../assets/Cards_Images/Webp/7.webp";
+import img8 from "../../assets/Cards_Images/Webp/8.webp";
+import img9 from "../../assets/Cards_Images/Webp/9.webp";
+import img10 from "../../assets/Cards_Images/Webp/10.webp";
+import img11 from "../../assets/Cards_Images/Webp/11.webp";
+import img12 from "../../assets/Cards_Images/Webp/12.webp";
+import img13 from "../../assets/Cards_Images/Webp/13.webp";
+import img14 from "../../assets/Cards_Images/Webp/14.webp";
+import img15 from "../../assets/Cards_Images/Webp/15.webp";
+import img16 from "../../assets/Cards_Images/Webp/16.webp";
+
 const hubs = [
   {
     id: 1,
     name: "Calm Coders",
+    image: img12,
     verified: true,
     description: "Mindful study and stress relief for developers – 532 members.",
     featuredTitle: "3-Minute Gratitude",
@@ -19,6 +37,7 @@ const hubs = [
   {
     id: 2,
     name: "Brunel Uni Wellbeing Hub",
+    image: img9,
     verified: true,
     description:
       "Peer support and weekly gratitude quests for Brunel students – 1.2k members.",
@@ -33,6 +52,7 @@ const hubs = [
   {
     id: 3,
     name: "Anxiety Relief Circle",
+    image: img8,
     verified: false,
     description:
       "Gentle steps to reduce anxious thoughts – 218 members.",
@@ -47,6 +67,7 @@ const hubs = [
   {
     id: 4,
     name: "Mindful Mornings Hub",
+    image: img7,
     verified: true,
     description:
       "Start the day calm and focused – 760 members.",
@@ -61,6 +82,7 @@ const hubs = [
   {
     id: 5,
     name: "Peer Support Lounge",
+    image: img1,
     verified: false,
     description:
       "Kind check-ins and progress conversations – 389 members.",
@@ -75,6 +97,7 @@ const hubs = [
   {
     id: 6,
     name: "Sleep Better Squad",
+    image: img16,
     verified: true,
     description:
       "Gentle routines for deeper sleep – 602 members.",
@@ -90,10 +113,17 @@ const hubs = [
 
 const QuestsHubs = () => {
   return (
+
+<>
+      {/* NEW: Banner like Account page, sits under the site header */}
+      <section className="hubs_page_banner">
+        <h1>Quests &amp; Hubs</h1>
+      </section>
+
     <main className="hubs-page">
       {/* Hero / intro panel */}
       <section className="hubs-hero">
-        <h1>Find your next MindQuest</h1>
+        <h2>Find your next MindQuest</h2>
         <p className="hubs-hero-subtitle">
           Small, meaningful steps for calmer days. Browse hubs or jump straight into a mini-quest.
         </p>
@@ -172,7 +202,12 @@ const QuestsHubs = () => {
       <section className="hubs-grid">
         {hubs.map((hub) => (
           <article key={hub.id} className="hub-card">
-            <div className="hub-image-placeholder">Hub cover image</div>
+            <div className="hub-image-wrapper">
+  <img
+    src={hub.image}
+    alt={`${hub.name} cover`}
+    className="hub-cover-image"
+  /></div>
 
             <div className="hub-card-body">
               <div className="hub-title-row">
@@ -210,6 +245,7 @@ const QuestsHubs = () => {
         ))}
       </section>
     </main>
+    </>
   );
 };
 

@@ -27,3 +27,8 @@ html {
     margin: 0 auto;
     padding: 0 1.5rem;  /* side padding so content doesn't touch the edge */
 }
+
+:root {
+  --mq-accent-yellow: #F5A201;  /* from streak button */
+  --mq-radius-md: 10px;         /* same as Account buttons */
+}

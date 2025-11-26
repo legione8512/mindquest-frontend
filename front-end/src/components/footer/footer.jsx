@@ -31,9 +31,26 @@ export default function Footer() {
                 {/* Contact Section for footer */}
                 <section className="footer_section">
                     <h3>Contact Information</h3>
-                    <p><i className="fa-solid fa-envelope"></i>SupportTeam@Mindquest.co.uk</p>
-                    <p><i className="fa-solid fa-phone"></i>+44 7911036333</p>
-                    <p><i className="fa-sharp fa-solid fa-location-dot"></i>31 Kingston Lane, Uxbridge <br />&emsp;&emsp;Middlesex, UB8 3PH</p>
+                    <p><i className="fa-solid fa-envelope"></i>{" "}
+  <a
+    href="mailto:mindquest@something.com"
+    className="footer-email privacy_button"
+  >
+    SupportTeam@Mindquest.co.uk
+  </a></p>
+                    <p><i className="fa-solid fa-phone"></i>{" "}
+                        <a href="tel:+447911036333" className="footer-phone privacy_button">
+                         +44 7911 036333
+                        </a></p>
+                    <p><i className="fa-sharp fa-solid fa-location-dot"></i>{" "}
+  <a
+    href="https://www.google.com/maps/search/?api=1&query=31+Kingston+Lane,+Uxbridge,+Middlesex,+UB8+3PH"
+    target="_blank"
+    rel="noopener noreferrer"
+    className="footer-contact privacy_button"
+  >
+    31 Kingston Lane, Uxbridge,<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Middlesex, UB8 3PH
+  </a></p>
                 </section>
 
                 {/* Privacy and Security section for footer*/}
