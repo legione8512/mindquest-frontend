@@ -20,10 +20,11 @@ export default function Navigation({ toggleSidebar }) {
             <section className="nav-bar">
                 <Link to="/"><button className="top-nav-button" title="Go to the MindQuest Homepage">Home</button></Link>
                 <Link to="/dashboard"><button className="top-nav-button" title="Go to the Dashboard">Dashboard</button></Link>
+                <Link to="/hubs"><button className="top-nav-button" title="Go to the Quests Hubs">Hubs</button></Link>
                 <Link to="/mood_compass"><button className="top-nav-button" title="Go to the Mood Compass">Mood Compass</button></Link>
                 <Link to="/learning"><button className="top-nav-button" title="Go to our Learning Page">Learning</button></Link>
                 <Link to="/account"><button className="top-nav-button" title="Go to your Account Settings">Your Account</button></Link>
-                
+        
             </section>
 
             {/* Login Button */}

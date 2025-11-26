@@ -13,6 +13,7 @@ import Learning from "./pages/Learning.jsx";
 import MoodCompass from "./pages/MoodCompass.jsx";
 import Account from "./pages/Account/Account.jsx";
 import Register from "./pages/Register.jsx";
+import QuestsHubs from "./pages/QuestsHubs/QuestsHubs.jsx";
 
 /* Components Import */
 import "./components/sidebar/sidebar.css";
@@ -36,6 +37,7 @@ function App() {
         <Route path="/account" element={<Account />} />
         <Route path="/mood_compass" element={<MoodCompass />} />
         <Route path="/register" element={<Register />} />
+        <Route path="/hubs" element={<QuestsHubs />} />
       </Routes>
       <Footer />
     </Router>
