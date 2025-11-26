@@ -2,6 +2,7 @@ import { useState } from "react";
 import "./Account.css";
 
 import DefaultImage from "../../assets/example_profile_picture.jpg";
+import EmptyImage from "../../assets/empty_image.png";
 import SiteSettingsForm from "./SiteSettings_Form";
 import AccountSettingsForm from "./AccountSettings_Form";
 import ProfileBox from "./ProfileBox";
@@ -259,7 +260,8 @@ export default function Account() {
 
     };
 
-    // Account settings form cancel button.
+
+    // Account settings cancel button.
     const onCancelAccountSettings = (e) => {
         e.preventDefault();
 
@@ -273,6 +275,29 @@ export default function Account() {
         alert("Changes cancelled, no settings changed.")
     }
 
+
+    // Account settings delete button.
+    const deleteAccount = (e) => {
+        e.preventDefault();
+        console.log("Delete account triggered!");
+
+        // Set as empty values
+        setAccountSettings({
+            username: "",
+            email: "",
+            phone_no: "",
+            password: "",
+            verify_password: ""
+        });
+
+        // Sets profile section username to empty
+        setUsername("");
+
+        // Reset profile image to default
+        setProfileImage(EmptyImage);
+
+        alert("You have deleted your account. Goodbye!")
+    }
 
 
 
@@ -313,6 +338,7 @@ export default function Account() {
                             setAccountSetting={setAccountSetting}
                             onSubmit={onSubmitAccountSettings}
                             onCancel={onCancelAccountSettings}
+                            onDelete={deleteAccount}
                         />}
 
                     {currentForm === 'siteSettings' &&
