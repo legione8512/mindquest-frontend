@@ -23,7 +23,7 @@ html {
 }
 
 .layout-container {
-    max-width: 960px;   /* same as .page.quests-hubs */
+    max-width: 1200px;   /* same as .page.quests-hubs */
     margin: 0 auto;
     padding: 0 1.5rem;  /* side padding so content doesn't touch the edge */
 }
