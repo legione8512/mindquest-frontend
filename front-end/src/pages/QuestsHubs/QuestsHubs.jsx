@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import QuestsBanner from "../../assets/Cards_Images/Webp/6.webp";
 import "./QuestsHubs.css";
 
 import img1 from "../../assets/Cards_Images/Webp/1.webp";
@@ -161,6 +162,40 @@ const QuestsHubs = () => {
     activity: activityOptions[0],
   });
 
+  const [filters, setFilters] = useState({
+    mode: "All", // All | Team | Individual
+    verification: "All", // All | Verified only
+    duration: "All", // All | Daily | Weekly | Monthly
+    sort: "Popularity", // Popularity | Newest | Closest to me
+  });
+
+  // search text in the input box
+  const [searchInput, setSearchInput] = useState("");
+
+  // committed search query (applied when user clicks Apply)
+  const [searchQuery, setSearchQuery] = useState("");
+
+  const handleFilterChange = (e) => {
+    const { name, value } = e.target;
+    setFilters((prev) => ({
+      ...prev,
+      [name]: value,
+    }));
+  };
+
+  const handleSearchInputChange = (e) => {
+    setSearchInput(e.target.value);
+  };
+
+  const handleSearchApply = () => {
+    setSearchQuery(searchInput.trim());
+  };
+
+  const handleSearchClear = () => {
+    setSearchInput("");
+    setSearchQuery("");
+  };
+
   // Generic handler for simple fields
   const handleChange = (e) => {
     const { name, value, type, checked } = e.target;
@@ -279,78 +314,144 @@ const QuestsHubs = () => {
     headerImageOptions.find((opt) => opt.id === formData.imageKey) ||
     headerImageOptions[0];
 
+  // Apply filters, search, and sorting
+  const filteredHubs = hubs.filter((hub) => {
+    // Quest mode
+    if (filters.mode === "Team" && hub.type !== "Team") return false;
+    if (filters.mode === "Individual" && hub.type !== "Individual")
+      return false;
+
+    // Verification
+    if (filters.verification === "Verified only" && !hub.verified) return false;
+
+    // Duration (frequency)
+    if (
+      filters.duration !== "All" &&
+      hub.frequency &&
+      hub.frequency !== filters.duration
+    ) {
+      return false;
+    }
+
+    // Search (name, description, featuredTitle, featuredText)
+    if (searchQuery) {
+      const q = searchQuery.toLowerCase();
+      const haystack = [
+        hub.name,
+        hub.description,
+        hub.featuredTitle,
+        hub.featuredText,
+      ]
+        .filter(Boolean)
+        .join(" ")
+        .toLowerCase();
+
+      if (!haystack.includes(q)) return false;
+    }
+
+    return true;
+  });
+
+  // Simple sorting
+  let displayedHubs = [...filteredHubs];
+
+  if (filters.sort === "Newest") {
+    // higher id = newer (your created quests use Date.now as id)
+    displayedHubs.sort((a, b) => b.id - a.id);
+  } else if (filters.sort === "Popularity") {
+    // keep current order for now (or later sort by members if you add that field)
+    // displayedHubs = displayedHubs; // no-op
+  } else if (filters.sort === "Closest to me") {
+    // placeholder – no location data yet, so same as Popularity
+  }
+
   return (
     <>
-      {/* NEW: Banner like Account page, sits under the site header */}
-      <section className="hubs_page_banner">
-        <h1>Quests &amp; Hubs</h1>
+      {/* Banner like Account page, sits under the site header */}
+      <section className="quests_banner_wrapper">
+        <img src={QuestsBanner} className="quests_banner" alt="Quests banner" />
+
+        <section className="quests_banner_title">
+          <h1>Quests & Hubs</h1>
+        </section>
       </section>
 
       <main className="hubs-page">
-        {/* Hero / intro panel */}
+        {/* Hero / create-quest panel */}
         <section className="hubs-hero">
-          <h2>Find your next MindQuest</h2>
-          <p className="hubs-hero-subtitle">
-            Small, meaningful steps for calmer days. Browse hubs or jump
-            straight into a mini-quest.
-          </p>
-
-          <div className="hubs-hero-buttons">
-            <button
-              type="button"
-              className="primary-btn"
-              onClick={() => setIsCreateOpen(true)}
-            >
-              + Create new quest
-            </button>
-            <button className="secondary-btn">Browse hubs</button>
+          <div className="hubs-hero-text">
+            <h2>Create a new quest</h2>
+            <p className="hubs-hero-subtitle">
+              Turn your goals into simple, trackable quests. Set a clear
+              objective, pick an activity, choose how long it should run, and
+              decide whether it is just for you or for a team.
+            </p>
+            <p className="hubs-hero-helper">
+              You can use quests for assignments, revision plans, wellbeing
+              routines, or any personal goal you want to stay consistent with.
+            </p>
           </div>
 
-          <div className="hubs-tabs">
-            <button className="tab active">Team quests</button>
-            <button className="tab">Individual quests</button>
-            <button className="tab">Daily</button>
-            <button className="tab">Weekly</button>
-            <button className="tab">Monthly</button>
-            <button className="tab">Verified hubs</button>
-          </div>
+          <button
+            type="button"
+            className="primary-btn create-quest-btn"
+            onClick={() => setIsCreateOpen(true)}
+          >
+            Create Quest
+          </button>
         </section>
 
         {/* Filters row */}
         <section className="hubs-filters">
           <div className="filter-group">
             <label>Quest mode</label>
-            <select>
-              <option>All</option>
-              <option>Team</option>
-              <option>Individual</option>
+            <select
+              name="mode"
+              value={filters.mode}
+              onChange={handleFilterChange}
+            >
+              <option value="All">All</option>
+              <option value="Team">Team</option>
+              <option value="Individual">Individual</option>
             </select>
           </div>
 
           <div className="filter-group">
             <label>Verification</label>
-            <select>
-              <option>All</option>
-              <option>Verified only</option>
+            <select
+              name="verification"
+              value={filters.verification}
+              onChange={handleFilterChange}
+            >
+              <option value="All">All</option>
+              <option value="Verified only">Verified only</option>
             </select>
           </div>
 
           <div className="filter-group">
             <label>Duration</label>
-            <select>
-              <option>All</option>
-              <option>Daily</option>
-              <option>Weekly</option>
-              <option>Monthly</option>
+            <select
+              name="duration"
+              value={filters.duration}
+              onChange={handleFilterChange}
+            >
+              <option value="All">All</option>
+              <option value="Daily">Daily</option>
+              <option value="Weekly">Weekly</option>
+              <option value="Monthly">Monthly</option>
             </select>
           </div>
 
           <div className="filter-group">
             <label>Sort</label>
-            <select>
-              <option>Popularity</option>
-              <option>Newest</option>
-              <option>Closest to me</option>
+            <select
+              name="sort"
+              value={filters.sort}
+              onChange={handleFilterChange}
+            >
+              <option value="Popularity">Popularity</option>
+              <option value="Newest">Newest</option>
+              <option value="Closest to me">Closest to me</option>
             </select>
           </div>
 
@@ -360,12 +461,22 @@ const QuestsHubs = () => {
               <input
                 type="text"
                 placeholder="Search by hub name, description, or featured challenge title"
+                value={searchInput}
+                onChange={handleSearchInputChange}
               />
-              <button type="button" className="secondary-btn small">
+              <button
+                type="button"
+                className="secondary-btn small"
+                onClick={handleSearchClear}
+              >
                 Clear
               </button>
-              <button type="button" className="primary-btn small">
-                Apply
+              <button
+                type="button"
+                className="primary-btn small"
+                onClick={handleSearchApply}
+              >
+                Search
               </button>
             </div>
           </div>
@@ -373,7 +484,7 @@ const QuestsHubs = () => {
 
         {/* Hubs grid */}
         <section className="hubs-grid">
-          {hubs.map((hub) => (
+          {displayedHubs.map((hub) => (
             <article key={hub.id} className="hub-card">
               <div className="hub-image-wrapper">
                 <img
