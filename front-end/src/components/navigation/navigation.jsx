@@ -23,6 +23,7 @@ export default function Navigation({ toggleSidebar }) {
                 <Link to="/learning"><button className="top-nav-button">Learning</button></Link>
                 <Link to="/profile"><button className="top-nav-button">Profile</button></Link>
                 <Link to="/contact"><button className="top-nav-button">Contact Us</button></Link>
+                <Link to="/quickcalm"><button className="top-nav-button">QuickCalm</button></Link>
             </section>
 
             {/* Login Button */}

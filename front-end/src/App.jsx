@@ -12,6 +12,8 @@ import Learning from "./pages/Learning.jsx";
 import Profile from "./pages/Profile.jsx";
 import Contact from "./pages/Contact.jsx";
 import Register from "./pages/Register.jsx";
+import QuickCalm from './pages/Quickcalm.jsx';
+
 
 import "./components/sidebar/sidebar.css";
 import "./components/navigation/navigation.css";
@@ -33,6 +35,7 @@ function App() {
         <Route path="/profile" element={<Profile />} />
         <Route path="/contact" element={<Contact />} />
         <Route path="/register" element={<Register />} />
+        <Route path="/quickcalm" element={<QuickCalm />} />
       </Routes>
     </Router>
   )

@@ -60,6 +60,9 @@ export default function Sidebar({ isOpen, toggleSidebar }) {
                 <Link to="/contact" onClick={() => toggleSidebar(false)}>
                     <button className="side-button"><i className="fa fa-phone"></i>Contact</button>
                 </Link>
+                <Link to="/quickcalm" onClick={() => toggleSidebar(false)}>
+                    <button className="side-button"><i className="fa fa-leaf"></i>QuickCalm</button>
+                </Link> 
             </section>
 
             {/* Bottom Cards */}
