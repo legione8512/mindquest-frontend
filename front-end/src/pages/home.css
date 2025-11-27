@@ -16,6 +16,11 @@
   font-weight: 700;
   margin-bottom: 20px;
 }
+.hero-h2 {
+  font-size: 1 rem;
+  font-weight: 100;
+  margin-bottom: 30px;
+} 
 
 .hero p {
   max-width: 650px;
