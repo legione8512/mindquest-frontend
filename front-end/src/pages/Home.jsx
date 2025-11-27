@@ -26,25 +26,31 @@ export default function Home() {
 
         <section className="feature-cards">
 
+          <Link to="/quickcalm" className="card-link">
+            <section className="card">
+            <h3>Relax</h3>
+            <p>Short, easy exercises designed to reduce stress and help you reset</p>
+            </section>
+          </Link>
+
+          <Link to="/learning" className="card-link">
+            <section className="card">
+            <h3>Learn</h3>
+            <p>Learn more about Mental Health</p>
+          </section>
+          </Link>
+
+          <Link to ="/moodcompass" className="card-link">
           <section className="card">
             <h3>Track Your Mood</h3>
             <p>Record how you feel each day and spot useful patterns over time.</p>
           </section>
-
-          <section className="card">
-            <h3>Learn & Relax</h3>
-            <p>Short, easy exercises designed to reduce stress and help you reset.</p>
-          </section>
-
-          <section className="card">
-            <h3>Community Events</h3>
-            <p>Find local wellbeing events and connect with others in positive spaces.</p>
-          </section>
+          </Link>
 
         </section>
       </section>
 
-      {/* Final call-to-action */}
+      {/* Final action */}
       <section className="final-cta">
         <h2>Begin Your MindQuest</h2>
 
