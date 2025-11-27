@@ -12,8 +12,7 @@ import Learning from "./pages/Learning.jsx";
 import Profile from "./pages/Profile.jsx";
 import Contact from "./pages/Contact.jsx";
 import Register from "./pages/Register.jsx";
-import QuickCalm from './pages/Quickcalm.jsx';
-
+import QuickCalm from "./pages/QuickCalm.jsx";
 
 import "./components/sidebar/sidebar.css";
 import "./components/navigation/navigation.css";
