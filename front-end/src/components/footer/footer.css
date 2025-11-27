@@ -60,7 +60,7 @@ footer img {
 .footer_follow {
   margin-top: 1rem;
   display: flex;
-  flex-wrap: wrap; /* allows wrapping on very small widths */
+  flex-wrap: nowrap; /* allows wrapping on very small widths */
   gap: 0.5rem;
 }
 
@@ -225,12 +225,22 @@ footer img {
     gap: 2rem;
   }
 
+  /* All direct children (logo+icons, contact, privacy) share same width */
+  .footer-inner > section {
+    width: 100%;
+  }
+
   .section_boxes {
     width: 100%;
+    margin-left: 0; /* FIX: no extra offset on mobile */
+    justify-content: flex-start; /* align with logo block */
+    flex-direction: column; /* stack Contact + Privacy */
+    gap: 1.5rem;
   }
 
   .footer_section {
     width: 100%;
+    text-align: center;
   }
 
   .footer_section h3 {
@@ -238,6 +248,14 @@ footer img {
   }
 
   footer img {
-    width: 12rem; /* slightly smaller logo on tiny screens */
+    width: 15rem; /* slightly smaller logo on tiny screens */
+    display: block;
+    margin: 0 0 1rem 0;
+  }
+  /* Social icons follow the same width as the block */
+  .footer_follow {
+    width: 100%;
+    justify-content: flex-start;
+    flex-wrap: wrap; /* allow wrap if needed: change to wrap */
   }
 }
