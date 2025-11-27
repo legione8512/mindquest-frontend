@@ -10,9 +10,9 @@ import Footer from "./components/footer/footer.jsx";
 import Home from "./pages/Home.jsx";
 import Dashboard from "./pages/Dashboard.jsx";
 import Learning from "./pages/Learning.jsx";
-import MoodCompass from "./pages/MoodCompass.jsx";
+import MoodCompass from "./pages/MoodCompass/MoodCompass.jsx";
 import Account from "./pages/Account/Account.jsx";
-import Register from "./pages/Register.jsx";
+import Register from "./pages/Register/Register.jsx";
 
 /* Components Import */
 import "./components/sidebar/sidebar.css";
