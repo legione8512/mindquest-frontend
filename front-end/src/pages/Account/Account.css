@@ -232,8 +232,7 @@
 }
 
 /* Form Buttons */
-.form_buttons button,
-.delete_account_button {
+.form_buttons button {
     width: 7rem;
     height: 3rem;
     padding: 0.5rem;
@@ -382,16 +381,17 @@
         flex-wrap: nowrap;
     }
 
-    /***** Left section of page *****/
+    /************** Left section of page **************/
     .account_page_left {
         width: 310px;
     }
 
-    /* Profile Box */
+    /******* Profile Box *******/
     .profile_box {
         padding: 1.2rem;
         margin-top: 1rem;
         margin-bottom: 1rem;
+        border-radius: 5px;
     }
 
     /* Profile picture */
@@ -421,18 +421,112 @@
     .streak_bar {
         padding: 0.5rem;
         font-size: 0.8rem;
+        border-radius: 5px;
     }
 
-    /* Form change + Logout button styling */
+    /******* Form change + Logout button styling *******/
     .change_form_wrapper button {
         height: 40px;
         padding: 0.5rem;
         margin-bottom: 0.5rem;
+        border-radius: 5px;
 
         /* Font */
         font-size: 0.8rem;
         font-weight: 500;
         text-align: left;
+    }
+
+
+    /************** FORM SECTION **************/
+    .site_settings_form_section,
+    .account_settings_form_section {
+        max-width: 400px;
+        padding-top: 1rem;
+    }
+
+    .site_settings_form_bottom,
+    .account_settings_form_bottom {
+        padding: 1rem;
+    }
+
+    /* Form header and subheader */
+    .site_settings_form_top h2,
+    .account_settings_form_top h2 {
+        font-size: 1rem;
+    }
+
+    .site_settings_form_top p,
+    .account_settings_form_top p {
+        font-size: 0.8rem;
+    }
+
+    /* Field Labels */
+    .settings_form h4,
+    .account_settings_form h4 {
+        font-size: 0.7rem;
+    }
+
+    /********** ACCOUNT SETTINGS FORM **********/
+    .account_settings_form input {
+        font-size: 0.6rem;
+        height: 30px;
+        margin-bottom: 0.9rem;
+        border-radius: 5px;
+    }
+
+    /* Password visibility button */
+    .visibility-icon {
+        top: 1.1rem;
+        right: 0.7rem;
+        transform: translateY(-50%);
+    }
+
+    .visibility-icon svg {
+        width: 16px;
+        height: 16px;
+    }
+
+    /* Form buttons wrapper */
+    .form_buttons {
+        gap: 0.5rem;
+    }
+
+    /* Form Buttons */
+    .form_buttons button,
+    #delete_account {
+        width: 7rem;
+        height: 2rem;
+        padding: 0.2rem;
+        font-size: 0.6rem;
+        border-radius: 5px;
+    }
+    #cancel:hover,
+    #submit:hover,
+    #delete_account:hover {
+        transform: none;
+    }
+
+    /********** SITE SETTINGS FORM **********/
+    .settings_form select {
+        font-size: 0.6rem;
+        height: 30px;
+        margin-bottom: 0.9rem;
+        border-radius: 5px;
+    }
+
+    /* Verification box */
+    .verification_box {
+        margin-bottom: 1rem;
+        padding: 0.7rem;
+        border-radius: 5px;
+    }
+
+    /* Verification box text */
+    .verification_box h5,
+    .verification_button {
+        font-size: 0.6rem;
+        margin: 0;
     }
 
 }
