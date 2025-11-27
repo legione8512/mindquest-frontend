@@ -182,6 +182,7 @@
     color: #c1eef9;
     border: 1px solid #c1eef9;
     cursor: default;
+    pointer-events: none;
 }
 
 
@@ -381,15 +382,16 @@
         flex-wrap: nowrap;
     }
 
-    /* Left section of page */
+    /***** Left section of page *****/
     .account_page_left {
-        width: 350px;
+        width: 310px;
     }
 
     /* Profile Box */
     .profile_box {
         padding: 1.2rem;
         margin-top: 1rem;
+        margin-bottom: 1rem;
     }
 
     /* Profile picture */
@@ -421,6 +423,16 @@
         font-size: 0.8rem;
     }
 
+    /* Form change + Logout button styling */
+    .change_form_wrapper button {
+        height: 40px;
+        padding: 0.5rem;
+        margin-bottom: 0.5rem;
 
+        /* Font */
+        font-size: 0.8rem;
+        font-weight: 500;
+        text-align: left;
+    }
 
 }
