@@ -4,12 +4,10 @@
   padding: 0 1.5rem;
 }
 
-
-
 /* NEW: top banner like Account Settings */
 .hubs_page_banner {
   width: 100%;
-  background: #c1eef9;           /* light blue like your screenshot */
+  background: #c1eef9; /* light blue like your screenshot */
   padding-bottom: 5vh;
   padding-top: 5vh;
   text-align: center;
@@ -17,7 +15,7 @@
 
 .hubs_page_banner h1 {
   font-size: 3rem;
-  color: #013C58; /* tweak if needed */
+  color: #013c58; /* tweak if needed */
 }
 
 /* HERO AREA */
@@ -47,7 +45,7 @@
 
 .primary-btn,
 .secondary-btn {
-  border-radius: (--mq-radius-md);   /* 10px corners */
+  border-radius: var(--mq-radius-md); /* 10px corners */
   border: 1px solid transparent;
   padding: 0.55rem 1.4rem;
   font-size: 0.95rem;
@@ -79,7 +77,7 @@
 }
 
 .tab {
-  border-radius: var(--mq-radius-md);   /* 10px corners */
+  border-radius: var(--mq-radius-md); /* 10px corners */
   padding: 0.4rem 0.9rem;
   border: 1px solid #cfd2ea;
   background: #fff;
@@ -138,13 +136,19 @@
 /* HUB GRID */
 .hubs-grid {
   display: grid;
-  grid-template-columns: repeat(3, 1fr); /* exactly 3 cards per row on large screens */
+  grid-template-columns: repeat(
+    3,
+    1fr
+  ); /* exactly 3 cards per row on large screens */
   gap: 1.5rem;
 }
 
 @media (max-width: 1024px) {
   .hubs-grid {
-    grid-template-columns: repeat(2, 1fr); /* 2 per row on tablets / smaller laptops */
+    grid-template-columns: repeat(
+      2,
+      1fr
+    ); /* 2 per row on tablets / smaller laptops */
   }
 }
 
@@ -276,4 +280,267 @@
   .hubs-filters {
     grid-template-columns: 1fr 1fr;
   }
+}
+
+/* =========================================
+   HERO: create quest layout
+   ========================================= */
+.hubs-hero-header-row {
+  display: flex;
+  justify-content: space-between;
+  gap: 1.5rem;
+  align-items: flex-start;
+}
+
+.create-quest-wrapper {
+  display: flex;
+  align-items: flex-start;
+  justify-content: flex-end;
+}
+
+/* On small screens, stack hero title and button */
+@media (max-width: 768px) {
+  .hubs-hero-header-row {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .create-quest-wrapper {
+    width: 100%;
+    justify-content: flex-start;
+  }
+}
+
+/* =========================================
+   CREATE QUEST MODAL
+   ========================================= */
+.quest-modal-backdrop {
+  position: fixed;
+  inset: 0;
+  background: rgba(6, 13, 30, 0.55);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 3000;
+  padding: 1.5rem;
+}
+
+.quest-modal {
+  background: #ffffff;
+  border-radius: 1rem;
+  max-width: 840px;
+  width: 100%;
+  max-height: 90vh;
+  display: flex;
+  flex-direction: column;
+  box-shadow: 0 24px 60px rgba(0, 0, 0, 0.35);
+}
+
+.quest-modal-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1.25rem 1.5rem;
+  border-bottom: 1px solid #e3e3f0;
+}
+
+.quest-modal-header h2 {
+  margin: 0;
+  font-size: 1.3rem;
+}
+
+.quest-modal-close {
+  border: none;
+  background: transparent;
+  font-size: 1.5rem;
+  cursor: pointer;
+  line-height: 1;
+}
+
+.quest-modal-body {
+  padding: 1.25rem 1.5rem 1.5rem;
+  overflow-y: auto;
+}
+
+/* =========================================
+   FORM LAYOUT INSIDE MODAL
+   ========================================= */
+.quest-field {
+  margin-bottom: 1rem;
+}
+
+.quest-field-row {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 1rem;
+  margin-bottom: 1rem;
+}
+
+@media (max-width: 700px) {
+  .quest-field-row {
+    grid-template-columns: 1fr;
+  }
+}
+
+.quest-field label {
+  font-size: 0.85rem;
+  font-weight: 600;
+  display: block;
+  margin-bottom: 0.3rem;
+}
+
+.quest-helper {
+  font-size: 0.8rem;
+  color: #666;
+  margin: 0 0 0.35rem;
+}
+
+.quest-field input[type="text"],
+.quest-field input[type="number"],
+.quest-field input[type="date"],
+.quest-field input[type="time"],
+.quest-field select,
+.quest-field textarea {
+  width: 100%;
+  border-radius: 0.5rem;
+  border: 1px solid #d0d0dd;
+  padding: 0.45rem 0.6rem;
+  font-size: 0.9rem;
+}
+
+.quest-field textarea {
+  resize: vertical;
+}
+
+@media (max-width: 640px) {
+  .image-picker-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+.image-option {
+  border: 2px solid transparent;
+  border-radius: 0.75rem;
+  padding: 0;
+  overflow: hidden;
+  cursor: pointer;
+  background: #f5f5f8;
+}
+
+.image-option img {
+  display: block;
+  width: 100%;
+  height: 70px;
+  object-fit: cover;
+}
+
+.image-option.selected {
+  border-color: #4b5bd6;
+  box-shadow: 0 0 0 1px #4b5bd6;
+}
+
+/* =========================================
+   RADIO GROUPS & CUSTOM PERIOD
+   ========================================= */
+.radio-group-column {
+  display: flex;
+  flex-direction: column;
+  gap: 0.35rem;
+}
+
+.radio-group-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.75rem;
+}
+
+.radio-option {
+  display: flex;
+  align-items: center;
+  gap: 0.4rem;
+  font-size: 0.88rem;
+}
+
+.custom-period-row {
+  display: flex;
+  align-items: center;
+  gap: 0.4rem;
+  margin-top: 0.3rem;
+}
+
+.custom-period-row input[type="number"] {
+  max-width: 120px;
+}
+
+/* Start date/time */
+.start-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+}
+
+/* =========================================
+   TEAMS
+   ========================================= */
+.teams-list {
+  display: flex;
+  flex-direction: column;
+  gap: 0.4rem;
+  margin-bottom: 0.5rem;
+}
+
+.team-row {
+  display: flex;
+  gap: 0.4rem;
+  align-items: center;
+}
+
+.team-row input[type="text"] {
+  flex: 1;
+}
+
+.team-remove-btn {
+  border-radius: 999px;
+  border: none;
+  width: 26px;
+  height: 26px;
+  font-size: 1.1rem;
+  line-height: 1;
+  cursor: pointer;
+  background: #f4d9dd;
+  color: #8c1b2b;
+}
+
+/* =========================================
+   CHECKBOX & FOOTER
+   ========================================= */
+.checkbox-inline {
+  display: flex;
+  align-items: flex-start;
+  gap: 0.5rem;
+  font-size: 0.88rem;
+}
+
+.quest-modal-footer {
+  display: flex;
+  justify-content: flex-end;
+  gap: 0.75rem;
+  margin-top: 1rem;
+}
+
+/* Image dropdown + preview */
+.image-select-row {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: flex-start;
+  gap: 0.75rem;
+  margin-top: 0.35rem;
+}
+
+.image-preview img {
+  width: 140px;
+  height: 80px;
+  object-fit: cover;
+  border-radius: 0.75rem;
+  border: 1px solid #d0d0dd;
 }

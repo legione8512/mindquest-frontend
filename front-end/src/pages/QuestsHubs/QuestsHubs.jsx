@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import "./QuestsHubs.css";
 
 import img1 from "../../assets/Cards_Images/Webp/1.webp";
@@ -18,13 +18,45 @@ import img14 from "../../assets/Cards_Images/Webp/14.webp";
 import img15 from "../../assets/Cards_Images/Webp/15.webp";
 import img16 from "../../assets/Cards_Images/Webp/16.webp";
 
-const hubs = [
+// Image options: give them readable names for the dropdown
+const headerImageOptions = [
+  { id: "image1", label: "Calm city lights", src: img1 },
+  { id: "image2", label: "Night skyline", src: img2 },
+  { id: "image3", label: "Abstract waves", src: img3 },
+  { id: "image4", label: "Sunset gradient", src: img4 },
+  { id: "image5", label: "Forest path", src: img5 },
+  { id: "image6", label: "Ocean horizon", src: img6 },
+  { id: "image7", label: "Morning light", src: img7 },
+  { id: "image8", label: "Quiet moments", src: img8 },
+  { id: "image9", label: "Campus vibes", src: img9 },
+  { id: "image10", label: "Study focus", src: img10 },
+  { id: "image11", label: "Soft gradient", src: img11 },
+  { id: "image12", label: "Code & calm", src: img12 },
+  { id: "image13", label: "Starry sky", src: img13 },
+  { id: "image14", label: "Gentle sunrise", src: img14 },
+  { id: "image15", label: "Mindful notes", src: img15 },
+  { id: "image16", label: "Sleep better", src: img16 },
+];
+
+// Predefined activities
+const activityOptions = [
+  "3-Minute Gratitude",
+  "Mindful Break Walk",
+  "Breath & Reset",
+  "Digital Sunset",
+  "Kindness Notes",
+  "Reach Out Friday",
+];
+
+// Initial hubs (existing demo data)
+const initialHubs = [
   {
     id: 1,
     name: "Calm Coders",
     image: img12,
     verified: true,
-    description: "Mindful study and stress relief for developers – 532 members.",
+    description:
+      "Mindful study and stress relief for developers – 532 members.",
     featuredTitle: "3-Minute Gratitude",
     featuredStatus: "Active now — Day 5 of 7",
     featuredText: "Write 1–3 lines of gratitude each day.",
@@ -54,8 +86,7 @@ const hubs = [
     name: "Anxiety Relief Circle",
     image: img8,
     verified: false,
-    description:
-      "Gentle steps to reduce anxious thoughts – 218 members.",
+    description: "Gentle steps to reduce anxious thoughts – 218 members.",
     featuredTitle: "Kindness Notes",
     featuredStatus: "Starts in 3 days (Mon)",
     featuredText: "Send an encouraging message to a peer.",
@@ -69,8 +100,7 @@ const hubs = [
     name: "Mindful Mornings Hub",
     image: img7,
     verified: true,
-    description:
-      "Start the day calm and focused – 760 members.",
+    description: "Start the day calm and focused – 760 members.",
     featuredTitle: "Breath & Reset",
     featuredStatus: "Active now — Day 5 of 7",
     featuredText: "3 cycles of slow breathing every morning.",
@@ -84,8 +114,7 @@ const hubs = [
     name: "Peer Support Lounge",
     image: img1,
     verified: false,
-    description:
-      "Kind check-ins and progress conversations – 389 members.",
+    description: "Kind check-ins and progress conversations – 389 members.",
     featuredTitle: "Reach Out Friday",
     featuredStatus: "Starts tomorrow",
     featuredText: "Send a supportive message to someone.",
@@ -99,8 +128,7 @@ const hubs = [
     name: "Sleep Better Squad",
     image: img16,
     verified: true,
-    description:
-      "Gentle routines for deeper sleep – 602 members.",
+    description: "Gentle routines for deeper sleep – 602 members.",
     featuredTitle: "Digital Sunset",
     featuredStatus: "Active now — Day 12 of 30",
     featuredText: "Avoid screens 60 minutes before bedtime.",
@@ -112,139 +140,569 @@ const hubs = [
 ];
 
 const QuestsHubs = () => {
-  return (
+  // Local state that will hold both the initial demo hubs and any new quests
+  const [hubs, setHubs] = useState(initialHubs);
 
-<>
+  // Modal open/close
+  const [isCreateOpen, setIsCreateOpen] = useState(false);
+
+  // Form state
+  const [formData, setFormData] = useState({
+    name: "",
+    description: "",
+    imageKey: headerImageOptions[0].id, // store the ID of the selected image
+    verified: false,
+    periodPreset: "1_week", // "1_day" | "1_week" | "1_month" | "custom"
+    customDays: "",
+    startDate: "",
+    startTime: "",
+    mode: "Individual", // "Individual" | "Team"
+    teams: ["Team 1", "Team 2"],
+    activity: activityOptions[0],
+  });
+
+  // Generic handler for simple fields
+  const handleChange = (e) => {
+    const { name, value, type, checked } = e.target;
+    setFormData((prev) => ({
+      ...prev,
+      [name]: type === "checkbox" ? checked : value,
+    }));
+  };
+
+  const handleTeamChange = (index, value) => {
+    setFormData((prev) => {
+      const updated = [...prev.teams];
+      updated[index] = value;
+      return { ...prev, teams: updated };
+    });
+  };
+
+  const handleAddTeam = () => {
+    setFormData((prev) => ({
+      ...prev,
+      teams: [...prev.teams, `Team ${prev.teams.length + 1}`],
+    }));
+  };
+
+  const handleRemoveTeam = (index) => {
+    setFormData((prev) => {
+      const updated = prev.teams.filter((_, i) => i !== index);
+      return { ...prev, teams: updated };
+    });
+  };
+
+  const resetForm = () => {
+    setFormData({
+      name: "",
+      description: "",
+      imageKey: headerImageOptions[0].id,
+      verified: false,
+      periodPreset: "1_week",
+      customDays: "",
+      startDate: "",
+      startTime: "",
+      mode: "Individual",
+      teams: ["Team 1", "Team 2"],
+      activity: activityOptions[0],
+    });
+  };
+
+  const closeModal = () => {
+    setIsCreateOpen(false);
+    resetForm();
+  };
+
+  const handleCreateQuest = (e) => {
+    e.preventDefault();
+
+    // Frequency label
+    let frequency = "Custom";
+    if (formData.periodPreset === "1_day") frequency = "Daily";
+    if (formData.periodPreset === "1_week") frequency = "Weekly";
+    if (formData.periodPreset === "1_month") frequency = "Monthly";
+
+    // Status text (very simple for now)
+    let periodLabel = "";
+    if (formData.periodPreset === "custom" && formData.customDays) {
+      periodLabel = `${formData.customDays} day quest`;
+    } else if (formData.periodPreset === "1_day") {
+      periodLabel = "1 day quest";
+    } else if (formData.periodPreset === "1_week") {
+      periodLabel = "1 week quest";
+    } else if (formData.periodPreset === "1_month") {
+      periodLabel = "1 month quest";
+    }
+
+    const startLabel =
+      formData.startDate && formData.startTime
+        ? `Starts on ${formData.startDate} at ${formData.startTime}`
+        : formData.startDate
+        ? `Starts on ${formData.startDate}`
+        : "Scheduled quest";
+
+    const featuredStatus = periodLabel
+      ? `${startLabel} — ${periodLabel}`
+      : startLabel;
+
+    const tags =
+      formData.mode === "Team"
+        ? formData.teams.map((t) => t.trim()).filter((t) => t.length > 0)
+        : [];
+
+    const selectedImage =
+      headerImageOptions.find((opt) => opt.id === formData.imageKey) ||
+      headerImageOptions[0];
+
+    const newHub = {
+      id: Date.now(), // simple unique id
+      name: formData.name || "Untitled Quest",
+      image: selectedImage.src,
+      verified: formData.verified,
+      description:
+        formData.description ||
+        "A newly created quest. Configure description to tell people what to expect.",
+      featuredTitle: formData.activity,
+      featuredStatus,
+      featuredText: `Activity: ${formData.activity}`,
+      frequency,
+      type: formData.mode,
+      tags,
+      progressText: "",
+    };
+
+    setHubs((prev) => [newHub, ...prev]); // show newly created quests first
+    closeModal();
+  };
+
+  const selectedImagePreview =
+    headerImageOptions.find((opt) => opt.id === formData.imageKey) ||
+    headerImageOptions[0];
+
+  return (
+    <>
       {/* NEW: Banner like Account page, sits under the site header */}
       <section className="hubs_page_banner">
         <h1>Quests &amp; Hubs</h1>
       </section>
 
-    <main className="hubs-page">
-      {/* Hero / intro panel */}
-      <section className="hubs-hero">
-        <h2>Find your next MindQuest</h2>
-        <p className="hubs-hero-subtitle">
-          Small, meaningful steps for calmer days. Browse hubs or jump straight into a mini-quest.
-        </p>
+      <main className="hubs-page">
+        {/* Hero / intro panel */}
+        <section className="hubs-hero">
+          <h2>Find your next MindQuest</h2>
+          <p className="hubs-hero-subtitle">
+            Small, meaningful steps for calmer days. Browse hubs or jump
+            straight into a mini-quest.
+          </p>
 
-        <div className="hubs-hero-buttons">
-          <button className="primary-btn">Start a 3-minute check-in</button>
-          <button className="secondary-btn">Browse hubs</button>
-        </div>
-
-        <div className="hubs-tabs">
-          <button className="tab active">Team quests</button>
-          <button className="tab">Individual quests</button>
-          <button className="tab">Daily</button>
-          <button className="tab">Weekly</button>
-          <button className="tab">Monthly</button>
-          <button className="tab">Verified hubs</button>
-        </div>
-      </section>
-
-      {/* Filters row */}
-      <section className="hubs-filters">
-        <div className="filter-group">
-          <label>Quest mode</label>
-          <select>
-            <option>All</option>
-            <option>Team</option>
-            <option>Individual</option>
-          </select>
-        </div>
-
-        <div className="filter-group">
-          <label>Verification</label>
-          <select>
-            <option>All</option>
-            <option>Verified only</option>
-          </select>
-        </div>
-
-        <div className="filter-group">
-          <label>Duration</label>
-          <select>
-            <option>All</option>
-            <option>Daily</option>
-            <option>Weekly</option>
-            <option>Monthly</option>
-          </select>
-        </div>
-
-        <div className="filter-group">
-          <label>Sort</label>
-          <select>
-            <option>Popularity</option>
-            <option>Newest</option>
-            <option>Closest to me</option>
-          </select>
-        </div>
-
-        <div className="filter-search">
-          <label>Search hubs or challenges</label>
-          <div className="filter-search-row">
-            <input
-              type="text"
-              placeholder="Search by hub name, description, or featured challenge title"
-            />
-            <button type="button" className="secondary-btn small">
-              Clear
+          <div className="hubs-hero-buttons">
+            <button
+              type="button"
+              className="primary-btn"
+              onClick={() => setIsCreateOpen(true)}
+            >
+              + Create new quest
             </button>
-            <button type="button" className="primary-btn small">
-              Apply
-            </button>
+            <button className="secondary-btn">Browse hubs</button>
+          </div>
+
+          <div className="hubs-tabs">
+            <button className="tab active">Team quests</button>
+            <button className="tab">Individual quests</button>
+            <button className="tab">Daily</button>
+            <button className="tab">Weekly</button>
+            <button className="tab">Monthly</button>
+            <button className="tab">Verified hubs</button>
+          </div>
+        </section>
+
+        {/* Filters row */}
+        <section className="hubs-filters">
+          <div className="filter-group">
+            <label>Quest mode</label>
+            <select>
+              <option>All</option>
+              <option>Team</option>
+              <option>Individual</option>
+            </select>
+          </div>
+
+          <div className="filter-group">
+            <label>Verification</label>
+            <select>
+              <option>All</option>
+              <option>Verified only</option>
+            </select>
+          </div>
+
+          <div className="filter-group">
+            <label>Duration</label>
+            <select>
+              <option>All</option>
+              <option>Daily</option>
+              <option>Weekly</option>
+              <option>Monthly</option>
+            </select>
+          </div>
+
+          <div className="filter-group">
+            <label>Sort</label>
+            <select>
+              <option>Popularity</option>
+              <option>Newest</option>
+              <option>Closest to me</option>
+            </select>
+          </div>
+
+          <div className="filter-search">
+            <label>Search hubs or challenges</label>
+            <div className="filter-search-row">
+              <input
+                type="text"
+                placeholder="Search by hub name, description, or featured challenge title"
+              />
+              <button type="button" className="secondary-btn small">
+                Clear
+              </button>
+              <button type="button" className="primary-btn small">
+                Apply
+              </button>
+            </div>
+          </div>
+        </section>
+
+        {/* Hubs grid */}
+        <section className="hubs-grid">
+          {hubs.map((hub) => (
+            <article key={hub.id} className="hub-card">
+              <div className="hub-image-wrapper">
+                <img
+                  src={hub.image}
+                  alt={`${hub.name} cover`}
+                  className="hub-cover-image"
+                />
+              </div>
+
+              <div className="hub-card-body">
+                <div className="hub-title-row">
+                  <h2>{hub.name}</h2>
+                  {hub.verified && (
+                    <span className="badge verified">Verified</span>
+                  )}
+                </div>
+
+                <p className="hub-description">{hub.description}</p>
+
+                <div className="feature-block">
+                  <p className="feature-label">Featured challenge:</p>
+                  <p className="feature-title">{hub.featuredTitle}</p>
+                  <p className="feature-status">{hub.featuredStatus}</p>
+                  <p className="feature-text">{hub.featuredText}</p>
+                </div>
+
+                <div className="hub-meta-row">
+                  <span className="pill">{hub.frequency}</span>
+                  <span className="pill">{hub.type}</span>
+                </div>
+
+                {hub.tags && hub.tags.length > 0 && (
+                  <p className="hub-tags">{hub.tags.join(" · ")}</p>
+                )}
+
+                {hub.progressText && (
+                  <p className="hub-progress">{hub.progressText}</p>
+                )}
+
+                <div className="hub-card-footer">
+                  <button className="secondary-btn">View hub</button>
+                </div>
+              </div>
+            </article>
+          ))}
+        </section>
+      </main>
+
+      {/* CREATE QUEST MODAL */}
+      {isCreateOpen && (
+        <div
+          className="quest-modal-backdrop"
+          onClick={(e) => {
+            // Close only when clicking on the backdrop
+            if (e.target.classList.contains("quest-modal-backdrop")) {
+              closeModal();
+            }
+          }}
+        >
+          <div className="quest-modal">
+            <header className="quest-modal-header">
+              <h2>Create a new quest</h2>
+              <button
+                type="button"
+                className="quest-modal-close"
+                onClick={closeModal}
+                aria-label="Close"
+              >
+                ×
+              </button>
+            </header>
+
+            <form className="quest-modal-body" onSubmit={handleCreateQuest}>
+              {/* Name + description */}
+              <div className="quest-field-row">
+                <div className="quest-field">
+                  <label htmlFor="questName">Quest name</label>
+                  <input
+                    id="questName"
+                    name="name"
+                    type="text"
+                    value={formData.name}
+                    onChange={handleChange}
+                    placeholder="e.g. Morning Mindful Reset"
+                    required
+                  />
+                </div>
+              </div>
+
+              <div className="quest-field">
+                <label htmlFor="questDescription">Description</label>
+                <textarea
+                  id="questDescription"
+                  name="description"
+                  rows="3"
+                  value={formData.description}
+                  onChange={handleChange}
+                  placeholder="Briefly describe what participants will do in this quest."
+                />
+              </div>
+
+              {/* Image selection with dropdown + preview */}
+              <div className="quest-field">
+                <label>Card header image</label>
+                <p className="quest-helper">
+                  Choose from the predefined images for this quest.
+                </p>
+                <div className="image-select-row">
+                  <select
+                    name="imageKey"
+                    value={formData.imageKey}
+                    onChange={handleChange}
+                  >
+                    {headerImageOptions.map((opt) => (
+                      <option key={opt.id} value={opt.id}>
+                        {opt.label}
+                      </option>
+                    ))}
+                  </select>
+
+                  {selectedImagePreview && (
+                    <div className="image-preview">
+                      <img
+                        src={selectedImagePreview.src}
+                        alt={selectedImagePreview.label}
+                      />
+                    </div>
+                  )}
+                </div>
+              </div>
+
+              {/* Period + start */}
+              <div className="quest-field-row">
+                <div className="quest-field">
+                  <label>Quest period</label>
+                  <div className="radio-group-column">
+                    <label className="radio-option">
+                      <input
+                        type="radio"
+                        name="periodPreset"
+                        value="1_day"
+                        checked={formData.periodPreset === "1_day"}
+                        onChange={handleChange}
+                      />
+                      <span>1 day</span>
+                    </label>
+                    <label className="radio-option">
+                      <input
+                        type="radio"
+                        name="periodPreset"
+                        value="1_week"
+                        checked={formData.periodPreset === "1_week"}
+                        onChange={handleChange}
+                      />
+                      <span>1 week</span>
+                    </label>
+                    <label className="radio-option">
+                      <input
+                        type="radio"
+                        name="periodPreset"
+                        value="1_month"
+                        checked={formData.periodPreset === "1_month"}
+                        onChange={handleChange}
+                      />
+                      <span>1 month</span>
+                    </label>
+                    <label className="radio-option">
+                      <input
+                        type="radio"
+                        name="periodPreset"
+                        value="custom"
+                        checked={formData.periodPreset === "custom"}
+                        onChange={handleChange}
+                      />
+                      <span>Custom</span>
+                    </label>
+
+                    {formData.periodPreset === "custom" && (
+                      <div className="custom-period-row">
+                        <input
+                          type="number"
+                          min="1"
+                          name="customDays"
+                          value={formData.customDays}
+                          onChange={handleChange}
+                          placeholder="Number of days"
+                        />
+                        <span>days</span>
+                      </div>
+                    )}
+                  </div>
+                </div>
+
+                <div className="quest-field">
+                  <label>Start date and time</label>
+                  <div className="start-row">
+                    <input
+                      type="date"
+                      name="startDate"
+                      value={formData.startDate}
+                      onChange={handleChange}
+                    />
+                    <input
+                      type="time"
+                      name="startTime"
+                      value={formData.startTime}
+                      onChange={handleChange}
+                    />
+                  </div>
+                </div>
+              </div>
+
+              {/* Mode + teams */}
+              <div className="quest-field-row">
+                <div className="quest-field">
+                  <label>Quest type</label>
+                  <div className="radio-group-row">
+                    <label className="radio-option">
+                      <input
+                        type="radio"
+                        name="mode"
+                        value="Individual"
+                        checked={formData.mode === "Individual"}
+                        onChange={handleChange}
+                      />
+                      <span>Individual</span>
+                    </label>
+                    <label className="radio-option">
+                      <input
+                        type="radio"
+                        name="mode"
+                        value="Team"
+                        checked={formData.mode === "Team"}
+                        onChange={handleChange}
+                      />
+                      <span>Teams</span>
+                    </label>
+                  </div>
+                </div>
+
+                <div className="quest-field">
+                  <label htmlFor="activity">Activity</label>
+                  <select
+                    id="activity"
+                    name="activity"
+                    value={formData.activity}
+                    onChange={handleChange}
+                  >
+                    {activityOptions.map((act) => (
+                      <option key={act} value={act}>
+                        {act}
+                      </option>
+                    ))}
+                  </select>
+                </div>
+              </div>
+
+              {formData.mode === "Team" && (
+                <div className="quest-field">
+                  <label>Team names</label>
+                  <p className="quest-helper">
+                    Add the teams that will take part in this quest.
+                  </p>
+                  <div className="teams-list">
+                    {formData.teams.map((team, index) => (
+                      <div key={index} className="team-row">
+                        <input
+                          type="text"
+                          value={team}
+                          onChange={(e) =>
+                            handleTeamChange(index, e.target.value)
+                          }
+                          placeholder={`Team ${index + 1} name`}
+                        />
+                        {formData.teams.length > 1 && (
+                          <button
+                            type="button"
+                            className="team-remove-btn"
+                            onClick={() => handleRemoveTeam(index)}
+                            aria-label="Remove team"
+                          >
+                            ×
+                          </button>
+                        )}
+                      </div>
+                    ))}
+                  </div>
+                  <button
+                    type="button"
+                    className="secondary-btn small"
+                    onClick={handleAddTeam}
+                  >
+                    + Add another team
+                  </button>
+                </div>
+              )}
+
+              {/* Verification */}
+              <div className="quest-field">
+                <label className="checkbox-inline">
+                  <input
+                    type="checkbox"
+                    name="verified"
+                    checked={formData.verified}
+                    onChange={handleChange}
+                  />
+                  <span>
+                    This quest is created by a verified institution (show
+                    Verified badge)
+                  </span>
+                </label>
+              </div>
+
+              <footer className="quest-modal-footer">
+                <button
+                  type="button"
+                  className="secondary-btn"
+                  onClick={closeModal}
+                >
+                  Cancel
+                </button>
+                <button type="submit" className="primary-btn">
+                  Create quest
+                </button>
+              </footer>
+            </form>
           </div>
         </div>
-      </section>
-
-      {/* Hubs grid */}
-      <section className="hubs-grid">
-        {hubs.map((hub) => (
-          <article key={hub.id} className="hub-card">
-            <div className="hub-image-wrapper">
-  <img
-    src={hub.image}
-    alt={`${hub.name} cover`}
-    className="hub-cover-image"
-  /></div>
-
-            <div className="hub-card-body">
-              <div className="hub-title-row">
-                <h2>{hub.name}</h2>
-                {hub.verified && <span className="badge verified">Verified</span>}
-              </div>
-
-              <p className="hub-description">{hub.description}</p>
-
-              <div className="feature-block">
-                <p className="feature-label">Featured challenge:</p>
-                <p className="feature-title">{hub.featuredTitle}</p>
-                <p className="feature-status">{hub.featuredStatus}</p>
-                <p className="feature-text">{hub.featuredText}</p>
-              </div>
-
-              <div className="hub-meta-row">
-                <span className="pill">{hub.frequency}</span>
-                <span className="pill">{hub.type}</span>
-              </div>
-
-              {hub.tags && hub.tags.length > 0 && (
-                <p className="hub-tags">{hub.tags.join(" · ")}</p>
-              )}
-
-              {hub.progressText && (
-                <p className="hub-progress">{hub.progressText}</p>
-              )}
-
-              <div className="hub-card-footer">
-                <button className="secondary-btn">View hub</button>
-              </div>
-            </div>
-          </article>
-        ))}
-      </section>
-    </main>
+      )}
     </>
   );
 };
