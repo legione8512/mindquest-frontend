@@ -44,6 +44,7 @@ export default function Footer() {
           </section>
         </section>
 
+<<<<<<< HEAD
         <section className="section_boxes">
           {/* Contact Section for footer */}
           <section className="footer_section">
@@ -80,6 +81,16 @@ export default function Footer() {
               </a>
             </p>
           </section>
+=======
+            <section className="section_boxes">
+                {/* Contact Section for footer */}
+                <section className="footer_section">
+                    <h3>Contact Information</h3>
+                    <p><i className="fa-solid fa-envelope"></i>SupportTeam@Mindquest.co.uk</p>
+                    <p><i className="fa-solid fa-phone"></i>+44 7911036333</p>
+                    <p><i className="fa-sharp fa-solid fa-location-dot"></i>31 Kingston Lane, Uxbridge <br />Middlesex, UB8 3PH</p>
+                </section>
+>>>>>>> origin/2425290---Adam
 
           {/* Privacy and Security section for footer*/}
           <section className="footer_section">

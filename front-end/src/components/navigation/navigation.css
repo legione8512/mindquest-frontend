@@ -81,7 +81,7 @@ header {
 }
 
 
-@media (max-width: 1000px) {
+@media (max-width: 1100px) {
     .menu-icon {
         display: block;
     }
@@ -105,5 +105,5 @@ header {
 @media screen and (max-width: 1250px) {
     .nav-bar a:first-child {
         display: none;
-    }    
+    }
 }

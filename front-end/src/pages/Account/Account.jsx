@@ -2,6 +2,7 @@ import { useState } from "react";
 import "./Account.css";
 
 import DefaultImage from "../../assets/example_profile_picture.jpg";
+import EmptyImage from "../../assets/empty_image.png";
 import SiteSettingsForm from "./SiteSettings_Form";
 import AccountSettingsForm from "./AccountSettings_Form";
 import ProfileBox from "./ProfileBox";
@@ -9,11 +10,27 @@ import FormNavigation from "./FormNavigation";
 
 export default function Account() {
 
-    // ==================== CONSTANTS/STATES THROUGHOUT PAGE ==================== //
+    // ======================================== PROFILE BOX STATE LOGIC ======================================== //
     const [profileImage, setProfileImage] = useState(DefaultImage);
     const [username, setUsername] = useState('AdamD6567');
     const [userLevel, setUserLevel] = useState('1');
+
+    // ======================================== SWITCHING FORMS ======================================== //
     const [currentForm, setCurrentForm] = useState('accountSettings')
+
+    // Switching between forms functionality.
+    const switchForm = (formName) => {
+        setCurrentForm(formName);
+    }
+
+    // Logout button alert. [DEMO PURPOSES]
+    const onLogOut = () => {
+        alert("Logging user out...");
+    }
+
+
+
+    // ========================================  SITE SETTINGS FORM ======================================== //
 
     // Default state settings [DEMO PURPOSES]
     const [userSiteSettings, setUserSiteSettings] = useState({
@@ -27,18 +44,6 @@ export default function Account() {
         userSiteSettings
     });
 
-    // ==================== SWITCHING FORMS ==================== //
-    const switchForm = (formName) => {
-        setCurrentForm(formName);
-    }
-
-     // Logout button alert. [DEMO PURPOSES]
-    const onLogOut = () => {
-        alert("Logging user out...");
-    }
-
-    // ====================  SITE SETTINGS FORM ==================== //
-
     // Change handler for dropdown values.
     const setSiteSetting = field => {
         return ({ target: { value } }) => {
@@ -49,6 +54,17 @@ export default function Account() {
     // Site settings form submit button.
     const onSubmitSiteSettings = (e) => {
         e.preventDefault();
+
+        // Check if the user has an attached phone number for notification preferences //
+        if (userSiteSettings.notification == "SMS Only" && accountSettings.phone_no == "" ||
+            userSiteSettings.notification === "Email and SMS" && accountSettings.phone_no == "") {
+
+            alert("You do not have an associated phone number. Enter a phone number, or select a different option.")
+            return;
+
+        }
+
+        // Successful Submission 
         const { theme, notification, timeZone } = userSiteSettings; // Update current settings [DEMO PURPOSES]
         setSavedSiteSettings(userSiteSettings); // Save the current settings temporarily [DEMO PURPOSES]
         alert(`Your site settings were successfully updated!\n\nTheme: ${theme}\nNotification Preferences: ${notification}\nTimeZone: ${timeZone}`);
@@ -61,7 +77,247 @@ export default function Account() {
         alert("Changes cancelled, no settings changed.")
     }
 
-    // ====================  ACCOUNT PAGE RENDER ==================== //
+
+
+
+    // ========================================  ACCOUNT SETTINGS FORM ======================================== //
+
+    // Dummy values for Demo purposes.
+    const dummyUserNames = ["Adam", "Marius", "Harshil", "Alex", "Aayisha"];
+    const dummyEmails = ["Adam@brunel.ac.uk", "Marius@brunel.ac.uk", "Harshil@brunel.ac.uk", "Alex@brunel.ac.uk", "Aayisha@brunel.ac.uk"];
+    const dummyPhones = ["07115201776", "07289994594", "07530773350", "07523697780", "07457319635"];
+    const [dummyPassword, setDummyPassword] = useState("Password123!");
+
+    const [accountSettings, setAccountSettings] = useState({
+        username: "AdamD6567",
+        email: "2425290@brunel.ac.uk",
+        phone_no: "07827753053",
+        password: "",
+        verify_password: ""
+    })
+
+    // Tracks the state of the previously submitted settings [DEMO PURPOSES]
+    const [savedAccountSettings, setSavedAccountSettings] = useState({
+        username: "AdamD6567",
+        email: "2425290@brunel.ac.uk",
+        phone_no: "07827753053"
+    });
+
+    // Change handler for input values.
+    const setAccountSetting = field => {
+        return ({ target: { value } }) => {
+            setAccountSettings(prevValue => ({ ...prevValue, [field]: value }));
+        };
+    };
+
+    // Account settings submit button.
+    const onSubmitAccountSettings = (e) => {
+        e.preventDefault();
+
+        // USERNAME VALIDATION //
+
+        // Check if the entered username is empty
+        if (!accountSettings.username.trim()) {
+            alert("Your username cannot be blank!")
+            return;
+        }
+
+        // Check if the entered username is already in the "database"
+        if (dummyUserNames.some(dataBaseUsername => dataBaseUsername.toLowerCase() === accountSettings.username.trim().toLowerCase())) {
+            alert("This username is already taken! Please enter another.");
+            return;
+        }
+
+        // Check if the username is greater than 12 characters.
+        if (accountSettings.username.trim().length > 12) {
+            alert("Usernames cannot be longer than 12 characters! Please enter another.")
+            return;
+        }
+
+        // Check if the username is less than 3 characters.
+        if (accountSettings.username.trim().length < 3) {
+            alert("Usernames must be at least 3 characters! Please enter another.")
+            return;
+        }
+
+        // Check if the username contains anything other than letters, numbers, or underscores.
+        const usernamePattern = /^(?=.*[A-Za-z\d_])/;
+
+        if (!usernamePattern.test(accountSettings.username)) {
+            alert("Your username can only contain letters, numbers, and underscores. No spaces or special characters are allowed. Please enter another.")
+            return;
+        }
+
+        // Check if the username contains atleast one letter or number.
+        const onlyUnderscores = /^(?=.*[A-Za-z\d])/;
+
+        if (!onlyUnderscores.test(accountSettings.username)) {
+            alert("Your username cannot only contain underscores! It must contain atleast one letter or number. Please enter another.")
+            return;
+        }
+
+
+        // EMAIL VALIDATION //
+
+        // Check if the entered email is empty
+        if (!accountSettings.email.trim()) {
+            alert("Your email cannot be blank!")
+            return;
+        }
+
+        // Check if the entered email is already associated with an account in the "database"
+        if (dummyEmails.some(dataBaseEmail => dataBaseEmail.toLowerCase() === accountSettings.email.trim().toLowerCase())) {
+            alert("This email is already in use! Please try enter another.");
+            return;
+        }
+
+        // Check if the entered email is valid (within reason)
+        const emailPattern = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
+
+        if (!emailPattern.test(accountSettings.email)) {
+            alert("Your email is invalid. Please check this and try again.")
+            return;
+        }
+
+        // Let user have no attached phone number if they desire.
+        if (accountSettings.phone_no.trim() != "") {
+
+            // Check if the entered phone number is already in the "database"
+            if (dummyPhones.includes(accountSettings.phone_no.trim())) {
+                alert("This phone number is already taken! Please enter another.");
+                return;
+            }
+
+            // Check if the entered phone number is a valid UK phone number.
+            const phonePattern = /^((0|44|\+44|\+44\s*\(0\)|\+44\s*0)\s*)?7(\s*[0-9]){9}$/;
+
+            if (!phonePattern.test(accountSettings.phone_no)) {
+                alert("Your phone number is invalid. Please check this and try again.")
+                return;
+            }
+
+        }
+
+
+
+        // PASSWORD VALIDATION //
+
+        // Only checks if the user wants to verify password when there is actually characters in the field.
+        if (accountSettings.password != "") {
+
+            // Check if the password contains any white spaces
+            if (/\s+/.test(accountSettings.password)) {
+                alert("Your password cannot contain any spaces!");
+                return;
+            }
+
+            // Check if the password is at minumum 8 characers long.
+            if (accountSettings.password.trim().length < 8) {
+                alert("Your password must be at least 8 characters long.");
+                return;
+            }
+
+            // Must contain at least one uppercase letter.
+            if (!/[A-Z]/.test(accountSettings.password.trim())) {
+                alert("Your password must contain at least one uppercase letter!")
+                return;
+            }
+
+            // Must contain at least one special character.
+            const specialCharacter = /[!@#$%^&*(),.?":{}|<>_\-+=/\[\]\\;'`~]$/;
+
+            if (!specialCharacter.test(accountSettings.password.trim())) {
+                alert("Your password must contain at least one special character!")
+                return;
+            }
+
+            // Check if the new password is the same as the old password.
+            if (accountSettings.password.trim() == dummyPassword) {
+                alert("Your new password cannot be the same as your old password.")
+                return;
+            }
+
+        }
+
+
+        // VERIFY CURRENT PASSWORD BEFORE FORM SUBMISSION //
+        if (accountSettings.verify_password != dummyPassword) {
+            alert("Please verify your current password has been entered correctly before submitting any changes.")
+            return;
+        }
+
+
+        // UPDATE CURRENT VALUES IF ALL VALIDATION CHECKS PASSED //
+        setUsername(accountSettings.username); // Update username in profile box AFTER successul submit.
+
+        // Only update dummy password if the user changed it.
+        if (accountSettings.password.trim() != "") {
+            setDummyPassword(accountSettings.password);
+        }
+
+        // Save new submitted account settings (DEMO PURPOSES)
+        setSavedAccountSettings({
+            username: accountSettings.username,
+            email: accountSettings.email,
+            phone_no: accountSettings.phone_no
+        });
+
+
+        // Update all settings
+        setAccountSettings({
+            username: accountSettings.username,
+            email: accountSettings.email,
+            phone_no: accountSettings.phone_no,
+            password: "",
+            verify_password: ""
+        });
+
+        alert("Your account settings have been updated!");
+
+    };
+
+
+    // Account settings cancel button.
+    const onCancelAccountSettings = (e) => {
+        e.preventDefault();
+
+        // Revert to previous settings.
+        setAccountSettings({
+            ...savedAccountSettings,
+            password: "",
+            verify_password: ""
+        });
+
+        alert("Changes cancelled, no settings changed.")
+    }
+
+
+    // Delete button.
+    const deleteAccount = (e) => {
+        e.preventDefault();
+        console.log("Delete account triggered!");
+
+        // Set all values as empty (Demo purposes only)
+        setAccountSettings({
+            username: "",
+            email: "",
+            phone_no: "",
+            password: "",
+            verify_password: ""
+        });
+        setUserSiteSettings({
+            theme: "",
+            notification: "",
+            timeZone: ""
+        });
+        setUsername("");
+        setProfileImage(EmptyImage);
+        alert("You have deleted your account. Goodbye!")
+    }
+
+
+
+    // ========================================  ACCOUNT PAGE RENDER ======================================== //
     return (
         <>
             {/* BANNER */}
@@ -92,14 +348,23 @@ export default function Account() {
                 {/* RIGHT SIDE: Forms */}
                 <section className="account_page_right">
 
-                    {currentForm === 'accountSettings' && <AccountSettingsForm />}
+                    {currentForm === 'accountSettings' &&
+                        <AccountSettingsForm
+                            accountSettings={accountSettings}
+                            setAccountSetting={setAccountSetting}
+                            onSubmit={onSubmitAccountSettings}
+                            onCancel={onCancelAccountSettings}
+                            onDelete={deleteAccount}
+                        />}
 
                     {currentForm === 'siteSettings' &&
                         <SiteSettingsForm
                             userSiteSettings={userSiteSettings}
                             setSiteSetting={setSiteSetting}
                             onSubmit={onSubmitSiteSettings}
-                            onCancel={onCancelSiteSettings} />}
+                            onCancel={onCancelSiteSettings}
+                        />}
+
                 </section>
 
             </section>
