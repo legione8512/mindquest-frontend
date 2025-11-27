@@ -6,7 +6,7 @@ import Navigation from "./components/navigation/navigation.jsx";
 import Sidebar from "./components/sidebar/sidebar.jsx";
 
 /* Page imports */
-import Home from "./pages/Home.jsx";
+import Home from "./pages/Home";
 import Dashboard from "./pages/Dashboard.jsx";
 import Learning from "./pages/Learning.jsx";
 import Profile from "./pages/Profile.jsx";
