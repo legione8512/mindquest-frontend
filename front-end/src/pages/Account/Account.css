@@ -255,7 +255,7 @@
     cursor: pointer;
 }
 
-/******************** ACCOUNT SETTINGS FORM ********************/
+/**************************************** ACCOUNT SETTINGS FORM ****************************************/
 
 /* Text fields */
 .account_settings_form input {
@@ -303,19 +303,19 @@
 
 
 
-/******************** SITE SETTINGS FORM ********************/
+/**************************************** SITE SETTINGS FORM ****************************************/
 
 /* Dropdown options */
 .settings_form select {
-    font-weight: 600;
     font-size: 0.9rem;
     width: 100%;
     height: 50px;
     margin-bottom: 1.5rem;
     padding: 0.5rem;
-    text-align: left;
     border: 1px solid rgb(196, 196, 196);
     background: rgb(238, 238, 238);
+
+    /* Remove browser default dropdown arrow and replace with a cleaner design */
     -webkit-appearance: none;
     -moz-appearance: none;
     appearance: none;
@@ -327,30 +327,25 @@
     cursor: pointer;
 }
 
-/* Remove default border style when focused */
+/* Field focused */
 .settings_form select:focus {
-    outline-style: none !important;
+    outline-style: none;
     border: 1px solid #013C58;
 }
 
 /* Verification box */
 .verification_box {
-    width: 100%;
     margin-bottom: 1.5rem;
     display: flex;
-    flex-direction: column;
-    align-items: flex-start;
+    justify-content: space-between;
     border: 1px solid rgb(196, 196, 196);
     border-radius: 10px;
-    padding: 0.8rem;
-    gap: 0.5rem;
-    box-sizing: border-box;
+    padding: 1rem;
 }
 
-/* Verification text */
+/* Verification box text */
 .verification_box h5 {
-    font-weight: 600;
-    font-size: 0.8rem;
+    font-size: 1rem;
     margin: 0;
 }
 
@@ -359,18 +354,19 @@
     color: blue;
     text-decoration: underline;
     border-radius: 5px;
-    font-size: 0.8rem;
+    font-size: 1rem;
     transition: 0.3s ease;
 }
-
 .verification_button:hover {
     color: #F5A201;
 }
 
+/**************************************** PAGE SCALING ON DIFFERENT DEVICES/ZOOM LEVELS ****************************************/
 @media (max-width: 1100px) {
     .account_page {
         flex-direction: column;
         align-items: center;
         gap: 3rem;
     }
+    
 }
