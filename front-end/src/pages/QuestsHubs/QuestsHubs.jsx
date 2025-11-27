@@ -144,8 +144,9 @@ const QuestsHubs = () => {
   // Local state that will hold both the initial demo hubs and any new quests
   const [hubs, setHubs] = useState(initialHubs);
 
-  // Modal open/close
+  // Modals
   const [isCreateOpen, setIsCreateOpen] = useState(false);
+  const [selectedHub, setSelectedHub] = useState(null); // for "View hub" modal
 
   // Form state
   const [formData, setFormData] = useState({
@@ -246,6 +247,10 @@ const QuestsHubs = () => {
   const closeModal = () => {
     setIsCreateOpen(false);
     resetForm();
+  };
+
+  const closeHubModal = () => {
+    setSelectedHub(null);
   };
 
   const handleCreateQuest = (e) => {
@@ -359,8 +364,7 @@ const QuestsHubs = () => {
     // higher id = newer (your created quests use Date.now as id)
     displayedHubs.sort((a, b) => b.id - a.id);
   } else if (filters.sort === "Popularity") {
-    // keep current order for now (or later sort by members if you add that field)
-    // displayedHubs = displayedHubs; // no-op
+    // keep current order for now
   } else if (filters.sort === "Closest to me") {
     // placeholder – no location data yet, so same as Popularity
   }
@@ -525,7 +529,13 @@ const QuestsHubs = () => {
                 )}
 
                 <div className="hub-card-footer">
-                  <button className="secondary-btn">View hub</button>
+                  <button
+                    type="button"
+                    className="secondary-btn"
+                    onClick={() => setSelectedHub(hub)}
+                  >
+                    View hub
+                  </button>
                 </div>
               </div>
             </article>
@@ -811,6 +821,99 @@ const QuestsHubs = () => {
                 </button>
               </footer>
             </form>
+          </div>
+        </div>
+      )}
+
+      {/* VIEW HUB MODAL */}
+      {selectedHub && (
+        <div
+          className="quest-modal-backdrop"
+          onClick={(e) => {
+            if (e.target.classList.contains("quest-modal-backdrop")) {
+              closeHubModal();
+            }
+          }}
+        >
+          <div className="quest-modal">
+            <header className="quest-modal-header">
+              <h2>{selectedHub.name}</h2>
+              <button
+                type="button"
+                className="quest-modal-close"
+                onClick={closeHubModal}
+                aria-label="Close"
+              >
+                ×
+              </button>
+            </header>
+
+            <div className="quest-modal-body">
+              {/* Cover image */}
+              <div
+                className="hub-image-wrapper"
+                style={{ marginBottom: "1rem" }}
+              >
+                <img
+                  src={selectedHub.image}
+                  alt={`${selectedHub.name} cover`}
+                  className="hub-cover-image"
+                />
+              </div>
+
+              {/* Meta row */}
+              <div
+                className="hub-title-row"
+                style={{ marginBottom: "0.75rem" }}
+              >
+                {selectedHub.verified && (
+                  <span className="badge verified">Verified hub</span>
+                )}
+                <span className="pill" style={{ marginLeft: "auto" }}>
+                  {selectedHub.frequency}
+                </span>
+                <span className="pill">{selectedHub.type}</span>
+              </div>
+
+              {/* Description */}
+              <p className="hub-description" style={{ marginBottom: "1rem" }}>
+                {selectedHub.description}
+              </p>
+
+              {/* Featured challenge */}
+              <div className="feature-block" style={{ marginBottom: "1rem" }}>
+                <p className="feature-label">Featured challenge</p>
+                <p className="feature-title">{selectedHub.featuredTitle}</p>
+                <p className="feature-status">{selectedHub.featuredStatus}</p>
+                <p className="feature-text">{selectedHub.featuredText}</p>
+              </div>
+
+              {/* Teams / tags */}
+              {selectedHub.tags && selectedHub.tags.length > 0 && (
+                <p className="hub-tags" style={{ marginBottom: "1rem" }}>
+                  Teams: {selectedHub.tags.join(" · ")}
+                </p>
+              )}
+
+              {selectedHub.progressText && (
+                <p className="hub-progress" style={{ marginBottom: "1rem" }}>
+                  {selectedHub.progressText}
+                </p>
+              )}
+
+              <footer className="quest-modal-footer">
+                <button
+                  type="button"
+                  className="secondary-btn"
+                  onClick={closeHubModal}
+                >
+                  Close
+                </button>
+                <button type="button" className="primary-btn">
+                  Join quest
+                </button>
+              </footer>
+            </div>
           </div>
         </div>
       )}
