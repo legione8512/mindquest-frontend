@@ -87,6 +87,7 @@
     justify-content: center;
     cursor: pointer;
 }
+
 .profile_box button:hover {
     animation: rotate 0.5s ease;
     color: #F5A201;
@@ -94,8 +95,13 @@
 
 /* Rotation animation */
 @keyframes rotate {
-    0% {transform: rotate(0deg);}
-    100% {transform: rotate(360deg);}
+    0% {
+        transform: rotate(0deg);
+    }
+
+    100% {
+        transform: rotate(360deg);
+    }
 }
 
 /* Username and level wrapper */
@@ -187,7 +193,7 @@
     align-items: center;
     justify-content: space-between;
     padding-top: 5rem;
-    
+
 }
 
 /* FORM TOP SECTION: Heading and subheading */
@@ -195,6 +201,7 @@
 .account_settings_form_top {
     text-align: center;
 }
+
 .site_settings_form_top p,
 .account_settings_form_top p {
     font-weight: 400;
@@ -234,15 +241,18 @@
     font-weight: 400;
     transition: .3s ease;
 }
+
 #cancel {
     background: white;
     border: 1px solid black;
 }
+
 #submit {
     background: #013C58;
     border: none;
     color: white;
 }
+
 #cancel:hover,
 #submit:hover,
 #delete_account:hover {
@@ -357,6 +367,7 @@
     font-size: 1rem;
     transition: 0.3s ease;
 }
+
 .verification_button:hover {
     color: #F5A201;
 }
@@ -364,9 +375,52 @@
 /**************************************** PAGE SCALING ON DIFFERENT DEVICES/ZOOM LEVELS ****************************************/
 @media (max-width: 1100px) {
     .account_page {
-        flex-direction: column;
-        align-items: center;
-        gap: 3rem;
+        flex-direction: row;
+        justify-content: center;
+        gap: 2rem;
+        flex-wrap: nowrap;
     }
-    
+
+    /* Left section of page */
+    .account_page_left {
+        width: 350px;
+    }
+
+    /* Profile Box */
+    .profile_box {
+        padding: 1.2rem;
+        margin-top: 1rem;
+    }
+
+    /* Profile picture */
+    .profile_box img {
+        width: 80px;
+        height: 80px;
+    }
+
+    /* Change profile picture button */
+    .profile_box button {
+        top: 5rem;
+        left: 4.5rem;
+    }
+
+    /* Username text */
+    .profile_text_box h3 {
+        font-size: 0.9rem;
+    }
+
+    /* Level text */
+    .profile_text_box p {
+        font-size: 0.7rem;
+    }
+
+    /* Points and streaks bars */
+    .points_bar,
+    .streak_bar {
+        padding: 0.5rem;
+        font-size: 0.8rem;
+    }
+
+
+
 }
