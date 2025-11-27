@@ -30,7 +30,7 @@ export default function QuickCalm() {
     {
       id: 2,
       title: "Body Scan Meditation",
-      category: "meditation excercise",
+      category: "meditation exercise",
       description: "A short body scan to calm your mind.",
       duration: "5 min",
       points: 5,
