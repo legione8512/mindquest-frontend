@@ -111,3 +111,26 @@
   font-size: 1.25rem;
   border-radius: 16px;
 }
+
+.card-icon1{
+  width: 190px;
+  height: 190px;
+  margin-bottom: 1px;
+  border-radius: 10%;
+  object-fit: cover;
+}
+.card-icon2{
+  width: 150px;
+  height: 150px;
+  margin-bottom: 15px;
+  border-radius: 10%;
+  object-fit: cover;
+}
+
+.card-icon3{
+  width: 150px;
+  height: 150px;
+  margin-bottom: 15px;
+  border-radius: 10%;
+  object-fit: cover;
+}

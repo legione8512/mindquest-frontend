@@ -2,6 +2,9 @@ import React from "react";
 import {FaSmile, FaLeaf, FaUsers} from "react-icons/fa";
 import { Link } from "react-router-dom";
 import "./home.css";
+import relax from '../assets/relax.png';
+import smile from '../assets/smile.png';
+import books from '../assets/books.png';  
 
 export default function Home() {
   return (
@@ -35,7 +38,7 @@ export default function Home() {
 
           <Link to="/quickcalm" className="card-link">
             <section className="card">
-              <FaLeaf className="card-icon"/>
+            <img src={relax} className="card-icon1" alt="smile icon"/>
             <h3>Relax</h3>
             <p>Short, easy exercises designed to reduce stress and help you reset</p>
           </section>
@@ -43,7 +46,7 @@ export default function Home() {
 
           <Link to="/learning" className="card-link">
            <section className="card">
-            <FaUsers className="card-icon"/>
+            <img src={books} className="card-icon2" alt="smile icon"/>
             <h3>Learn</h3>
             <p>Learn more about Mental Health</p>
             </section>
@@ -51,8 +54,8 @@ export default function Home() {
 
           <Link to ="/moodcompass" className="card-link">
           <section className="card">
-            <FaSmile className="card-icon"/>
-            <h3>Track Your Mood</h3>
+            <img src={smile} className="card-icon3" alt="smile icon"/>
+            <h3> Track Your Mood</h3>
             <p>Record how you feel each day and spot useful patterns over time.</p>
           </section>
           </Link>
