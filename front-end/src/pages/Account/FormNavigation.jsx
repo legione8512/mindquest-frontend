@@ -1,7 +1,7 @@
 export default function FormNavigation({ currentForm, switchForm, onLogOut }) {
 
     return (
-        <section className="change_form_buttons">
+        <section className="change_form_wrapper">
 
             {/* Account Settings Button */}
             <button

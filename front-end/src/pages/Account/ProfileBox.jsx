@@ -48,11 +48,11 @@ export default function ProfileBox({ profileImage, setProfileImage, username, us
 
             {/* Points and Streaks section */}
             <section className="profile_box_bottom">
-                <section className="points_section">
+                <section className="points_bar">
                     <h3>My Points</h3>
                     <h3>0</h3>
                 </section>
-                <section className="streak_section">
+                <section className="streak_bar">
                     <h3>My Streak</h3>
                     <h3>0d</h3>
                 </section>

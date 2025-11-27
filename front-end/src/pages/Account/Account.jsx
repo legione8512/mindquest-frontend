@@ -229,7 +229,7 @@ export default function Account() {
             </section>
 
             {/* PAGE CONTENT */}
-            <section className="account_page_main">
+            <section className="account_page">
 
                 {/* LEFT SIDE SECTION: Mini Profile + Navigation/Logout buttons */}
                 <section className="account_page_left">

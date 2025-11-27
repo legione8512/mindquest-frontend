@@ -13,34 +13,43 @@
     color: #013C58;
 }
 
-/**************************************** MAIN BODY ****************************************/
-.account_page_main {
+/**************************************** MAIN CONTENT ****************************************/
+.account_page {
     display: flex;
-    margin-left: 20vw;
-    margin-right: 25vw;
-    gap: 10vw;
+    justify-content: center;
+    gap: 7rem;
+    padding: 2rem;
+    max-width: 1400px;
+    margin: 0 auto;
+    flex-wrap: wrap;
 }
 
-/********** LEFT SIDE CONTENT **********/
+/**************************************** LEFT SIDE: Profile Box and Navigation/Logout buttons ****************************************/
 .account_page_left {
-    width: 500px;
-    margin-bottom: 25vh;
+    width: 400px;
+    max-width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: stretch;
 }
 
-/***** Profile Box Section *****/
+/******************** Profile box ********************/
 .profile_box {
-    align-items: center;
+    position: relative;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
     justify-content: space-between;
-    padding: 1.5rem;
-    margin-top: 10vh;
-    margin-bottom: 5vh;
+    padding: 1.8rem;
+    margin-top: 5rem;
+    margin-bottom: 3rem;
     background: #013C58;
-    width: 350px;
-    height: 250px;
+    width: 100%;
     border-radius: 10px;
+    box-sizing: border-box;
 }
 
-/* Top section of account box */
+/* PROFILE TOP SECTION: Profile picture, username, user level, and change profile picture button */
 .profile_box_top {
     display: flex;
     align-items: center;
@@ -49,7 +58,7 @@
     margin-bottom: 1rem;
 }
 
-/* Profile image */
+/* Profile picture */
 .profile_box img {
     width: 100px;
     height: 100px;
@@ -58,11 +67,11 @@
     border-radius: 50%;
 }
 
-/* Change Profile Icon button */
+/* Change profile picture button */
 .profile_box button {
     position: absolute;
-    margin-top: 4.8rem;
-    margin-left: 4.5rem;
+    top: 6.5rem;
+    left: 6rem;
     font-size: 1.8rem;
     color: #c1eef9;
     border: 5px solid #013C58;
@@ -74,70 +83,68 @@
     align-items: center;
     justify-content: center;
     cursor: pointer;
-    transition: 0.3s ease;
 }
-
 .profile_box button:hover {
     animation: rotate 0.5s ease;
     color: #F5A201;
 }
 
-/* Animation to make button rotate on hover */
+/* Rotation animation */
 @keyframes rotate {
     0% {transform: rotate(0deg);}
-    
     100% {transform: rotate(360deg);}
 }
 
-/* Username and Level Section */
+/* Username and level wrapper */
 .profile_text_box {
     text-align: right;
 }
 
-/* Username */
+/* Username text */
 .profile_text_box h3 {
     color: white;
     font-weight: 500;
     margin-bottom: 0.3rem;
 }
 
-/* Level */
+/* Level text */
 .profile_text_box p {
     color: #c1eef9;
     font-weight: 300;
     font-size: 1rem;
 }
 
-/* Top section of account box */
-.profile_box_bottom {
-    align-items: center;
-    color: #013C58;
-}
+/* PROFILE BOTTOM SECTION: Points and streak bars */
 
-/* Points Bar */
-.points_section {
+/* Bar styling */
+.points_bar,
+.streak_bar {
     display: flex;
     justify-content: space-between;
+    margin-top: 1rem;
     padding: 1rem;
     border-radius: 10px;
     background: #c1eef9;
-    margin-bottom: 1rem;
 }
 
 /* Streak Bar */
-.streak_section {
-    display: flex;
-    justify-content: space-between;
-    padding: 1rem;
-    border-radius: 10px;
+.streak_bar {
     background: #F5A201;
 }
 
-/***** Change Page and Logout Button Section *****/
-.change_form_buttons button {
+/******************** Form navigation and logout buttons ********************/
+.change_form_wrapper {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    box-sizing: border-box;
+}
+
+/* Form change + Logout button styling */
+.change_form_wrapper button {
+    box-sizing: border-box;
     border: 1px solid rgb(155, 155, 155);
     border-radius: 10px;
-    width: 100%;
     height: 50px;
     padding: 10px;
     margin-bottom: 1rem;
@@ -152,7 +159,7 @@
 }
 
 /* Button hover animation */
-.change_form_buttons button:hover {
+.change_form_wrapper button:hover {
     cursor: pointer;
     background: #013C58;
     color: #c1eef9;
@@ -161,21 +168,21 @@
 }
 
 /* Form associated with button is active */
-.change_form_buttons button.active {
+.change_form_wrapper button.active {
     background: #013C58;
     color: #c1eef9;
     border: 1px solid #c1eef9;
     cursor: default;
 }
 
-/**************************************** GENERAL FORM SETTINGS ****************************************/
+/**************************************** FORM SETTINGS ****************************************/
 .site_settings_form_section,
 .account_settings_form_section {
     align-items: center;
     justify-content: space-between;
     padding-top: 4rem;
-
-    width: 30vw;
+    width: 100%;
+    max-width: 500px;
     border-radius: 10px;
 }
 
@@ -357,4 +364,12 @@
     right: 1rem;
     top: 1rem;
     color: #013C58;
+}
+
+@media (max-width: 1100px) {
+    .account_page {
+        flex-direction: column;
+        align-items: center;
+        gap: 3rem;
+    }
 }
