@@ -1,109 +1,107 @@
 header {
-    position: relative;
-    top: 0;
-    z-index: 2000;
-    background-color: #013C58;
-    padding: 1.3rem;
-    border-bottom: 1px solid #013c5811;
-    box-shadow: 0 5px 20px rgba(59, 57, 57, 0.452);
+  position: relative;
+  top: 0;
+  z-index: 2000;
+  background-color: #013c58;
+  padding: 1.3rem;
+  border-bottom: 1px solid #013c5811;
+  box-shadow: 0 5px 20px rgba(59, 57, 57, 0.452);
 }
 
 /* Centred header content */
 .nav-inner {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    gap: 1rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 1rem;
 }
 
 /* Logo */
 .logo img {
-    zoom: 15%;
+  zoom: 15%;
 }
 
 /********** Top navigation (desktop) ******************************/
 .nav-bar {
-    flex: 1;
-    display: flex;
-    align-items: center;
-    justify-content: space-between; 
+  flex: 1;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
 }
 
 /* Navigation buttons */
 .top-nav-button {
-    background: none;
-    border: none;
-    padding: 0.4rem 0.9rem;  /* was 0.5rem 1.2rem */
-    margin-left: 0;          /* REMOVE the old 2rem margin */
-    font-size: 0.9rem;
-    border-radius: 10px;
-    color: white;
-    cursor: pointer;
-    transition: .3s ease-out;
+  background: none;
+  border: none;
+  padding: 0.4rem 0.9rem; /* was 0.5rem 1.2rem */
+  margin-left: 0; /* REMOVE the old 2rem margin */
+  font-size: 0.9rem;
+  border-radius: 10px;
+  color: white;
+  cursor: pointer;
+  transition: 0.3s ease-out;
 }
 
 /* Hover animation */
 .top-nav-button:hover {
-    background-color: #c1eef9;
-    color: #013C58;
-    transform: scale(1.2);
+  background-color: #c1eef9;
+  color: #013c58;
+  transform: scale(1.2);
 }
 
 /* Hamburger menu button */
 .menu-icon {
-    display: none;
-    background: none;
-    border: none;
-    font-size: 1.8rem;
-    color: white;
-    cursor: pointer;
+  display: none;
+  background: none;
+  border: none;
+  font-size: 1.8rem;
+  color: white;
+  cursor: pointer;
 }
-
 
 /* Login button */
 .login {
-    font-size: 0.9rem;
-    color: #013C58;
-    border: 0;
-    background: #c1eef9;
-    border-radius: 10px;
-    padding: 0.8rem;
-    width: 150px;
-    cursor: pointer;
-    transition: .4s ease;
+  font-size: 0.9rem;
+  color: #013c58;
+  border: 0;
+  background: #c1eef9;
+  border-radius: 10px;
+  padding: 0.8rem;
+  width: 150px;
+  cursor: pointer;
+  transition: 0.4s ease;
 }
 
 /* Login button hover animation */
 .login:hover {
-    background-color: #F5A201;
-    color: #013C58;
-    transform: scale(1.1);
+  background-color: #f5a201;
+  color: #013c58;
+  transform: scale(1.1);
 }
 
-
 @media (max-width: 1100px) {
-    .menu-icon {
-        display: block;
-    }
+  .menu-icon {
+    display: block;
+  }
 
-    .top-nav-button {
-        font-size: 0.2rem;
-    }
+  .top-nav-button {
+    font-size: 0.2rem;
+  }
 
-    .nav-bar {
-        display: none;
-    }
+  .nav-bar {
+    display: none;
+  }
 
-    .login {
-        padding: 1vw;
-        width: 20vw;
-        font-size: 0.8rem;
-    }
+  .login {
+    padding: 1vw;
+    width: 20vw;
+    font-size: 0.8rem;
+  }
 }
 
 /* Hide home button when zooming in */
 @media screen and (max-width: 1250px) {
-    .nav-bar a:first-child {
-        display: none;
-    }
+  .nav-bar a:first-child {
+    display: none;
+  }
 }
