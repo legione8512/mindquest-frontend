@@ -13,6 +13,7 @@
     color: #013C58;
 }
 
+
 /**************************************** MAIN CONTENT ****************************************/
 .account_page {
     display: flex;
@@ -24,6 +25,7 @@
     flex-wrap: wrap;
 }
 
+
 /**************************************** LEFT SIDE: Profile Box and Navigation/Logout buttons ****************************************/
 .account_page_left {
     width: 400px;
@@ -31,6 +33,7 @@
     display: flex;
     flex-direction: column;
     align-items: stretch;
+    margin-bottom: 10rem;
 }
 
 /******************** Profile box ********************/
@@ -175,82 +178,130 @@
     cursor: default;
 }
 
+
 /**************************************** FORM SETTINGS ****************************************/
 .site_settings_form_section,
 .account_settings_form_section {
+    width: 600px;
+    max-width: 100%;
     align-items: center;
     justify-content: space-between;
-    padding-top: 4rem;
-    width: 100%;
-    max-width: 500px;
-    border-radius: 10px;
+    padding-top: 5rem;
+    
 }
 
-/* Heading and subheading for site settings form section */
+/* FORM TOP SECTION: Heading and subheading */
 .site_settings_form_top,
 .account_settings_form_top {
     text-align: center;
 }
-
 .site_settings_form_top p,
 .account_settings_form_top p {
     font-weight: 400;
     color: grey;
 }
 
-/* Actual Form section */
+/* FORM BOTTOM SECTION: Fields and buttons */
 .site_settings_form_bottom,
 .account_settings_form_bottom {
     padding: 2rem;
+    display: flex;
+    justify-content: space-between;
+    flex-direction: column;
 }
 
-/* Labels for each option */
+/* Field Labels */
 .settings_form h4,
 .account_settings_form h4 {
     padding-bottom: 0.5rem;
 }
 
-/* Button wrapper */
-.submit_buttons {
+/* Form buttons wrapper */
+.form_buttons {
     display: flex;
     gap: 1rem;
     justify-content: right;
-    align-items: center;
 }
 
-/* Cancel, submit, and delete account buttons */
-.submit_buttons button,
+/* Form Buttons */
+.form_buttons button,
 .delete_account_button {
-    width: 6rem;
-    height: 2.5rem;
+    width: 7rem;
+    height: 3rem;
+    padding: 0.5rem;
     border-radius: 10px;
     font-size: 1rem;
     font-weight: 400;
     transition: .3s ease;
-    border: 1px;
 }
-
 #cancel {
     background: white;
     border: 1px solid black;
 }
-
 #submit {
     background: #013C58;
     border: none;
     color: white;
 }
-
-/* Hovering submit/cancel button */
 #cancel:hover,
 #submit:hover,
 #delete_account:hover {
-    cursor: pointer;
     transform: scale(1.2);
+    transform-origin: center;
+    position: relative;
     background: #F5A201;
     color: black;
     border: none;
+    cursor: pointer;
 }
+
+/******************** ACCOUNT SETTINGS FORM ********************/
+
+/* Text fields */
+.account_settings_form input {
+    font-weight: 600;
+    font-size: 0.9rem;
+    width: 100%;
+    height: 50px;
+    margin-bottom: 1.5rem;
+    padding-left: 0.5rem;
+    color: rgb(196, 196, 196);
+    border: 1px solid rgb(196, 196, 196);
+    border-radius: 10px;
+    box-sizing: border-box;
+}
+
+/* Password field */
+.password-field {
+    position: relative;
+}
+
+/* Password visibility button */
+.visibility-icon {
+    cursor: pointer;
+    position: absolute;
+    right: 1rem;
+    top: 1rem;
+    color: #013C58;
+}
+
+/* Field focused */
+.account_settings_form input:focus {
+    outline-style: none;
+    border: 1px solid #013C58;
+    color: black;
+}
+
+/* Delete account button */
+#delete_account {
+    background: rgb(177, 0, 0);
+    width: 150px;
+    margin-right: auto;
+    border: none;
+    color: white;
+}
+
+
 
 /******************** SITE SETTINGS FORM ********************/
 
@@ -314,56 +365,6 @@
 
 .verification_button:hover {
     color: #F5A201;
-}
-
-/******************** ACCOUNT SETTINGS FORM ********************/
-
-
-/* Text fields */
-.account_settings_form input {
-    font-weight: 600;
-    font-size: 0.9rem;
-    width: 100%;
-    height: 50px;
-    margin-bottom: 1.5rem;
-    padding-left: 0.5rem;
-    text-align: left;
-    color: rgb(196, 196, 196);
-    border: 1px solid rgb(196, 196, 196);
-    border-radius: 10px;
-    cursor: pointer;
-    box-sizing: border-box;
-}
-
-/* Remove default border style when focused */
-.account_settings_form input:focus {
-    outline-style: none !important;
-    border: 1px solid #013C58;
-    color: black;
-}
-
-#delete_account {
-    background: red;
-    width: 150px;
-    margin-right: 140px;
-    border: none;
-    color: white;
-}
-
-/* Password field */
-.password-field {
-    display: flex;
-    align-items: center;
-    position: relative;
-}
-
-/* Password Visibility icon */
-.visibility-icon {
-    cursor: pointer;
-    position: absolute;
-    right: 1rem;
-    top: 1rem;
-    color: #013C58;
 }
 
 @media (max-width: 1100px) {

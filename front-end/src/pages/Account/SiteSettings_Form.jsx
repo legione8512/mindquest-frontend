@@ -49,7 +49,7 @@ export default function SiteSettingsForm({ userSiteSettings, setSiteSetting, onS
                     </section>
 
                     {/* Submit and cancel button section */}
-                    <section className="submit_buttons">
+                    <section className="form_buttons">
                         <button type="button" id="cancel" onClick={onCancel}>Cancel</button>
                         <button type="submit" id="submit">Submit</button>
                     </section>

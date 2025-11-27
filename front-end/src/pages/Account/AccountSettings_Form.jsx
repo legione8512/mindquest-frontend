@@ -53,12 +53,13 @@ export default function AccountSettingsForm({ accountSettings, setAccountSetting
                     <h4>Update Phone Number:</h4>
                     <input
                         type="text"
+                        placeholder="Add a phone number"
                         value={accountSettings.phone_no}
                         onChange={setAccountSetting("phone_no")}
                     />
 
                     {/* Update Password */}
-                    <section className="password-wrapper">
+                    <section>
                         <h4>Update Password:</h4>
                         <section className="password-field">
                             <input
@@ -102,7 +103,7 @@ export default function AccountSettingsForm({ accountSettings, setAccountSetting
                     </section>
 
                     {/* Submit and cancel button section */}
-                    <section className="submit_buttons">
+                    <section className="form_buttons">
                         <button type="button" id="delete_account" onClick={onDelete}>Delete Account</button>
                         <button type="button" id="cancel" onClick={onCancel}>Cancel</button>
                         <button type="submit" id="submit">Submit</button>
