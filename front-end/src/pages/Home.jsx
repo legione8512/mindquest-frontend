@@ -4,15 +4,20 @@ import { Link } from "react-router-dom";
 import "./home.css";
 import relax from '../assets/relax.png';
 import smile from '../assets/smile.png';
-import books from '../assets/books.png';  
+import books from '../assets/books.png'; 
+import people from '../assets/people.jpg';
+
 
 export default function Home() {
   return (
     <main className="home-container">
 
       {/* Main hero section */}
-      <section className="hero">
-        <h1>MindQuest</h1>
+      <section
+        className="hero"
+        style={{ backgroundImage: `url(${people})` }}
+      >
+      <h1>MindQuest</h1>
         <h1>Feel Better, One Step at a Time</h1>
         <p>
           MindQuest supports you in understanding your emotions, learning helpful
@@ -31,7 +36,7 @@ export default function Home() {
           <h3>MindQuest is your personal digital well being platfrom
             where you can relax, learn, and track your mood all in one place.
           </h3>
-          <h4 What we offer></h4>
+          <h4>What we offer</h4>
         </section>
 
         <section className="feature-cards">

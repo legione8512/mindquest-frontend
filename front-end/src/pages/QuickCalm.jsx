@@ -1,10 +1,10 @@
 import React, { useState } from "react";
-import deepBreathingImg from "../assets/deepbreathing.jpg";
-import bodyscanImg from "../assets/bodyscan.avif";
-import relaxationImg from "../assets/relaxation.jpeg";
-import breathingImg from "../assets/breathing.jpg";
-import musclerelaxationImg from "../assets/musclerelaxation.jpg";
-import meditationImg from "../assets/meditation.jpeg";
+import deepBreathing from "../assets/deepbreathing.jpg";
+import bodyscan from "../assets/bodyscan.avif";
+import relaxation from "../assets/relaxation.jpeg";
+import breathing from "../assets/breathing.jpg";
+import musclerelaxation from "../assets/musclerelaxation.jpg";
+import meditation from "../assets/meditation.jpeg";
 
 
 import "./quickcalm.css";
@@ -25,7 +25,7 @@ export default function QuickCalm() {
       description: "Simple and quick breathing exercise to help you relax.",
       duration: "3 min",
       points: 5,
-      image: deepBreathingImg,
+      image: deepBreathing,
     },
     {
       id: 2,
@@ -34,7 +34,7 @@ export default function QuickCalm() {
       description: "A short body scan to calm your mind.",
       duration: "5 min",
       points: 5,
-      image: bodyscanImg,
+      image: bodyscan,
     },
     {
       id: 3,
@@ -43,7 +43,7 @@ export default function QuickCalm() {
       description: "Ease tension with a gentle relaxation exercise.",
       duration: "2 min",
       points: 5,
-      image: relaxationImg,
+      image: relaxation,
     },
     {
         id: 4,
@@ -52,7 +52,7 @@ export default function QuickCalm() {
         description: "Focus your mind with this short meditation.",
         duration: "4 min",
         points: 5,
-        image: meditationImg,
+        image: meditation,
     },
     {
         id: 5,
@@ -61,7 +61,7 @@ export default function QuickCalm() {
         description: "Tense and relax muscle groups to release tension.",
         duration: "6 min",
         points: 5,
-        image: musclerelaxationImg,
+        image: musclerelaxation,
     },
     {
         id: 6,
@@ -70,7 +70,7 @@ export default function QuickCalm() {
         description: "Focus on your breath to bring calmness.",
         duration: "3 min",
         points: 5,
-        image: breathingImg,
+        image: breathing,
     }
   ];
 
