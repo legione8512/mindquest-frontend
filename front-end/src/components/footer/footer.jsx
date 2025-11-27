@@ -32,7 +32,7 @@ export default function Footer() {
                     <h3>Contact Information</h3>
                     <p><i className="fa-solid fa-envelope"></i>SupportTeam@Mindquest.co.uk</p>
                     <p><i className="fa-solid fa-phone"></i>+44 7911036333</p>
-                    <p><i className="fa-sharp fa-solid fa-location-dot"></i>31 Kingston Lane, Uxbridge <br />&emsp;&emsp;Middlesex, UB8 3PH</p>
+                    <p><i className="fa-sharp fa-solid fa-location-dot"></i>31 Kingston Lane, Uxbridge <br />Middlesex, UB8 3PH</p>
                 </section>
 
                 {/* Privacy and Security section for footer*/}

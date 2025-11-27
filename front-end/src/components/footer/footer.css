@@ -1,19 +1,16 @@
-/********* TO DO ***********/
-/* Fix some content display issues when resizing screen */
-/****************************/
-
 footer {
     position: relative;
-    bottom: 0;
-    left: 0;
-    right: 0;
     z-index: 2000;
     background-color: #013C58;
-    padding: 1.3rem;
+    padding: 2.5rem;
     display: flex;
-    gap: 5rem;
-    height: 12rem;
+    justify-content: space-between;
+    align-items: flex-start;
+    flex-wrap: wrap;
+    gap: 4rem;
     margin-top: auto;
+    box-sizing: border-box;
+    width: 100%;
 }
 
 /* Logo */
@@ -22,12 +19,11 @@ footer img {
 }
 
 /**** FOLLOW US (Social media) SECTION ****/
-.footer_section {
+.footer_follow {
     color: #c1eef9;
     letter-spacing: 0.05rem;
-    gap: 0.5rem;
-    display: block;
-    width: 300px;
+    width: auto;
+    max-width: 270px;
 }
 
 /* Social media buttons */
@@ -36,11 +32,11 @@ footer img {
     border: none;
     border-radius: 500px;
     color: #c1eef9;
-    padding: 0.5rem;
-    width: 45px;
-    margin-right: 1rem;
+    width: 50px;
+    height: 50px;
+    margin-right: 0.6rem;
     transition: 0.5s ease;
-    font-size: 1.5rem;
+    font-size: 1.6rem;
 }
 
 .footer_follow button:hover {
@@ -52,32 +48,67 @@ footer img {
 
 /* Animation when hovering the social icons */
 @keyframes wiggle {
-    0% {transform: rotate(0deg);}
-    10% {transform: rotate(5deg);}
-    20% {transform: rotate(10deg);}
-    20% {transform: rotate(5deg);}
-    30% {transform: rotate(0deg);}
-    40% {transform: rotate(-5deg);}
-    50% {transform: rotate(-10deg);}
-    60% {transform: rotate(-5deg);}
-    70% {transform: rotate(0deg);}
-    80% {transform: rotate(5deg);}
-    90% {transform: rotate(10deg);}
-    100% {transform: rotate(5deg);}
+    0% {
+        transform: rotate(0deg);
+    }
+
+    10% {
+        transform: rotate(5deg);
+    }
+
+    20% {
+        transform: rotate(10deg);
+    }
+
+    20% {
+        transform: rotate(5deg);
+    }
+
+    30% {
+        transform: rotate(0deg);
+    }
+
+    40% {
+        transform: rotate(-5deg);
+    }
+
+    50% {
+        transform: rotate(-10deg);
+    }
+
+    60% {
+        transform: rotate(-5deg);
+    }
+
+    70% {
+        transform: rotate(0deg);
+    }
+
+    80% {
+        transform: rotate(5deg);
+    }
+
+    90% {
+        transform: rotate(10deg);
+    }
+
+    100% {
+        transform: rotate(5deg);
+    }
 }
 
 /**** FOOTER SECTION BLOCKS ****/
 .section_boxes {
     display: flex;
-    justify-content: right;
-    margin-left: 8vw;
+    flex-wrap: wrap;
+    gap: 2rem;
 }
+
 .footer_section {
     color: #c1eef9;
     letter-spacing: 0.05rem;
-    gap: 0.5rem;
-    display: block;
-    margin-right: 5vw;
+    min-width: 200px;
+    margin-right: 0;
 }
 
 /* Headers for footer sections */
@@ -87,8 +118,10 @@ footer img {
     letter-spacing: 0.1rem;
     margin-bottom: 0.8rem;
     padding-bottom: 0.8rem;
-    border-bottom: 1px solid #c1eef9;
-    width: 16rem;
+    border-bottom: solid 1px #F5A201;
+    max-width: 15rem;
+    color: #F5A201;
+
 }
 
 /* Text for footer sections */
@@ -98,7 +131,7 @@ footer img {
     font-weight: 500;
     line-height: 1rem;
     margin-bottom: 1rem;
-    align-items: center;
+    display: flex;
 }
 
 /* Icons for footer sections */
@@ -107,6 +140,7 @@ footer img {
     font-size: 1rem;
     width: 1rem;
     text-align: center;
+    color: #F5A201;
 }
 
 /**** Privacy and Security links ****/
@@ -125,7 +159,125 @@ footer img {
     list-style-type: none;
     margin-bottom: 0.5rem;
 }
+
 .privacy_button:hover {
     cursor: pointer;
     color: #F5A201;
+}
+
+/********** Resize in line with header + screen size. **********/
+@media (max-width: 1100px) {
+
+    /* Logo */
+    footer img {
+        width: 10rem;
+    }
+
+    /* Social media buttons */
+    .footer_follow button {
+        width: 40px;
+        height: 40px;
+        margin-right: 0.1rem;
+        font-size: 1.2rem;
+    }
+
+    /**** FOOTER SECTION BLOCKS ****/
+    .section_boxes {
+        gap: 1rem;
+        width: 30rem;
+    }
+
+    /* Footer headers */
+    .footer_section h3 {
+        font-size: 0.75rem;
+    }
+
+    /* Footer text */
+    .footer_section p,
+    .privacy_button {
+        font-size: 0.75rem;
+    }
+}
+
+@media (max-width: 800px) {
+
+    .footer_follow button {
+        width: 35px;
+        height: 35px;
+        gap: 0;
+    }
+
+    .section_boxes {
+        flex-direction: column;
+        width: 15rem;
+        gap: 1rem;
+    }
+
+    .section_boxes i {
+        color: #F5A201;
+    }
+
+}
+
+@media (max-width: 600px) {
+
+    footer {
+        flex-direction: column;
+        gap: 2rem;
+        text-align: center;
+        align-items: center;
+        padding: 0.5rem;
+    }
+
+    /* Logo */
+    footer img {
+        padding-top: 1rem;
+        width: 7rem;
+    }
+
+    /* Social media buttons */
+    .footer_follow {
+        width: 100%;
+        max-width: none;
+    }
+
+    /* Social media buttons */
+    .footer_follow button {
+        width: 30px;
+        height: 30px;
+        font-size: 1rem;
+        margin-right: 0.4rem;
+    }
+
+    /**** FOOTER SECTION BLOCKS ****/
+    .section_boxes {
+        flex-direction: column;
+        width: 100%;
+        gap: 1rem;
+    }
+
+    .footer_section {
+        width: 100%;
+        align-items: center;
+        display: flex;
+        flex-direction: column;
+    }
+
+    /* Footer headers */
+    .footer_section h3 {
+        font-size: 0.65rem;
+    }
+
+    .footer_section p,
+    .privacy_button {
+        font-size: 0.55rem;
+        line-height: 0.9rem;
+    }
+
+    .footer_section i {
+        font-size: 0.7rem;
+        line-height: 0.9rem;
+    }
+
+
 }
