@@ -26,9 +26,11 @@
 }
 
 /* Fields and Input labels */
-.settings_form h4,
+.site_settings_form h4,
 .account_settings_form h4 {
-    padding-bottom: 0.5rem;
+    padding-bottom: 0.2rem;
+    font-size: 1rem;
+    font-weight: 600;
 }
 
 /* Submission buttons wrapper */

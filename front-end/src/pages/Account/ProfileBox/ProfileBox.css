@@ -70,6 +70,7 @@
 /* Username text */
 .profile_text_box h3 {
     color: white;
+    font-size: 1.2rem;
     font-weight: 500;
     margin-bottom: 0.3rem;
 }
@@ -78,7 +79,7 @@
 .profile_text_box p {
     color: #c1eef9;
     font-weight: 300;
-    font-size: 1rem;
+    font-size: 0.9rem;
 }
 
 /* Streak and Points bar */
@@ -99,7 +100,7 @@
 /* Streak and Points bar text */
 .points_bar h3,
 .streak_bar h3 {
-    font-size: 1.5rem;
+    font-size: 1.2rem;
     font-weight: 600;
     margin: 0;
 }

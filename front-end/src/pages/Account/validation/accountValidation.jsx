@@ -16,9 +16,9 @@ export function validateAccountSettings(settings, dummyData) {
         return "This username is already taken! Please enter another.";
     }
 
-    // Check if the username is longer than 12 characters.
-    if (username.trim().length > 12)
-        return "Usernames cannot be longer than 12 characters!";
+    // Check if the username is longer than 11 characters.
+    if (username.trim().length > 11)
+        return "Usernames cannot be longer than 11 characters!";
 
     // Check if the username is less than 3 characters.
     if (username.trim().length < 3)

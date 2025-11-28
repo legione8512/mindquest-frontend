@@ -10,6 +10,7 @@
 /* Banner text */
 .account_page_banner h1 {
     font-size: 3rem;
+    font-weight: 600;
     color: #013C58;
 }
 
