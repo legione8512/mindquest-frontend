@@ -1,7 +1,5 @@
-import { Link } from "react-router-dom";
+export default function SiteSettingsForm({ userSiteSettings, setSiteSetting, onSubmit, onCancel, onLearnMore }) {
 
-export default function SiteSettingsForm({ userSiteSettings, setSiteSetting, onSubmit, onCancel }) {
-    
     return (
         <section className="site_settings_form_section" >
 
@@ -45,7 +43,13 @@ export default function SiteSettingsForm({ userSiteSettings, setSiteSetting, onS
                     {/* Verify account section */}
                     <section className="verification_box">
                         <h5>Verify your account as an organisation.</h5>
-                        <Link className="verification_button" title="Learn about Account Verification" to="">Learn More</Link>
+                        <button
+                            type="button"
+                            className="verification_button"
+                            onClick={onLearnMore}
+                        >
+                            Learn More
+                        </button>
                     </section>
 
                     {/* Submit and cancel button section */}

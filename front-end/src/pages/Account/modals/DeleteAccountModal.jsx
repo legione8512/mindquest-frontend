@@ -22,7 +22,7 @@ export default function DeleteAccountModal({ show, onHide, onConfirm, dummyPassw
 
     return (
 
-        <Modal show={show} onHide={(onHide)} centered>
+        <Modal show={show} onHide={onHide} centered>
 
             <Modal.Header>
                 <Modal.Title>Confirm Account Deletion</Modal.Title>

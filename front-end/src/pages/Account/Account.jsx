@@ -18,7 +18,8 @@ import ProfileBox from "./ProfileBox";
 import FormNavigation from "./FormNavigation";
 
 // Modal imports
-import DeleteAccountModal from "./DeleteAccountModal";
+import DeleteAccountModal from "./modals/DeleteAccountModal";
+import LearnMoreModal from "./modals/LearnMoreModal";
 
 // Validation imports.
 import { validateAccountSettings } from "./validation/accountValidation";
@@ -225,6 +226,9 @@ export default function Account() {
 
     }
 
+    // Learn more modal //
+    const [showLearnMoreModal, setShowLearnMoreModal] = useState(false);
+
 
     // ========================================  ACCOUNT PAGE RENDER ======================================== //
     return (
@@ -273,6 +277,7 @@ export default function Account() {
                             setSiteSetting={setSiteSetting}
                             onSubmit={onSubmitSiteSettings}
                             onCancel={onCancelSiteSettings}
+                            onLearnMore={() => setShowLearnMoreModal(true)}
                         />}
 
                 </section>
@@ -286,6 +291,13 @@ export default function Account() {
                 onConfirm={deleteAccount}
                 dummyPassword={dummyPassword}
             />
+
+            {/* LEARN MORE MODAL BOX */}
+            <LearnMoreModal
+                show={showLearnMoreModal}
+                onHide={() => setShowLearnMoreModal(false)}
+            />
+
         </>
     )
 }
