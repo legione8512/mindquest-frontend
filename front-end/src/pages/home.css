@@ -155,3 +155,8 @@
   border-radius: 10%;
   object-fit: cover;
 }
+.offer{
+  font-size: 1.9rem;
+  font-weight: 600;
+  margin-bottom: 40px;
+}

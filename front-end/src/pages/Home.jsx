@@ -1,5 +1,4 @@
 import React from "react";
-import {FaSmile, FaLeaf, FaUsers} from "react-icons/fa";
 import { Link } from "react-router-dom";
 import "./home.css";
 import relax from '../assets/relax.png';
@@ -36,7 +35,9 @@ export default function Home() {
           <h3>MindQuest is your personal digital well being platfrom
             where you can relax, learn, and track your mood all in one place.
           </h3>
-          <h4>What we offer</h4>
+        </section>
+        <section className="offer">
+          <h4> What we offer </h4>
         </section>
 
         <section className="feature-cards">
