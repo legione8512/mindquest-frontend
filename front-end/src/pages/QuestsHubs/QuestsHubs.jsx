@@ -63,7 +63,7 @@ const initialHubs = [
     featuredText: "Write 1–3 lines of gratitude each day.",
     frequency: "Daily",
     type: "Individual",
-    tags: ["Calm Crew · 42", "Focus Finders · 30"],
+    tags: [],
     progressText:
       "Live progress shown when a quest is active (two-team quest, non-competitive).",
   },
@@ -79,7 +79,8 @@ const initialHubs = [
     featuredText: "2–5 minute unplugged pauses during study.",
     frequency: "Weekly",
     type: "Team",
-    tags: ["Team Phoenix · 128", "Kind Kin · 117"],
+    // Team quest – show these on cards and in join dropdown
+    tags: ["Team Phoenix", "Kind Kin"],
     progressText: "Weekly cycle in progress (two-team quest).",
   },
   {
@@ -93,7 +94,7 @@ const initialHubs = [
     featuredText: "Send an encouraging message to a peer.",
     frequency: "Monthly",
     type: "Team",
-    tags: [],
+    tags: ["Gentle Steps", "Steady Hearts"],
     progressText: "",
   },
   {
@@ -121,7 +122,7 @@ const initialHubs = [
     featuredText: "Send a supportive message to someone.",
     frequency: "Weekly",
     type: "Team",
-    tags: [],
+    tags: ["Check-In Crew", "Support Squad"],
     progressText: "",
   },
   {
@@ -173,7 +174,7 @@ const QuestsHubs = () => {
     mode: "All", // All | Team | Individual
     verification: "All", // All | Verified only
     duration: "All", // All | Daily | Weekly | Monthly
-    sort: "Popularity", // Popularity | Newest | Closest to me
+    sort: "All", // All | Active | Starting soon | Finished
   });
 
   // search text in the input box
@@ -243,6 +244,30 @@ const QuestsHubs = () => {
     return true;
   };
 
+  // Derive a simple status label for each quest
+  const getQuestStatus = (hub) => {
+    const started = hasQuestStarted(hub);
+
+    if (!started) {
+      return "Starting soon";
+    }
+
+    // Try to detect "finished" from the status text
+    if (typeof hub.featuredStatus === "string") {
+      const s = hub.featuredStatus.toLowerCase();
+      if (
+        s.includes("finished") ||
+        s.includes("completed") ||
+        s.includes("ended")
+      ) {
+        return "Finished";
+      }
+    }
+
+    // Default: started and not obviously finished
+    return "Active";
+  };
+
   const hasUserJoined = (hubId) => Boolean(joinedHubs[hubId]);
 
   const getUserTeamForHub = (hubId) => joinedHubs[hubId]?.team ?? null;
@@ -263,7 +288,7 @@ const QuestsHubs = () => {
 
     if (isTeamQuestWithTags) {
       if (!selectedTeam) {
-        // Button is already disabled in this state; guard anyway
+        // Button is disabled in this state; guard anyway
         return;
       }
       team = selectedTeam;
@@ -406,7 +431,7 @@ const QuestsHubs = () => {
     headerImageOptions[0];
 
   // -------------------------
-  // Apply filters, search, sorting
+  // Apply filters, search, status
   // -------------------------
 
   const filteredHubs = hubs.filter((hub) => {
@@ -446,17 +471,13 @@ const QuestsHubs = () => {
     return true;
   });
 
-  // Simple sorting
-  let displayedHubs = [...filteredHubs];
+  // Filter by status: Active / Starting soon / Finished
+  const displayedHubs = filteredHubs.filter((hub) => {
+    if (filters.sort === "All") return true;
 
-  if (filters.sort === "Newest") {
-    // higher id = newer (your created quests use Date.now as id)
-    displayedHubs.sort((a, b) => b.id - a.id);
-  } else if (filters.sort === "Popularity") {
-    // keep current order for now
-  } else if (filters.sort === "Closest to me") {
-    // placeholder – no location data yet, so same as Popularity
-  }
+    const status = getQuestStatus(hub); // "Active", "Starting soon", "Finished"
+    return status === filters.sort;
+  });
 
   // -------------------------
   // Render
@@ -540,15 +561,16 @@ const QuestsHubs = () => {
           </div>
 
           <div className="filter-group">
-            <label>Sort</label>
+            <label>Status</label>
             <select
               name="sort"
               value={filters.sort}
               onChange={handleFilterChange}
             >
-              <option value="Popularity">Popularity</option>
-              <option value="Newest">Newest</option>
-              <option value="Closest to me">Closest to me</option>
+              <option value="All">All</option>
+              <option value="Active">Active</option>
+              <option value="Starting soon">Starting soon</option>
+              <option value="Finished">Finished</option>
             </select>
           </div>
 
@@ -580,75 +602,77 @@ const QuestsHubs = () => {
         </section>
 
         {/* Hubs grid */}
-<section className="hubs-grid">
-  {displayedHubs.map((hub) => {
-    const joined = hasUserJoined(hub.id);
-    const teamName = getUserTeamForHub(hub.id);
+        <section className="hubs-grid">
+          {displayedHubs.map((hub) => {
+            const joined = hasUserJoined(hub.id);
+            const teamName = getUserTeamForHub(hub.id);
 
-    return (
-      <article key={hub.id} className="hub-card">
-        <div className="hub-image-wrapper">
-          <img
-            src={hub.image}
-            alt={`${hub.name} cover`}
-            className="hub-cover-image"
-          />
-        </div>
+            return (
+              <article key={hub.id} className="hub-card">
+                <div className="hub-image-wrapper">
+                  <img
+                    src={hub.image}
+                    alt={`${hub.name} cover`}
+                    className="hub-cover-image"
+                  />
+                </div>
 
-        <div className="hub-card-body">
-          <div className="hub-title-row">
-            <h2>{hub.name}</h2>
+                <div className="hub-card-body">
+                  <div className="hub-title-row">
+                    <h2>{hub.name}</h2>
 
-            {hub.verified && (
-              <span className="badge verified">Verified</span>
-            )}
+                    {hub.verified && (
+                      <span className="badge verified">Verified</span>
+                    )}
 
-            {joined && (
-              <span className="badge joined">
-                Joined{teamName ? ` – ${teamName}` : ""}
-              </span>
-            )}
-          </div>
+                    {joined && (
+                      <span className="badge joined">
+                        Joined{teamName ? ` – ${teamName}` : ""}
+                      </span>
+                    )}
+                  </div>
 
-          <p className="hub-description">{hub.description}</p>
+                  <p className="hub-description">{hub.description}</p>
 
-          <div className="feature-block">
-            <p className="feature-label">Featured challenge:</p>
-            <p className="feature-title">{hub.featuredTitle}</p>
-            <p className="feature-status">{hub.featuredStatus}</p>
-            <p className="feature-text">{hub.featuredText}</p>
-          </div>
+                  <div className="feature-block">
+                    <p className="feature-label">Featured challenge:</p>
+                    <p className="feature-title">{hub.featuredTitle}</p>
+                    <p className="feature-status">{hub.featuredStatus}</p>
+                    <p className="feature-text">{hub.featuredText}</p>
+                  </div>
 
-          <div className="hub-meta-row">
-            <span className="pill">{hub.frequency}</span>
-            <span className="pill">{hub.type}</span>
-          </div>
+                  <div className="hub-meta-row">
+                    <span className="pill">{hub.frequency}</span>
+                    <span className="pill">{hub.type}</span>
+                  </div>
 
-          {hub.tags && hub.tags.length > 0 && (
-            <p className="hub-tags">{hub.tags.join(" · ")}</p>
-          )}
+                  {hub.type === "Team" && hub.tags && hub.tags.length > 0 && (
+                    <p className="hub-tags">
+                      Teams: {hub.tags.join(" · ")}
+                    </p>
+                  )}
 
-          {hub.progressText && (
-            <p className="hub-progress">{hub.progressText}</p>
-          )}
+                  {hub.progressText && (
+                    <p className="hub-progress">{hub.progressText}</p>
+                  )}
 
-          <div className="hub-card-footer">
-            <button
-              type="button"
-              className="secondary-btn"
-              onClick={() => {
-                setSelectedHub(hub);
-                setSelectedTeam("");
-              }}
-            >
-              View hub
-            </button>
-          </div>
-        </div>
-      </article>
-    );
-  })}
-</section>
+                  <div className="hub-card-footer">
+                    <button
+                      type="button"
+                      className="secondary-btn"
+                      onClick={() => {
+                        setSelectedHub(hub);
+                        setSelectedTeam("");
+                      }}
+                    >
+                      View hub
+                    </button>
+                  </div>
+                </div>
+              </article>
+            );
+          })}
+        </section>
       </main>
 
       {/* CREATE QUEST MODAL */}
