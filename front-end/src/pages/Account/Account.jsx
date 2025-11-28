@@ -5,6 +5,10 @@
 import { useState } from "react";
 import "./Account.css";
 
+// Improts for modal boxes
+import Button from "react-bootstrap/Button";
+import Modal from "react-bootstrap/Modal";
+
 // Image imports.
 import DefaultImage from "../../assets/example_profile_picture.jpg";
 import EmptyImage from "../../assets/empty_image.png";
@@ -137,9 +141,28 @@ export default function Account() {
 
     }
 
+    // ======================================== DELETE ACCOUNT LOGIC ======================================== //
+
+    // States for the modal
+    const [showDeleteModal, setShowDeleteModal] = useState(false);
+    const [enteredPassword, setEnteredPassword] = useState("");
+
+    const confirmDeleteAccount = () => {
+        if (enteredPassword !== dummyPassword) {
+            alert("Incorrect password. Account not deleted.");
+            return;
+        }
+
+        // Delete Account
+        deleteAccount();
+
+        // Close modal + clear password field
+        setShowDeleteModal(false);
+        setEnteredPassword("");
+    };
+
     // Delete Account button.
-    const deleteAccount = (e) => {
-        e.preventDefault();
+    const deleteAccount = () => {
 
         // Set all values as empty (DEMO PURPOSES)
         setAccountSettings({
@@ -160,6 +183,8 @@ export default function Account() {
         alert("You have deleted your account. Goodbye!");
 
     }
+
+
 
 
     // ========================================  SITE SETTINGS FORM ======================================== //
@@ -257,7 +282,8 @@ export default function Account() {
                             setAccountSetting={setAccountSetting}
                             onSubmit={onSubmitAccountSettings}
                             onCancel={onCancelAccountSettings}
-                            onDelete={deleteAccount}
+                            onDelete={() => setShowDeleteModal(true)}
+
                         />}
 
                     {currentForm === 'siteSettings' &&
@@ -271,6 +297,45 @@ export default function Account() {
                 </section>
 
             </section>
+
+            {/* DELETE ACCOUNT CONFIRMATION MODAL */}
+            <Modal show={showDeleteModal} onHide={() => setShowDeleteModal(false)} centered>
+                <Modal.Header closeButton>
+                    <Modal.Title>Confirm Account Deletion</Modal.Title>
+                </Modal.Header>
+
+                <Modal.Body>
+                    <p>Warning: Deleting your account will remove all your stored data!</p>
+                    <p>This includes losing access to:</p>
+                    <ul>
+                        <li>Your Streaks</li>
+                        <li>Your Points</li>
+                        <li>Your Dashboard</li>
+                        <li>Hubs</li>
+                        <li>Courses</li>
+
+                    </ul>
+
+                    <p>If you are still sure you want to delete your account, please enter your password to confirm:</p>
+
+                    <input
+                        type="password"
+                        placeholder="Enter password"
+                        value={enteredPassword}
+                        onChange={(e) => setEnteredPassword(e.target.value)}
+                        autoFocus
+                    />
+                </Modal.Body>
+
+                <Modal.Footer>
+                    <Button variant="secondary" onClick={() => setShowDeleteModal(false)}>
+                        Cancel
+                    </Button>
+                    <Button variant="danger" onClick={confirmDeleteAccount}>
+                        Confirm Delete
+                    </Button>
+                </Modal.Footer>
+            </Modal>
         </>
     )
 }
