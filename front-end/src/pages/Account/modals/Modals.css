@@ -177,4 +177,20 @@
     font-size: 1.5rem;
 }
 
+/* Submit Button */
+.modal-footer .btn-primary {
+    background: #013C58;
+    color: white;
+    border: none;
+    font-weight: 500;
+    border-radius: 10px;
+    transition: all 0.3s ease;
+    width: 10rem;
+    height: 2.5rem;
+}
+.modal-footer .btn-primary:hover {
+    background: #F5A201;
+    color: #013C58;
+    transform: scale(1.05);
+}
 
