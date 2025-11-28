@@ -81,7 +81,6 @@ export default function QuickCalm() {
     selectedCategory == "all"
       ? exercises
       : exercises.filter((ex) => ex.category === selectedCategory);
-
   return (
     <main className="quickcalm-container">
 
@@ -125,7 +124,6 @@ export default function QuickCalm() {
               <span>{ex.duration}</span>
               <span className="qc-points">+{ex.points} pts</span>
             </section>
-
             <button
               className="qc-start-btn"
               onClick={() => alert(`Completed: ${ex.title}`)}
