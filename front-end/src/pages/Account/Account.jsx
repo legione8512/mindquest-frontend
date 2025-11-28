@@ -300,20 +300,20 @@ export default function Account() {
 
             {/* DELETE ACCOUNT CONFIRMATION MODAL */}
             <Modal show={showDeleteModal} onHide={() => setShowDeleteModal(false)} centered>
-                <Modal.Header closeButton>
+                <Modal.Header>
                     <Modal.Title>Confirm Account Deletion</Modal.Title>
+                    <button className="modalCloseButton" onClick={() => setShowDeleteModal(false)}><i class="fa fa-times"></i></button>
                 </Modal.Header>
 
                 <Modal.Body>
-                    <p>Warning: Deleting your account will remove all your stored data!</p>
+                    <h4>Warning: Deleting your account will remove all your stored data!</h4>
                     <p>This includes losing access to:</p>
                     <ul>
                         <li>Your Streaks</li>
                         <li>Your Points</li>
-                        <li>Your Dashboard</li>
-                        <li>Hubs</li>
-                        <li>Courses</li>
-
+                        <li>Your saved data</li>
+                        <li>Our Hubs</li>
+                        <li>Our Courses</li>
                     </ul>
 
                     <p>If you are still sure you want to delete your account, please enter your password to confirm:</p>
@@ -323,7 +323,6 @@ export default function Account() {
                         placeholder="Enter password"
                         value={enteredPassword}
                         onChange={(e) => setEnteredPassword(e.target.value)}
-                        autoFocus
                     />
                 </Modal.Body>
 

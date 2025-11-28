@@ -134,11 +134,20 @@
     padding: 1rem;
     border-radius: 10px;
     background: #c1eef9;
+    color: #013C58;
 }
 
 /* Streak Bar */
 .streak_bar {
     background: #F5A201;
+}
+
+/* Bar text styling */
+.points_bar h3,
+.streak_bar h3 {
+    font-size: 1.5rem;
+    font-weight: 600;
+    margin: 0;
 }
 
 /******************** Form navigation and logout buttons ********************/
@@ -311,6 +320,142 @@
     color: white;
 }
 
+/**************************************** DELETE ACCOUNT MODAL ****************************************/
+
+/* Modal box wrapper */
+.modal-content {
+    background: #013C58;
+    color: #c1eef9;
+    border-radius: 5;
+    border-color: #F5A201;
+    padding: 2rem;
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.4);
+    z-index: 3000;
+}
+
+/* Modal header */
+.modal-header {
+    padding-top: 0;
+    border-bottom: 1px solid #F5A201;
+    color: #F5A201;
+    font-weight: 600;
+}
+
+/* Close modal button */
+.modalCloseButton {
+    position: absolute;
+    right: 1rem;
+    top: 0.8rem;
+    font-size: 2.3rem;
+    color: #c1eef9;
+    border: none;
+    background: none;
+    cursor: pointer;
+    line-height: 1;
+    transition: 0.3s ease;
+}
+.modalCloseButton:hover {
+    opacity: 1;
+    color: #F5A201;
+    transform: scale(1.3);
+}
+
+/* Modal body */
+.modal-body {
+    font-size: 1rem;
+    line-height: 2rem;
+    color: #c1eef9;
+}
+
+/* Warning header */
+.modal-body h4 {
+    font-size: 1.2rem;
+    line-height: 2rem;
+    color: rgb(226, 20, 20);
+    font-weight: 600;
+    margin-bottom: 1rem;
+}
+
+/* Warning list items */
+.modal-body ul {
+    padding-left: 2rem;
+    color: #F5A201;
+}
+
+/* Modal text */
+.modal-body p {
+    font-weight: 500;
+}
+
+/* Modal list items */
+.modal-body li {
+    margin-bottom: 0.5rem;
+    padding-left: 1rem;
+    line-height: 2rem;
+    font-weight: 500;
+}
+
+/* Input field */
+.modal-body input {
+    width: 100%;
+    padding: 0.7rem;
+    margin-top: 0.5rem;
+    margin-bottom: 1rem;
+    border-radius: 10px;
+    border: 1px solid #c1eef9;
+    background: #013C58;
+    color: #c1eef9;
+    font-weight: 500;
+}
+.modal-body input::placeholder {
+    color: rgba(193, 238, 249, 0.7);
+}
+.modal-body input:focus {
+    outline: none;
+    border: 1px solid #F5A201;
+}
+
+/* Modal footer */
+.modal-footer {
+    border-top: 1px solid #F5A201;
+    display: flex;
+    justify-content: space-between;
+    padding-bottom: 0;
+    padding-top: 1.5rem;
+}
+
+/* Footer buttons */
+.modal-footer .btn-secondary {
+    background: #c1eef9;
+    color: #013C58;
+    border: none;
+    font-weight: 500;
+    border-radius: 10px;
+    transition: all 0.3s ease;
+    width: 10rem;
+}
+
+.modal-footer .btn-secondary:hover {
+    background: #F5A201;
+    color: black;
+    transform: scale(1.05);
+}
+
+.modal-footer .btn-danger {
+    background: rgb(177, 0, 0);
+    color: white;
+    border: none;
+    font-weight: 500;
+    border-radius: 10px;
+    transition: all 0.3s ease;
+    width: 10rem;
+}
+
+.modal-footer .btn-danger:hover {
+    background: #F5A201;
+    color: black;
+    transform: scale(1.05);
+}
 
 
 /**************************************** SITE SETTINGS FORM ****************************************/
@@ -424,6 +569,12 @@
         border-radius: 5px;
     }
 
+    /* Points text styling */
+    .points_bar h3,
+    .streak_bar h3 {
+        font-size: 0.8rem;
+    }
+
     /******* Form change + Logout button styling *******/
     .change_form_wrapper button {
         height: 40px;
@@ -535,9 +686,10 @@
 /**************************************** MOBILE MODE ****************************************/
 @media (max-width: 650px) {
 
-    .account_page_banner h1{
+    .account_page_banner h1 {
         font-size: 1.5rem;
     }
+
     /* Entire page becomes a vertical column */
     .account_page {
         flex-direction: column;
@@ -546,6 +698,7 @@
         padding: 1rem;
         max-width: 100%;
         flex-wrap: nowrap;
+        overflow-x: hidden;
     }
 
     /* Left section */
@@ -583,18 +736,14 @@
     .profile_text_box h3 {
         font-size: 0.85rem;
     }
-
     .profile_text_box p {
         font-size: 0.6rem;
     }
 
-    /* Points and streak bars */
-    .points_bar,
-    .streak_bar {
-        padding: 0.4rem;
-        font-size: 0.5rem;
-        border-radius: 5px;
-        margin-top: 0.3rem;
+    /* Points bar styling */
+    .points_bar h3,
+    .streak_bar h3 {
+        font-size: 0.8rem;
     }
 
     /********** Navigation + logout buttons  **********/
@@ -620,6 +769,7 @@
     .account_settings_form_top h2 {
         font-size: 1.1rem;
     }
+
     .site_settings_form_top p,
     .account_settings_form_top p {
         font-size: 0.75rem;
@@ -638,6 +788,7 @@
         bottom: 0.5rem;
         transform: translateY(-50%);
     }
+
     .visibility-icon svg {
         width: 14px;
         height: 14px;
@@ -655,6 +806,7 @@
         padding: 0.7rem;
         border-radius: 5px;
     }
+
     .verification_box h5,
     .verification_button {
         font-size: 0.6rem;
@@ -666,6 +818,7 @@
         width: 100%;
         gap: 0.6rem;
     }
+
     .form_buttons button,
     #delete_account {
         width: 100%;
