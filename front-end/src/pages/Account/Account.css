@@ -1,4 +1,4 @@
-/**************************************** ACCOUNT PAGE BANNER ****************************************/
+/* Banner */
 .account_page_banner {
     width: 100%;
     text-align: center;
@@ -13,7 +13,7 @@
     color: #013C58;
 }
 
-/**************************************** BODY ****************************************/
+/* Main Body */
 .account_page {
     display: flex;
     justify-content: center;
@@ -25,7 +25,7 @@
 }
 
 
-/**************************************** LEFT SECTION OF PAGE: Profile Box and Navigation/Logout buttons ****************************************/
+/* Left section of page: Profile box + Form navigation */
 .account_page_left {
     width: 400px;
     max-width: 100%;
@@ -35,7 +35,7 @@
     margin-bottom: 10rem;
 }
 
-/**************************************** PAGE SCALING ****************************************/
+/**************************************** RESPONSIVE DESIGN ****************************************/
 @media (max-width: 1100px) {
 
     /* Main Body */
@@ -55,12 +55,12 @@
 /**************************************** MOBILE MODE ****************************************/
 @media (max-width: 650px) {
 
-    /* Scale banner text */
+    /* Banner text */
     .account_page_banner h1 {
         font-size: 1.5rem;
     }
 
-    /* Entire page becomes a vertical column */
+    /* Main Body */
     .account_page {
         flex-direction: column;
         align-items: center;

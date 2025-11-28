@@ -1,19 +1,18 @@
-// This is the account page file. The purpose of this page is to allow users to update their data, including
-// username, profile picture, email, phone number, password, and site settings. It uses two forms: Account Settings and
-// Form settings, which contain different data and can be updated independently via the submit button.
-
 import { useState } from "react";
 import "./Account.css";
 
-// Image imports.
+// Image imports
 import DefaultImage from "../../assets/example_profile_picture.jpg";
 import EmptyImage from "../../assets/empty_image.png";
 
-// Form imports.
+// Form imports
 import AccountSettingsForm from "./Forms/AccountSettings_Form";
 import SiteSettingsForm from "./Forms/SiteSettings_Form";
 
-// Profile box and navigation imports.
+// Validation imports.
+import { validateAccountSettings } from "./validation/accountValidation";
+
+// Component imports
 import ProfileBox from "./ProfileBox/ProfileBox";
 import FormNavigation from "./FormNavigationMenu/FormNavigation";
 
@@ -21,26 +20,21 @@ import FormNavigation from "./FormNavigationMenu/FormNavigation";
 import DeleteAccountModal from "./modals/DeleteAccountModal";
 import LearnMoreModal from "./modals/LearnMoreModal";
 
-// Validation imports.
-import { validateAccountSettings } from "./validation/accountValidation";
-
 export default function Account() {
 
-    // ======================================== PROFILE BOX STATE LOGIC ======================================== //
     const [profileImage, setProfileImage] = useState(DefaultImage);
     const [username, setUsername] = useState('AdamD6567'); // Username Placeholder (DEMO PURPOSES).
     const userLevel = "1"; // Level Placeholder (DEMO PURPOSES).
 
-
     // ======================================== SWITCHING FORMS ======================================== //
     const [currentForm, setCurrentForm] = useState('accountSettings')
 
-    // Switch between forms on button click.
+    // Switching form handler
     const switchForm = (formName) => {
         setCurrentForm(formName);
     }
 
-    // Log out alert (DEMO PURPOSES)
+    // Log out button
     const onLogOut = () => {
         alert("Logging user out...");
     }
@@ -54,7 +48,7 @@ export default function Account() {
     const dummyPhones = ["07115201776", "07289994594", "07530773350", "07523697780", "07457319635"];
     const [dummyPassword, setDummyPassword] = useState("Password123!");
 
-    // Set the default state of the Account form.
+    // Default state of account form (DEMO PURPOSES)
     const [accountSettings, setAccountSettings] = useState({
         username: "AdamD6567",
         email: "2425290@brunel.ac.uk",
@@ -63,14 +57,14 @@ export default function Account() {
         verify_password: ""
     })
 
-    // Tracks previously submitted settings values (DEMO PURPOSES)
+    // Track previously submitted account values (DEMO PURPOSES)
     const [savedAccountSettings, setSavedAccountSettings] = useState({
         username: "AdamD6567",
         email: "2425290@brunel.ac.uk",
         phone_no: "07827753053"
     });
 
-    // Change handler when inputting values.
+    // Change handler when user is inputting values
     const setAccountSetting = field => {
         return ({ target: { value } }) => {
             setAccountSettings(prevValue => ({ ...prevValue, [field]: value }));
@@ -81,7 +75,7 @@ export default function Account() {
     const onSubmitAccountSettings = (e) => {
         e.preventDefault();
 
-        // Validate all fields in the form on submit.
+        // Validate all fields in the form on submit
         const error = validateAccountSettings(
             accountSettings,
             {
@@ -92,16 +86,16 @@ export default function Account() {
             }
         );
 
-        // Display an error if there is one.
+        // INVALID VALUES: Display an error
         if (error) {
             alert(error);
             return;
         }
 
-        // UPDATE USER DATA UPON SUCCESSFUL VALIDATION //
+        // VALID VALUES: Update user data
         setUsername(accountSettings.username);
 
-        // Only update dummy password if the user changed it.
+        // Only update password if the user has chosen to
         if (accountSettings.password.trim() != "") {
             setDummyPassword(accountSettings.password);
         }
@@ -130,7 +124,7 @@ export default function Account() {
     const onCancelAccountSettings = (e) => {
         e.preventDefault();
 
-        // Revert to previously submitted settings.
+        // Revert to previously submitted settings (DEMO PURPOSES)
         setAccountSettings({
             ...savedAccountSettings,
             password: "",
@@ -141,9 +135,10 @@ export default function Account() {
 
     }
 
-    // ======================================== DELETE ACCOUNT LOGIC ======================================== //
 
-    // Show the modal box
+    // ======================================== DELETE ACCOUNT ======================================== //
+
+    // Modal box
     const [showDeleteModal, setShowDeleteModal] = useState(false);
 
     // Delete Account button.
@@ -171,22 +166,21 @@ export default function Account() {
     }
 
 
-
     // ========================================  SITE SETTINGS FORM ======================================== //
 
-    // Default state settings (DEMO PURPOSES)
+    // Default state of site form (DEMO PURPOSES)
     const [userSiteSettings, setUserSiteSettings] = useState({
         theme: 'MindQuest Default',
         notification: 'None',
         timeZone: 'London Time'
     });
 
-    // Tracks previously submitted settings values (DEMO PURPOSES)
+    // Track previously submitted account values (DEMO PURPOSES)
     const [savedSiteSettings, setSavedSiteSettings] = useState({
         userSiteSettings
     });
 
-    // Change handler when inputting values.
+    // Change handler when user is inputting values
     const setSiteSetting = field => {
         return ({ target: { value } }) => {
             setUserSiteSettings(prevValue => ({ ...prevValue, [field]: value }));
@@ -197,7 +191,7 @@ export default function Account() {
     const onSubmitSiteSettings = (e) => {
         e.preventDefault();
 
-        // Check if the user has an associated phone number if they want to use SMS notifications.
+        // If user does not have an assoicated phone number
         if (userSiteSettings.notification == "SMS Only" && savedAccountSettings.phone_no == "" ||
             userSiteSettings.notification === "Email and SMS" && savedAccountSettings.phone_no == "") {
 
@@ -207,7 +201,7 @@ export default function Account() {
 
         }
 
-        // UPDATE USER DATA UPON SUCCESSFUL VALIDATION //
+        // VALID VALUES: Update user data
         const { theme, notification, timeZone } = userSiteSettings;
         setSavedSiteSettings(userSiteSettings);
 
@@ -219,9 +213,8 @@ export default function Account() {
     const onCancelSiteSettings = (e) => {
         e.preventDefault();
 
-        // Revert to previously submitted settings.
+        // Revert to previously submitted settings (DEMO PURPOSES)
         setUserSiteSettings(savedSiteSettings);
-
         alert("Changes cancelled, no settings changed.")
 
     }
@@ -254,7 +247,8 @@ export default function Account() {
                     <FormNavigation
                         currentForm={currentForm}
                         switchForm={switchForm}
-                        onLogOut={onLogOut} />
+                        onLogOut={onLogOut}
+                    />
 
                 </section>
 
@@ -269,7 +263,8 @@ export default function Account() {
                             onCancel={onCancelAccountSettings}
                             onDelete={() => setShowDeleteModal(true)}
 
-                        />}
+                        />
+                    }
 
                     {currentForm === 'siteSettings' &&
                         <SiteSettingsForm
@@ -278,13 +273,14 @@ export default function Account() {
                             onSubmit={onSubmitSiteSettings}
                             onCancel={onCancelSiteSettings}
                             onLearnMore={() => setShowLearnMoreModal(true)}
-                        />}
+                        />
+                    }
 
                 </section>
 
             </section>
 
-            {/* CONFIRM DELETE MODAL BOX */}
+            {/* DELETE ACCOUNT MODAL BOX */}
             <DeleteAccountModal
                 show={showDeleteModal}
                 onHide={() => setShowDeleteModal(false)}
