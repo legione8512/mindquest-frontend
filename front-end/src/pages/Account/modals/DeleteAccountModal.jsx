@@ -2,21 +2,26 @@ import { useState } from "react";
 import Button from "react-bootstrap/Button";
 import Modal from "react-bootstrap/Modal";
 import "./Modals.css";
+import "./DeleteAccountModal.css";
 
 export default function DeleteAccountModal({ show, onHide, onConfirm, dummyPassword }) {
 
-    // Password field state
     const [enteredPassword, setEnteredPassword] = useState("");
 
-    // Handler for confirming the deleting of account.
+    // Handler for confirming the deletion of an account.
     const confirmDeleteAccount = () => {
+
+        // Incorrect password entered.
         if (enteredPassword !== dummyPassword) {
             alert("Incorrect password. Account not deleted.");
             return;
         }
+
+        // Corret password entered.
         onConfirm();
         setEnteredPassword("");
         return;
+
     };
 
     // Handler for cancel button
@@ -48,7 +53,7 @@ export default function DeleteAccountModal({ show, onHide, onConfirm, dummyPassw
                 </ul>
                 <p>If you are still sure you want to delete your account, please enter your password to confirm:</p>
 
-                {/* Password field */}
+                {/* Password input */}
                 <input
                     className="deleteAccountField"
                     type="password"
@@ -59,14 +64,10 @@ export default function DeleteAccountModal({ show, onHide, onConfirm, dummyPassw
             
             </Modal.Body>
 
-            {/* Cancel and submit button */}
+            {/* Submission buttons */}
             <Modal.Footer>
-                <Button variant="secondary" onClick={handleCancel}>
-                    Cancel
-                </Button>
-                <Button variant="danger" onClick={confirmDeleteAccount}>
-                    Confirm Delete
-                </Button>
+                <Button variant="secondary" onClick={handleCancel}>Cancel</Button>
+                <Button variant="danger" onClick={confirmDeleteAccount}>Confirm Delete</Button>
             </Modal.Footer>
         </Modal >
     );

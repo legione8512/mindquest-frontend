@@ -1,0 +1,55 @@
+/* Subheadings */
+.modal-body h5 {
+    font-size: 1.2rem;
+    line-height: 2rem;
+    color: #013C58;
+}
+
+/* Upload file button */
+.uploadFileButton {
+    display: flex;
+    padding: 1rem;
+    background: #013C58;
+    color: white;
+    border: 1px solid #013C58;
+    border-radius: 5px;
+    cursor: pointer;
+    font-weight: 600;
+    transition: all 0.3s ease;
+    text-align: center;
+}
+
+/* Upload file button icon */
+.uploadFileButton i {
+    margin-right: 0.5rem;
+    margin-top: 0.15rem;
+    font-size: 1.5rem;
+}
+
+/* Upload file button animation */
+.uploadFileButton:hover {
+    background: #F5A201;
+    color: #013C58;
+    border-color: #F5A201;
+    transform: scale(1.05);
+}
+
+/* Submit Button */
+.modal-footer .btn-primary {
+    background: #013C58;
+    color: white;
+    border: none;
+    font-weight: 500;
+    border-radius: 10px;
+    transition: all 0.3s ease;
+    width: 10rem;
+    height: 2.5rem;
+}
+
+/* Submit button hover animation */
+.modal-footer .btn-primary:hover {
+    background: #F5A201;
+    color: #013C58;
+    transform: scale(1.05);
+}
+

@@ -1,0 +1,47 @@
+/********** DELETE ACCOUNT MODAL **********/
+
+/* Warning subheading */
+.modal-body h4 {
+    font-size: 1.2rem;
+    line-height: 2rem;
+    color: rgb(226, 20, 20);
+    font-weight: 600;
+    margin-bottom: 1rem;
+}
+
+/* Password Field */
+.deleteAccountField {
+    width: 100%;
+    padding: 0.7rem;
+    margin-top: 0.5rem;
+    margin-bottom: 1rem;
+    border-radius: 10px;
+    border: 1px solid #c1eef9;
+    background: #c1eef9;
+    color: #013C58;
+    font-weight: 500;
+}
+.modal-body input::placeholder {
+    color: #6db4d4;
+}
+.modal-body input:focus {
+    outline: none;
+    border: 1px solid #013C58;
+}
+
+/* Confirm Delete button */
+.modal-footer .btn-danger {
+    background: rgb(177, 0, 0);
+    color: white;
+    border: none;
+    font-weight: 500;
+    border-radius: 10px;
+    transition: all 0.3s ease;
+    width: 10rem;
+    height: 2.5rem;
+}
+.modal-footer .btn-danger:hover {
+    background: #F5A201;
+    color: black;
+    transform: scale(1.05);
+}
