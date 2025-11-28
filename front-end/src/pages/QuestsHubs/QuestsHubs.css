@@ -632,3 +632,11 @@
   font-size: 0.85rem;
   color: #555;
 }
+
+.badge.joined {
+  font-size: 0.75rem;
+  padding: 0.15rem 0.5rem;
+  border-radius: 999px;
+  background: #013c58; /* or your accent colour */
+  color: #ffffff;
+}
