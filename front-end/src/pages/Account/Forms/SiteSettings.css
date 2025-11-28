@@ -1,0 +1,63 @@
+/**************************************** SITE SETTINGS FORM ****************************************/
+
+/* Dropdown options */
+.settings_form select {
+    font-size: 0.9rem;
+    width: 100%;
+    height: 50px;
+    margin-bottom: 1.5rem;
+    padding: 0.5rem;
+    border: 1px solid rgb(196, 196, 196);
+    background: rgb(238, 238, 238);
+
+    /* Remove browser default dropdown arrow and replace with a cleaner design */
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+    background-image: url('data:image/svg+xml;utf8,<svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M6 9L12 15L18 9" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" stroke="currentColor"/></svg>');
+    background-repeat: no-repeat;
+    background-position: right 10px center;
+    background-size: 20px;
+    border-radius: 10px;
+    cursor: pointer;
+}
+
+/* Field focused */
+.settings_form select:focus {
+    outline-style: none;
+    border: 1px solid #013C58;
+}
+
+/* Verification box */
+.verification_box {
+    margin-bottom: 1.5rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border: 1px solid rgb(196, 196, 196);
+    border-radius: 10px;
+    padding: 1rem;
+}
+
+/* Verification box text */
+.verification_box h5 {
+    font-size: 1rem;
+    margin: 0;
+}
+
+/* Learn more button */
+.verification_box button {
+    background: none;
+    border: none;
+    color: blue;
+    text-decoration: underline;
+    font-size: 1rem;
+    transition: 0.3s ease;
+    margin: 0;
+}
+
+.verification_button:hover {
+    color: #F5A201;
+}
+
+

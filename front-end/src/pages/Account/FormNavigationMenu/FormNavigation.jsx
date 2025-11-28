@@ -1,3 +1,5 @@
+import "./FormNavigation.css";
+
 export default function FormNavigation({ currentForm, switchForm, onLogOut }) {
 
     return (

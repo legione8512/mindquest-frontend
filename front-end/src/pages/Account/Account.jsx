@@ -10,12 +10,12 @@ import DefaultImage from "../../assets/example_profile_picture.jpg";
 import EmptyImage from "../../assets/empty_image.png";
 
 // Form imports.
-import AccountSettingsForm from "./AccountSettings_Form";
-import SiteSettingsForm from "./SiteSettings_Form";
+import AccountSettingsForm from "./Forms/AccountSettings_Form";
+import SiteSettingsForm from "./Forms/SiteSettings_Form";
 
 // Profile box and navigation imports.
-import ProfileBox from "./ProfileBox";
-import FormNavigation from "./FormNavigation";
+import ProfileBox from "./ProfileBox/ProfileBox";
+import FormNavigation from "./FormNavigationMenu/FormNavigation";
 
 // Modal imports
 import DeleteAccountModal from "./modals/DeleteAccountModal";

@@ -1,0 +1,74 @@
+/**************************************** GENERAL FORM STYLING ****************************************/
+.site_settings_form_section,
+.account_settings_form_section {
+    width: 600px;
+    max-width: 100%;
+    align-items: center;
+    justify-content: space-between;
+    padding-top: 5rem;
+
+}
+
+/* Heading and subheading */
+.site_settings_form_top,
+.account_settings_form_top {
+    text-align: center;
+}
+.site_settings_form_top p,
+.account_settings_form_top p {
+    font-weight: 400;
+    color: grey;
+}
+
+/* Fields and buttons */
+.site_settings_form_bottom,
+.account_settings_form_bottom {
+    padding: 2rem;
+    display: flex;
+    justify-content: space-between;
+    flex-direction: column;
+}
+
+/* Field Labels */
+.settings_form h4,
+.account_settings_form h4 {
+    padding-bottom: 0.5rem;
+}
+
+/* Form bottom buttons wrapper */
+.form_buttons {
+    display: flex;
+    gap: 1rem;
+    justify-content: right;
+}
+
+/* Form Buttons */
+.form_buttons button {
+    width: 7rem;
+    height: 3rem;
+    padding: 0.5rem;
+    border-radius: 10px;
+    font-size: 1rem;
+    font-weight: 400;
+    transition: .3s ease;
+}
+#cancel {
+    background: white;
+    border: 1px solid black;
+}
+#submit {
+    background: #013C58;
+    border: none;
+    color: white;
+}
+#cancel:hover,
+#submit:hover,
+#delete_account:hover {
+    transform: scale(1.2);
+    transform-origin: center;
+    position: relative;
+    background: #F5A201;
+    color: black;
+    border: none;
+    cursor: pointer;
+}

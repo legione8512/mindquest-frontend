@@ -1,4 +1,5 @@
 import { useRef } from "react";
+import "./ProfileBox.css";
 
 export default function ProfileBox({ profileImage, setProfileImage, username, userLevel }) {
 

@@ -1,5 +1,7 @@
 import { useState } from "react";
 import { Eye, EyeOff } from "lucide-react";
+import "./AccountSettings.css";
+import "./Forms.css";
 
 export default function AccountSettingsForm({ accountSettings, setAccountSetting, onSubmit, onCancel, onDelete }) {
 
