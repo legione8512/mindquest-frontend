@@ -1,4 +1,4 @@
-/******************** Profile box ********************/
+/* Wrapper */
 .profile_box {
     position: relative;
     overflow: hidden;
@@ -14,7 +14,7 @@
     box-sizing: border-box;
 }
 
-/* PROFILE TOP SECTION: Profile picture, username, user level, and change profile picture button */
+/* Top SECTION: Profile picture, Username, Level */
 .profile_box_top {
     display: flex;
     align-items: center;
@@ -50,6 +50,7 @@
     cursor: pointer;
 }
 
+/* Change profile picture button hover animation */
 .profile_box button:hover {
     animation: rotate 0.5s ease;
     color: #F5A201;
@@ -57,13 +58,8 @@
 
 /* Rotation animation */
 @keyframes rotate {
-    0% {
-        transform: rotate(0deg);
-    }
-
-    100% {
-        transform: rotate(360deg);
-    }
+    0% {transform: rotate(0deg);}
+    100% {transform: rotate(360deg);}
 }
 
 /* Username and level wrapper */
@@ -85,9 +81,7 @@
     font-size: 1rem;
 }
 
-/* PROFILE BOTTOM SECTION: Points and streak bars */
-
-/* Bar styling */
+/* Streak and Points bar */
 .points_bar,
 .streak_bar {
     display: flex;
@@ -98,13 +92,11 @@
     background: #c1eef9;
     color: #013C58;
 }
-
-/* Streak Bar */
 .streak_bar {
     background: #F5A201;
 }
 
-/* Bar text styling */
+/* Streak and Points bar text */
 .points_bar h3,
 .streak_bar h3 {
     font-size: 1.5rem;
@@ -112,9 +104,10 @@
     margin: 0;
 }
 
-/**************************************** PAGE SCALING ON DIFFERENT SCREEN SIZES/ZOOM LEVELS ****************************************/
+/**************************************** RESPONSIVE DESIGN ****************************************/
 @media (max-width: 1100px) {
-    /******* Profile Box *******/
+
+    /* Wrapper */
     .profile_box {
         padding: 1.2rem;
         margin-top: 1rem;
@@ -144,7 +137,7 @@
         font-size: 0.7rem;
     }
 
-    /* Points and streaks bars */
+    /* Streak and Points bar */
     .points_bar,
     .streak_bar {
         padding: 0.5rem;
@@ -152,7 +145,7 @@
         border-radius: 5px;
     }
 
-    /* Points text styling */
+    /* Streak and Points bar text */
     .points_bar h3,
     .streak_bar h3 {
         font-size: 0.8rem;
@@ -169,13 +162,13 @@
         border-radius: 5px;
     }
 
-    /* Profile picture smaller */
+    /* Profile picture */
     .profile_box img {
         width: 60px;
         height: 60px;
     }
 
-    /* Profile picture "change" button aligned to smaller size */
+    /* Change profile picture button */
     .profile_box button {
         top: 3.8rem;
         left: 3.5rem;
@@ -184,16 +177,17 @@
         font-size: 1.2rem;
     }
 
-    /* Username and Level */
+    /* Username text */
     .profile_text_box h3 {
         font-size: 0.85rem;
     }
 
+    /* Level text */
     .profile_text_box p {
         font-size: 0.6rem;
     }
 
-    /* Points bar styling */
+    /* Streak and Points bar text */
     .points_bar h3,
     .streak_bar h3 {
         font-size: 0.8rem;

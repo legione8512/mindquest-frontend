@@ -1,10 +1,6 @@
-// This function is designed to validate the entered account settings in the Account page.
-// It takes in the settings entered, as well as the dummy data (demo purposes), and returns either null if all checks are passed or
-// an error message if the validation pass was not passed successfully.
-
 export function validateAccountSettings(settings, dummyData) {
 
-    // Arrays for data.
+    // Arrays for data entry.
     const { username, email, phone_no, password, verify_password } = settings;
     const { dummyUsernames, dummyEmails, dummyPhones, dummyPassword } = dummyData;
 
@@ -37,7 +33,6 @@ export function validateAccountSettings(settings, dummyData) {
     const containsLettersOrNumbers = /^(?=.*[A-Za-z\d])/;
     if (!containsLettersOrNumbers.test(username))
         return "Your username cannot only contain underscores!";
-
 
 
     // ==================== EMAIL VALIDATION ==================== //
@@ -76,6 +71,7 @@ export function validateAccountSettings(settings, dummyData) {
         }
     }
 
+
     // ==================== UPDATE PASSWORD VALIDATION ==================== //
 
     // Only validate if the field is not blank (user has chosen not to update their current password).
@@ -108,11 +104,12 @@ export function validateAccountSettings(settings, dummyData) {
         }
     }
 
+
     // ==================== VERIFY CURRENT PASSWORD ==================== //
     if (verify_password !== dummyPassword) {
         return "Your current password is incorrect.";
     }
 
-    return null; // All checks passed.
-
+    // ==================== SUCCESSFULLY VALIDATED ==================== //
+    return null; 
 }
