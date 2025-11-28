@@ -18,7 +18,6 @@ export default function AccountSettingsForm({ accountSettings, setAccountSetting
     };
 
 
-
     // ========================================  ACCOUNT SETTINGS FORM ======================================== //s
     return (
         <section className="account_settings_form_section" >
@@ -72,10 +71,9 @@ export default function AccountSettingsForm({ accountSettings, setAccountSetting
                             {/* Visibility Icon*/}
                             <span
                                 className="visibility-icon"
-                                data-testid="toggle-icon"
                                 onClick={togglePassword1Visibility}
                             >
-                                {passwordVisible1 ? <Eye size={20} /> : <EyeOff size={20} />}
+                                {passwordVisible1 ? <Eye size={25} /> : <EyeOff size={25} />}
                             </span>
                         </section>
                     </section>
@@ -93,11 +91,10 @@ export default function AccountSettingsForm({ accountSettings, setAccountSetting
 
                             {/* Visibility Icon */}
                             <span
-                                className="visibility-icon"
-                                data-testid="toggle-icon"
+                                className="visibility-icon"     
                                 onClick={togglePassword2Visibility}
                             >
-                                {passwordVisible2 ? <Eye size={20} /> : <EyeOff size={20} />}
+                                {passwordVisible2 ? <Eye size={25} /> : <EyeOff size={25} />}
                             </span>
                         </section>
                     </section>

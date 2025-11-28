@@ -13,20 +13,24 @@ export default function DeleteAccountModal({ show, onHide, onConfirm, dummyPassw
             alert("Incorrect password. Account not deleted.");
             return;
         }
-
         onConfirm();
         setEnteredPassword("");
         return;
+    };
 
+    // Handler for cancel button
+    const handleCancel = () => {
+        setEnteredPassword("");
+        onHide();
     };
 
     return (
 
-        <Modal show={show} onHide={onHide} centered>
+        <Modal show={show} onHide={handleCancel} centered size="lg">
 
             <Modal.Header>
                 <Modal.Title>Confirm Account Deletion</Modal.Title>
-                <button className="modalCloseButton" onClick={onHide}>
+                <button className="modalCloseButton" onClick={handleCancel}>
                     <i class="fa fa-times"></i>
                 </button>
             </Modal.Header>
@@ -45,6 +49,7 @@ export default function DeleteAccountModal({ show, onHide, onConfirm, dummyPassw
 
                 {/* Password field */}
                 <input
+                    className="deleteAccountField"
                     type="password"
                     placeholder="Enter password"
                     value={enteredPassword}
@@ -55,7 +60,7 @@ export default function DeleteAccountModal({ show, onHide, onConfirm, dummyPassw
 
             {/* Cancel and submit button */}
             <Modal.Footer>
-                <Button variant="secondary" onClick={onHide}>
+                <Button variant="secondary" onClick={handleCancel}>
                     Cancel
                 </Button>
                 <Button variant="danger" onClick={confirmDeleteAccount}>
