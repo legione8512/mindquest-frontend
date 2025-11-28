@@ -60,4 +60,53 @@
     color: #F5A201;
 }
 
+/**************************************** PAGE SCALING ON DIFFERENT SCREEN SIZES/ZOOM LEVELS ****************************************/
+@media (max-width: 1100px) {
 
+    /* Select fields */
+    .settings_form select {
+        font-size: 0.6rem;
+        height: 30px;
+        margin-bottom: 0.9rem;
+        border-radius: 5px;
+    }
+
+    /* Verification box */
+    .verification_box {
+        margin-bottom: 1rem;
+        padding: 0.7rem;
+        border-radius: 5px;
+    }
+
+    /* Verification box text */
+    .verification_box h5,
+    .verification_box button {
+        font-size: 0.6rem;
+        margin: 0;
+    }
+
+}
+
+/**************************************** MOBILE MODE ****************************************/
+@media (max-width: 650px) {
+
+    .settings_form select {
+        height: 32px;
+        font-size: 0.7rem;
+        font-weight: 500;
+        border-radius: 5px;
+    }
+
+    /* Verification box */
+    .verification_box {
+        padding: 0.7rem;
+        border-radius: 5px;
+    }
+
+    .verification_box h5,
+    .verification_button {
+        font-size: 0.6rem;
+    }
+
+}
+    

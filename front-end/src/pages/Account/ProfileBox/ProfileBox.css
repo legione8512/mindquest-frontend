@@ -111,3 +111,91 @@
     font-weight: 600;
     margin: 0;
 }
+
+/**************************************** PAGE SCALING ON DIFFERENT SCREEN SIZES/ZOOM LEVELS ****************************************/
+@media (max-width: 1100px) {
+    /******* Profile Box *******/
+    .profile_box {
+        padding: 1.2rem;
+        margin-top: 1rem;
+        margin-bottom: 1rem;
+        border-radius: 5px;
+    }
+
+    /* Profile picture */
+    .profile_box img {
+        width: 80px;
+        height: 80px;
+    }
+
+    /* Change profile picture button */
+    .profile_box button {
+        top: 5rem;
+        left: 4.5rem;
+    }
+
+    /* Username text */
+    .profile_text_box h3 {
+        font-size: 0.9rem;
+    }
+
+    /* Level text */
+    .profile_text_box p {
+        font-size: 0.7rem;
+    }
+
+    /* Points and streaks bars */
+    .points_bar,
+    .streak_bar {
+        padding: 0.5rem;
+        font-size: 0.8rem;
+        border-radius: 5px;
+    }
+
+    /* Points text styling */
+    .points_bar h3,
+    .streak_bar h3 {
+        font-size: 0.8rem;
+    }
+}
+
+/**************************************** MOBILE MODE ****************************************/
+@media (max-width: 650px) {
+    .profile_box {
+        width: 100%;
+        padding: 1rem;
+        margin-top: 0;
+        margin-bottom: 0.5rem;
+        border-radius: 5px;
+    }
+
+    /* Profile picture smaller */
+    .profile_box img {
+        width: 60px;
+        height: 60px;
+    }
+
+    /* Profile picture "change" button aligned to smaller size */
+    .profile_box button {
+        top: 3.8rem;
+        left: 3.5rem;
+        width: 1.3rem;
+        height: 1.3rem;
+        font-size: 1.2rem;
+    }
+
+    /* Username and Level */
+    .profile_text_box h3 {
+        font-size: 0.85rem;
+    }
+
+    .profile_text_box p {
+        font-size: 0.6rem;
+    }
+
+    /* Points bar styling */
+    .points_bar h3,
+    .streak_bar h3 {
+        font-size: 0.8rem;
+    }
+}
