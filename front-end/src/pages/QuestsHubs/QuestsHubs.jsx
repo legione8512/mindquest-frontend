@@ -144,6 +144,12 @@ const QuestsHubs = () => {
   // Local state that will hold both the initial demo hubs and any new quests
   const [hubs, setHubs] = useState(initialHubs);
 
+  // Joined hubs + team: { [hubId]: { team: string | null } }
+  const [joinedHubs, setJoinedHubs] = useState({});
+
+  // Current team selection inside the "View hub" modal
+  const [selectedTeam, setSelectedTeam] = useState("");
+
   // Modals
   const [isCreateOpen, setIsCreateOpen] = useState(false);
   const [selectedHub, setSelectedHub] = useState(null); // for "View hub" modal
@@ -176,6 +182,10 @@ const QuestsHubs = () => {
   // committed search query (applied when user clicks Apply)
   const [searchQuery, setSearchQuery] = useState("");
 
+  // -------------------------
+  // Filters & search handlers
+  // -------------------------
+
   const handleFilterChange = (e) => {
     const { name, value } = e.target;
     setFilters((prev) => ({
@@ -196,6 +206,78 @@ const QuestsHubs = () => {
     setSearchInput("");
     setSearchQuery("");
   };
+
+  // -------------------------
+  // Join / started helpers
+  // -------------------------
+
+  const hasQuestStarted = (hub) => {
+    // Guard against null so we never crash on render
+    if (!hub) return false;
+
+    // Prefer explicit start date/time if available (for newly created quests)
+    if (hub.startDate) {
+      const time =
+        hub.startTime && hub.startTime !== "" ? hub.startTime : "00:00";
+      const start = new Date(`${hub.startDate}T${time}`);
+
+      if (!Number.isNaN(start.getTime())) {
+        return start <= new Date();
+      }
+    }
+
+    // Fallback: infer from the status text for the demo hubs
+    if (typeof hub.featuredStatus === "string") {
+      const status = hub.featuredStatus.toLowerCase();
+
+      if (status.startsWith("active now")) {
+        return true; // clearly already running
+      }
+
+      if (status.startsWith("starts")) {
+        return false; // "Starts tomorrow", "Starts in 3 days", etc.
+      }
+    }
+
+    // If we can't tell, be conservative and treat it as started
+    return true;
+  };
+
+  const hasUserJoined = (hubId) => Boolean(joinedHubs[hubId]);
+
+  const getUserTeamForHub = (hubId) => joinedHubs[hubId]?.team ?? null;
+
+  const handleJoinHub = (hub) => {
+    if (!hub) return;
+
+    // Block joining if already started or already joined
+    if (hasQuestStarted(hub) || hasUserJoined(hub.id)) {
+      return;
+    }
+
+    // Only require team choice if this is a Team quest with named teams
+    const isTeamQuestWithTags =
+      hub.type === "Team" && hub.tags && hub.tags.length > 0;
+
+    let team = null;
+
+    if (isTeamQuestWithTags) {
+      if (!selectedTeam) {
+        // Button is already disabled in this state; guard anyway
+        return;
+      }
+      team = selectedTeam;
+    }
+
+    setJoinedHubs((prev) => ({
+      ...prev,
+      [hub.id]: { team },
+    }));
+  };
+
+  // -------------------------
+  // Form handlers
+  // -------------------------
 
   // Generic handler for simple fields
   const handleChange = (e) => {
@@ -251,6 +333,7 @@ const QuestsHubs = () => {
 
   const closeHubModal = () => {
     setSelectedHub(null);
+    setSelectedTeam("");
   };
 
   const handleCreateQuest = (e) => {
@@ -309,6 +392,9 @@ const QuestsHubs = () => {
       type: formData.mode,
       tags,
       progressText: "",
+      // raw start info so we can check if it has started
+      startDate: formData.startDate || null,
+      startTime: formData.startTime || "",
     };
 
     setHubs((prev) => [newHub, ...prev]); // show newly created quests first
@@ -319,7 +405,10 @@ const QuestsHubs = () => {
     headerImageOptions.find((opt) => opt.id === formData.imageKey) ||
     headerImageOptions[0];
 
-  // Apply filters, search, and sorting
+  // -------------------------
+  // Apply filters, search, sorting
+  // -------------------------
+
   const filteredHubs = hubs.filter((hub) => {
     // Quest mode
     if (filters.mode === "Team" && hub.type !== "Team") return false;
@@ -369,6 +458,10 @@ const QuestsHubs = () => {
     // placeholder – no location data yet, so same as Popularity
   }
 
+  // -------------------------
+  // Render
+  // -------------------------
+
   return (
     <>
       {/* Banner like Account page, sits under the site header */}
@@ -376,7 +469,7 @@ const QuestsHubs = () => {
         <img src={QuestsBanner} className="quests_banner" alt="Quests banner" />
 
         <section className="quests_banner_title">
-          <h1>Quests & Hubs</h1>
+          <h1>Quests &amp; Hubs</h1>
         </section>
       </section>
 
@@ -487,60 +580,75 @@ const QuestsHubs = () => {
         </section>
 
         {/* Hubs grid */}
-        <section className="hubs-grid">
-          {displayedHubs.map((hub) => (
-            <article key={hub.id} className="hub-card">
-              <div className="hub-image-wrapper">
-                <img
-                  src={hub.image}
-                  alt={`${hub.name} cover`}
-                  className="hub-cover-image"
-                />
-              </div>
+<section className="hubs-grid">
+  {displayedHubs.map((hub) => {
+    const joined = hasUserJoined(hub.id);
+    const teamName = getUserTeamForHub(hub.id);
 
-              <div className="hub-card-body">
-                <div className="hub-title-row">
-                  <h2>{hub.name}</h2>
-                  {hub.verified && (
-                    <span className="badge verified">Verified</span>
-                  )}
-                </div>
+    return (
+      <article key={hub.id} className="hub-card">
+        <div className="hub-image-wrapper">
+          <img
+            src={hub.image}
+            alt={`${hub.name} cover`}
+            className="hub-cover-image"
+          />
+        </div>
 
-                <p className="hub-description">{hub.description}</p>
+        <div className="hub-card-body">
+          <div className="hub-title-row">
+            <h2>{hub.name}</h2>
 
-                <div className="feature-block">
-                  <p className="feature-label">Featured challenge:</p>
-                  <p className="feature-title">{hub.featuredTitle}</p>
-                  <p className="feature-status">{hub.featuredStatus}</p>
-                  <p className="feature-text">{hub.featuredText}</p>
-                </div>
+            {hub.verified && (
+              <span className="badge verified">Verified</span>
+            )}
 
-                <div className="hub-meta-row">
-                  <span className="pill">{hub.frequency}</span>
-                  <span className="pill">{hub.type}</span>
-                </div>
+            {joined && (
+              <span className="badge joined">
+                Joined{teamName ? ` – ${teamName}` : ""}
+              </span>
+            )}
+          </div>
 
-                {hub.tags && hub.tags.length > 0 && (
-                  <p className="hub-tags">{hub.tags.join(" · ")}</p>
-                )}
+          <p className="hub-description">{hub.description}</p>
 
-                {hub.progressText && (
-                  <p className="hub-progress">{hub.progressText}</p>
-                )}
+          <div className="feature-block">
+            <p className="feature-label">Featured challenge:</p>
+            <p className="feature-title">{hub.featuredTitle}</p>
+            <p className="feature-status">{hub.featuredStatus}</p>
+            <p className="feature-text">{hub.featuredText}</p>
+          </div>
 
-                <div className="hub-card-footer">
-                  <button
-                    type="button"
-                    className="secondary-btn"
-                    onClick={() => setSelectedHub(hub)}
-                  >
-                    View hub
-                  </button>
-                </div>
-              </div>
-            </article>
-          ))}
-        </section>
+          <div className="hub-meta-row">
+            <span className="pill">{hub.frequency}</span>
+            <span className="pill">{hub.type}</span>
+          </div>
+
+          {hub.tags && hub.tags.length > 0 && (
+            <p className="hub-tags">{hub.tags.join(" · ")}</p>
+          )}
+
+          {hub.progressText && (
+            <p className="hub-progress">{hub.progressText}</p>
+          )}
+
+          <div className="hub-card-footer">
+            <button
+              type="button"
+              className="secondary-btn"
+              onClick={() => {
+                setSelectedHub(hub);
+                setSelectedTeam("");
+              }}
+            >
+              View hub
+            </button>
+          </div>
+        </div>
+      </article>
+    );
+  })}
+</section>
       </main>
 
       {/* CREATE QUEST MODAL */}
@@ -888,11 +996,46 @@ const QuestsHubs = () => {
                 <p className="feature-text">{selectedHub.featuredText}</p>
               </div>
 
-              {/* Teams / tags */}
+              {/* Teams / tags and team join UI */}
               {selectedHub.tags && selectedHub.tags.length > 0 && (
-                <p className="hub-tags" style={{ marginBottom: "1rem" }}>
-                  Teams: {selectedHub.tags.join(" · ")}
-                </p>
+                <div
+                  className="hub-teams-block"
+                  style={{ marginBottom: "1rem" }}
+                >
+                  <p className="hub-tags">
+                    Teams: {selectedHub.tags.join(" · ")}
+                  </p>
+
+                  {selectedHub.type === "Team" && (
+                    <>
+                      {hasUserJoined(selectedHub.id) ? (
+                        <p className="hub-joined-team">
+                          You are in{" "}
+                          <strong>{getUserTeamForHub(selectedHub.id)}</strong>.
+                          Your team choice is locked for this quest.
+                        </p>
+                      ) : (
+                        <div className="hub-team-select-row">
+                          <label htmlFor="teamSelect">
+                            Choose your team to join
+                          </label>
+                          <select
+                            id="teamSelect"
+                            value={selectedTeam}
+                            onChange={(e) => setSelectedTeam(e.target.value)}
+                          >
+                            <option value="">Select a team…</option>
+                            {selectedHub.tags.map((team) => (
+                              <option key={team} value={team}>
+                                {team}
+                              </option>
+                            ))}
+                          </select>
+                        </div>
+                      )}
+                    </>
+                  )}
+                </div>
               )}
 
               {selectedHub.progressText && (
@@ -909,10 +1052,53 @@ const QuestsHubs = () => {
                 >
                   Close
                 </button>
-                <button type="button" className="primary-btn">
-                  Join quest
-                </button>
+
+                {(() => {
+                  const started = hasQuestStarted(selectedHub);
+                  const joined = hasUserJoined(selectedHub.id);
+                  const teamName = getUserTeamForHub(selectedHub.id);
+
+                  const needsTeamSelection =
+                    selectedHub.type === "Team" &&
+                    selectedHub.tags &&
+                    selectedHub.tags.length > 0 &&
+                    !joined &&
+                    !started;
+
+                  const disabled =
+                    started || joined || (needsTeamSelection && !selectedTeam);
+
+                  let label = "Join quest";
+
+                  if (started) {
+                    label = "Quest started";
+                  } else if (joined) {
+                    label = teamName ? `Joined – ${teamName}` : "Joined";
+                  } else if (needsTeamSelection && !selectedTeam) {
+                    label = "Choose a team to join";
+                  } else if (needsTeamSelection && selectedTeam) {
+                    label = `Join ${selectedTeam}`;
+                  }
+
+                  return (
+                    <button
+                      type="button"
+                      className="primary-btn"
+                      disabled={disabled}
+                      onClick={() => handleJoinHub(selectedHub)}
+                    >
+                      {label}
+                    </button>
+                  );
+                })()}
               </footer>
+
+              {hasQuestStarted(selectedHub) && (
+                <p className="hub-join-message">
+                  This quest has already started. You can still view the hub
+                  details, but joining is closed.
+                </p>
+              )}
             </div>
           </div>
         </div>
