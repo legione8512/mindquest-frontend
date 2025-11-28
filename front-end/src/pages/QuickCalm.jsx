@@ -5,6 +5,8 @@ import relaxation from "../assets/relaxation.jpeg";
 import breathing from "../assets/breathing.jpg";
 import musclerelaxation from "../assets/musclerelaxation.jpg";
 import meditation from "../assets/meditation.jpeg";
+import forest from "../assets/forest.webp";
+
 
 
 import "./quickcalm.css";
@@ -30,7 +32,7 @@ export default function QuickCalm() {
     {
       id: 2,
       title: "Body Scan Meditation",
-      category: "meditation exercise",
+      category: "meditation",
       description: "A short body scan to calm your mind.",
       duration: "5 min",
       points: 5,
@@ -84,7 +86,11 @@ export default function QuickCalm() {
     <main className="quickcalm-container">
 
       {/* Page Title */}
-      <section className="qc-header">
+      
+      <section 
+       className="qc-hero"
+       style={{ backgroundImage: `url(${forest})` }}
+      >
         <h1>QuickCalm</h1>
         <p>Simple exercises to help you relax anytime</p>
       </section>

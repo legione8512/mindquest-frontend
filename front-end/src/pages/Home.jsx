@@ -1,10 +1,10 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import "./home.css";
-import relax from '../assets/relax.png';
-import smile from '../assets/smile.png';
-import books from '../assets/books.png'; 
-import people from '../assets/people.jpg';
+import relax from "../assets/relax.png";
+import smile from "../assets/smile.png";
+import books from "../assets/books.png"; 
+import people from "../assets/people.jpg";
 
 
 export default function Home() {
