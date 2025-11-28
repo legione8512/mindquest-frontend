@@ -5,33 +5,33 @@ import "./Forms.css";
 
 export default function AccountSettingsForm({ accountSettings, setAccountSetting, onSubmit, onCancel, onDelete }) {
 
-    // Toggle visibility function for password fields
-    const [passwordVisible1, setPasswordVisible1] = useState(false); // Update pass field.
-    const [passwordVisible2, setPasswordVisible2] = useState(false); // Verify pass field.
+    // Toggle visibility of password fields
+    const [passwordVisible1, setPasswordVisible1] = useState(false);
+    const [passwordVisible2, setPasswordVisible2] = useState(false);
 
-    // Update Password field
+    // Update field
     const togglePassword1Visibility = () => {
         setPasswordVisible1(visibile => !visibile);
     };
 
-    // Verify Password field
+    // Verify field
     const togglePassword2Visibility = () => {
         setPasswordVisible2(visible => !visible);
     };
 
 
-    // ========================================  ACCOUNT SETTINGS FORM ======================================== //s
+    // ========================================  ACCOUNT SETTINGS FORM ======================================== //
     return (
-        <section className="account_settings_form_section" >
+        <section className="form_section" >
 
-            {/* HEADING AND SUBHEADING */}
-            <section className="account_settings_form_top" >
+            {/* FORM HEADING AND SUBHEADING */}
+            <section className="form_header" >
                 <h2>Your Settings</h2>
                 <p>Account settings</p>
             </section>
 
-            {/* TEXT FIELDS */}
-            < section className="account_settings_form_bottom" >
+            {/* INPUT FIELDS */}
+            < section className="form_fields">
                 <form className="account_settings_form" onSubmit={onSubmit}>
 
                     {/* UserName */}
@@ -77,6 +77,7 @@ export default function AccountSettingsForm({ accountSettings, setAccountSetting
                             >
                                 {passwordVisible1 ? <Eye size={25} /> : <EyeOff size={25} />}
                             </span>
+
                         </section>
                     </section>
 
@@ -98,10 +99,11 @@ export default function AccountSettingsForm({ accountSettings, setAccountSetting
                             >
                                 {passwordVisible2 ? <Eye size={25} /> : <EyeOff size={25} />}
                             </span>
+
                         </section>
                     </section>
 
-                    {/* Submit and cancel button section */}
+                    {/* Submission buttons section */}
                     <section className="form_buttons">
                         <button type="button" id="delete_account" onClick={onDelete}>Delete Account</button>
                         <button type="button" id="cancel" onClick={onCancel}>Cancel</button>

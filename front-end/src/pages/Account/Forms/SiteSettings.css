@@ -1,7 +1,5 @@
-/**************************************** SITE SETTINGS FORM ****************************************/
-
 /* Dropdown options */
-.settings_form select {
+.site_settings_form select {
     font-size: 0.9rem;
     width: 100%;
     height: 50px;
@@ -10,7 +8,7 @@
     border: 1px solid rgb(196, 196, 196);
     background: rgb(238, 238, 238);
 
-    /* Remove browser default dropdown arrow and replace with a cleaner design */
+    /* Remove default browser arrow and replace with cleaner version */
     -webkit-appearance: none;
     -moz-appearance: none;
     appearance: none;
@@ -22,13 +20,13 @@
     cursor: pointer;
 }
 
-/* Field focused */
-.settings_form select:focus {
+/* Dropdown focused */
+.site_settings_form select:focus {
     outline-style: none;
     border: 1px solid #013C58;
 }
 
-/* Verification box */
+/* Verify account section */
 .verification_box {
     margin-bottom: 1.5rem;
     display: flex;
@@ -39,7 +37,7 @@
     padding: 1rem;
 }
 
-/* Verification box text */
+/* Verify account section text */
 .verification_box h5 {
     font-size: 1rem;
     margin: 0;
@@ -56,29 +54,30 @@
     margin: 0;
 }
 
+/* Learn more hover animation */
 .verification_button:hover {
     color: #F5A201;
 }
 
-/**************************************** PAGE SCALING ON DIFFERENT SCREEN SIZES/ZOOM LEVELS ****************************************/
+/**************************************** RESPONSIVE DESIGN ****************************************/
 @media (max-width: 1100px) {
 
-    /* Select fields */
-    .settings_form select {
+    /* Dropdown options */
+    .site_settings_form select {
         font-size: 0.6rem;
         height: 30px;
         margin-bottom: 0.9rem;
         border-radius: 5px;
     }
 
-    /* Verification box */
+    /* Verify account section */
     .verification_box {
         margin-bottom: 1rem;
         padding: 0.7rem;
         border-radius: 5px;
     }
 
-    /* Verification box text */
+    /* Verify account section text */
     .verification_box h5,
     .verification_box button {
         font-size: 0.6rem;
@@ -90,19 +89,21 @@
 /**************************************** MOBILE MODE ****************************************/
 @media (max-width: 650px) {
 
-    .settings_form select {
+    /* Dropdown options */
+    .site_settings_form select {
         height: 32px;
         font-size: 0.7rem;
         font-weight: 500;
         border-radius: 5px;
     }
 
-    /* Verification box */
+    /* Verify account section */
     .verification_box {
         padding: 0.7rem;
         border-radius: 5px;
     }
 
+    /* Verify account section text */
     .verification_box h5,
     .verification_button {
         font-size: 0.6rem;

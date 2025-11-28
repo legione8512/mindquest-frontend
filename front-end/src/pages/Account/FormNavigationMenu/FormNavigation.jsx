@@ -19,7 +19,7 @@ export default function FormNavigation({ currentForm, switchForm, onLogOut }) {
                 Site Settings
             </button>
 
-            {/* Logout Settings Button */}
+            {/* Logout Button */}
             <button onClick={onLogOut}>Logout</button>
         </section>
     );

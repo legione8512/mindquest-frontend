@@ -1,6 +1,6 @@
 /**************************************** ACCOUNT SETTINGS FORM ****************************************/
 
-/* Text fields */
+/* Input fields */
 .account_settings_form input {
     font-weight: 600;
     font-size: 0.9rem;
@@ -28,7 +28,7 @@
     color: #013C58;
 }
 
-/* Field focused */
+/* Input field is focused */
 .account_settings_form input:focus {
     outline-style: none;
     border: 1px solid #013C58;
@@ -44,9 +44,10 @@
     color: white;
 }
 
-/**************************************** PAGE SCALING ON DIFFERENT SCREEN SIZES/ZOOM LEVELS ****************************************/
+/**************************************** RESPONSIVE DESIGN ****************************************/
 @media (max-width: 1100px) {
 
+    /* Input fields */
     .account_settings_form input {
         font-size: 0.6rem;
         height: 30px;
@@ -60,39 +61,17 @@
         right: 0.5rem;
         transform: translateY(-50%);
     }
-
     .visibility-icon svg {
         width: 16px;
         height: 16px;
-    }
-
-    /* Form buttons wrapper */
-    .form_buttons {
-        gap: 0.5rem;
-    }
-
-    /* Form Buttons */
-    .form_buttons button,
-    #delete_account,
-    #cancel,
-    #submit {
-        width: 7rem;
-        height: 2rem;
-        padding: 0.2rem;
-        font-size: 0.6rem;
-        border-radius: 5px;
-    }
-
-    #cancel:hover,
-    #submit:hover,
-    #delete_account:hover {
-        transform: none;
     }
 
 }
 
 /**************************************** MOBILE MODE ****************************************/
 @media (max-width: 650px) {
+
+    /* Input fields */
     .account_settings_form input {
         height: 32px;
         font-size: 0.7rem;
@@ -105,12 +84,8 @@
         bottom: 0.6rem;
         transform: translateY(-50%);
     }
-
     .visibility-icon svg {
         width: 14px;
         height: 14px;
     }
-
-    
-
 }

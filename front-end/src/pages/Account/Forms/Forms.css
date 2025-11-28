@@ -1,6 +1,5 @@
-/**************************************** GENERAL FORM STYLING ****************************************/
-.site_settings_form_section,
-.account_settings_form_section {
+/* Form body */
+.form_section {
     width: 600px;
     max-width: 100%;
     align-items: center;
@@ -10,39 +9,36 @@
 }
 
 /* Heading and subheading */
-.site_settings_form_top,
-.account_settings_form_top {
+.form_header {
     text-align: center;
 }
-.site_settings_form_top p,
-.account_settings_form_top p {
+.form_header p {
     font-weight: 400;
     color: grey;
 }
 
-/* Fields and buttons */
-.site_settings_form_bottom,
-.account_settings_form_bottom {
+/* Fields and Input section */
+.form_fields {
     padding: 2rem;
     display: flex;
     justify-content: space-between;
     flex-direction: column;
 }
 
-/* Field Labels */
+/* Fields and Input labels */
 .settings_form h4,
 .account_settings_form h4 {
     padding-bottom: 0.5rem;
 }
 
-/* Form bottom buttons wrapper */
+/* Submission buttons wrapper */
 .form_buttons {
     display: flex;
     gap: 1rem;
     justify-content: right;
 }
 
-/* Form Buttons */
+/* Submission buttons */
 .form_buttons button {
     width: 7rem;
     height: 3rem;
@@ -61,6 +57,8 @@
     border: none;
     color: white;
 }
+
+/* Button Hover animation */
 #cancel:hover,
 #submit:hover,
 #delete_account:hover {
@@ -76,27 +74,23 @@
 /**************************************** PAGE SCALING ON DIFFERENT SCREEN SIZES/ZOOM LEVELS ****************************************/
 @media (max-width: 1100px) {
 
-    /************** FORM SECTION **************/
-    .site_settings_form_section,
-    .account_settings_form_section {
+    /* Form body */
+    .form_section {
         max-width: 400px;
         padding-top: 1rem;
     }
 
-    .site_settings_form_bottom,
-    .account_settings_form_bottom {
-        padding: 1rem;
-    }
-
     /* Form header and subheader */
-    .site_settings_form_top h2,
-    .account_settings_form_top h2 {
+    .form_header h2 {
         font-size: 1rem;
     }
-
-    .site_settings_form_top p,
-    .account_settings_form_top p {
+    .form_header p {
         font-size: 0.8rem;
+    }
+
+    /* Fields and Input section */
+    .form_fields {
+        padding: 1rem;
     }
 
     /* Field Labels */
@@ -105,13 +99,37 @@
         font-size: 0.7rem;
     }
 
+    /* Submission buttons wrapper */
+    .form_buttons {
+        gap: 0.5rem;
+    }
+
+    /* Submission buttons */
+    .form_buttons button,
+    #delete_account,
+    #cancel,
+    #submit {
+        width: 7rem;
+        height: 2rem;
+        padding: 0.2rem;
+        font-size: 0.6rem;
+        border-radius: 5px;
+    }
+
+    /* Remove button hover animation */
+    #cancel:hover,
+    #submit:hover,
+    #delete_account:hover {
+        transform: none;
+    }
+
 }
 
 /**************************************** MOBILE MODE ****************************************/
 @media (max-width: 650px) {
 
-    .site_settings_form_section,
-    .account_settings_form_section {
+    /* Form body */
+    .form_section {
         max-width: 100vw;
         margin: 0 auto;
         box-sizing: border-box;
@@ -119,17 +137,14 @@
     }
 
     /* Heading and subheadings */
-    .site_settings_form_top h2,
-    .account_settings_form_top h2 {
+    .form_top_wrapper h2 {
         font-size: 1.1rem;
     }
-
-    .site_settings_form_top p,
-    .account_settings_form_top p {
+    .form_top_wrapper p {
         font-size: 0.75rem;
     }
 
-    /* Form Buttons */
+    /* Submission buttons */
     .form_buttons,
     #delete_account,
     #cancel,
@@ -138,15 +153,4 @@
         flex-direction: column-reverse;
         gap: 0.6rem;
     }
-    #cancel:hover,
-    #submit:hover,
-    #delete_account:hover {
-        transform: none;
-        background: #F5A201;
-        color: black;
-        border: none;
-        cursor: pointer;
-    }
-
 }
-
