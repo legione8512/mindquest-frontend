@@ -2,7 +2,20 @@
 .modal-body h5 {
     font-size: 1.2rem;
     line-height: 2rem;
+    color: black;
+    font-weight: 600;
+    padding-left: 1.25rem;
+}
+
+/* List text */
+.learnMoreList li {
+    font-weight: 500;
     color: #013C58;
+}
+
+/* Text */
+.modal-body p {
+    font-weight: 500;
 }
 
 /* Upload file button */

@@ -7,18 +7,17 @@
 /* Wrapper */
 .modal-content {
     background: white;
-    border-radius: 5;
+    border-radius: 10px;
     border: 1px solid #013C58;
-    padding: 2rem;
     box-shadow: 0 8px 25px rgba(0, 0, 0, 0.4);
     z-index: 3000;
 }
 
 /* Header */
 .modal-header {
-    padding-top: 0;
     border-bottom: 1px solid #013C58;
-    color: #013C58;
+    background: #013C58;
+    color: white;
     font-weight: 600;
 }
 
@@ -28,7 +27,7 @@
     right: 1rem;
     top: 0.8rem;
     font-size: 2.3rem;
-    color: #013C58;
+    color: white;
     border: none;
     background: none;
     cursor: pointer;
@@ -52,29 +51,29 @@
 
 /* Text */
 .modal-body p {
-    font-weight: 600;
-    color: #013C58;
+    font-weight: 500;
+    color: black;
+    padding-left: 1.4rem;
 }
 
 /* List text */
 .modal-body ul {
-    padding-left: 2rem;
-    color: #F5A201;
+    padding-left: 4rem;
+    color: #013C58;
 }
 .modal-body li {
     margin-bottom: 0.5rem;
-    padding-left: 1rem;
+    padding-left: 0.5rem;
     line-height: 2rem;
-    font-weight: 500;
+    font-weight: 600;
 }
 
 /* Footer */
 .modal-footer {
-    border-top: 1px solid #F5A201;
+    border-top: none;
     display: flex;
     justify-content: space-between;
-    padding-bottom: 0;
-    padding-top: 1.5rem;
+    padding-bottom: 1.5rem;
 }
 
 /* Cancel button */

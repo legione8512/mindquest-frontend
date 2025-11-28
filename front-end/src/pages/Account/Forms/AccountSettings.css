@@ -18,6 +18,9 @@
 .password-field {
     position: relative;
 }
+.password-field input::placeholder {
+    color: rgb(196, 196, 196);
+}
 
 /* Password visibility button */
 .visibility-icon {
@@ -37,7 +40,7 @@
 
 /* Delete account button */
 #delete_account {
-    background: rgb(177, 0, 0);
+    background: red;
     width: 150px;
     margin-right: auto;
     border: none;

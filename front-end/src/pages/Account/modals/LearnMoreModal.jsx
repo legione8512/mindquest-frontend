@@ -57,9 +57,9 @@ export default function VerifyAccountModal({ show, onHide }) {
             </Modal.Header>
 
             <Modal.Body>
-                <h5>What does account verification mean?:</h5>
+                <h5>What does account verification mean?</h5>
 
-                <ul>
+                <ul className="learnMoreList">
                     <li>Your account will be recognised as an official partnered mental health organisation throughout the site.</li>
                     <li>You will be able to create local hubs & events for users to join.</li>
                     <li>You will be able to create quests and challenges for users.</li>
@@ -68,16 +68,15 @@ export default function VerifyAccountModal({ show, onHide }) {
 
                 <h5>What do you need to do to get verified?</h5>
                 <p>Upload a PDF with the following information: </p>
-                <ul>
-                    <li>Your organisation's name.</li>
+                <ul className="learnMoreList">
+                    <li>Your organisation's name with a brief description.</li>
                     <li>Your organisation's proof of address.</li>
-                    <li>Your organisation's Business License</li>
-                    <li>A brief description of what your organisation does, and why you want verification on MindQuest.</li>
+                    <li>Your organisation's Business License.</li>
                 </ul>
 
                 {/* Upload button */}
                 <label htmlFor="uploadFile" className="uploadFileButton">
-                    <i className="fa fa-upload"></i> Upload PDF File
+                    <i className="fa fa-upload"></i> Upload .PDF
                 </label>
                 <input
                     id="uploadFile"

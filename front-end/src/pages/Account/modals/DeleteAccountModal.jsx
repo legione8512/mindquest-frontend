@@ -42,7 +42,10 @@ export default function DeleteAccountModal({ show, onHide, onConfirm, dummyPassw
             </Modal.Header>
 
             <Modal.Body>
-                <h4>Warning: Deleting your account will remove all your stored data!</h4>
+                <section className="warningSection">
+                    <h4>Warning: Deleting your account will remove all your stored data!</h4>
+                </section>
+
                 <p>This includes losing access to:</p>
                 <ul>
                     <li>Your Streaks</li>
@@ -61,7 +64,7 @@ export default function DeleteAccountModal({ show, onHide, onConfirm, dummyPassw
                     value={enteredPassword}
                     onChange={(e) => setEnteredPassword(e.target.value)}
                 />
-            
+
             </Modal.Body>
 
             {/* Submission buttons */}
