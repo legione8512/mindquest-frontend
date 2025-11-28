@@ -27,8 +27,8 @@ export default function Account() {
 
     // ======================================== PROFILE BOX STATE LOGIC ======================================== //
     const [profileImage, setProfileImage] = useState(DefaultImage);
-    const [username, setUsername] = useState('AdamD6567');
-    const [userLevel, setUserLevel] = useState('1');
+    const [username, setUsername] = useState('AdamD6567'); // Username Placeholder (DEMO PURPOSES).
+    const userLevel = "1"; // Level Placeholder (DEMO PURPOSES).
 
 
     // ======================================== SWITCHING FORMS ======================================== //
