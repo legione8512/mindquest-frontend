@@ -1,6 +1,7 @@
 import { useState } from "react";
 import LearningBanner from "../../assets/friends_learning.jpg";
 import { topics } from "./TopicData/Topics";
+import TopicCard from "./TopicCard";
 import "./Learning.css";
 
 export default function Learning() {
@@ -35,25 +36,16 @@ export default function Learning() {
             <section className="topic_cards_section">
 
                 {topics.map((topic) => (
-                    <section className="topic_card_wrapper" key={topic.id}>
 
-                        {/* Topic card button */}
-                        <section className="topic_card" onClick={() => toggleDropdown(topic.key)}>
-                            <h2>{topic.title}</h2>
-                        </section>
+                    <TopicCard
+                        key={topic.id}
+                        topic={topic}
+                        openDropdown={openDropdown}
+                        toggleDropdown={toggleDropdown}
+                    />
 
-                        {/* Topic card dropdown menu */}
-                        {openDropdown === topic.key && (
-                            <ul className="topic_dropdown_menu">
-                                {topic.links.map((text, index) => (
-                                    <li key={index}>
-                                        <a href="#">{text}</a>
-                                    </li>
-                                ))}
-                            </ul>
-                        )}
-                    </section>
                 ))}
+
             </section>
         </>
     );
