@@ -43,25 +43,47 @@ export default function Learning() {
                     {openDropdown === "anxiety" && (
                         <ul className="topic_dropdown_menu">
                             <li><a href="">What is Anxiety?</a></li>
-                            <li><a href="">Symptoms & Signs</a></li>
-                            <li><a href="">Coping Strategies</a></li>
+                            <li><a href="">Symptoms & Signs of Anxiety</a></li>
+                            <li><a href="">Coping Strategies for Anxiety</a></li>
                         </ul>
                     )}
+
                 </section>
 
                 {/* Depression Card*/}
                 <section className="topic_card_wrapper">
-                    <section className="topic_card">
+                    <section className="topic_card" onClick={() => toggleDropdown("depression")}>
                         <h2>Depression</h2>
                     </section>
+
+                    {/* Depression Dropdown menu */}
+                    {openDropdown === "depression" && (
+                        <ul className="topic_dropdown_menu">
+                            <li><a href="">What is Depression?</a></li>
+                            <li><a href="">Symptoms & Signs of Depression</a></li>
+                            <li><a href="">Coping Strategies for Depression</a></li>
+                        </ul>
+                    )}
+
                 </section>
 
 
                 {/* PTSD Card */}
                 <section className="topic_card_wrapper">
-                    <section className="topic_card">
+                    <section className="topic_card" onClick={() => toggleDropdown("PTSD")}>
                         <h2>Post-traumatic stress disorder (PTSD)</h2>
                     </section>
+
+                    {/* Depression Dropdown menu */}
+                    {openDropdown === "PTSD" && (
+                        <ul className="topic_dropdown_menu">
+                            <li><a href="">What is Post-Traumatic Stress Disorder (PTSD)?</a></li>
+                            <li><a href="">Symptoms & Signs of Post-Traumatic Stress Disorder (PTSD)</a></li>
+                            <li><a href="">Coping Strategies for Post-Traumatic Stress Disorder (PTSD)</a></li>
+                        </ul>
+                    )}
+
+
                 </section>
 
             </section>

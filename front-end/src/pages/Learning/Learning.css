@@ -85,7 +85,7 @@
     color: #013C58;
     text-align: center;
     padding: 1.2rem;
-    border: 1px solid #013C58;
+    border: 1px 1px solid #013C58;
     width: 1500px;
     max-width: 100%;
     transition: .3s ease;
