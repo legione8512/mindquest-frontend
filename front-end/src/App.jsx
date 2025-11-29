@@ -1,5 +1,5 @@
-import { useState } from 'react'
-import { BrowserRouter as Router, Routes, Route } from 'react-router-dom'
+import { useState } from "react";
+import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 
 /* Import for navigation bar and sidebar */
 import Navigation from "./components/navigation/navigation.jsx";
@@ -28,8 +28,8 @@ function App() {
   return (
     // Navigation between pages
     <Router>
-      <Navigation toggleSidebar={toggleSidebar}/>
-      <Sidebar isOpen={isOpen} toggleSidebar={toggleSidebar}/>
+      <Navigation toggleSidebar={toggleSidebar} />
+      <Sidebar isOpen={isOpen} toggleSidebar={toggleSidebar} />
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/dashboard" element={<Dashboard />} />
@@ -41,7 +41,7 @@ function App() {
       </Routes>
       <Footer />
     </Router>
-  )
+  );
 }
 
-export default App
+export default App;
