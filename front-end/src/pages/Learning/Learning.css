@@ -57,27 +57,44 @@
 }
 
 /********** TOPIC CARDS **********/
-.topic_cards_wrapper {
+
+/* Wrapper for the topic cards section */
+.topic_cards_section {
     display: flex;
     flex-direction: column;
     align-items: center;
-    gap: 0;
-    padding: 2rem;
+    padding: 1rem;
     width: 100%;
+}
+
+/* Wrapper for each card */
+.topic_card_wrapper {
+    width: 100%;
+    max-width: 1500px;
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 1.5rem;
 }
 
 /* Topic card content */
 .topic_card {
+    display: flex;
+    justify-content: center;
+    align-items: center;
     background: #c1eef9;
     color: #013C58;
     text-align: center;
-    padding: 1.5rem;
+    padding: 1.2rem;
     border: 1px solid #013C58;
-    border-bottom: none;
     width: 100%;
     width: 1500px;
     transition: .3s ease;
     cursor: pointer;
+}
+
+.topic_card h2 {
+    font-size: 1.5rem;
+    margin: auto;
 }
 
 /* Topic card hover animation */

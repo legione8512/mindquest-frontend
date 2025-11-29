@@ -31,30 +31,39 @@ export default function Learning() {
             </section>
 
             {/* TOPIC CARDS */}
-            <section className="topic_cards_wrapper">
+            <section className="topic_cards_section">
 
                 {/* Anxiety Card */}
-                <section className="topic_card" onClick={() => toggleDropdown("anxiety")}>
-                    <h2>Anxiety</h2>
-                </section>
+                <section className="topic_card_wrapper">
+                    <section className="topic_card" onClick={() => toggleDropdown("anxiety")}>
+                        <h2>Anxiety</h2>
+                    </section>
 
-                {openDropdown === "anxiety" && (
-                    <ul className="topic_dropdown_menu">
-                        <li><a href="">What is Anxiety?</a></li>
-                        <li><a href="">Symptoms & Signs</a></li>
-                        <li><a href="">Coping Strategies</a></li>
-                    </ul>
-                )}
+                    {/* Anxiety Dropdown menu */}
+                    {openDropdown === "anxiety" && (
+                        <ul className="topic_dropdown_menu">
+                            <li><a href="">What is Anxiety?</a></li>
+                            <li><a href="">Symptoms & Signs</a></li>
+                            <li><a href="">Coping Strategies</a></li>
+                        </ul>
+                    )}
+                </section>
 
                 {/* Depression Card*/}
-                <section className="topic_card">
-                    <h2>Depression</h2>
+                <section className="topic_card_wrapper">
+                    <section className="topic_card">
+                        <h2>Depression</h2>
+                    </section>
                 </section>
 
+
                 {/* PTSD Card */}
-                <section className="topic_card">
-                    <h2>Post-traumatic stress disorder (PTSD)</h2>
+                <section className="topic_card_wrapper">
+                    <section className="topic_card">
+                        <h2>Post-traumatic stress disorder (PTSD)</h2>
+                    </section>
                 </section>
+
             </section>
         </>
     )
