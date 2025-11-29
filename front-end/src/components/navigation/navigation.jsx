@@ -60,6 +60,9 @@ export default function Navigation({ toggleSidebar }) {
               Your Account
             </button>
           </Link>
+          <Link to="/quickcalm">
+            <button className="top-nav-button">QuickCalm</button>
+          </Link>
         </section>
 
         {/* Login Button */}
