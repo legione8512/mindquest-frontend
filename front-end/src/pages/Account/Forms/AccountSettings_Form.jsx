@@ -38,6 +38,7 @@ export default function AccountSettingsForm({ accountSettings, setAccountSetting
                     <h4>Update Username:</h4>
                     <input
                         type="text"
+                        placeholder="Enter new username"
                         value={accountSettings.username}
                         onChange={setAccountSetting("username")}
                     />
@@ -46,6 +47,7 @@ export default function AccountSettingsForm({ accountSettings, setAccountSetting
                     <h4>Update Email:</h4>
                     <input
                         type="text"
+                        placeholder="Enter new email"
                         value={accountSettings.email}
                         onChange={setAccountSetting("email")}
                     />

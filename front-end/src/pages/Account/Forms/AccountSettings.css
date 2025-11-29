@@ -14,13 +14,16 @@
     box-sizing: border-box;
 }
 
+/* Placeholder text for empty fields */
+.account_settings_form input::placeholder {
+    color: rgb(196, 196, 196);
+}
+
 /* Password field */
 .password-field {
     position: relative;
 }
-.password-field input::placeholder {
-    color: rgb(196, 196, 196);
-}
+
 
 /* Password visibility button */
 .visibility-icon {
