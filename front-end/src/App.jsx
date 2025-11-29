@@ -9,8 +9,9 @@ import Footer from "./components/footer/footer.jsx";
 /* Page imports */
 import Home from "./pages/Home.jsx";
 import Dashboard from "./pages/Dashboard.jsx";
-import Learning from "./pages/Learning/Learning.jsx";
 import MoodCompass from "./pages/MoodCompass.jsx";
+import Learning from "./pages/Learning/Learning.jsx";
+import LessonPage from "./pages/Learning/LessonPage.jsx";
 import Account from "./pages/Account/Account.jsx";
 import Register from "./pages/Register.jsx";
 
@@ -32,9 +33,10 @@ function App() {
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/dashboard" element={<Dashboard />} />
-        <Route path="/learning" element={<Learning />} />
-        <Route path="/account" element={<Account />} />
         <Route path="/mood_compass" element={<MoodCompass />} />
+        <Route path="/learning" element={<Learning />} />
+        <Route path="/lesson_page" element={<LessonPage />} />
+        <Route path="/account" element={<Account />} />
         <Route path="/register" element={<Register />} />
       </Routes>
       <Footer />

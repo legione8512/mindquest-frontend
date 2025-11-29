@@ -1,3 +1,6 @@
+import { Link } from "react-router-dom";
+import "./Learning.css";
+
 export default function TopicCard({ topic, openDropdown, toggleDropdown }) {
 
     return (
@@ -11,9 +14,9 @@ export default function TopicCard({ topic, openDropdown, toggleDropdown }) {
             {/* Dropdown menu for each lesson */}
             {openDropdown === topic.key && (
                 <ul className="topic_dropdown_menu">
-                    {topic.links.map((text, index) => (
+                    {topic.links.map((lesson, index) => (
                         <li key={index}>
-                            <a href="#">{text}</a>
+                            <Link to="/lesson_page">{lesson}</Link>
                         </li>
                     ))}
                 </ul>
