@@ -11,7 +11,7 @@ import Home from "./pages/Home.jsx";
 import Dashboard from "./pages/Dashboard.jsx";
 import MoodCompass from "./pages/MoodCompass.jsx";
 import Learning from "./pages/Learning/Learning.jsx";
-import LessonPage from "./pages/Learning/LessonPage.jsx";
+import LessonPage from "./pages/Learning/Lessons.jsx";
 import Account from "./pages/Account/Account.jsx";
 import Register from "./pages/Register.jsx";
 

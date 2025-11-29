@@ -160,12 +160,12 @@
 
 /* Fade in animation when changing page */
 .lesson_section {
-    animation: fadeIn 0.5s;
+    animation: fadeIn 1s;
 }
 @keyframes fadeIn {
     from {
         opacity: 0;
-        transform: translateY(-10px);
+        transform: translateY(-20px);
     }
     to {
         opacity: 1;
@@ -227,11 +227,19 @@
     color: #013C58;
 }
 
+/* Disabled buttons styling */
+.lesson_nav_buttons button:disabled {
+    background: #ccc;
+    color: #666;
+    pointer-events: none;
+}
+
 /* Page counter */
 .lesson_page_counter {
     text-align: center;
     color: #013C58;
     font-weight: 600;
     margin-bottom: 2rem;
+    margin-left: 2.3rem;
 }
 

@@ -3,7 +3,7 @@ import { useNavigate } from "react-router-dom";
 import LearningBanner from "../../assets/Anxiety_Banner.jpg";
 import "./Learning.css";
 
-export default function LessonPage() {
+export default function Lessons() {
 
     // Navigation between lesson pages.
     const navigate = useNavigate();
@@ -130,15 +130,17 @@ export default function LessonPage() {
                 )}
 
                 {/* Navigation Buttons */}
-                <section className="lesson_nav_buttons">
-                    {currentPage > 1 && <button onClick={prevPage}>Previous page</button>}
-                    <button onClick={() => navigate("/learning")}>Exit the lesson</button>
-                    {currentPage < 4 && <button onClick={nextPage}>Next page</button>}
-                </section>
+                <section className="lesson_footer">
+                    <section className="lesson_nav_buttons">
+                        <button onClick={prevPage} disabled={currentPage === 1}>Previous page</button>
+                        <button onClick={() => navigate("/learning")}>Exit the lesson</button>
+                        <button onClick={nextPage} disabled={currentPage === 4}>Next page</button>
+                    </section>
 
-                {/* Page count */}
-                <section className="lesson_page_counter">
-                    <p>Page {currentPage} of 4</p>
+                    {/* Page counter */}
+                    <section className="lesson_page_counter">
+                        <p>Page {currentPage} of 4</p>
+                    </section>
                 </section>
 
             </section>
