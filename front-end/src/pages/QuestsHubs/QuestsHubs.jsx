@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import QuestsBanner from "../../assets/Cards_Images/Webp/6.webp";
 import "./QuestsHubs.css";
-import Modal from "../../Modal";
+//import Modal from "../../Modal";
 
 import img1 from "../../assets/Cards_Images/Webp/1.webp";
 import img2 from "../../assets/Cards_Images/Webp/2.webp";
