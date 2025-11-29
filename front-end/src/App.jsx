@@ -28,7 +28,7 @@ function App() {
 
   return (
     // Navigation between pages
-    <Router>
+    <Router basename="/mindquest-frontend">
       <Navigation toggleSidebar={toggleSidebar} />
       <Sidebar isOpen={isOpen} toggleSidebar={toggleSidebar} />
       <Routes>
