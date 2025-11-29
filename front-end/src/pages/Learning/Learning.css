@@ -61,19 +61,19 @@
     display: flex;
     flex-direction: column;
     align-items: center;
-    gap: 1.5rem;
+    gap: 0;
     padding: 2rem;
     width: 100%;
 }
 
 /* Topic card content */
 .topic_card {
-    background: #c1eef979;
+    background: #c1eef9;
     color: #013C58;
     text-align: center;
     padding: 1.5rem;
     border: 1px solid #013C58;
-    border-radius: 5px;
+    border-bottom: none;
     width: 100%;
     width: 1500px;
     transition: .3s ease;
@@ -83,4 +83,36 @@
 /* Topic card hover animation */
 .topic_card:hover {
     background: #F5A201;
+}
+
+
+/***** TOPIC CARDS DROPDOWN MENU *****/
+.topic_dropdown_menu {
+    background: #c1eef973;
+    border: 1px solid #013C58;
+    border-top: none;
+    border-radius: 0 0 5px 5px;
+    padding: 1rem 2rem;
+    list-style: none;
+    width: 100%;
+    max-width: 1500px;
+    border-radius: 0 0 8px 8px;
+    animation: dropdownFade .5s ease;
+}
+
+/* Dropdown list */
+.topic_dropdown_menu li {
+    margin: 0.5rem 0;
+}
+
+/* Dropdown Link */
+.topic_dropdown_menu a {
+    color: #013C58;
+    text-decoration: none;
+    font-weight: 500;
+}
+
+/* Dropdown hover effect */
+.topic_dropdown_menu a:hover {
+    text-decoration: underline;
 }

@@ -1,8 +1,17 @@
+import { useState } from "react";
 import LearningBanner from "../../assets/friends_learning.jpg";
 import "./Learning.css";
 
-
 export default function Learning() {
+
+    // Track which dropdown is open (only one at a time)
+    const [openDropdown, setOpenDropdown] = useState(null);
+
+    // Dropdown menu toggle
+    const toggleDropdown = (topic) => {
+        setOpenDropdown(openDropdown === topic ? "" : topic);
+    }
+
     return (
         <>
             {/* BANNER */}
@@ -25,9 +34,17 @@ export default function Learning() {
             <section className="topic_cards_wrapper">
 
                 {/* Anxiety Card */}
-                <section className="topic_card">
+                <section className="topic_card" onClick={() => toggleDropdown("anxiety")}>
                     <h2>Anxiety</h2>
                 </section>
+
+                {openDropdown === "anxiety" && (
+                    <ul className="topic_dropdown_menu">
+                        <li><a href="">What is Anxiety?</a></li>
+                        <li><a href="">Symptoms & Signs</a></li>
+                        <li><a href="">Coping Strategies</a></li>
+                    </ul>
+                )}
 
                 {/* Depression Card*/}
                 <section className="topic_card">
