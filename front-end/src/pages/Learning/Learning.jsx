@@ -1,5 +1,6 @@
 import { useState } from "react";
 import LearningBanner from "../../assets/friends_learning.jpg";
+import { topics } from "./TopicData/Topics";
 import "./Learning.css";
 
 export default function Learning() {
@@ -33,60 +34,27 @@ export default function Learning() {
             {/* TOPIC CARDS */}
             <section className="topic_cards_section">
 
-                {/* Anxiety Card */}
-                <section className="topic_card_wrapper">
-                    <section className="topic_card" onClick={() => toggleDropdown("anxiety")}>
-                        <h2>Anxiety</h2>
+                {topics.map((topic) => (
+                    <section className="topic_card_wrapper" key={topic.id}>
+
+                        {/* Topic card button */}
+                        <section className="topic_card" onClick={() => toggleDropdown(topic.key)}>
+                            <h2>{topic.title}</h2>
+                        </section>
+
+                        {/* Topic card dropdown menu */}
+                        {openDropdown === topic.key && (
+                            <ul className="topic_dropdown_menu">
+                                {topic.links.map((text, index) => (
+                                    <li key={index}>
+                                        <a href="#">{text}</a>
+                                    </li>
+                                ))}
+                            </ul>
+                        )}
                     </section>
-
-                    {/* Anxiety Dropdown menu */}
-                    {openDropdown === "anxiety" && (
-                        <ul className="topic_dropdown_menu">
-                            <li><a href="">What is Anxiety?</a></li>
-                            <li><a href="">Symptoms & Signs of Anxiety</a></li>
-                            <li><a href="">Coping Strategies for Anxiety</a></li>
-                        </ul>
-                    )}
-
-                </section>
-
-                {/* Depression Card*/}
-                <section className="topic_card_wrapper">
-                    <section className="topic_card" onClick={() => toggleDropdown("depression")}>
-                        <h2>Depression</h2>
-                    </section>
-
-                    {/* Depression Dropdown menu */}
-                    {openDropdown === "depression" && (
-                        <ul className="topic_dropdown_menu">
-                            <li><a href="">What is Depression?</a></li>
-                            <li><a href="">Symptoms & Signs of Depression</a></li>
-                            <li><a href="">Coping Strategies for Depression</a></li>
-                        </ul>
-                    )}
-
-                </section>
-
-
-                {/* PTSD Card */}
-                <section className="topic_card_wrapper">
-                    <section className="topic_card" onClick={() => toggleDropdown("PTSD")}>
-                        <h2>Post-traumatic stress disorder (PTSD)</h2>
-                    </section>
-
-                    {/* Depression Dropdown menu */}
-                    {openDropdown === "PTSD" && (
-                        <ul className="topic_dropdown_menu">
-                            <li><a href="">What is Post-Traumatic Stress Disorder (PTSD)?</a></li>
-                            <li><a href="">Symptoms & Signs of Post-Traumatic Stress Disorder (PTSD)</a></li>
-                            <li><a href="">Coping Strategies for Post-Traumatic Stress Disorder (PTSD)</a></li>
-                        </ul>
-                    )}
-
-
-                </section>
-
+                ))}
             </section>
         </>
-    )
+    );
 }
