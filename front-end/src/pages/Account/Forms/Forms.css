@@ -14,6 +14,7 @@
         opacity: 0;
         transform: translateX(20px);
     }
+
     to {
         opacity: 1;
         transform: translateX(0);
@@ -24,6 +25,7 @@
 .form_header {
     text-align: center;
 }
+
 .form_header p {
     font-weight: 400;
     color: grey;
@@ -62,10 +64,12 @@
     font-weight: 400;
     transition: .3s ease;
 }
+
 #cancel {
     background: white;
     border: 1px solid black;
 }
+
 #submit {
     background: #013C58;
     border: none;
@@ -98,6 +102,7 @@
     .form_header h2 {
         font-size: 1rem;
     }
+
     .form_header p {
         font-size: 0.8rem;
     }
@@ -150,10 +155,24 @@
         padding-top: 0;
     }
 
+    /* Fade in animation */
+    @keyframes fadeIn {
+        from {
+            opacity: 0;
+            transform: translateY(-20px);
+        }
+
+        to {
+            opacity: 1;
+            transform: translateY(0);
+        }
+    }
+
     /* Heading and subheadings */
     .form_top_wrapper h2 {
         font-size: 1.1rem;
     }
+
     .form_top_wrapper p {
         font-size: 0.75rem;
     }

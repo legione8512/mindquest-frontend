@@ -1,12 +1,11 @@
 import { useState } from "react";
-import { useNavigate } from "react-router-dom";
+import { Link } from "react-router-dom";
 import LearningBanner from "../../assets/Anxiety_Banner.jpg";
 import "./Learning.css";
 
 export default function Lessons() {
 
     // Navigation between lesson pages.
-    const navigate = useNavigate();
     const [currentPage, setCurrentPage] = useState(1);
     const nextPage = () => setCurrentPage((page) => page + 1);
     const prevPage = () => setCurrentPage((page) => page - 1);
@@ -133,7 +132,7 @@ export default function Lessons() {
                 <section className="lesson_footer">
                     <section className="lesson_nav_buttons">
                         <button onClick={prevPage} disabled={currentPage === 1}>Previous page</button>
-                        <button onClick={() => navigate("/learning")}>Exit the lesson</button>
+                        <Link to="/learning"><button title="Back to the learning page">Exit this lesson</button></Link>
                         <button onClick={nextPage} disabled={currentPage === 4}>Next page</button>
                     </section>
 
