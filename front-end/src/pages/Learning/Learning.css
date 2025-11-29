@@ -27,7 +27,7 @@
 
 /* Introductory text */
 .learning_introduction_section {
-    background:  #c1eef979;
+    background: #c1eef979;
     padding: 2rem;
     border-radius: 10px;
     box-shadow: 0px 4px 12px rgba(0, 0, 0, 0.1);
@@ -86,14 +86,15 @@
     text-align: center;
     padding: 1.2rem;
     border: 1px solid #013C58;
-    width: 100%;
     width: 1500px;
+    max-width: 100%;
     transition: .3s ease;
     cursor: pointer;
 }
 
 .topic_card h2 {
     font-size: 1.5rem;
+    font-weight: 600;
     margin: auto;
 }
 
@@ -105,31 +106,38 @@
 
 /***** TOPIC CARDS DROPDOWN MENU *****/
 .topic_dropdown_menu {
-    background: #c1eef973;
-    border: 1px solid #013C58;
+    background: #013C58;
     border-top: none;
-    border-radius: 0 0 5px 5px;
-    padding: 1rem 2rem;
     list-style: none;
-    width: 100%;
-    max-width: 1500px;
+    width: 1500px;
+    max-width: 100%;
     border-radius: 0 0 8px 8px;
-    animation: dropdownFade .5s ease;
+    padding: 0;
 }
 
-/* Dropdown list */
-.topic_dropdown_menu li {
-    margin: 0.5rem 0;
-}
-
-/* Dropdown Link */
+/* Dropdown button */
 .topic_dropdown_menu a {
-    color: #013C58;
-    text-decoration: none;
+    display: block;
+    width: 100%;
+    padding: 1rem;
+    text-align: center;
+    color: white;
     font-weight: 500;
+    text-decoration: none;
+    box-sizing: border-box;
+    background: transparent;
+    transition: 0.3s ease;
 }
 
 /* Dropdown hover effect */
 .topic_dropdown_menu a:hover {
-    text-decoration: underline;
+    background: #F5A201;
+    color: #013C58;
 }
+
+/* Dropdown list */
+.topic_dropdown_menu li {
+    margin: 0;
+    padding: 0;
+}
+
