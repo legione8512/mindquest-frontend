@@ -1,10 +1,11 @@
 import { useRef } from "react";
+import "./ProfileBox.css";
 
 export default function ProfileBox({ profileImage, setProfileImage, username, userLevel }) {
 
     const fileUploadRef = useRef(null);
 
-    // Opening file explorer when button is pressed
+    // Open file explorer when button is pressed
     const openFileExplorer = (e) => {
         e.preventDefault();
         fileUploadRef.current.click();
@@ -16,7 +17,6 @@ export default function ProfileBox({ profileImage, setProfileImage, username, us
         const cachedURL = URL.createObjectURL(uploadedFile);
         setProfileImage(cachedURL);
     };
-
 
     return (
         <section className="profile_box" >
@@ -31,7 +31,7 @@ export default function ProfileBox({ profileImage, setProfileImage, username, us
                     <i className="fa fa-plus-circle"></i>
                 </button>
 
-                {/* Upload file button (hidden) */}
+                {/* Hide actual upload button */}
                 <input
                     type="file"
                     ref={fileUploadRef}
@@ -46,13 +46,13 @@ export default function ProfileBox({ profileImage, setProfileImage, username, us
                 </section>
             </section>
 
-            {/* Points and Streaks section */}
+            {/* Points and Streaks bars */}
             <section className="profile_box_bottom">
-                <section className="points_section">
+                <section className="points_bar">
                     <h3>My Points</h3>
                     <h3>0</h3>
                 </section>
-                <section className="streak_section">
+                <section className="streak_bar">
                     <h3>My Streak</h3>
                     <h3>0d</h3>
                 </section>

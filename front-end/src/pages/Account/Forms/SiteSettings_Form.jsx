@@ -1,19 +1,20 @@
-import { Link } from "react-router-dom";
+import "./SiteSettings.css";
+import "./Forms.css";
 
-export default function SiteSettingsForm({ userSiteSettings, setSiteSetting, onSubmit, onCancel }) {
-    
+export default function SiteSettingsForm({ userSiteSettings, setSiteSetting, onSubmit, onCancel, onLearnMore }) {
+
     return (
-        <section className="site_settings_form_section" >
+        <section className="form_section" >
 
-            {/* HEADING AND SUBHEADING */}
-            <section className="site_settings_form_top" >
+            {/* FORM HEADING AND SUBHEADING */}
+            <section className="form_header" >
                 <h2>Your Settings</h2>
                 <p>Site settings</p>
             </section>
 
             {/* DROPDOWN OPTIONS */}
-            < section className="site_settings_form_bottom" >
-                <form className="settings_form" onSubmit={onSubmit}>
+            < section className="form_fields" >
+                <form className="site_settings_form" onSubmit={onSubmit}>
 
                     {/* Theme */}
                     <h4>Theme:</h4>
@@ -45,11 +46,17 @@ export default function SiteSettingsForm({ userSiteSettings, setSiteSetting, onS
                     {/* Verify account section */}
                     <section className="verification_box">
                         <h5>Verify your account as an organisation.</h5>
-                        <Link className="verification_button" title="Learn about Account Verification" to="">Learn More</Link>
+                        <button
+                            type="button"
+                            className="verification_button"
+                            onClick={onLearnMore}
+                        >
+                            Learn More
+                        </button>
                     </section>
 
-                    {/* Submit and cancel button section */}
-                    <section className="submit_buttons">
+                    {/* Submission buttons section */}
+                    <section className="form_buttons">
                         <button type="button" id="cancel" onClick={onCancel}>Cancel</button>
                         <button type="submit" id="submit">Submit</button>
                     </section>

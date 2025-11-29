@@ -32,3 +32,8 @@ html {
   --mq-accent-yellow: #F5A201;  /* from streak button */
   --mq-radius-md: 10px;         /* same as Account buttons */
 }
+/* Stop Bootstrap modal from shifting to the right */
+body.modal-open {
+    padding-right: 0 !important;
+    overflow: hidden;
+}
