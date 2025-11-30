@@ -19,7 +19,7 @@
   display: flex;
   padding-left: 20vw;
   padding-right: 20vw;
-  gap: 3vw;
+  gap: 6vw;
   margin-top: 3vh;
 }
 
@@ -91,6 +91,39 @@
 .mood_List {
   list-style: none;
   padding-left: 0;
+  margin-top: 1rem;
+}
+
+.notes_Item {
+  margin-bottom: 1rem;
+}
+
+.notes_Input {
+  width: 100%;
+  min-height: 80px;
+  padding: .6rem;
+  border: 1px solid #d0d7de;
+  border-radius: 8px;
+  margin-bottom: 1rem;
+  resize: vertical;
+}
+
+.notes_Entry {
+  width: 90%;
+  min-height: 120px;
+  resize: vertical;
+  padding: 0.8rem;
+  border: 1px solid #d0d7de;
+  border-radius: 8px;
+  font-size: 1rem;
+  margin-bottom: 1rem;
+}
+
+.notes_Button {
+  width: 100%;
+  margin-top: 0.8rem;
+  margin-bottom: 1rem;
+  padding: 0.7rem 1rem;
 }
 
 .mood_List_Item {
@@ -110,32 +143,31 @@
 }
 
 .mood_Scroll {
-  max-height: 400px;
+  max-height: 350px;
   overflow-y: auto;
   padding-right: 5px;
-
-}
-
-.chart_Overlay { 
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100vw;
-  height: 100vh;
-  background: rgba(0, 0, 0, 0.65);
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  z-index: 999;
 }
 
 
 .mood_Chart {
   width: 100%;
-  height: 100px;
+  height: 120px;
   border: 1px solid #013C58;
   border-radius: 8px;
   cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.mood_Chart_Enlarge {
+  width: 90vw;
+  height: 50vh;
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background: white;
+  z-index: 999;
+  box-shadow: 0 0 25px rgba(0, 0, 0, 0.3);
 }
 
 .chart_Caption {
@@ -187,5 +219,24 @@
   .mood_Emoji {
     font-size: 1.5rem;
     margin: 3px;
+  }
+}
+
+@media (max-width: 500px) {
+
+  .mood_Box {
+    padding: 1rem;
+  }
+
+  .moodpage_Banner h1 {
+    font-size: 2rem;
+  }
+
+  .moodpage_Banner p {
+    font-size: 1rem;
+  }
+
+  .mood_Chart {
+    height: 130px;
   }
 }
