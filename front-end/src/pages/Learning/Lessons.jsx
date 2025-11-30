@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { Link, useParams } from "react-router-dom";
-import { topics } from "./TopicData/Topics";
+import { topics } from "./TopicData/DataBase";
 import LearningBanner from "../../assets/Anxiety_Banner.jpg";
 import "./Learning.css";
 

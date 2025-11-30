@@ -57,6 +57,24 @@ export const topics = [
                     ]
                 }
             ],
+
+            "symptoms-&-signs-of-anxiety": [
+                {
+                    title: "Nothing here!",
+                    content: [
+                        "This page is currently has no content. More information coming soon!"
+                    ]
+                }
+            ],
+
+            "coping-strategies-for-anxiety": [
+                {
+                    title: "Nothing here!",
+                    content: [
+                        "This page is currently has no content. More information coming soon!"
+                    ]
+                }
+            ]
         }
     },
 
@@ -69,7 +87,36 @@ export const topics = [
             "What is Depression?",
             "Symptoms & Signs of Depression",
             "Coping Strategies for Depression"
-        ]
+        ],
+
+        pages: {
+            "what-is-depression": [
+                {
+                    title: "Nothing here!",
+                    content: [
+                        "This page is currently has no content. More information coming soon!"
+                    ]
+                }
+            ],
+
+            "symptoms-&-signs-of-depression": [
+                {
+                    title: "Nothing here!",
+                    content: [
+                        "This page is currently has no content. More information coming soon!"
+                    ]
+                }
+            ],
+
+            "coping-strategies-for-depression": [
+                {
+                    title: "Nothing here!",
+                    content: [
+                        "This page is currently has no content. More information coming soon!"
+                    ]
+                }
+            ]
+        }
     },
 
     // Dummy data for PTSD topic 
@@ -81,6 +128,36 @@ export const topics = [
             "What is PTSD?",
             "Symptoms & Signs of PTSD",
             "Coping Strategies for PTSD"
-        ]
+        ],
+
+        pages: {
+            "what-is-ptsd": [
+                {
+                    title: "Nothing here!",
+                    content: [
+                        "This page is currently has no content. More information coming soon!"
+                    ]
+                }
+            ],
+
+            "symptoms-&-signs-of-ptsd": [
+                {
+                    title: "Nothing here!",
+                    content: [
+                        "This page is currently has no content. More information coming soon!"
+                    ]
+                }
+            ],
+
+            "coping-strategies-for-ptsd": [
+                {
+                    title: "Nothing here!",
+                    content: [
+                        "This page is currently has no content. More information coming soon!"
+                    ]
+                }
+            ]
+        }
+
     }
 ];

@@ -1,7 +1,7 @@
 import { useState } from "react";
 import LearningBanner from "../../assets/friends_learning.jpg";
 import InfoBoxImg from "../../assets/info_box.jpg";
-import { topics } from "./TopicData/Topics";
+import { topics } from "./TopicData/DataBase";
 import TopicCard from "./TopicCard";
 import "./Learning.css";
 
