@@ -1,8 +1,31 @@
+import { useState } from "react";
 import "./footer.css";
 import logo from "../../assets/mindquest_logo.png";
 import { Link } from "react-router-dom";
+import Modal from "../../Modal";
 
 export default function Footer() {
+  const [isPrivacyOpen, setIsPrivacyOpen] = useState(false);
+  const [isTermsOpen, setIsTermsOpen] = useState(false);
+
+  const openPrivacyModal = (e) => {
+    e.preventDefault(); // stop navigation
+    setIsPrivacyOpen(true);
+  };
+
+  const openTermsModal = (e) => {
+    e.preventDefault();
+    setIsTermsOpen(true);
+  };
+
+  const handlePrivacyAccept = () => {
+    setIsPrivacyOpen(false);
+  };
+
+  const handleTermsAccept = () => {
+    setIsTermsOpen(false);
+  };
+
   return (
     <footer>
       <section className="layout-container footer-inner">
@@ -90,6 +113,7 @@ export default function Footer() {
                   className="privacy_button"
                   title="View our Privacy Policy"
                   to=""
+                  onClick={openPrivacyModal} /* <- THIS OPENS THE MODAL */
                 >
                   Privacy Policy
                 </Link>
@@ -99,6 +123,7 @@ export default function Footer() {
                   className="privacy_button"
                   title="View our Terms and Conditions"
                   to=""
+                  onClick={openTermsModal} /* <- THIS OPENS THE MODAL */
                 >
                   Terms and Conditions
                 </Link>
@@ -107,6 +132,66 @@ export default function Footer() {
           </section>
         </section>
       </section>
+      {/* PRIVACY POLICY MODAL */}
+      <Modal
+        isOpen={isPrivacyOpen}
+        title="Privacy Policy"
+        onClose={() => {}} // disable X and backdrop close
+        footer={
+          <button
+            type="button"
+            className="primary-btn"
+            onClick={handlePrivacyAccept}
+          >
+            Accept
+          </button>
+        }
+      >
+        <p style={{ marginBottom: "0.75rem" }}>
+          We use your data to provide the MindQuest service, personalise your
+          experience, and help you track your wellbeing and study progress.
+        </p>
+        <p style={{ marginBottom: "0.75rem" }}>
+          We do not sell your personal data. Limited information may be shared
+          with trusted providers that help us run the platform (for example
+          hosting and analytics), always under appropriate data protection
+          agreements.
+        </p>
+        <p>
+          By selecting <strong>Accept</strong>, you confirm that you have read
+          and understood this summary and agree to our full Privacy Policy.
+        </p>
+      </Modal>
+
+      {/* TERMS & CONDITIONS MODAL */}
+      <Modal
+        isOpen={isTermsOpen}
+        title="Terms & Conditions"
+        onClose={() => {}} // disable X and backdrop close
+        footer={
+          <button
+            type="button"
+            className="primary-btn"
+            onClick={handleTermsAccept}
+          >
+            Accept
+          </button>
+        }
+      >
+        <p style={{ marginBottom: "0.75rem" }}>
+          By using MindQuest, you agree to use the platform in a respectful way
+          and not to upload harmful, offensive, or illegal content.
+        </p>
+        <p style={{ marginBottom: "0.75rem" }}>
+          We may update features, availability, or these terms from time to
+          time. Where changes are significant, we will let you know in advance
+          where reasonably possible.
+        </p>
+        <p>
+          By selecting <strong>Accept</strong>, you confirm that you agree to
+          the current Terms & Conditions of using MindQuest.
+        </p>
+      </Modal>
     </footer>
   );
 }
