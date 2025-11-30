@@ -43,13 +43,204 @@ const headerImageOptions = [
 
 // Predefined activities
 const activityOptions = [
-  "3-Minute Gratitude",
-  "Mindful Break Walk",
-  "Breath & Reset",
-  "Digital Sunset",
-  "Kindness Notes",
-  "Reach Out Friday",
+  "Mood Check-In",
+  "Focus Sprint",
+  "Micro Reset Break",
+  "Gratitude Snapshot",
+  "10,000 Steps Day",
+  "Tomorrow’s First Step",
 ];
+
+// Quest templates keyed by Activity title
+const questTemplates = {
+  "Mood Check-In": {
+    id: "mood-checkin",
+    title: "Mood Check-In",
+    shortDescription:
+      "A quick 3-minute check-in to describe how you feel and what might help you feel a bit better.",
+    maxPerDay: 3,
+    pointsPerSubmission: 10,
+    bonus: {
+      triggerCompletion: 3,
+      points: 10,
+    },
+    fields: [
+      {
+        name: "mood",
+        label: "Describe your current mood in a few words",
+        placeholder: 'e.g. "anxious but hopeful", "tired", "stressed", "okay"',
+        required: true,
+        minWords: 1,
+      },
+      {
+        name: "whatHelps",
+        label: "What do you think could help you feel a little bit better?",
+        placeholder:
+          "e.g. take a short walk, message a friend, plan tomorrow’s first task, have a break from screens…",
+        required: true,
+        minWords: 5,
+      },
+    ],
+  },
+  "Focus Sprint": {
+    id: "focus-sprint",
+    title: "Focus Sprint",
+    shortDescription:
+      "Log a short, deliberate 15–25 minute focus block on one clearly defined task.",
+    maxPerDay: 2,
+    pointsPerSubmission: 15,
+    bonus: {
+      triggerCompletion: 2,
+      points: 15,
+    },
+    fields: [
+      {
+        name: "task",
+        label: "What did you focus on in this sprint?",
+        placeholder:
+          "e.g. revised Week 3 algorithms lecture, wrote intro paragraph for report, fixed two React bugs",
+        required: true,
+        minWords: 3,
+      },
+      {
+        name: "reflection",
+        label: "How focused were you, and what helped or distracted you?",
+        placeholder:
+          "e.g. Focus: 7/10. Helped: library and no phone. Distracted: noise in the kitchen.",
+        required: true,
+        minWords: 5,
+      },
+    ],
+  },
+  "Micro Reset Break": {
+    id: "micro-reset-break",
+    title: "Micro Reset Break",
+    shortDescription:
+      "Take a 5–10 minute break away from screens and log how you felt before and after.",
+    maxPerDay: 3,
+    pointsPerSubmission: 8,
+    bonus: {
+      triggerCompletion: 3,
+      points: 8,
+    },
+    fields: [
+      {
+        name: "breakDescription",
+        label: "What did you do for your break?",
+        placeholder:
+          "e.g. 5-minute walk around the hallway, stretched shoulders and neck, made a tea and looked out of the window.",
+        required: true,
+        minWords: 3,
+      },
+      {
+        name: "beforeAfter",
+        label: "How did you feel before and after the break?",
+        placeholder:
+          "e.g. Before: 7/10 tense and restless. After: 4/10, shoulders less tight and feel calmer.",
+        required: true,
+        minWords: 5,
+      },
+    ],
+  },
+  "Gratitude Snapshot": {
+    id: "gratitude-snapshot",
+    title: "Gratitude Snapshot",
+    shortDescription:
+      "Notice one or two things that went well or that you appreciated, and why they mattered.",
+    maxPerDay: 2,
+    pointsPerSubmission: 10,
+    bonus: {
+      triggerCompletion: 2,
+      points: 10,
+    },
+    fields: [
+      {
+        name: "gratitudeItem",
+        label: "What are you grateful for or what went okay?",
+        placeholder:
+          "e.g. coffee with a friend, finished my lab on time, had a quiet evening, the weather was nice.",
+        required: true,
+        minWords: 3,
+      },
+      {
+        name: "whyItMattered",
+        label: "Why did this matter to you?",
+        placeholder:
+          "e.g. It made me feel less alone and more supported, or reduced my stress for tomorrow.",
+        required: true,
+        minWords: 7,
+      },
+    ],
+  },
+  "10,000 Steps Day": {
+    id: "ten-k-steps",
+    title: "10,000 Steps Day",
+    shortDescription:
+      "Log a day where you have walked at least 10,000 steps, ideally with a screenshot from your step counter.",
+    maxPerDay: 1,
+    pointsPerSubmission: 25,
+    bonus: null,
+    fields: [
+      {
+        name: "screenshot",
+        label: "Upload a screenshot that shows your steps for today",
+        placeholder:
+          "Image from Apple Health, Google Fit, Samsung Health, Fitbit, etc. showing at least 10,000 steps.",
+        type: "file",
+        required: false, // front-end prototype, so we keep this soft
+      },
+      {
+        name: "stepCount",
+        label: "How many steps did you walk today?",
+        placeholder: "e.g. 10342",
+        required: false,
+      },
+      {
+        name: "stepsReflection",
+        label: "How did it feel to reach 10,000 steps today?",
+        placeholder:
+          "e.g. Felt good but my legs are tired; enjoyed walking in the park; did most steps between classes.",
+        required: false,
+        minWords: 5,
+      },
+    ],
+  },
+  "Tomorrow’s First Step": {
+    id: "tomorrows-first-step",
+    title: "Tomorrow’s First Step",
+    shortDescription:
+      "Plan one clear, realistic first action for tomorrow so you know how to start.",
+    maxPerDay: 1,
+    pointsPerSubmission: 12,
+    bonus: null,
+    fields: [
+      {
+        name: "firstStep",
+        label: "What is your first step for tomorrow?",
+        placeholder:
+          "e.g. open algorithms lecture slides at 10:00, reply to my group chat about the prototype, book a library slot.",
+        required: true,
+        minWords: 5,
+      },
+      {
+        name: "timing",
+        label: "When or in what context do you plan to do it?",
+        placeholder:
+          "e.g. around 10:00, after my morning lecture, in the evening after dinner.",
+        required: true,
+        minWords: 3,
+      },
+    ],
+  },
+};
+
+// Simple helpers for validation + daily limits
+const getTodayKey = () => new Date().toISOString().slice(0, 10);
+
+const countWords = (text = "") =>
+  text.trim().length === 0
+    ? 0
+    : text.trim().split(/\s+/).filter(Boolean).length;
 
 // Initial hubs (existing demo data)
 const initialHubs = [
@@ -171,6 +362,25 @@ const QuestsHubs = () => {
     teams: ["Team 1", "Team 2"],
     activity: activityOptions[0],
   });
+
+  // Quest template + completion data (only used inside Create Quest modal)
+  const [questFormValues, setQuestFormValues] = useState({});
+  const [questProgress, setQuestProgress] = useState(() => {
+    const today = getTodayKey();
+    const initial = {};
+    Object.values(questTemplates).forEach((tpl) => {
+      initial[tpl.id] = {
+        dayKey: today,
+        countToday: 0,
+        pointsToday: 0,
+      };
+    });
+    return initial;
+  });
+
+  const selectedQuestTemplate = questTemplates[formData.activity] || null;
+
+  const [questMessage, setQuestMessage] = useState("");
 
   const [filters, setFilters] = useState({
     mode: "All", // All | Team | Individual
@@ -315,6 +525,15 @@ const QuestsHubs = () => {
     }));
   };
 
+  const handleQuestFieldChange = (e) => {
+    const { name, value } = e.target;
+    setQuestFormValues((prev) => ({
+      ...prev,
+      [name]: value,
+    }));
+    setQuestMessage("");
+  };
+
   const handleTeamChange = (index, value) => {
     setFormData((prev) => {
       const updated = [...prev.teams];
@@ -337,6 +556,19 @@ const QuestsHubs = () => {
     });
   };
 
+  const handleActivityChange = (e) => {
+    const value = e.target.value;
+
+    setFormData((prev) => ({
+      ...prev,
+      activity: value, // only update the selected activity
+    }));
+
+    // Clear any previous quest answers / errors when switching quest
+    setQuestFormValues({});
+    setQuestMessage("");
+  };
+
   const resetForm = () => {
     setFormData({
       name: "",
@@ -351,6 +583,8 @@ const QuestsHubs = () => {
       teams: ["Team 1", "Team 2"],
       activity: activityOptions[0],
     });
+    setQuestFormValues({});
+    setQuestMessage("");
   };
 
   const closeModal = () => {
@@ -361,6 +595,8 @@ const QuestsHubs = () => {
   const closeHubModal = () => {
     setSelectedHub(null);
     setSelectedTeam("");
+    setQuestFormValues({});
+    setQuestMessage("");
   };
 
   const handleCreateQuest = (e) => {
@@ -369,10 +605,10 @@ const QuestsHubs = () => {
     // Frequency label
     let frequency = "Custom";
     if (formData.periodPreset === "1_day") frequency = "Daily";
-    if (formData.periodPreset === "1_week") frequency = "Weekly";
-    if (formData.periodPreset === "1_month") frequency = "Monthly";
+    else if (formData.periodPreset === "1_week") frequency = "Weekly";
+    else if (formData.periodPreset === "1_month") frequency = "Monthly";
 
-    // Status text (very simple for now)
+    // Period description
     let periodLabel = "";
     if (formData.periodPreset === "custom" && formData.customDays) {
       periodLabel = `${formData.customDays} day quest`;
@@ -384,53 +620,126 @@ const QuestsHubs = () => {
       periodLabel = "1 month quest";
     }
 
-    const startLabel =
-      formData.startDate && formData.startTime
-        ? `Starts on ${formData.startDate} at ${formData.startTime}`
-        : formData.startDate
-        ? `Starts on ${formData.startDate}`
-        : "Scheduled quest";
+    const startLabel = formData.startDate
+      ? `Starts on ${formData.startDate}`
+      : "Scheduled quest";
 
     const featuredStatus = periodLabel
       ? `${startLabel} — ${periodLabel}`
       : startLabel;
 
-    const tags =
-      formData.mode === "Team"
-        ? formData.teams.map((t) => t.trim()).filter((t) => t.length > 0)
-        : [];
-
     const selectedImage =
       headerImageOptions.find((opt) => opt.id === formData.imageKey) ||
       headerImageOptions[0];
 
+    const tags = [];
+    if (formData.mode === "Team") tags.push("Team quest");
+    else tags.push("Solo quest");
+
     const newHub = {
       id: Date.now(), // simple unique id
-      name: formData.name || "Untitled Quest",
+      name: formData.name || "Untitled quest",
       image: selectedImage.src,
       verified: formData.verified,
       description:
         formData.description ||
         "A newly created quest. Configure description to tell people what to expect.",
-      featuredTitle: formData.activity,
+      featuredTitle: formData.activity, // e.g. "Mood Check-In"
       featuredStatus,
       featuredText: `Activity: ${formData.activity}`,
       frequency,
       type: formData.mode,
       tags,
       progressText: "",
-      // raw start info so we can check if it has started
       startDate: formData.startDate || null,
       startTime: formData.startTime || "",
     };
 
-    setHubs((prev) => [newHub, ...prev]); // show newly created quests first
+    setHubs((prev) => [newHub, ...prev]);
     closeModal();
   };
 
   const selectedImagePreview =
     headerImageOptions.find((opt) => opt.id === formData.imageKey) ||
     headerImageOptions[0];
+
+  const handleHubQuestSubmit = (e) => {
+    e.preventDefault();
+    if (!selectedHub) return;
+
+    // Find the quest template by the hub's featured title
+    const template = questTemplates[selectedHub.featuredTitle];
+    if (!template) return;
+
+    const today = getTodayKey();
+
+    const current = questProgress[template.id] || {
+      dayKey: today,
+      countToday: 0,
+      pointsToday: 0,
+    };
+
+    const currentCount = current.dayKey === today ? current.countToday : 0;
+    const currentPoints = current.dayKey === today ? current.pointsToday : 0;
+
+    // Daily limit
+    if (currentCount >= template.maxPerDay) {
+      setQuestMessage(
+        "You have reached the daily limit for this quest today. Try another quest or come back tomorrow."
+      );
+      return;
+    }
+
+    // Validate all quest fields (text fields only)
+    for (const field of template.fields) {
+      if (field.type === "file") {
+        // We do not strictly validate file inputs in this prototype
+        continue;
+      }
+
+      const raw = (questFormValues[field.name] || "").trim();
+
+      if (field.required && !raw) {
+        setQuestMessage(`Please complete “${field.label}” before submitting.`);
+        return;
+      }
+
+      if (field.minWords) {
+        const wc = countWords(raw);
+        if (wc < field.minWords) {
+          setQuestMessage(
+            `“${field.label}” should be at least ${field.minWords} words (you have ${wc}).`
+          );
+          return;
+        }
+      }
+    }
+
+    const newCount = currentCount + 1;
+
+    let pointsToAdd = template.pointsPerSubmission;
+    if (template.bonus && template.bonus.triggerCompletion === newCount) {
+      pointsToAdd += template.bonus.points;
+    }
+
+    const newPoints = currentPoints + pointsToAdd;
+
+    setQuestProgress((prev) => ({
+      ...prev,
+      [template.id]: {
+        dayKey: today,
+        countToday: newCount,
+        pointsToday: newPoints,
+      },
+    }));
+
+    setQuestMessage(
+      `Nice work! You earned ${pointsToAdd} points. Today: ${newCount}/${template.maxPerDay} completions · ${newPoints} total points for this quest.`
+    );
+
+    // Clear the text fields so user can submit again (up to daily cap)
+    setQuestFormValues({});
+  };
 
   // -------------------------
   // Apply filters, search, status
@@ -658,6 +967,8 @@ const QuestsHubs = () => {
                       onClick={() => {
                         setSelectedHub(hub);
                         setSelectedTeam("");
+                        setQuestFormValues({});
+                        setQuestMessage("");
                       }}
                     >
                       View hub
@@ -698,14 +1009,14 @@ const QuestsHubs = () => {
               {/* Name + description */}
               <div className="quest-field-row">
                 <div className="quest-field">
-                  <label htmlFor="questName">Quest name</label>
+                  <label htmlFor="questName">Hub Name</label>
                   <input
                     id="questName"
                     name="name"
                     type="text"
                     value={formData.name}
                     onChange={handleChange}
-                    placeholder="e.g. Morning Mindful Reset"
+                    placeholder="e.g. Brunel Uni Hub"
                     required
                   />
                 </div>
@@ -868,7 +1179,7 @@ const QuestsHubs = () => {
                     id="activity"
                     name="activity"
                     value={formData.activity}
-                    onChange={handleChange}
+                    onChange={handleActivityChange}
                   >
                     {activityOptions.map((act) => (
                       <option key={act} value={act}>
@@ -878,6 +1189,42 @@ const QuestsHubs = () => {
                   </select>
                 </div>
               </div>
+
+              {selectedQuestTemplate && (
+                <div className="quest-template-info">
+                  <h4 className="quest-template-title">
+                    Linked activity: {selectedQuestTemplate.title}
+                  </h4>
+                  <p className="quest-template-text">
+                    {selectedQuestTemplate.shortDescription}
+                  </p>
+                  <p className="quest-helper">
+                    This is just a preview of the activity from the MindQuest
+                    brief. You can still customise the quest name and
+                    description above.
+                  </p>
+                </div>
+              )}
+
+              {selectedQuestTemplate && (
+                <div className="quest-template-block">
+                  <p className="quest-helper">
+                    This quest can be completed up to{" "}
+                    {selectedQuestTemplate.maxPerDay} time(s) per day. Each
+                    valid submission is worth{" "}
+                    {selectedQuestTemplate.pointsPerSubmission} points
+                    {selectedQuestTemplate.bonus
+                      ? `, plus a ${selectedQuestTemplate.bonus.points} point bonus on completion ${selectedQuestTemplate.bonus.triggerCompletion} of the day.`
+                      : "."}
+                  </p>
+
+                  {questMessage && (
+                    <p className="quest-helper" style={{ fontWeight: 500 }}>
+                      {questMessage}
+                    </p>
+                  )}
+                </div>
+              )}
 
               {formData.mode === "Team" && (
                 <div className="quest-field">
@@ -1073,6 +1420,133 @@ const QuestsHubs = () => {
                   )}
                 </>
               )}
+            </div>
+          )}
+
+          {/* Quest completion area for template-based hubs (e.g. Mood Check-In) */}
+          {questTemplates[selectedHub.featuredTitle] && (
+            <div className="hub-quest-block">
+              {(() => {
+                const template = questTemplates[selectedHub.featuredTitle];
+                const started = hasQuestStarted(selectedHub);
+                const joined = hasUserJoined(selectedHub.id);
+
+                const progress = questProgress[template.id] || {
+                  dayKey: getTodayKey(),
+                  countToday: 0,
+                  pointsToday: 0,
+                };
+
+                // If it has not started yet
+                if (!started) {
+                  return (
+                    <p className="quest-helper">
+                      This quest has not started yet. You will be able to log
+                      your entries once it starts.
+                    </p>
+                  );
+                }
+
+                // Require the user to join the hub before logging
+                if (!joined) {
+                  return (
+                    <p className="quest-helper">
+                      Join this hub to start logging your{" "}
+                      {template.title.toLowerCase()} entries.
+                    </p>
+                  );
+                }
+
+                // Main form to complete the quest
+                return (
+                  <>
+                    <p className="quest-helper">
+                      Today: {progress.countToday}/{template.maxPerDay}{" "}
+                      completion(s) · {progress.pointsToday} points.
+                    </p>
+
+                    <form onSubmit={handleHubQuestSubmit}>
+                      {template.fields.map((field) => {
+                        // File field (for 10,000 Steps screenshot)
+                        if (field.type === "file") {
+                          return (
+                            <div key={field.name} className="quest-field">
+                              <label>{field.label}</label>
+                              <input
+                                type="file"
+                                name={field.name}
+                                onChange={(e) =>
+                                  setQuestFormValues((prev) => ({
+                                    ...prev,
+                                    [field.name]: e.target.files?.[0] || null,
+                                  }))
+                                }
+                              />
+                              {field.placeholder && (
+                                <p className="quest-helper">
+                                  {field.placeholder}
+                                </p>
+                              )}
+                            </div>
+                          );
+                        }
+
+                        // Textarea fields (Mood description, What could help, etc.)
+                        const value = questFormValues[field.name] || "";
+
+                        return (
+                          <div key={field.name} className="quest-field">
+                            <label>
+                              {field.label}
+                              {field.required && (
+                                <span
+                                  style={{
+                                    color: "red",
+                                    marginLeft: "0.25rem",
+                                  }}
+                                >
+                                  *
+                                </span>
+                              )}
+                            </label>
+                            <textarea
+                              name={field.name}
+                              rows={3}
+                              value={value}
+                              onChange={handleQuestFieldChange}
+                              placeholder={field.placeholder}
+                            />
+                            {field.minWords && (
+                              <p className="quest-helper">
+                                At least {field.minWords} words.
+                              </p>
+                            )}
+                          </div>
+                        );
+                      })}
+
+                      {questMessage && (
+                        <p className="quest-helper" style={{ fontWeight: 500 }}>
+                          {questMessage}
+                        </p>
+                      )}
+
+                      <div
+                        className="hub-quest-footer"
+                        style={{
+                          marginTop: "0.5rem",
+                          display: "flex",
+                          justifyContent: "flex-end",
+                        }}
+                      >
+                        <PrimaryButton type="submit">
+                          Submit today&apos;s entry
+                        </PrimaryButton>
+                      </div>
+                    </form>
+                  </>
+                );
+              })()}
             </div>
           )}
 
