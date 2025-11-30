@@ -44,17 +44,17 @@ export default function Learning() {
                 <section className="info_box">
                     <img src={InfoBoxImg} className="info_box_img" />
                     <section className="info_box_text_box">
-                        <h2>Learning with MindQuest</h2>
+                        <h2>Self learning with MindQuest</h2>
                         <p>
                             Here at MindQuest, we make sure our users have access to resources from a wide variety of verified sources, 
                             including NHS England, Mental Health UK, Mind, and other notable mental health providers.
                         </p>
                         <p>
                             Our short micro-lessons allow you to read up and educate yourself on various aspects of mental health, and then 
-                            take a short quiz to see how much you've learned and potentially earn a badge!
+                            take a short quiz to see how much you've learned and earn a badge!
                         </p>
                         <p>
-                            Click on any of the cards below to get started and see the lessons related to that topic.
+                            Click on any of the cards below to get started and see our lessons related to that topic.
                         </p>
                     </section>
                 </section>

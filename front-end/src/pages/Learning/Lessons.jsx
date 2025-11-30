@@ -24,6 +24,14 @@ export default function Lessons() {
             {/* LESSON CONTENT */}
             <section className="lesson_wrapper">
 
+                {/* Navigation Buttons */}
+                <section className="lesson_footer">
+                    <section className="lesson_nav_buttons">
+                        <button onClick={prevPage} disabled={currentPage === 1}>Previous page</button>
+                        <button onClick={nextPage} disabled={currentPage === 4}>Next page</button>
+                    </section>
+                </section>
+
                 {/* Page 1 */}
                 {currentPage === 1 && (
                     <section className="lesson_section">
@@ -99,7 +107,7 @@ export default function Lessons() {
 
                         <h2>How can you manage?</h2>
                         <p>
-                            Understanding how to deal with the stresses and Anxities we all experience on a day-to-day basis is important for everyone.
+                            Understanding how to deal with the stresses and Anxieties we all experience on a day-to-day basis is important for everyone.
                         </p>
 
                         <p>
@@ -113,7 +121,7 @@ export default function Lessons() {
                         <ul>
                             <li>Shift your focus: Practice mindfulness, meditation, breathing exercises.</li>
                             <li>Understand your anxiety: Keeping a journal or diary of what you are doing and how you feel at that time.</li>
-                            <li>Face your fears gradually: Slwoly facing up to a situation that is causing you stress might help, and eventually it will feel okay.</li>
+                            <li>Face your fears gradually: Slowly facing up to a situation that is causing you stress might help, and eventually it will feel okay.</li>
                             <li>Make time for worries: Set a daily "worry time" to go through your concerns.</li>
                             <li>Look at the bigger picture: Focusing too much on the details of your worries can make you stop seeing clearly. Take a step back, and
                                 try to see your concerns from another perspective.
