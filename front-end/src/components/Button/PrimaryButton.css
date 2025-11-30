@@ -1,0 +1,30 @@
+.primary-btn {
+  background: #013c58;
+  border-radius: var(--mq-radius-md); /* 10px corners */
+  border: 1px solid transparent;
+  color: white;
+  transition: transform 0.2s ease, background 0.2s ease, color 0.2s ease;
+  padding: 0.55rem 1.4rem;
+  font-size: 0.95rem;
+  cursor: none;
+}
+
+.primary-btn:hover {
+  cursor: pointer;
+  transform: scale(1.2);
+  background: #f5a201;
+  color: black;
+  border: 1px solid black;
+}
+
+.primary-btn:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+  transform: none;
+}
+
+.primary-btn:disabled:hover {
+  transform: none;
+  background: #013c58; /* keep base colour */
+  color: #fff;
+}

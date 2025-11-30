@@ -58,27 +58,15 @@
   margin-bottom: 1.5rem;
 }
 
-.primary-btn,
 .secondary-btn {
   border-radius: var(--mq-radius-md); /* 10px corners */
   border: 1px solid transparent;
   padding: 0.55rem 1.4rem;
   font-size: 0.95rem;
   cursor: pointer;
-}
-
-.primary-btn {
-  background: #013c58;
-  color: #fff;
-  transition: transform 0.2s ease, background 0.2s ease, color 0.2s ease;
-}
-
-.primary-btn:hover {
-  cursor: pointer;
-  transform: scale(1.2); /* same hover scale as #submit:hover */
-  background: #f5a201; /* hover background */
-  color: black;
-  border: none;
+  background: #fff;
+  border-color: #cfd2ea;
+  color: #333;
 }
 
 .create-quest-btn {
@@ -103,18 +91,6 @@
   background: #f5a201; /* hover background */
   color: black;
   border: none;
-}
-
-.secondary-btn {
-  background: #fff;
-  border-color: #cfd2ea;
-  color: #333;
-}
-
-.primary-btn.small,
-.secondary-btn.small {
-  padding: 0.4rem 1rem;
-  font-size: 0.85rem;
 }
 
 /* Tabs */
@@ -548,18 +524,6 @@
   object-fit: cover;
   border-radius: 0.75rem;
   border: 1px solid #d0d0dd;
-}
-
-.primary-btn:disabled {
-  opacity: 0.6;
-  cursor: not-allowed;
-  transform: none;
-}
-
-.primary-btn:disabled:hover {
-  transform: none;
-  background: #013c58; /* keep base colour */
-  color: #fff;
 }
 
 /* Optional: message under the modal footer */

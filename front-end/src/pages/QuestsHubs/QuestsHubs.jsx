@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import QuestsBanner from "../../assets/Cards_Images/Webp/6.webp";
 import "./QuestsHubs.css";
 import Modal from "../../Modal";
+import PrimaryButton from "../../components/Button/PrimaryButton";
 
 import img1 from "../../assets/Cards_Images/Webp/1.webp";
 import img2 from "../../assets/Cards_Images/Webp/2.webp";
@@ -511,13 +512,12 @@ const QuestsHubs = () => {
             </p>
           </div>
 
-          <button
-            type="button"
-            className="primary-btn create-quest-btn"
+          <PrimaryButton
+            className="create-quest-btn"
             onClick={() => setIsCreateOpen(true)}
           >
             Create Quest
-          </button>
+          </PrimaryButton>
         </section>
 
         {/* Filters row */}
@@ -586,18 +586,14 @@ const QuestsHubs = () => {
               />
               <button
                 type="button"
-                className="secondary-btn small"
+                className="secondary-btn"
                 onClick={handleSearchClear}
               >
                 Clear
               </button>
-              <button
-                type="button"
-                className="primary-btn small"
-                onClick={handleSearchApply}
-              >
+              <PrimaryButton type="button" onClick={handleSearchApply}>
                 Search
-              </button>
+              </PrimaryButton>
             </div>
           </div>
         </section>
@@ -947,9 +943,7 @@ const QuestsHubs = () => {
                 >
                   Cancel
                 </button>
-                <button type="submit" className="primary-btn">
-                  Create quest
-                </button>
+                <PrimaryButton type="submit">Create quest</PrimaryButton>
               </footer>
             </form>
           </div>
@@ -1000,14 +994,13 @@ const QuestsHubs = () => {
                 }
 
                 return (
-                  <button
+                  <PrimaryButton
                     type="button"
-                    className="primary-btn"
                     disabled={disabled}
                     onClick={() => handleJoinHub(selectedHub)}
                   >
                     {label}
-                  </button>
+                  </PrimaryButton>
                 );
               })()}
             </>
