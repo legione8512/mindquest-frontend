@@ -6,7 +6,6 @@ import breathing from "../assets/breathing.jpg";
 import musclerelaxation from "../assets/musclerelaxation.jpg";
 import meditation from "../assets/meditation.jpeg";
 import forest from "../assets/forest.webp";
-import QuickCalmModal from "./Quickcalmmodal";
 
 export default function QuickCalm() {
   // exercise categories
@@ -79,6 +78,32 @@ export default function QuickCalm() {
     selectedCategory == "all"
       ? exercises
       : exercises.filter((ex) => ex.category === selectedCategory);
+  const QuickCalmModal = ({ isOpen, onClose, exercise, children }) => {
+    if (!isOpen || !exercise) return null;
+
+    return (
+      <section
+        className="qc-modal-backdrop"
+        onClick={(e) => {
+          if (e.target.className === "qc-modal-backdrop") onClose();
+        }}
+      >
+        <section className="qc-modal">
+          <header className="qc-modal-header">
+            <h2>{exercise.title}</h2>
+            <button
+              className="qc-modal-close-btn"
+              onClick={onClose}
+              aria-label="Close"
+            >
+              x
+            </button>
+          </header>
+          <section className="qc-modal-body">{children}</section>
+        </section>
+      </section>
+    );
+  };
   return (
     <main className="quickcalm-container">
 
@@ -128,21 +153,32 @@ export default function QuickCalm() {
             >
               Start
             </button>
-          </section>
+          </section> 
         ))}
       </section>
+
       {activateExercise && (
         <QuickCalmModal
           isOpen={true}
           onClose={() => setActivateExercise(null)}
           exercise={activateExercise}
-          >
-            <section className="qc-modal-content">
-              <p>{activateExercise.description}</p>
-              <p>Duration: {activateExercise.duration}</p>
-              <p>Points: {activateExercise.points}</p>
-            </section>
-          </QuickCalmModal>
+        >
+          <section className= "qc-modal-body">
+          <img src={activateExercise.image} alt={activateExercise.title} className="qc-modal-img"/>
+          <p>{activateExercise.description}</p>
+          <p>Duration: {activateExercise.duration}</p>
+          <p>Points: {activateExercise.points}</p>
+          </section>
+          <button 
+            className="qc-modal-complete-btn" 
+            onClick={() => {
+              alert ("Exercise Completed!");
+              setActivateExercise(null);
+            }}>
+            Complete Exercise
+            </button>
+          
+        </QuickCalmModal>
       )}
 
     </main>
