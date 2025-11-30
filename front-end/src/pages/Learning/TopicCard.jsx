@@ -16,7 +16,7 @@ export default function TopicCard({ topic, openDropdown, toggleDropdown }) {
                 <ul className="topic_dropdown_menu">
                     {topic.links.map((lesson, index) => (
                         <li key={index}>
-                            <Link to="/lesson_page">{lesson}</Link>
+                            <Link to={`/lessons/${topic.key}/${lesson.toLowerCase().replace(/ /g, "-")}`}>{lesson}</Link>
                         </li>
                     ))}
                 </ul>

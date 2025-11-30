@@ -35,7 +35,7 @@ function App() {
         <Route path="/dashboard" element={<Dashboard />} />
         <Route path="/mood_compass" element={<MoodCompass />} />
         <Route path="/learning" element={<Learning />} />
-        <Route path="/lesson_page" element={<LessonPage />} />
+        <Route path="/lessons/:topicKey/:lessonKey" element={<LessonPage />} />
         <Route path="/account" element={<Account />} />
         <Route path="/register" element={<Register />} />
       </Routes>
