@@ -6,11 +6,7 @@ import breathing from "../assets/breathing.jpg";
 import musclerelaxation from "../assets/musclerelaxation.jpg";
 import meditation from "../assets/meditation.jpeg";
 import forest from "../assets/forest.webp";
-import Modal from "./Modak";
-
-
-
-import "./quickcalm.css";
+import QuickCalmModal from "./Quickcalmmodal";
 
 export default function QuickCalm() {
   // exercise categories
@@ -18,6 +14,7 @@ export default function QuickCalm() {
 
   // user selects category
   const [selectedCategory, setSelectedCategory] = useState("all");
+  const [activateExercise, setActivateExercise] = useState(null);
 
   // exercises
   const exercises = [
@@ -127,13 +124,26 @@ export default function QuickCalm() {
             </section>
             <button
               className="qc-start-btn"
-              onClick={() => alert(`Completed: ${ex.title}`)}
+              onClick={() => setActivateExercise(ex)}
             >
               Start
             </button>
           </section>
         ))}
       </section>
+      {activateExercise && (
+        <QuickCalmModal
+          isOpen={true}
+          onClose={() => setActivateExercise(null)}
+          exercise={activateExercise}
+          >
+            <section className="qc-modal-content">
+              <p>{activateExercise.description}</p>
+              <p>Duration: {activateExercise.duration}</p>
+              <p>Points: {activateExercise.points}</p>
+            </section>
+          </QuickCalmModal>
+      )}
 
     </main>
   );
