@@ -20,7 +20,7 @@ export default function Lessons() {
     const page = lessonPages[currentPage];
     const nextPage = () => setCurrentPage(page => page + 1);
     const prevPage = () => setCurrentPage(page => page - 1);
-    
+
     return (
         <>
 
@@ -43,17 +43,18 @@ export default function Lessons() {
                 </section>
 
                 {/* Page Content */}
-                <section className="lesson_section">
+                <section key={currentPage} className="lesson_section">
                     <h2>{page.title}</h2>
-                </section>
 
-                {page.content.map((paragraph, index) => (
-                    paragraph.startsWith("-") ? (
-                        <li key={index}>{paragraph.substring(1)}</li>
-                    ) : (
-                        <p key={index}>{paragraph}</p>
-                    )
-                ))}
+
+                    {page.content.map((paragraph, index) => (
+                        paragraph.startsWith("-") ? (
+                            <li key={index}>{paragraph.substring(1)}</li>
+                        ) : (
+                            <p key={index}>{paragraph}</p>
+                        )
+                    ))}
+                </section>
             </section>
 
             {/* Navigation Buttons */}
