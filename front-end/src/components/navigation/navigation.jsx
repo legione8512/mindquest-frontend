@@ -84,6 +84,15 @@ export default function Navigation({ toggleSidebar }) {
             Learning
           </Link>
 
+          <Link 
+            to="/quickcalm"
+            className={`top-nav-button ${
+              isActive("/quickcalm") ? "top-nav-button--active" : ""
+            }`}
+            title="Go to QuickCalm"
+          >
+            QuickCalm
+          </Link>
           <Link
             to="/account"
             className={`top-nav-button ${

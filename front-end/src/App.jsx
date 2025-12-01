@@ -16,6 +16,7 @@ import QuestsHubs from "./pages/QuestsHubs/QuestsHubs.jsx";
 import QuickCalm from "./pages/QuickCalm.jsx";
 import MoodCompass from "./pages/MoodCompass/MoodCompass.jsx";
 import Register from "./pages/Register/Register.jsx";
+import QuickCalm from "./pages/QuickCalm.jsx";
 
 /* Components Import */
 import "./components/sidebar/sidebar.css";
