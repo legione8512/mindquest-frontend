@@ -177,10 +177,15 @@ footer img {
   color: #c1eef9;
   transition: 0.4s ease;
   letter-spacing: 0.05rem;
+  text-align: left;
+}
+
+.footer_section ul {
+  list-style: none; /* remove bullets */
+  padding-left: 0; /* remove default indent */
 }
 
 .footer_section ul li {
-  list-style-type: none;
   margin-bottom: 0.5rem;
 }
 
