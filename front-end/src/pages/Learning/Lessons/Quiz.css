@@ -39,10 +39,9 @@
 
 /* Question wrapper */
 .quiz_question {
-    margin-bottom: 2rem;
+    margin-bottom: 5rem;
     border-radius: 10px;
-    background: #c1eef9be;
-    
+    background: #c1eef9;
 }
 
 /* Question text */
@@ -69,6 +68,7 @@
 }
 .quiz_option:hover {
     cursor: pointer;
+    background: #f5a401;
 }
 
 /* Custom radio buttons */
@@ -120,6 +120,5 @@ input[type="radio"]:checked {
 }
 
 #back_to_lesson button {
-    width: 90%;
     margin-top: -1rem;
 }

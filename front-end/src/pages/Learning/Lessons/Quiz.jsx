@@ -1,7 +1,7 @@
 import { useState } from "react";
 import "./Quiz.css";
 
-export default function Quiz({ quiz }) {
+export default function Quiz({ quiz, setShowQuiz, setCurrentPage }) {
 
     // Track selected answers as user progresses
     const [selected, setSelected] = useState({});

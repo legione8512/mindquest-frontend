@@ -89,7 +89,10 @@ export default function Lessons() {
                 {/* Quiz */}
                 {showQuiz && quiz && (
                     <>
-                        <Quiz quiz={quiz} />
+                        <Quiz
+                            quiz={quiz}
+                            setShowQuiz={setShowQuiz}
+                            setCurrentPage={setCurrentPage} />
                     </>
                 )}
             </section >
@@ -103,11 +106,11 @@ export default function Lessons() {
                             <button onClick={prevPage} disabled={currentPage === 0}>Previous page</button>
                             <button onClick={nextPage} disabled={currentPage === lessonPages.length - 1}>Next page</button>
                             <button
-                                    id="start_quiz_button"
-                                    hidden={!isLastPage}
-                                    onClick={() => setShowQuiz(true)}>
-                                    Start the Quiz!
-                                </button>
+                                id="start_quiz_button"
+                                hidden={!isLastPage}
+                                onClick={() => setShowQuiz(true)}>
+                                Start the Quiz!
+                            </button>
                         </section>
 
                         {/* Page counter */}
