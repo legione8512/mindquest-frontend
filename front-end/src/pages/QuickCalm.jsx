@@ -6,6 +6,7 @@ import breathing from "../assets/breathing.jpg";
 import musclerelaxation from "../assets/musclerelaxation.jpg";
 import meditation from "../assets/meditation.jpeg";
 import forest from "../assets/forest.webp";
+import "./quickcalm.css";
 
 export default function QuickCalm() {
   // exercise categories
