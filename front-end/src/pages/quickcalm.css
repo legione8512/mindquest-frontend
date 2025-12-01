@@ -1,19 +1,20 @@
 .quickcalm-container {
   max-width: 1100px;
   margin: auto;
+  padding-bottom: 80px;
 }
 
 /* Categories */
 .qc-categories {
   display: flex;
   justify-content: center;
-  gap: 12px;
+  gap: 6px;
   margin-bottom: 25px;
   padding-top: 30px;
 }
 
 .qc-category-btn {
-  padding: 20px 28px;
+  padding: 15px 15px;
   border-radius: 20px;
   background: #e8e8e8;
   border: none;
@@ -24,7 +25,7 @@
 }
 
 .qc-category-btn.active {
-  background: #6aa6ff;
+  background: #013C58;
   color: white;
   font-size: 0.75rem;
 }
@@ -34,15 +35,20 @@
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(270px, 1fr));
   gap: 20px;
+
 }
 
 .qc-card {
   background: white;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
   padding: 20px;
   border-radius: 20px;
   border: 1px solid #d7e4ff;
-  box-shadow: 0px 5px 15px rgba(100, 150, 255, 0.1);
-  transition: 0.3s;
+  box-shadow: 0px 5px 15px #013C58;
+  box-sizing: border-box;
+  height: 100%;
 }
 
 .qc-card:hover {
@@ -52,7 +58,7 @@
 /* Top of card */
 .qc-card-top h3 {
   margin: 0 0 10px 0;
-  color: #2d3e5e;
+  color: #013C58;
 }
 
 /* Description */
@@ -72,28 +78,32 @@
 
 .qc-points {
   font-weight: bold;
-  color: #3b82f6;
+  color: #013C58;
 }
 
-/* Start Button */
 .qc-start-btn {
-  background: #3b82f6;
+  background: #013C58 ;
   color: white;
   width: 100%;
-  padding: 10px;
-  border-radius: 12px;
+  padding: 0.6rem 1.2rem;
+  border-radius: 8px;
   border: none;
   cursor: pointer;
   transition: 0.3s;
+  margin-top: auto;
 }
 
 .qc-start-btn:hover {
-  background: #2363d9;
+  background: #F5A201 ; 
+  color: #013C58 ;
+  transform: translateY(-2px);
 }
+
 
 .qc-card-img {
   width: 100%;
-  height: auto;
+  height: 180px;
+  object-fit: cover;
   border-radius: 12px;
   margin-bottom: 15px;
 }
@@ -108,7 +118,6 @@
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
-  border-radius: 18px;
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -156,7 +165,7 @@
 
 /* Header */
 .qc-modal-header {
-  background: #3b83f6;
+  background: #013C58;
   color: white;
   padding: 1rem 1.5rem;
   display: flex;
@@ -183,19 +192,10 @@
 }
 
 /* Add hover effect for start buttons */
-.qc-start-btn {
-  padding: 0.6rem 1.2rem;
-  background: #3b83f6;
-  border: none;
-  border-radius: 8px;
-  color: white;
-  font-weight: bold;
-  cursor: pointer;
-  transition: 0.2s;
-}
+
 
 .qc-start-btn:hover {
-  background: #2f6ad1;
+  background: #013C58;
   transform: translateY(-2px);
 }
 
@@ -223,7 +223,7 @@
   display:block;
   margin:1.5rem auto 0 auto;
   padding:0.75rem 1.5rem;
-  background-color:#3b83f6;
+  background-color:#013C58;
   color:white;
   font-size: 1rem;
   border:none;
@@ -232,6 +232,6 @@
   transition: background-color 0.3s;
 }
 .qc-modal-complete-btn:hover{
-  background-color:#2c66c1;
+  background-color:#013C58;
   transform: scale (1.05);
 }

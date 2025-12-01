@@ -35,9 +35,16 @@ export default function Home() {
           <h3>MindQuest is your personal digital well being platfrom
             where you can relax, learn, and track your mood all in one place.
           </h3>
+          </section>
+          <section className="wave-block">
+            <section className="wave-content">
+              <p> Through mood tracking, calming exercises, personal goals, and supportive community hubs, MindQuest creates a safe, stigma-free space where users can reflect, learn, and grow.
+              With small daily actions, guided tools, and positive encouragement, MindQuest empowers you to understand your emotions, stay consistent with self-care, and build long-term wellbeing. 
+              </p>
+          </section>
         </section>
         <section className="offer">
-          <h4> What we offer </h4>
+          <h4> Some of what we offer </h4>
         </section>
 
         <section className="feature-cards">
@@ -54,7 +61,9 @@ export default function Home() {
            <section className="card">
             <img src={books} className="card-icon2" alt="smile icon"/>
             <h3>Learn</h3>
-            <p>Learn more about Mental Health</p>
+            <p>Learn more about Mental Health
+              and complete quizzes to earn points
+            </p>
             </section>
           </Link>
 
@@ -74,7 +83,7 @@ export default function Home() {
         <h2>Begin Your MindQuest</h2>
 
         <Link to="/register">
-          <button className="cta-button large">Join Now</button>
+          <button className="cta-button-large">Join Now</button>
         </Link>
       </section>
 
