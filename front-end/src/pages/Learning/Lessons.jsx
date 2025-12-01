@@ -69,35 +69,68 @@ export default function Lessons() {
                         </section>
 
                         {isLastPage && !showQuiz && quiz && (
-                            <button
-                                className="start_quiz_button"
-                                onClick={() => setShowQuiz(true)}>
-                                Start Quiz
-                            </button>
+                            <section className="lesson_nav_buttons">
+                                <button
+                                    className="start_quiz_button"
+                                    onClick={() => setShowQuiz(true)}>
+                                    Start Quiz
+                                </button>
+                            </section>
                         )}
                     </>
                 )}
 
                 {/* Quiz */}
                 {showQuiz && quiz && (
-                    <Quiz quiz={quiz} />
+                    <>
+                        <section className="lesson_nav_buttons">
+                            <button onClick={() => {
+                                setShowQuiz(false);
+                                setCurrentPage(0);
+                            }}>
+                                Back to Lesson
+                            </button>
+
+                            <Link to="/learning">
+                                <button>Back to Learning Page</button>
+                            </Link>
+                        </section>
+
+                        <Quiz quiz={quiz} />
+
+                        <section className="lesson_nav_buttons">
+                            <button onClick={() => {
+                                setShowQuiz(false);
+                                setCurrentPage(0);
+                            }}>
+                                Back to Lesson
+                            </button>
+
+                            <Link to="/learning">
+                                <button>Back to Learning Page</button>
+                            </Link>
+                        </section>
+
+                    </>
+
+
                 )}
             </section>
 
             {/* Navigation Buttons */}
             {!showQuiz && (
-            <section className="lesson_footer">
-                <section className="lesson_nav_buttons">
-                    <button onClick={prevPage} disabled={currentPage === 0}>Previous page</button>
-                    <Link to="/learning"><button title="Back to the learning page">Exit this lesson</button></Link>
-                    <button onClick={nextPage} disabled={currentPage === lessonPages.length - 1}>Next page</button>
-                </section>
+                <section className="lesson_footer">
+                    <section className="lesson_nav_buttons">
+                        <button onClick={prevPage} disabled={currentPage === 0}>Previous page</button>
+                        <Link to="/learning"><button title="Back to the learning page">Exit this lesson</button></Link>
+                        <button onClick={nextPage} disabled={currentPage === lessonPages.length - 1}>Next page</button>
+                    </section>
 
-                {/* Page counter */}
-                <section className="lesson_page_counter">
-                    <p>Page {currentPage + 1} of {lessonPages.length}</p>
+                    {/* Page counter */}
+                    <section className="lesson_page_counter">
+                        <p>Page {currentPage + 1} of {lessonPages.length}</p>
+                    </section>
                 </section>
-            </section>
             )}
         </>
     )

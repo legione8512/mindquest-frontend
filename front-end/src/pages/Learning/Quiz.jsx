@@ -1,4 +1,5 @@
 import { useState } from "react";
+import "./Learning.css";
 
 export default function Quiz({ quiz }) {
 
@@ -38,38 +39,50 @@ export default function Quiz({ quiz }) {
 
             {/* Only display score screen if quiz finished */}
             {submitted ? (
-                <section className="quiz_results">
-                    <h3>Your Score:</h3>
-                    <p>{score} / {quiz.length}</p>
-                </section>
+                <>
+                    {/* Quiz results page */}
+                    <section className="quiz_results">
+                        <h3>Your Score:</h3>
+                        <p>{score} / {quiz.length}</p>
+                    </section>
+
+                </>
             ) : (
                 <>
+                    {/* Quiz content */}
                     {quiz.map((q, qIndex) => (
                         <section key={qIndex} className="quiz_question">
                             <p>{q.question}</p>
                             {q.options.map((option, optIndex) => (
-                                <label key={optIndex} className="quiz_option">
-                                    <input
-                                        type="radio"
-                                        checked={selected[qIndex] === optIndex}
-                                        onChange={() => handleSelect(qIndex, optIndex)}
-                                    />
-                                    {option}
-                                </label>
+                                <>
+                                    {/* Question answers */}
+                                    <label key={optIndex} className="quiz_option">
+                                        <input
+                                            type="radio"
+                                            checked={selected[qIndex] === optIndex}
+                                            onChange={() => handleSelect(qIndex, optIndex)}
+                                        />
+                                        {option}
+                                    </label>
+                                </>
                             ))}
                         </section>
                     ))}
 
                     {/* Submit button */}
-                    <button
-                        className="submit_quiz_button"
-                        onClick={handleSubmit}
-                        disabled={Object.keys(selected).length !== quiz.length}
-                    >
-                        Submit Quiz
-                    </button>
+                    <section className="lesson_nav_buttons">
+                        <button
+                            className="submit_quiz_button"
+                            onClick={handleSubmit}
+                            disabled={Object.keys(selected).length !== quiz.length}
+                        >
+                            Submit Quiz
+                        </button>
+                    </section>
+
                 </>
             )}
+
         </section>
     );
 }
