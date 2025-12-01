@@ -184,6 +184,9 @@
 
 .hub-card-body {
   padding: 1.1rem 1.2rem 1rem;
+  display: flex;
+  flex-direction: column;
+  flex: 1; /* take all remaining height inside .hub-card */
 }
 
 .hub-title-row {
@@ -210,6 +213,8 @@
   margin: 0 0 0.8rem;
   font-size: 0.9rem;
   color: #555;
+  max-width: 30ch; /* ≈ 30 characters per row */
+  overflow-wrap: anywhere; /* prevent long words from breaking layout */
 }
 
 .feature-block {
@@ -262,7 +267,8 @@
 }
 
 .hub-card-footer {
-  margin-top: 0.6rem;
+  margin-top: auto;
+  padding-top: 0.5rem; /* optional spacing above the button */
 }
 
 /* Small screens */

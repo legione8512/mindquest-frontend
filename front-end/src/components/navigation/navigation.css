@@ -71,6 +71,7 @@ header {
   width: 150px;
   cursor: pointer;
   transition: 0.4s ease;
+  text-decoration: none;
 }
 
 /* Login button hover animation */
