@@ -5,7 +5,7 @@ export default function Quiz({ quiz }) {
     // Track selected answers as user progresses
     const [selected, setSelected] = useState({});
 
-    // Handler for selecting answer.
+    // Handler for selecting answer for each question
     const handleSelect = (questionIndex, optionIndex) => {
         setSelected(prev => ({ ...prev, [questionIndex]: optionIndex }));
     };
@@ -17,12 +17,10 @@ export default function Quiz({ quiz }) {
             {quiz.map((q, qIndex) => (
                 <section key={qIndex} className="quiz_question">
                     <p>{q.question}</p>
-
                     {q.options.map((option, optIndex) => (
                         <label key={optIndex} className="quiz_option">
                             <input
                                 type="radio"
-                                name={`q-${qIndex}`}
                                 checked={selected[qIndex] === optIndex}
                                 onChange={() => handleSelect(qIndex, optIndex)}
                             />

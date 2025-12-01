@@ -27,6 +27,8 @@ export default function Lessons() {
 
     // Check if user is on the last page of lesson (display quiz)
     const isLastPage = currentPage === lessonPages.length - 1;
+
+    // Show/hide the quiz
     const [showQuiz, setShowQuiz] = useState(false);
 
     return (
@@ -42,42 +44,48 @@ export default function Lessons() {
 
             {/* LESSON CONTENT */}
             <section className="lesson_wrapper">
+                {!showQuiz && (
 
-                {/* Navigation Buttons */}
-                <section className="lesson_nav_buttons">
-                    <button onClick={prevPage} disabled={currentPage === 0}>Previous page</button>
-                    <Link to="/learning"><button title="Back to the learning page">Exit this lesson</button></Link>
-                    <button onClick={nextPage} disabled={currentPage === lessonPages.length - 1}>Next page</button>
-                </section>
+                    <>
+                        {/* Navigation Buttons */}
+                        <section className="lesson_nav_buttons">
+                            <button onClick={prevPage} disabled={currentPage === 0}>Previous page</button>
+                            <Link to="/learning"><button title="Back to the learning page">Exit this lesson</button></Link>
+                            <button onClick={nextPage} disabled={currentPage === lessonPages.length - 1}>Next page</button>
+                        </section>
 
-                {/* Page Content */}
-                <section key={currentPage} className="lesson_section">
-                    <h2>{page.title}</h2>
+                        {/* Page Content */}
+                        <section key={currentPage} className="lesson_section">
+                            <h2>{page.title}</h2>
 
-                    {page.content.map((paragraph, index) => (
-                        paragraph.startsWith("-") ? (
-                            <li key={index}>{paragraph.substring(1)}</li>
-                        ) : (
-                            <p key={index}>{paragraph}</p>
-                        )
-                    ))}
+                            {page.content.map((paragraph, index) => (
+                                paragraph.startsWith("-") ? (
+                                    <li key={index}>{paragraph.substring(1)}</li>
+                                ) : (
+                                    <p key={index}>{paragraph}</p>
+                                )
+                            ))}
 
-                </section>
+                        </section>
+
+                        {isLastPage && !showQuiz && quiz && (
+                            <button
+                                className="start_quiz_button"
+                                onClick={() => setShowQuiz(true)}>
+                                Start Quiz
+                            </button>
+                        )}
+                    </>
+                )}
 
                 {/* Quiz */}
-                {isLastPage && !showQuiz && quiz && (
-                    <button
-                        className="start_quiz_button"
-                        onClick={() => setShowQuiz(true)}>
-                        Start Quiz
-                    </button>
-                )}
                 {showQuiz && quiz && (
-                <Quiz quiz={quiz} />
-                    )}
+                    <Quiz quiz={quiz} />
+                )}
             </section>
 
             {/* Navigation Buttons */}
+            {!showQuiz && (
             <section className="lesson_footer">
                 <section className="lesson_nav_buttons">
                     <button onClick={prevPage} disabled={currentPage === 0}>Previous page</button>
@@ -90,7 +98,7 @@ export default function Lessons() {
                     <p>Page {currentPage + 1} of {lessonPages.length}</p>
                 </section>
             </section>
-
+            )}
         </>
     )
 
