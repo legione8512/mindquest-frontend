@@ -11,6 +11,7 @@ export const topics = [
             "Coping Strategies for Anxiety"
         ],
 
+        // Content for each lesson
         pages: {
             "what-is-anxiety": [
                 {
@@ -75,6 +76,61 @@ export const topics = [
                     ]
                 }
             ]
+        },
+
+        // Quizzes for each lesson
+        quiz: {
+            "what-is-anxiety": [
+                {
+                    question: "When does anxiety typically become a problem?",
+                    options: [
+                        "When it makes day-to-day life difficult", 
+                        "Whenever you feel nervous", 
+                        "Only during major emergencies", 
+                        "When someone tells you to calm down"],
+                    answer: 0
+                },
+                {
+                    question: "Which of the following is a common physical symptom of anxiety?",
+                    options: [
+                        "Improved concentration",
+                        "Feeling shaky or dizzy",
+                        "Increased energy",
+                        "Lower heart rate"
+                    ],
+                    answer: 1
+                },
+
+                {
+                    question: "Anxiety can affect which parts of a person?",
+                    options: [
+                        "Only their thoughts", 
+                        "Only their physical health", 
+                        "Only their relationships", 
+                        "Mind, body, and behaviour"],
+                    answer: 3
+                },
+
+                {
+                    question: "Which of the following is listed as a strategy for managing anxiety",
+                    options: [
+                        "Ignoring stressul situations completely", 
+                        "Writing a daily journal or diary", 
+                        "Avoiding all social contact", 
+                        "Keeping worries to yourself"],
+                    answer: 1
+                },
+
+                {
+                    question: "Which statement best describes the causes of anxiety?",
+                    options: [
+                        "It can arise from many experiences and varies from person to person", 
+                        "Everyone experiences anxiety in the exact same way", 
+                        "Anxiety always has a clear and obvious cause", 
+                        "It is caused only by genetics"],
+                    answer: 0
+                }
+            ],
         }
     },
 
