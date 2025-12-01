@@ -28,7 +28,7 @@
     margin: 0;
 }
 
-/************ Introductory text ************/
+/************ WELCOME SECTION ************/
 .learning_introduction_section {
     background: #c1eef979;
     padding: 2rem;
@@ -69,6 +69,7 @@
     margin: 2.5rem auto;
 }
 
+/* Information content box */
 .info_box {
     display: flex;
     box-sizing: border-box;
@@ -95,7 +96,7 @@
     border-left: 2px solid #c1eef9;
 }
 
-/* Header */
+/* Info box text */
 .info_box h2 {
     width: 100%;
     font-size: 1.8rem;
@@ -103,7 +104,7 @@
     color: #F5A201;
 }
 
-/* Content */
+/* Info box dropdown */
 .info_box p {
     width: 100%;
     font-size: 1rem;
@@ -113,7 +114,7 @@
 }
 
 
-/********** TOPIC CARDS **********/
+/********** TOPIC CARD SECTION WRAPPER **********/
 
 /* Wrapper for the topic cards section */
 .topic_cards_section {
@@ -123,180 +124,4 @@
     padding: 1rem;
     width: 100%;
     margin-bottom: 10rem;
-}
-
-/* Wrapper for each card */
-.topic_card_wrapper {
-    width: 100%;
-    max-width: 1500px;
-    display: flex;
-    flex-direction: column;
-    margin-bottom: 1rem;
-}
-
-/* Topic card content */
-.topic_card {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    background: #c1eef9;
-    color: #013C58;
-    text-align: center;
-    padding: 1.2rem;
-    border: 1px 1px solid #013C58;
-    width: 900px;
-    max-width: 100%;
-    margin: auto;
-    transition: .3s ease;
-    cursor: pointer;
-}
-
-/* Topic card text */
-.topic_card h2 {
-    font-size: 1.5rem;
-    font-weight: 600;
-    margin: auto;
-}
-
-/* Topic card hover animation */
-.topic_card:hover {
-    background: #F5A201;
-}
-
-
-/***** TOPIC CARDS DROPDOWN MENU *****/
-.topic_dropdown_menu {
-    background: #013C58;
-    border-top: none;
-    list-style: none;
-    width: 900px;
-    max-width: 100%;
-    border-radius: 0 0 8px 8px;
-    margin: auto;
-    padding: 0;
-}
-
-/* Dropdown button */
-.topic_dropdown_menu a {
-    display: block;
-    width: 100%;
-    padding: 1rem;
-    text-align: center;
-    color: white;
-    font-weight: 500;
-    text-decoration: none;
-    box-sizing: border-box;
-    background: transparent;
-    transition: 0.3s ease;
-}
-
-/* Dropdown hover effect */
-.topic_dropdown_menu a:hover {
-    background: #F5A201;
-    color: #013C58;
-}
-
-/* Dropdown list */
-.topic_dropdown_menu li {
-    margin: 0;
-    padding: 0;
-}
-
-/********** LESSON PAGES **********/
-
-/* Wrapper for content */
-.lesson_wrapper {
-    width: 1000px;
-    max-width: 100%;
-    margin: 0 auto;
-    padding: 2rem 1rem;
-    box-sizing: border-box;
-}
-
-/* Fade in animation when changing page */
-.lesson_section {
-    animation: fadeIn 1s;
-}
-
-@keyframes fadeIn {
-    from {
-        opacity: 0;
-        transform: translateY(-20px);
-    }
-
-    to {
-        opacity: 1;
-        transform: translateY(0);
-    }
-}
-
-/* Subheading */
-.lesson_section h2 {
-    font-size: 2rem;
-    color: #013C58;
-    margin-bottom: 1rem;
-}
-
-/* Text */
-.lesson_section p {
-    font-size: 1.15rem;
-    line-height: 1.8;
-    color: #013C58;
-    margin-bottom: 1rem;
-}
-
-/* Lists */
-.lesson_section ul {
-    margin-left: 1.5rem;
-    margin-bottom: 1rem;
-    padding-left: 1rem;
-    list-style-type: disc;
-    color: #013C58;
-    font-weight: 500;
-}
-
-.lesson_section ul li {
-    margin-bottom: 0.5rem;
-}
-
-/* Navigation buttons wrapper */
-.lesson_nav_buttons {
-    display: flex;
-    justify-content: center;
-    gap: 1rem;
-    margin: 2rem 0 4rem;
-}
-
-/* Navigation buttons */
-.lesson_nav_buttons button {
-    padding: 0.8rem 1.5rem;
-    background: #013C58;
-    border: none;
-    border-radius: 5px;
-    color: white;
-    font-weight: 600;
-    cursor: pointer;
-    transition: 0.3s ease;
-}
-
-/* Navigation button hover animation */
-.lesson_nav_buttons button:hover {
-    background: #F5A201;
-    color: #013C58;
-}
-
-/* Disabled buttons styling */
-.lesson_nav_buttons button:disabled {
-    background: #ccc;
-    color: #666;
-    pointer-events: none;
-}
-
-/* Page counter */
-.lesson_page_counter {
-    text-align: center;
-    color: #013C58;
-    font-weight: 600;
-    margin-bottom: 2rem;
-    margin-left: 2.3rem;
 }

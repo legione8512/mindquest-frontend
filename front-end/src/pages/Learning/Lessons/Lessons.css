@@ -1,0 +1,96 @@
+/* Wrapper for content */
+.lesson_wrapper {
+    width: 1000px;
+    max-width: 100%;
+    margin: 0 auto;
+    padding: 2rem 1rem;
+    box-sizing: border-box;
+}
+
+/* Fade in animation when changing page */
+.lesson_section {
+    animation: fadeIn 1s;
+}
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(-20px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Subheading */
+.lesson_section h2 {
+    font-size: 2rem;
+    color: #013C58;
+    margin-bottom: 1rem;
+}
+
+
+/* Text */
+.lesson_section p {
+    font-size: 1.15rem;
+    line-height: 1.8;
+    color: #013C58;
+    margin-bottom: 1rem;
+}
+
+
+/* Lists */
+.lesson_section ul {
+    margin-left: 1.5rem;
+    margin-bottom: 1rem;
+    padding-left: 1rem;
+    list-style-type: disc;
+    color: #013C58;
+    font-weight: 500;
+}
+.lesson_section li {
+    margin-bottom: 0.5rem;
+}
+
+/* Navigation buttons wrapper */
+.lesson_nav_buttons {
+    display: flex;
+    justify-content: center;
+    gap: 1rem;
+    margin: 2rem 0 4rem;
+}
+
+/* Navigation buttons */
+.lesson_nav_buttons button {
+    padding: 0.8rem 1.5rem;
+    background: #013C58;
+    border: none;
+    border-radius: 5px;
+    color: white;
+    font-weight: 600;
+    cursor: pointer;
+    transition: 0.3s ease;
+}
+
+/* Navigation button hover animation */
+.lesson_nav_buttons button:hover {
+    background: #F5A201;
+    color: #013C58;
+}
+
+/* Disabled buttons styling */
+.lesson_nav_buttons button:disabled {
+    background: #ccc;
+    color: #666;
+    pointer-events: none;
+}
+
+/* Page counter */
+.lesson_page_counter {
+    text-align: center;
+    color: #013C58;
+    font-weight: 600;
+    margin-bottom: 2rem;
+    margin-left: 2.3rem;
+}

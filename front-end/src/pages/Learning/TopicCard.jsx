@@ -1,5 +1,5 @@
 import { Link } from "react-router-dom";
-import "./Learning.css";
+import "./TopicCard.css";
 
 export default function TopicCard({ topic, openDropdown, toggleDropdown }) {
 

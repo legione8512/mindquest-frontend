@@ -1,9 +1,10 @@
 import { useState } from "react";
 import { Link, useParams } from "react-router-dom";
-import { topics } from "./TopicData/DataBase";
+import { topics } from "../TopicData/DataBase";
 import Quiz from "./Quiz";
-import LearningBanner from "../../assets/Anxiety_Banner.jpg";
-import "./Learning.css";
+import LearningBanner from "../../../assets/Anxiety_Banner.jpg";
+import "./Lessons.css";
+
 
 export default function Lessons() {
 

@@ -1,0 +1,75 @@
+/* Wrapper for each card */
+.topic_card_wrapper {
+    width: 100%;
+    max-width: 1500px;
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 1rem;
+}
+
+/* Topic card content */
+.topic_card {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: #c1eef9;
+    color: #013C58;
+    text-align: center;
+    padding: 1.2rem;
+    border: 1px 1px solid #013C58;
+    width: 900px;
+    max-width: 100%;
+    margin: auto;
+    transition: .3s ease;
+    cursor: pointer;
+}
+
+/* Topic card hover animation */
+.topic_card:hover {
+    background: #F5A201;
+}
+
+/* Topic card text */
+.topic_card h2 {
+    font-size: 1.5rem;
+    font-weight: 600;
+    margin: auto;
+}
+
+/***** TOPIC CARDS DROPDOWN MENU *****/
+.topic_dropdown_menu {
+    background: #013C58;
+    border-top: none;
+    list-style: none;
+    width: 900px;
+    max-width: 100%;
+    border-radius: 0 0 8px 8px;
+    margin: auto;
+    padding: 0;
+}
+
+/* Dropdown list */
+.topic_dropdown_menu li {
+    margin: 0;
+    padding: 0;
+}
+
+/* Dropdown button */
+.topic_dropdown_menu a {
+    display: block;
+    width: 100%;
+    padding: 1rem;
+    text-align: center;
+    color: white;
+    font-weight: 500;
+    text-decoration: none;
+    box-sizing: border-box;
+    background: transparent;
+    transition: 0.3s ease;
+}
+
+/* Dropdown hover effect */
+.topic_dropdown_menu a:hover {
+    background: #F5A201;
+    color: #013C58;
+}

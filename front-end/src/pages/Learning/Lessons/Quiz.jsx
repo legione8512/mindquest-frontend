@@ -1,5 +1,5 @@
 import { useState } from "react";
-import "./Learning.css";
+import "./Quiz.css";
 
 export default function Quiz({ quiz }) {
 
@@ -35,7 +35,7 @@ export default function Quiz({ quiz }) {
 
     return (
         <section className="quiz_section">
-            <h2>Quiz</h2>
+            <h2>Quiz Results</h2>
 
             {/* Only display score screen if quiz finished */}
             {submitted ? (
