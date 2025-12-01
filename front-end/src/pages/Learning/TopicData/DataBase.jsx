@@ -1,3 +1,7 @@
+import AnxietyBanner from "../../../assets/Anxiety_Banner.jpg";
+import DepressionBanner from "../../../assets/Depression_Banner.jpg";
+import PTSD_Banner from "../../../assets/PTSD_Banner.jpg";
+
 export const topics = [
 
     // Dummy data for Anxiety topic 
@@ -5,6 +9,7 @@ export const topics = [
         id: 1,
         key: "anxiety",
         title: "Anxiety",
+        banner: AnxietyBanner,
         links: [
             "What is Anxiety?",
             "Symptoms & Signs of Anxiety",
@@ -84,9 +89,9 @@ export const topics = [
                 {
                     question: "When does anxiety typically become a problem?",
                     options: [
-                        "When it makes day-to-day life difficult", 
-                        "Whenever you feel nervous", 
-                        "Only during major emergencies", 
+                        "When it makes day-to-day life difficult",
+                        "Whenever you feel nervous",
+                        "Only during major emergencies",
                         "When someone tells you to calm down"],
                     answer: 0
                 },
@@ -104,9 +109,9 @@ export const topics = [
                 {
                     question: "Anxiety can affect which parts of a person?",
                     options: [
-                        "Only their thoughts", 
-                        "Only their physical health", 
-                        "Only their relationships", 
+                        "Only their thoughts",
+                        "Only their physical health",
+                        "Only their relationships",
                         "Mind, body, and behaviour"],
                     answer: 3
                 },
@@ -114,9 +119,9 @@ export const topics = [
                 {
                     question: "Which of the following is listed as a strategy for managing anxiety",
                     options: [
-                        "Ignoring stressul situations completely", 
-                        "Writing a daily journal or diary", 
-                        "Avoiding all social contact", 
+                        "Ignoring stressul situations completely",
+                        "Writing a daily journal or diary",
+                        "Avoiding all social contact",
                         "Keeping worries to yourself"],
                     answer: 1
                 },
@@ -124,9 +129,9 @@ export const topics = [
                 {
                     question: "Which statement best describes the causes of anxiety?",
                     options: [
-                        "It can arise from many experiences and varies from person to person", 
-                        "Everyone experiences anxiety in the exact same way", 
-                        "Anxiety always has a clear and obvious cause", 
+                        "It can arise from many experiences and varies from person to person",
+                        "Everyone experiences anxiety in the exact same way",
+                        "Anxiety always has a clear and obvious cause",
                         "It is caused only by genetics"],
                     answer: 0
                 }
@@ -139,6 +144,7 @@ export const topics = [
         id: 2,
         key: "depression",
         title: "Depression",
+        banner: DepressionBanner,
         links: [
             "What is Depression?",
             "Symptoms & Signs of Depression",
@@ -172,6 +178,21 @@ export const topics = [
                     ]
                 }
             ]
+        },
+
+        // Quizzes for each lesson
+        quiz: {
+            "what-is-anxiety": [
+                {
+                    question: "When does anxiety typically become a problem?",
+                    options: [
+                        "Option 1!",
+                        "Option 2!",
+                        "Option 3!",
+                        "Option 4!"],
+                    answer: 0
+                }
+            ],
         }
     },
 
@@ -180,6 +201,7 @@ export const topics = [
         id: 3,
         key: "PTSD",
         title: "Post-traumatic stress disorder (PTSD)",
+        banner: PTSD_Banner,
         links: [
             "What is PTSD?",
             "Symptoms & Signs of PTSD",
@@ -213,7 +235,21 @@ export const topics = [
                     ]
                 }
             ]
-        }
+        },
 
+        // Quizzes for lessons
+        quiz: {
+            "what-is-anxiety": [
+                {
+                    question: "When does anxiety typically become a problem?",
+                    options: [
+                        "Option 1!",
+                        "Option 2!",
+                        "Option 3!",
+                        "Option 4!"],
+                    answer: 0
+                }
+            ],
+        }
     }
 ];

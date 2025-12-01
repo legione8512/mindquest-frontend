@@ -2,7 +2,6 @@ import { useState } from "react";
 import { Link, useParams } from "react-router-dom";
 import { topics } from "../TopicData/DataBase";
 import Quiz from "./Quiz";
-import LearningBanner from "../../../assets/Anxiety_Banner.jpg";
 import "./Lessons.css";
 
 
@@ -37,7 +36,7 @@ export default function Lessons() {
 
             {/* BANNER */}
             <section>
-                <img src={LearningBanner} className="learn_banner" />
+                <img src={topic.banner} className="learn_banner" />
                 <section className="learning_banner_title">
                     <h1>{topic.title}</h1>
                 </section>
