@@ -1,0 +1,97 @@
+/* Modal width */
+.modal-dialog {
+    max-width: 650px;
+    width: 90%;
+}
+
+/* Wrapper */
+.modal-content {
+    background: white;
+    border-radius: 10px;
+    border: 1px solid #013C58;
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.4);
+    z-index: 3000;
+}
+
+/* Header */
+.modal-header {
+    border-bottom: 1px solid #013C58;
+    background: #013C58;
+    color: white;
+    font-weight: 600;
+    padding-left: 2.3rem;
+}
+
+/* Close button */
+.modalCloseButton {
+    position: absolute;
+    right: 1rem;
+    top: 0.8rem;
+    font-size: 2.3rem;
+    color: white;
+    border: none;
+    background: none;
+    cursor: pointer;
+    line-height: 1;
+    transition: 0.3s ease;
+}
+
+/* Close button hover animation */
+.modalCloseButton:hover {
+    opacity: 1;
+    color: #F5A201;
+    transform: scale(1.3);
+}
+
+/* Body */
+.modal-body {
+    font-size: 1rem;
+    line-height: 2rem;
+    color: #c1eef9;
+}
+
+/* Text */
+.modal-body p {
+    font-weight: 500;
+    color: black;
+    padding-left: 1.4rem;
+}
+
+/* List text */
+.modal-body ul {
+    padding-left: 4rem;
+    color: #013C58;
+}
+.modal-body li {
+    margin-bottom: 0.5rem;
+    padding-left: 0.5rem;
+    line-height: 2rem;
+    font-weight: 600;
+}
+
+/* Footer */
+.modal-footer {
+    border-top: none;
+    display: flex;
+    justify-content: space-between;
+    padding-bottom: 1.5rem;
+}
+
+/* Cancel button */
+.modal-footer .btn-secondary {
+    background: #c1eef9;
+    color: #013C58;
+    border: none;
+    font-weight: 500;
+    border-radius: 10px;
+    transition: all 0.3s ease;
+    width: 10rem;
+    height: 2.5rem;
+}
+
+/* Cancel button hover animation */
+.modal-footer .btn-secondary:hover {
+    background: #F5A201;
+    color: #013C58;
+    transform: scale(1.05);
+}

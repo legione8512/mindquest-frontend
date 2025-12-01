@@ -2,7 +2,6 @@
 .learning_banner_wrapper {
     display: relative;
     width: 100%;
-
 }
 
 /* Banner image */
@@ -16,7 +15,7 @@
 .learning_banner_title {
     padding: 1rem;
     position: absolute;
-    top: 11rem;
+    top: 11.75rem;
     width: 100%;
     color: white;
     font-size: 2rem;
@@ -25,14 +24,18 @@
     box-sizing: border-box;
 }
 
-/* Introductory text */
+.learning_banner_title h1 {
+    margin: 0;
+}
+
+/************ Introductory text ************/
 .learning_introduction_section {
-    background:  #c1eef979;
+    background: #c1eef979;
     padding: 2rem;
     border-radius: 10px;
     box-shadow: 0px 4px 12px rgba(0, 0, 0, 0.1);
     max-width: 1000px;
-    margin: 3rem auto;
+    margin: 3.5rem auto;
     text-align: center;
 }
 
@@ -41,6 +44,7 @@
     font-size: 2rem;
     color: #013C58;
     margin-bottom: 1rem;
+    font-weight: 600;
 }
 
 /* Paragraph Styling */
@@ -52,4 +56,247 @@
     max-width: 85%;
     margin-left: auto;
     margin-right: auto;
+    font-weight: 500;
+}
+
+/********** INFO BOX **********/
+
+/* Wrapper */
+.info_box_wrapper {
+    width: 1400px;
+    max-width: 100%;
+    display: flex;
+    margin: 2.5rem auto;
+}
+
+.info_box {
+    display: flex;
+    box-sizing: border-box;
+    width: 1400px;
+    max-width: 100%;
+    margin: 0 auto;
+    background: #013C58;
+    color: white;
+}
+
+/* Info box image */
+.info_box_img {
+    width: 25rem;
+    height: auto;
+    object-fit: cover;
+}
+
+/* Info box text */
+.info_box_text_box {
+    display: flex;
+    flex-direction: column;
+    padding: 2rem;
+    gap: 1rem;
+    border-left: 2px solid #c1eef9;
+}
+
+/* Header */
+.info_box h2 {
+    width: 100%;
+    font-size: 1.8rem;
+    font-weight: 700;
+    color: #F5A201;
+}
+
+/* Content */
+.info_box p {
+    width: 100%;
+    font-size: 1rem;
+    font-weight: 500;
+    margin: 0;
+    line-height: 2rem;
+}
+
+
+/********** TOPIC CARDS **********/
+
+/* Wrapper for the topic cards section */
+.topic_cards_section {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 1rem;
+    width: 100%;
+    margin-bottom: 10rem;
+}
+
+/* Wrapper for each card */
+.topic_card_wrapper {
+    width: 100%;
+    max-width: 1500px;
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 1rem;
+}
+
+/* Topic card content */
+.topic_card {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: #c1eef9;
+    color: #013C58;
+    text-align: center;
+    padding: 1.2rem;
+    border: 1px 1px solid #013C58;
+    width: 900px;
+    max-width: 100%;
+    margin: auto;
+    transition: .3s ease;
+    cursor: pointer;
+}
+
+/* Topic card text */
+.topic_card h2 {
+    font-size: 1.5rem;
+    font-weight: 600;
+    margin: auto;
+}
+
+/* Topic card hover animation */
+.topic_card:hover {
+    background: #F5A201;
+}
+
+
+/***** TOPIC CARDS DROPDOWN MENU *****/
+.topic_dropdown_menu {
+    background: #013C58;
+    border-top: none;
+    list-style: none;
+    width: 900px;
+    max-width: 100%;
+    border-radius: 0 0 8px 8px;
+    margin: auto;
+    padding: 0;
+}
+
+/* Dropdown button */
+.topic_dropdown_menu a {
+    display: block;
+    width: 100%;
+    padding: 1rem;
+    text-align: center;
+    color: white;
+    font-weight: 500;
+    text-decoration: none;
+    box-sizing: border-box;
+    background: transparent;
+    transition: 0.3s ease;
+}
+
+/* Dropdown hover effect */
+.topic_dropdown_menu a:hover {
+    background: #F5A201;
+    color: #013C58;
+}
+
+/* Dropdown list */
+.topic_dropdown_menu li {
+    margin: 0;
+    padding: 0;
+}
+
+/********** LESSON PAGES **********/
+
+/* Wrapper for content */
+.lesson_wrapper {
+    width: 1000px;
+    max-width: 100%;
+    margin: 0 auto;
+    padding: 2rem 1rem;
+    box-sizing: border-box;
+}
+
+/* Fade in animation when changing page */
+.lesson_section {
+    animation: fadeIn 1s;
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(-20px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Subheading */
+.lesson_section h2 {
+    font-size: 2rem;
+    color: #013C58;
+    margin-bottom: 1rem;
+}
+
+/* Text */
+.lesson_section p {
+    font-size: 1.15rem;
+    line-height: 1.8;
+    color: #013C58;
+    margin-bottom: 1rem;
+}
+
+/* Lists */
+.lesson_section ul {
+    margin-left: 1.5rem;
+    margin-bottom: 1rem;
+    padding-left: 1rem;
+    list-style-type: disc;
+    color: #013C58;
+    font-weight: 500;
+}
+
+.lesson_section ul li {
+    margin-bottom: 0.5rem;
+}
+
+/* Navigation buttons wrapper */
+.lesson_nav_buttons {
+    display: flex;
+    justify-content: center;
+    gap: 1rem;
+    margin: 2rem 0 4rem;
+}
+
+/* Navigation buttons */
+.lesson_nav_buttons button {
+    padding: 0.8rem 1.5rem;
+    background: #013C58;
+    border: none;
+    border-radius: 5px;
+    color: white;
+    font-weight: 600;
+    cursor: pointer;
+    transition: 0.3s ease;
+}
+
+/* Navigation button hover animation */
+.lesson_nav_buttons button:hover {
+    background: #F5A201;
+    color: #013C58;
+}
+
+/* Disabled buttons styling */
+.lesson_nav_buttons button:disabled {
+    background: #ccc;
+    color: #666;
+    pointer-events: none;
+}
+
+/* Page counter */
+.lesson_page_counter {
+    text-align: center;
+    color: #013C58;
+    font-weight: 600;
+    margin-bottom: 2rem;
+    margin-left: 2.3rem;
 }
