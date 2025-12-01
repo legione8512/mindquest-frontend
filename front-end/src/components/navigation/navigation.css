@@ -41,6 +41,7 @@ header {
   color: white;
   cursor: pointer;
   transition: 0.3s ease-out;
+  text-decoration: none;
 }
 
 /* Hover animation */
@@ -105,4 +106,12 @@ header {
   .nav-bar a:first-child {
     display: none;
   }
+}
+/* CURRENT PAGE */
+.top-nav-button--active {
+  background-color: #c1eef9;
+  color: #013c58;
+  border-color: black;
+  transform: scale(1.2);
+
 }
