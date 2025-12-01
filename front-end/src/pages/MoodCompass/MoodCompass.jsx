@@ -1,5 +1,6 @@
 import { useState, useEffect, useRef } from "react";
 import "./MoodCompass.css";
+import moodBanner from "../../assets/moodpage_Banner.png";
 
 export default function MoodCompass() {
 
@@ -22,12 +23,47 @@ export default function MoodCompass() {
   const [notesInput, setNotesInput] = useState("");
 
   // Daily Reminder
-  const [reminderActive, setReminderActive] = useState(false);
+  const [reminder, setReminder] = useState(() => {
+    return localStorage.getItem ("reminder") || "";
+  });
+  const [reminderText, setReminderText] = useState(() => {
+    return localStorage.getItem ("reminder") || "";
+  });
 
   // Chart References
   const chartReference = useRef(null);
   const [chartExpand, setChartExpand] = useState(false);
 
+  // Matching mood data with quests or goals
+  const completedQuests = [
+    {
+      name: "3-Minute Gratitude",
+      hub: "Calm Coders",
+      date: "28/11/2025",
+      goal: "Write 1-3 gratitude lines today."
+    },
+    {
+      name: "Mindful Breaks",
+      hub: "Brunel Uni WellBeing Hub",
+      date: "29/11/2025",
+      goal: "2-5 minutes unplugged pause."
+    },
+    {
+      name: "Breath & Rest",
+      hub: "Mindful Mornings Hub",
+      date: "30/11/2025",
+      goal: "3 cycles of slow breathing."
+    },
+]; 
+
+  const matchMoods = completedQuests.map((quest) => {
+    const moodMatch = moodEntries.find((mood) => mood.date === quest.date);
+
+    return {
+      ...quest,
+      mood: moodMatch ? moodMatch.mood : null,
+    };
+  });
 
   useEffect(() => {
     localStorage.setItem("moodEntries", JSON.stringify(moodEntries));
@@ -36,6 +72,28 @@ export default function MoodCompass() {
   useEffect(() => {
     localStorage.setItem("notes", JSON.stringify(notes));
   }, [notes]);
+
+  useEffect (() => {
+    localStorage.setItem ("reminder", reminder);
+  }, [reminder]);
+  useEffect (() => {
+    localStorage.setItem ("reminderText", reminderText);
+  }, [reminderText]);
+
+useEffect (() => {
+  const checkReminder = setInterval (() => {
+    if (!reminder || !reminderText) return; 
+
+    const now = new Date();
+    const currentTime = now.toTimeString().slice(0, 5);
+
+    if (currentTime === reminder) {
+      alert (`🔔 Reminder: ${reminderText}`);
+    }
+  }, 60000); 
+
+  return () => clearInterval(checkReminder);
+}, [reminder, reminderText]);
 
   // Emoji Mood Selection
   const moodChoices = [
@@ -113,12 +171,73 @@ export default function MoodCompass() {
 
   }, [moodEntries, chartExpand]);
 
+  // Average Mood Trend
+  function weekNumber (dateString) {
+    const [day, month, year] = dateString.split("/").map(Number);
+    const date = new Date (year, month - 1, day);
+
+    const startYear = new Date(year, 0, 1);
+    const singleDay = 24 * 60 * 60 * 1000; // milliseconds in one day
+    const daysGone = Math.floor ((date - startYear) / singleDay);
+
+    return Math.ceil((daysGone + startYear.getDay() + 1) / 7);
+  }
+
+// Calculating overall average
+  const averageMood = moodEntries.length > 0 
+    ? (moodEntries.reduce((sum, entry) => sum + entry.mood, 0) / moodEntries.length).toFixed(1) 
+    : null;
+
+  // Moods by week
+    const weeklyAverage = {};
+
+    moodEntries.forEach ((entry) => {
+      const weekIndex = weekNumber(entry.date);
+
+      if (!weeklyAverage [weekIndex]) {
+        weeklyAverage[weekIndex] = {total: 0, count: 0}; 
+      }
+
+      weeklyAverage[weekIndex].total += entry.mood;
+      weeklyAverage[weekIndex].count += 1;
+    });
+
+    // Weekly averages into list
+  const trendWeekly = Object.keys(weeklyAverage).map((weekKey) => {
+    const data = weeklyAverage[weekKey];
+    return {
+      week: weekKey,
+      average: (data.total / data.count).toFixed(1),
+    };
+  });
+
+  // Export file
+  function downloadMoodHistory() {
+  if (!moodEntries.length) return alert("No mood data to export.");
+
+  const rows = moodEntries.map(entry =>
+    `${entry.date},${entry.mood},${entry.goal}`
+  );
+
+  const csv = ["Date,Mood,Goal", ...rows].join("\n");
+
+  const file = new Blob([csv], { type: "text/csv" });
+  const link = URL.createObjectURL(file);
+
+  const a = document.createElement("a");
+  a.href = link;
+  a.download = "mood_history.csv";
+  a.click();
+
+  URL.revokeObjectURL(link);
+}
+
   return (
     <>
       <section className="moodpage_Banner">
         <h1>My Mood Compass</h1>
-        <p>Track Your Mood for the day and Your Wellbeing</p>
-      </section>
+        <p>Track Your Mood for the day and Your Wellbeing</p>  
+        </section>
 
       <section className="mood_Main">
 
@@ -154,7 +273,33 @@ export default function MoodCompass() {
             <button className="mood_Button" onClick={saveMood} >
               Save Your Mood
             </button>
+
+            <section className="mood_Box">
+              <h2>Daily Reminder</h2>
+
+              <label className="mood_Label">Reminder Message</label>
+              <input 
+                className="mood_input"
+                type="text"
+                value={reminderText}
+                onChange={(e) => setReminderText (e.target.value)}
+                placeholder="Write a Reminder Message..."
+              />
+              
+              <label className="mood_Label">Reminder Time</label>
+              <input 
+                className="mood_Input"
+                type="time"
+                value={reminder}
+                onChange={(e) => setReminder(e.target.value)}
+              />
+
+              <p className="reminder_Message">
+                {reminder ? `Reminder saved: "${reminder}"` : "No Reminder Set Yet"}
+              </p>
+            </section>            
           </section>
+
           <section className="mood_Box mood_Scroll">
             <h2>My Notes</h2>
 
@@ -184,7 +329,17 @@ export default function MoodCompass() {
             )}
 
           </section>
+
+          <section className="mood_Box">
+            <h2>Download My Mood History</h2>
+
+            <button className="mood_Button" onClick={downloadMoodHistory}>
+              Export Mood History (CSV)
+            </button>
+          </section>
+
         </section>
+
         <section className="mood_Right">
           <section className="mood_Box mood_Scroll">
             <h2>My Saved Moods</h2>
@@ -208,6 +363,42 @@ export default function MoodCompass() {
             )}
 
           </section>
+
+          <section className="mood_Box mood_Scroll">
+            <h2>Quests & Mood Match</h2>
+            {matchMoods.length === 0 && (
+              <p>No Quests Available to Match Yet.</p>
+            )}
+
+            {matchMoods.length > 0 && (
+              <ul className="questMood_List">
+                {matchMoods.map ((item, index) => (
+                  <li key={index} className="questMood_Item">
+
+                    <p><strong>{item.name}</strong> <br />
+                    <span className="quest_hub">{item.hub}</span></p>
+
+                    <p>
+                      Completed: <strong>{item.date}</strong>
+                    </p>
+
+                    <p className="quest_Goal">{item.goal}</p>
+
+                    {item.mood !== null ? (
+                      <p className="quest_mood">
+                        Mood on Completion: <strong>{item.mood}/10</strong>
+                      </p>
+                    ) : (
+                      <p className="questMood_none">No Mood Recorded on this Date.</p>
+                    )}
+
+                    <hr className="mood_Divider" />
+                  </li>
+                ))}
+              </ul>
+            )}
+          </section>
+
           <section className="mood_Box">
             <h2>Daily Mood Chart</h2>
 
@@ -222,8 +413,35 @@ export default function MoodCompass() {
             </p>
 
           </section>
-        </section>
 
+          <section className="mood_Box">
+            <h2>Average Mood Trend</h2>
+
+            {averageMood ? (
+              <>
+
+              <p className="averageMood_Main">
+                Overall Avg Mood: <strong>{averageMood} / 10</strong>
+              </p>
+
+              {trendWeekly.length > 0 && (
+                <ul className="averageMood_List">
+                  {trendWeekly.map ((weekIndex) => (
+                    <li key={weekIndex.week} className="averageMood_Item">
+                      <p>
+                        Week {weekIndex.week}: <strong>{weekIndex.average} / 10</strong>
+                      </p>
+                    </li>
+                  ))}
+                </ul>
+            )}
+            </>
+            ) : (
+              <p>No Mood Data Yet to Calculate Average Mood Trend</p>
+            )}
+
+          </section>
+        </section>
       </section>
     </>
   );

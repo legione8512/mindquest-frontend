@@ -8,6 +8,7 @@
 .moodpage_Banner h1 {
   font-size: 2.6rem;
   color: #013C58;
+
 }
 
 .moodpage_Banner p {
@@ -58,6 +59,7 @@
 
 .mood_Emoji:hover {
   transform: scale(1.1);
+  background: #eef7ff;
 }
 
 .mood_Emoji.active {
@@ -86,16 +88,28 @@
   border-radius: 8px;
   cursor: pointer;
   border: none;
+  margin-bottom: 1rem;
 }
 
 .mood_List {
   list-style: none;
   padding-left: 0;
   margin-top: 1rem;
+  border: 1px solid #d5e6f0;
+  background: #f7fbff;
 }
 
 .notes_Item {
   margin-bottom: 1rem;
+  border: 1px solid #d5e6f0;
+  background: #f7fbff;
+
+}
+
+.notes_Item:hover {
+  transform: scale(0.95, 1);
+  background: #eef7ff;
+  border: 1px solid #d5e6f0;
 }
 
 .notes_Input {
@@ -106,6 +120,13 @@
   border-radius: 8px;
   margin-bottom: 1rem;
   resize: vertical;
+}
+
+.reminder_Message {
+  margin-top: 0.7rem;
+  color: #013C58;
+  font-size: 0.95rem;
+  opacity: 0.8;
 }
 
 .notes_Entry {
@@ -175,6 +196,97 @@
   color: #013C58;
   font-size: 1rem;
   text-align: center;
+}
+
+.averageMood_Main {
+  color: #013C58;
+  font-size: 1.1rem;
+  margin-bottom: 1rem;
+}
+
+.averageMood_List {
+  list-style: none;
+  padding-left: 0;
+  margin-top: 0.5rem;
+}
+
+.averageMood_Item {
+  padding: 0.6rem;
+  background: white;
+  border-radius: 8px;
+  margin-bottom: 0.6rem;
+  border-left: 4px solid #013C58;
+}
+
+.questMood_List {
+  list-style: none;
+  padding-left: 0;
+}
+
+.questMood_Item {
+  padding: 1rem;
+  background: #f7fbff;
+  border: 1px solid #d5e6f0;
+  border-radius: 10px;
+  margin-bottom: 1rem;
+  transition: 0.2s ease;
+}
+
+.questMood_Item:hover {
+  background: #eef7ff;
+  transform: scale(1.01);
+}
+
+.quest_Hub {
+  font-size: 0.9rem;
+  background: #c1eef9;
+  padding: 4px 8px;
+  border-radius: 6px;
+  color: #013C58;
+  font-weight: 600;
+}
+
+.quest_Goal {
+  margin: 0.3rem 0;
+  margin-top: 0.4rem;
+  font-size: 0.95rem;
+  color: #034561;
+  font-style: italic;
+}
+
+.quest_Mood {
+  color: #0b5b80;
+  font-weight: 600;
+}
+
+.questMood_None {
+  color: #777;
+  font-style: italic;
+}
+
+.export_Button {
+  background: #013c58;
+  color: white;
+  padding: 0.7rem 1.2rem;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  font-size: 1rem;
+  width: 100%;
+  margin-top: 0.5rem;
+  transition: 0.2s ease;
+}
+
+.export_Button:hover {
+  background: #02597d;
+  transform: scale(1.02);
+}
+
+.export_note {
+  margin-top: 0.6rem;
+  color: #013C58;
+  font-size: 0.9rem;
+  opacity: 0.8;
 }
 
 /* Mobile Mode */

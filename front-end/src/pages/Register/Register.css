@@ -1,0 +1,129 @@
+.registerPage {
+  display: flex;
+  height: 100vh;
+  width: 100%;
+  background: linear-gradient(135deg, #013C58, #036c9e);
+  color: white;
+}
+
+
+.registerLeft {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.registerLogo {
+  width: 60%;
+  max-width: 350px;
+}
+
+
+.registerRight {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 1rem;
+}
+
+.registerBox {
+  background: white;
+  color: #013C58;
+  padding: 2rem 2.5rem;
+  border-radius: 15px;
+  width: 80%;
+  max-width: 420px;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.25);
+}
+
+.registerBox h2 {
+  text-align: center;
+  margin-bottom: 1.5rem;
+  font-size: 1.8rem;
+  color: #013C58;
+}
+
+
+.registration {
+  display: flex;
+  flex-direction: column;
+}
+
+.labelText {
+  margin-bottom: 5px;
+  font-weight: 600;
+  color: #013C58;
+}
+
+.inputText {
+  width: 100%;
+  padding: 10px;
+  border-radius: 8px;
+  border: 1px solid #c8d0d6;
+  margin-bottom: 15px;
+  font-size: 0.95rem;
+}
+
+/* Remove autofill yellow background */
+.inputText:-webkit-autofill {
+  box-shadow: 0 0 0 1000px white inset !important;
+}
+
+
+.checkboxRow {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 1rem;
+}
+
+.checkboxRow label {
+  font-size: 0.9rem;
+  color: #013C58;
+}
+
+
+.registerButton {
+  width: 100%;
+  padding: 12px;
+  border: none;
+  background: #013C58;
+  color: white;
+  border-radius: 8px;
+  cursor: pointer;
+  font-weight: bold;
+  font-size: 1rem;
+  transition: 0.15s ease;
+}
+
+.registerButton:hover {
+  background: #024d73;
+  transform: translateY(-2px);
+}
+
+
+@media (max-width: 900px) {
+  .registerPage {
+    flex-direction: column;
+    height: auto;
+    padding: 2rem 1rem;
+  }
+
+  .registerLeft {
+    margin-bottom: 1.5rem;
+  }
+
+  .registerLogo {
+    width: 150px;
+  }
+
+  .registerRight {
+    width: 100%;
+  }
+
+  .registerBox {
+    width: 100%;
+  }
+}
