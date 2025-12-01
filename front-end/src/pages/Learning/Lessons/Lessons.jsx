@@ -44,8 +44,8 @@ export default function Lessons() {
 
             {/* LESSON CONTENT */}
             <section className="lesson_wrapper">
+                
                 {!showQuiz && (
-
                     <>
                         {/* Navigation Buttons */}
                         <section className="lesson_nav_buttons">
@@ -54,18 +54,41 @@ export default function Lessons() {
                             <button onClick={nextPage} disabled={currentPage === lessonPages.length - 1}>Next page</button>
                         </section>
 
-                        {/* Page Content */}
+                        {/* Page wrapper */}
                         <section key={currentPage} className="lesson_section">
-                            <h2>{page.title}</h2>
 
-                            {page.content.map((paragraph, index) => (
-                                paragraph.startsWith("-") ? (
-                                    <li key={index}>{paragraph.substring(1)}</li>
-                                ) : (
-                                    <p key={index}>{paragraph}</p>
-                                )
-                            ))}
+                            <section className="lesson_page">
 
+                                {/* Image */}
+                                {page.img && page.img_position === "left" && (
+                                    <section className="lesson_page_image left">
+                                        <img src={page.img} alt={page.title} />
+                                    </section>
+                                )}
+
+                                {/* Text content of the page */}
+                                <section className="lesson_page_text">
+
+                                    {/* Subheading */}
+                                    <h2>{page.title}</h2>
+
+                                    {/* Content */}
+                                    {page.content.map((paragraph, index) => (
+                                        paragraph.startsWith("-") ? (
+                                            <li key={index}>{paragraph.substring(1)}</li>
+                                        ) : (
+                                            <p key={index}>{paragraph}</p>
+                                        )
+                                    ))}
+                                </section>
+
+                                {/* Image */}
+                                {page.img && page.img_position === "right" && (
+                                    <section className="lesson_page_image right">
+                                        <img src={page.img} alt={page.title} />
+                                    </section>
+                                )}
+                            </section>
                         </section>
 
                         {isLastPage && !showQuiz && quiz && (
@@ -115,23 +138,25 @@ export default function Lessons() {
 
 
                 )}
-            </section>
+            </section >
 
             {/* Navigation Buttons */}
-            {!showQuiz && (
-                <section className="lesson_footer">
-                    <section className="lesson_nav_buttons">
-                        <button onClick={prevPage} disabled={currentPage === 0}>Previous page</button>
-                        <Link to="/learning"><button title="Back to the learning page">Exit this lesson</button></Link>
-                        <button onClick={nextPage} disabled={currentPage === lessonPages.length - 1}>Next page</button>
-                    </section>
+            {
+                !showQuiz && (
+                    <section className="lesson_footer">
+                        <section className="lesson_nav_buttons">
+                            <button onClick={prevPage} disabled={currentPage === 0}>Previous page</button>
+                            <Link to="/learning"><button title="Back to the learning page">Exit this lesson</button></Link>
+                            <button onClick={nextPage} disabled={currentPage === lessonPages.length - 1}>Next page</button>
+                        </section>
 
-                    {/* Page counter */}
-                    <section className="lesson_page_counter">
-                        <p>Page {currentPage + 1} of {lessonPages.length}</p>
+                        {/* Page counter */}
+                        <section className="lesson_page_counter">
+                            <p>Page {currentPage + 1} of {lessonPages.length}</p>
+                        </section>
                     </section>
-                </section>
-            )}
+                )
+            }
         </>
     )
 

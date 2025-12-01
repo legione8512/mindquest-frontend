@@ -1,6 +1,11 @@
-import AnxietyBanner from "../../../assets/Anxiety_Banner.jpg";
-import DepressionBanner from "../../../assets/Depression_Banner.jpg";
-import PTSD_Banner from "../../../assets/PTSD_Banner.jpg";
+import AnxietyBanner from "../../../assets/Lessons/Anxiety_Banner.jpg";
+import DepressionBanner from "../../../assets/Lessons/Depression_Banner.jpg";
+import PTSD_Banner from "../../../assets/Lessons/PTSD_Banner.jpg";
+
+// Anxiety Lesson 1
+import Anxiety01_01 from "../../../assets/Lessons/Anxiety_1/Anxiety01_01.jpg";
+import Anxiety01_02 from "../../../assets/Lessons/Anxiety_1/Anxiety01_02.jpg";
+import Anxiety01_03 from "../../../assets/Lessons/Anxiety_1/Anxiety01_03.jpg";
 
 export const topics = [
 
@@ -24,7 +29,9 @@ export const topics = [
                     content: [
                         "Anxiety is often described as a feeling of fear or unease - and it's something everyone experiences at times. Feeling anxious is a perfectly natural reaction to some situations.",
                         "Anxiety can become a problem if we start worrying a lot about small stuff or relatively harmless situations. It's usually when our anxiety feels really intense or overwhelming that it starts to interfere with our daily life or affect our relationships."
-                    ]
+                    ],
+                    img: Anxiety01_01,
+                    img_position: "right"
                 },
 
                 {
@@ -37,7 +44,9 @@ export const topics = [
                         "- Being unable to concentrate or make decisions",
                         "- Trouble sleeping",
                         "- Worrying about the past or future, or thinking something bad will happen"
-                    ]
+                    ],
+                    img: Anxiety01_02,
+                    img_position: "left"
                 },
 
                 {
@@ -47,7 +56,9 @@ export const topics = [
                         "How anxiety affects us is very personal, and if you asked 100 people what it means to them, you'd probably get 100 different answers.",
                         "Sometimes there are no obvious triggers for anxiety, which can be stressful or upsetting.",
                         "Everyone's anxiety levels are different. Some people find more situations stressful and experience more challenges in life than others, and they get more anxious as a result."
-                    ]
+                    ],
+                    img: Anxiety01_03,
+                    img_position: "left"
                 },
                 {
                     title: "How can you manage?",
