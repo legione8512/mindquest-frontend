@@ -44,16 +44,9 @@ export default function Lessons() {
 
             {/* LESSON CONTENT */}
             <section className="lesson_wrapper">
-                
+
                 {!showQuiz && (
                     <>
-                        {/* Navigation Buttons */}
-                        <section className="lesson_nav_buttons">
-                            <button onClick={prevPage} disabled={currentPage === 0}>Previous page</button>
-                            <Link to="/learning"><button title="Back to the learning page">Exit this lesson</button></Link>
-                            <button onClick={nextPage} disabled={currentPage === lessonPages.length - 1}>Next page</button>
-                        </section>
-
                         {/* Page wrapper */}
                         <section key={currentPage} className="lesson_section">
 
@@ -111,32 +104,13 @@ export default function Lessons() {
                                 setShowQuiz(false);
                                 setCurrentPage(0);
                             }}>
-                                Back to Lesson
+                                Go back to the lesson
                             </button>
-
-                            <Link to="/learning">
-                                <button>Back to Learning Page</button>
-                            </Link>
                         </section>
 
                         <Quiz quiz={quiz} />
 
-                        <section className="lesson_nav_buttons">
-                            <button onClick={() => {
-                                setShowQuiz(false);
-                                setCurrentPage(0);
-                            }}>
-                                Back to Lesson
-                            </button>
-
-                            <Link to="/learning">
-                                <button>Back to Learning Page</button>
-                            </Link>
-                        </section>
-
                     </>
-
-
                 )}
             </section >
 
@@ -144,9 +118,9 @@ export default function Lessons() {
             {
                 !showQuiz && (
                     <section className="lesson_footer">
+                        {/* Navigation Buttons */}
                         <section className="lesson_nav_buttons">
                             <button onClick={prevPage} disabled={currentPage === 0}>Previous page</button>
-                            <Link to="/learning"><button title="Back to the learning page">Exit this lesson</button></Link>
                             <button onClick={nextPage} disabled={currentPage === lessonPages.length - 1}>Next page</button>
                         </section>
 

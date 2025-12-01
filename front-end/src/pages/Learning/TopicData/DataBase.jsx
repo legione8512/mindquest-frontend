@@ -1,11 +1,14 @@
+// Banner images
 import AnxietyBanner from "../../../assets/Lessons/Anxiety_Banner.jpg";
 import DepressionBanner from "../../../assets/Lessons/Depression_Banner.jpg";
 import PTSD_Banner from "../../../assets/Lessons/PTSD_Banner.jpg";
 
-// Anxiety Lesson 1
+// Anxiety Lesson 1 images
 import Anxiety01_01 from "../../../assets/Lessons/Anxiety_1/Anxiety01_01.jpg";
 import Anxiety01_02 from "../../../assets/Lessons/Anxiety_1/Anxiety01_02.jpg";
 import Anxiety01_03 from "../../../assets/Lessons/Anxiety_1/Anxiety01_03.jpg";
+import Anxiety01_04 from "../../../assets/Lessons/Anxiety_1/Anxiety01_04.jpg";
+import Anxiety01_05 from "../../../assets/Lessons/Anxiety_1/Anxiety01_05.jpg";
 
 export const topics = [
 
@@ -64,14 +67,25 @@ export const topics = [
                     title: "How can you manage?",
                     content: [
                         "Understanding how to deal with the stresses and anxieties we all experience on a day-to-day basis is important for everyone.",
-                        "There are several ways you can manage your anxiety, though there is no 'catch-all' solution.",
+                        "Everyone's tolerance to the stresses of life is different, meaning how people manage their anxiety is also be unique to them.",
+                        "There are several ways you can manage your anxiety, though there is no single 'catch-all' solution.",
+                        
+                    ],
+                    img: Anxiety01_04,
+                    img_position: "right"
+                },
+                {
+                    title: "Tips on Managing Anxiety",
+                    content: [
                         "Tips on managing anxiety:",
                         "- Shift your focus: Try mindfulness, meditation, breathing exercises.",
                         "- Understand your anxiety: Keep a journal or diary.",
                         "- Face your fears gradually: Slowly facing stressful situations can help.",
                         "- Make time for worries: Set a daily 'worry time'.",
                         "- Look at the bigger picture instead of focusing on details."
-                    ]
+                    ],
+                    img: Anxiety01_05,
+                    img_position: "right"
                 }
             ],
 
