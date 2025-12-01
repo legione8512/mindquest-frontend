@@ -161,6 +161,30 @@ export const topics = [
                     answer: 0
                 }
             ],
+
+            "symptoms-&-signs-of-anxiety": [
+                {
+                    question: "There's no quiz yet!",
+                    options: [
+                        "Option 1!",
+                        "Option 2!",
+                        "Option 3!",
+                        "Option 4!"],
+                    answer: 0
+                }
+            ],
+
+            "coping-strategies-for-anxiety": [
+                {
+                    question: "There's no quiz yet!",
+                    options: [
+                        "Option 1!",
+                        "Option 2!",
+                        "Option 3!",
+                        "Option 4!"],
+                    answer: 0
+                }
+            ],
         }
     },
 
@@ -207,9 +231,33 @@ export const topics = [
 
         // Quizzes for each lesson
         quiz: {
-            "what-is-anxiety": [
+            "what-is-depression": [
                 {
-                    question: "When does anxiety typically become a problem?",
+                    question: "There's no quiz yet!",
+                    options: [
+                        "Option 1!",
+                        "Option 2!",
+                        "Option 3!",
+                        "Option 4!"],
+                    answer: 0
+                }
+            ],
+
+            "symptoms-&-signs-of-depression": [
+                {
+                    question: "There's no quiz yet!",
+                    options: [
+                        "Option 1!",
+                        "Option 2!",
+                        "Option 3!",
+                        "Option 4!"],
+                    answer: 0
+                }
+            ],
+
+            "coping-strategies-for-depression": [
+                {
+                    question: "There's no quiz yet!",
                     options: [
                         "Option 1!",
                         "Option 2!",
@@ -262,11 +310,35 @@ export const topics = [
             ]
         },
 
-        // Quizzes for lessons
+        // Quizzes for each lesson
         quiz: {
-            "what-is-anxiety": [
+            "what-is-ptsd": [
                 {
-                    question: "When does anxiety typically become a problem?",
+                    question: "There's no quiz yet!",
+                    options: [
+                        "Option 1!",
+                        "Option 2!",
+                        "Option 3!",
+                        "Option 4!"],
+                    answer: 0
+                }
+            ],
+
+            "symptoms-&-signs-of-ptsd": [
+                {
+                    question: "There's no quiz yet!",
+                    options: [
+                        "Option 1!",
+                        "Option 2!",
+                        "Option 3!",
+                        "Option 4!"],
+                    answer: 0
+                }
+            ],
+
+            "coping-strategies-for-ptsd": [
+                {
+                    question: "There's no quiz yet!",
                     options: [
                         "Option 1!",
                         "Option 2!",
