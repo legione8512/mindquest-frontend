@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { Link, useParams } from "react-router-dom";
 import { topics } from "./TopicData/DataBase";
+import Quiz from "./Quiz";
 import LearningBanner from "../../assets/Anxiety_Banner.jpg";
 import "./Learning.css";
 
@@ -12,14 +13,21 @@ export default function Lessons() {
     // Search for topic in the Dummy Database (DEMO)
     const topic = topics.find(topic => topic.key === topicKey);
 
-    // Get current topic related lesson pages
+    // Get pages related to the selected lesson
     const lessonPages = topic.pages[lessonKey];
+
+    // Get quiz related to the selected lesson
+    const quiz = topic.quiz[lessonKey];
 
     // Navigation between lesson pages.
     const [currentPage, setCurrentPage] = useState(0);
     const page = lessonPages[currentPage];
     const nextPage = () => setCurrentPage(page => page + 1);
     const prevPage = () => setCurrentPage(page => page - 1);
+
+    // Check if user is on the last page of lesson (display quiz)
+    const isLastPage = currentPage === lessonPages.length - 1;
+    const [showQuiz, setShowQuiz] = useState(false);
 
     return (
         <>
@@ -46,7 +54,6 @@ export default function Lessons() {
                 <section key={currentPage} className="lesson_section">
                     <h2>{page.title}</h2>
 
-
                     {page.content.map((paragraph, index) => (
                         paragraph.startsWith("-") ? (
                             <li key={index}>{paragraph.substring(1)}</li>
@@ -54,7 +61,20 @@ export default function Lessons() {
                             <p key={index}>{paragraph}</p>
                         )
                     ))}
+
                 </section>
+
+                {/* Quiz */}
+                {isLastPage && !showQuiz && quiz && (
+                    <button
+                        className="start_quiz_button"
+                        onClick={() => setShowQuiz(true)}>
+                        Start Quiz
+                    </button>
+                )}
+                {showQuiz && quiz && (
+                <Quiz quiz={quiz} />
+                    )}
             </section>
 
             {/* Navigation Buttons */}
