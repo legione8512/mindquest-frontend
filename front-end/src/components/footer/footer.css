@@ -1,0 +1,268 @@
+footer {
+  position: relative;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  z-index: 2000;
+  background-color: #013c58;
+  padding: 1.3rem;
+  gap: 5rem;
+  margin-top: auto;
+}
+
+.footer-phone {
+  text-decoration: none;
+  color: inherit;
+}
+
+.footer-email {
+  text-decoration: none;
+  color: inherit;
+  font: inherit;
+}
+
+.footer-contact {
+  text-decoration: none;
+  color: inherit;
+  font: inherit;
+}
+
+/* Centred footer content */
+.footer-inner {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 1rem;
+  padding-top: 1rem;
+}
+
+/* Logo */
+footer img {
+  width: 15rem;
+}
+
+/**** FOLLOW US (Social media) SECTION ****/
+.footer_section {
+  color: #c1eef9;
+  letter-spacing: 0.05rem;
+  gap: 0.5rem;
+  display: block;
+  width: 300px;
+  margin-right: 0; /* we use gap now */
+}
+
+.footer_section h3 {
+  color: #f5a201;
+}
+
+/* Social media buttons */
+
+.footer_follow {
+  margin-top: 1rem;
+  display: flex;
+  flex-wrap: nowrap; /* allows wrapping on very small widths */
+  gap: 0.5rem;
+}
+
+.footer_follow button {
+  background: none;
+  border: none;
+  border-radius: 500px;
+  color: #c1eef9;
+  padding: 0.5rem;
+  width: 45px;
+  margin-right: 1rem;
+  transition: 0.5s ease;
+  font-size: 1.5rem;
+}
+
+.footer_follow button:hover {
+  animation: wiggle 0.3s ease;
+  cursor: pointer;
+  background: #f5a201;
+  color: #013c58;
+}
+
+/* Animation when hovering the social icons */
+@keyframes wiggle {
+  0% {
+    transform: rotate(0deg);
+  }
+  10% {
+    transform: rotate(5deg);
+  }
+  20% {
+    transform: rotate(10deg);
+  }
+  20% {
+    transform: rotate(5deg);
+  }
+  30% {
+    transform: rotate(0deg);
+  }
+  40% {
+    transform: rotate(-5deg);
+  }
+  50% {
+    transform: rotate(-10deg);
+  }
+  60% {
+    transform: rotate(-5deg);
+  }
+  70% {
+    transform: rotate(0deg);
+  }
+  80% {
+    transform: rotate(5deg);
+  }
+  90% {
+    transform: rotate(10deg);
+  }
+  100% {
+    transform: rotate(5deg);
+  }
+}
+
+/**** FOOTER SECTION BLOCKS ****/
+.section_boxes {
+  display: flex;
+  justify-content: right;
+  margin-left: 8vw;
+}
+
+.footer_section {
+  color: #c1eef9;
+  letter-spacing: 0.05rem;
+  gap: 0.5rem;
+  display: block;
+  margin-right: 0; /* we use gap now */
+}
+
+/* Headers for footer sections */
+.footer_section h3 {
+  font-size: 0.9rem;
+  font-weight: 600;
+  letter-spacing: 0.1rem;
+  margin-bottom: 0.8rem;
+  padding-bottom: 0.8rem;
+  border-bottom: 1px solid #f5a201;
+  width: 16rem;
+}
+
+/* Text for footer sections */
+.footer_section p,
+.privacy_button {
+  font-size: 0.75rem;
+  font-weight: 500;
+  line-height: 1rem;
+  margin-bottom: 1rem;
+  align-items: center;
+}
+
+/* Icons for footer sections */
+.footer_section i {
+  margin-right: 0.5rem;
+  font-size: 1rem;
+  width: 1rem;
+  text-align: center;
+  color: #f5a201;
+}
+
+/**** Privacy and Security links ****/
+.privacy_button {
+  background: none;
+  text-decoration: none;
+  border: none;
+  border-radius: 5px;
+  color: #c1eef9;
+  transition: 0.4s ease;
+  letter-spacing: 0.05rem;
+  text-align: center;
+}
+
+.footer_section ul li {
+  list-style-type: none;
+  margin-bottom: 0.5rem;
+}
+
+.privacy_button:hover {
+  cursor: pointer;
+  color: #f5a201;
+}
+
+/* ========= RESPONSIVE FOOTER LAYOUT ========= */
+
+/* 1) Medium screens: stack the two right columns, keep logo on the left */
+@media (max-width: 900px) {
+  .footer-inner {
+    /* still a row: logo on the left, right block next to it */
+    display: flex;
+    flex-direction: row;
+    align-items: flex-start;
+  }
+
+  .section_boxes {
+    /* stack Contact + Privacy vertically */
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+  }
+
+  .footer_section {
+    width: 100%; /* let them shrink nicely instead of fixed width */
+  }
+
+  .footer_section h3 {
+    width: 100%;
+  }
+}
+
+/* 2) Small screens: stack everything (logo + both sections) in one column */
+@media (max-width: 600px) {
+  .footer-inner {
+    flex-direction: column;
+    align-items: flex-start; /* or center if you prefer */
+    gap: 2rem;
+  }
+
+  /* All direct children (logo+icons, contact, privacy) share same width */
+  .footer-inner > section {
+    width: 100%;
+  }
+
+  .section_boxes {
+    width: 100%;
+    margin-left: 0; /* FIX: no extra offset on mobile */
+    justify-content: flex-start; /* align with logo block */
+    flex-direction: column; /* stack Contact + Privacy */
+    gap: 1.5rem;
+  }
+
+  .footer_section {
+    width: 100%;
+    text-align: center;
+  }
+
+  .footer_section h3 {
+    width: 100%;
+  }
+
+  footer img {
+    width: 15rem; /* slightly smaller logo on tiny screens */
+    display: block;
+    margin: 0 0 1rem 0;
+  }
+  /* Social icons follow the same width as the block */
+  .footer_follow {
+    width: 100%;
+    justify-content: center;
+    flex-wrap: wrap; /* allow wrap if needed: change to wrap */
+  }
+}
+/* 1st box: logo + social */
+.footer-inner > section:first-child {
+  display: flex;
+  flex-direction: column;
+  align-items: center; /* centres logo + icons horizontally */
+  text-align: center;
+}

@@ -1,0 +1,487 @@
+.hubs-page {
+  max-width: 1200px;
+  margin: 2rem auto 4rem;
+  padding: 0 1.5rem;
+}
+
+/* NEW: top banner like Account Settings */
+
+.quests_banner_wrapper {
+  width: 100%;
+}
+
+.quests_banner {
+  width: 100%;
+  height: 15rem;
+  object-fit: cover;
+}
+
+.quests_banner_title {
+  padding: 1rem;
+  position: absolute;
+  top: 11rem;
+  width: 100%;
+  color: white;
+  font-size: 2rem;
+  text-align: center;
+  background: rgba(0, 60, 88, 0.6);
+  box-sizing: border-box;
+}
+
+/* HERO AREA */
+.hubs-hero {
+  background: #c1eef979;
+  border-radius: 1rem;
+  padding: 2rem 2.5rem;
+  margin-bottom: 2rem;
+
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 5rem;
+}
+
+.hubs-hero-text h2 {
+  font-size: 1.8rem;
+  margin-bottom: 0.5rem;
+}
+
+.hubs-hero-subtitle {
+  margin: 0 0 1.5rem;
+  color: #555;
+}
+
+.secondary-btn {
+  border-radius: var(--mq-radius-md); /* 10px corners */
+  border: 1px solid transparent;
+  padding: 0.55rem 1.4rem;
+  font-size: 0.95rem;
+  cursor: pointer;
+  background: #fff;
+  border-color: #cfd2ea;
+  color: #333;
+}
+
+.create-quest-btn {
+  background: #013c58; /* same as #submit */
+  border: none;
+  color: white;
+  align-self: flex-end; /* right side inside .hubs-hero */
+  width: 230px;
+  height: 150px;
+  border-radius: 10px; /* squared corners */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.05rem;
+  font-weight: 600;
+  transition: transform 0.2s ease, background 0.2s ease, color 0.2s ease;
+}
+
+.create-quest-btn:hover {
+  cursor: pointer;
+  transform: scale(1.2); /* same hover scale as #submit:hover */
+  background: #f5a201; /* hover background */
+  color: black;
+  border: none;
+}
+
+/* FILTERS */
+.hubs-filters {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  column-gap: 1rem;
+  row-gap: 1rem;
+  margin-bottom: 2rem;
+}
+
+.filter-group label,
+.filter-search label {
+  display: block;
+  font-size: 0.8rem;
+  font-weight: 600;
+  margin-bottom: 0.25rem;
+}
+
+.filter-group select,
+.filter-search input {
+  width: 100%;
+  padding: 0.45rem 0.6rem;
+  border-radius: 0.5rem;
+  border: 1px solid #d0d0dd;
+  font-size: 0.9rem;
+}
+
+.filter-search {
+  grid-column: 1 / -1;
+}
+
+.filter-search-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  margin-top: 0.25rem;
+}
+
+.filter-search-row input {
+  flex: 1 1 260px;
+}
+
+/* HUB GRID */
+.hubs-grid {
+  display: grid;
+  grid-template-columns: repeat(
+    3,
+    1fr
+  ); /* exactly 3 cards per row on large screens */
+  gap: 1.5rem;
+}
+
+@media (max-width: 1024px) {
+  .hubs-grid {
+    grid-template-columns: repeat(
+      2,
+      1fr
+    ); /* 2 per row on tablets / smaller laptops */
+  }
+}
+
+@media (max-width: 640px) {
+  .hubs-grid {
+    grid-template-columns: 1fr; /* 1 per row on mobiles */
+  }
+}
+
+/* Remove bullets anywhere in this page */
+.hubs-page ul {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+/* CARD */
+.hub-card {
+  background: #ffffff;
+  border-radius: 1rem;
+  border: 1px solid #e2e2ef;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+}
+
+.hub-image-wrapper {
+  height: 110px;
+  border-radius: 1rem 1rem 0 0;
+  overflow: hidden;
+}
+
+.hub-cover-image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+.hub-card-body {
+  padding: 1.1rem 1.2rem 1rem;
+}
+
+.hub-title-row {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  margin-bottom: 0.4rem;
+}
+
+.hub-title-row h2 {
+  font-size: 1rem;
+  margin: 0;
+}
+
+.badge.verified {
+  font-size: 0.75rem;
+  padding: 0.15rem 0.5rem;
+  border-radius: 999px;
+  background: #e9f9f0;
+  color: #1d7a3a;
+}
+
+.hub-description {
+  margin: 0 0 0.8rem;
+  font-size: 0.9rem;
+  color: #555;
+}
+
+.feature-block {
+  background: #c1eef979;
+  border-radius: 0.75rem;
+  padding: 0.6rem 0.7rem;
+  margin-bottom: 0.8rem;
+  font-size: 0.86rem;
+}
+
+.feature-label {
+  font-weight: 600;
+  margin: 0 0 0.1rem;
+}
+
+.feature-title {
+  font-weight: 600;
+  margin: 0 0 0.1rem;
+}
+
+.feature-status {
+  font-size: 0.8rem;
+  color: #4b5bd6;
+  margin: 0 0 0.2rem;
+}
+
+.feature-text {
+  margin: 0;
+}
+
+.hub-meta-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.4rem;
+  margin-bottom: 0.5rem;
+}
+
+.pill {
+  font-size: 0.75rem;
+  border-radius: 999px;
+  padding: 0.15rem 0.55rem;
+  background: #eef0ff;
+}
+
+.hub-tags,
+.hub-progress {
+  font-size: 0.8rem;
+  color: #666;
+  margin: 0 0 0.4rem;
+}
+
+.hub-card-footer {
+  margin-top: 0.6rem;
+}
+
+/* Small screens */
+@media (max-width: 768px) {
+  .hubs-hero {
+    padding: 1.5rem 1.25rem;
+    flex-direction: column; /* stack text + button */
+    align-items: flex-start; /* left-align content */
+    gap: 1.25rem;
+  }
+
+  .hubs-hero-text {
+    width: 100%;
+  }
+
+  .create-quest-btn {
+    width: 100%; /* full-width button */
+    max-width: none; /* or remove if you want truly full width */
+    height: auto; /* let height follow padding */
+    padding: 0.9rem 0; /* vertical padding only */
+    justify-content: center; /* text centred */
+  }
+
+  .hubs-filters {
+    grid-template-columns: 1fr 1fr;
+  }
+}
+
+/* =========================================
+   FORM LAYOUT INSIDE MODAL
+   ========================================= */
+.quest-field {
+  margin-bottom: 1rem;
+}
+
+.quest-field-row {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 1rem;
+  margin-bottom: 1rem;
+}
+
+@media (max-width: 700px) {
+  .quest-field-row {
+    grid-template-columns: 1fr;
+  }
+}
+
+.quest-field label {
+  font-size: 0.85rem;
+  font-weight: 600;
+  display: block;
+  margin-bottom: 0.3rem;
+}
+
+.quest-helper {
+  font-size: 0.8rem;
+  color: #666;
+  margin: 0 0 0.35rem;
+}
+
+.quest-field input[type="text"],
+.quest-field input[type="number"],
+.quest-field input[type="date"],
+.quest-field input[type="time"],
+.quest-field select,
+.quest-field textarea {
+  width: 100%;
+  border-radius: 0.5rem;
+  border: 1px solid #d0d0dd;
+  padding: 0.45rem 0.6rem;
+  font-size: 0.9rem;
+}
+
+.quest-field textarea {
+  resize: vertical;
+}
+
+/* =========================================
+   RADIO GROUPS & CUSTOM PERIOD
+   ========================================= */
+.radio-group-column {
+  display: flex;
+  flex-direction: column;
+  gap: 0.35rem;
+}
+
+.radio-group-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.75rem;
+}
+
+.radio-option {
+  display: flex;
+  align-items: center;
+  gap: 0.4rem;
+  font-size: 0.88rem;
+}
+
+.custom-period-row {
+  display: flex;
+  align-items: center;
+  gap: 0.4rem;
+  margin-top: 0.3rem;
+}
+
+.custom-period-row input[type="number"] {
+  max-width: 120px;
+}
+
+/* Start date/time */
+.start-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+}
+
+/* =========================================
+   TEAMS
+   ========================================= */
+.teams-list {
+  display: flex;
+  flex-direction: column;
+  gap: 0.4rem;
+  margin-bottom: 0.5rem;
+}
+
+.team-row {
+  display: flex;
+  gap: 0.4rem;
+  align-items: center;
+}
+
+.team-row input[type="text"] {
+  flex: 1;
+}
+
+.team-remove-btn {
+  border-radius: 999px;
+  border: none;
+  width: 26px;
+  height: 26px;
+  font-size: 1.1rem;
+  line-height: 1;
+  cursor: pointer;
+  background: #f4d9dd;
+  color: #8c1b2b;
+}
+
+/* =========================================
+   CHECKBOX & FOOTER
+   ========================================= */
+.checkbox-inline {
+  display: flex;
+  align-items: flex-start;
+  gap: 0.5rem;
+  font-size: 0.88rem;
+}
+
+/* Image dropdown + preview */
+.image-select-row {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: flex-start;
+  gap: 0.75rem;
+  margin-top: 0.35rem;
+}
+
+.image-preview img {
+  width: 140px;
+  height: 80px;
+  object-fit: cover;
+  border-radius: 0.75rem;
+  border: 1px solid #d0d0dd;
+}
+
+/* Optional: message under the modal footer */
+.hub-join-message {
+  margin: 0.75rem 1.5rem 0 1.5rem;
+  font-size: 0.85rem;
+  color: #555;
+}
+
+.badge.joined {
+  font-size: 0.75rem;
+  padding: 0.15rem 0.5rem;
+  border-radius: 999px;
+  background: #013c58; /* or your accent colour */
+  color: #ffffff;
+}
+.quest-template-block {
+  margin-top: 0.75rem;
+  margin-bottom: 1.25rem;
+  padding: 0.75rem 0.9rem 0.6rem;
+  border-radius: 0.75rem;
+  background-color: #f5f5f8;
+}
+.hub-quest-block {
+  border-radius: 0.75rem;
+  background: #f5f5f8;
+  padding: 0.75rem 0.9rem 0.8rem;
+}
+.quest-template-info {
+  margin-top: 0.75rem;
+  margin-bottom: 1rem;
+  padding: 0.6rem 0.9rem;
+  border-radius: 0.75rem;
+  background-color: #f5f5f8;
+}
+
+.quest-template-title {
+  margin: 0 0 0.25rem;
+  font-size: 0.9rem;
+  font-weight: 600;
+}
+
+.quest-template-text {
+  margin: 0 0 0.25rem;
+  font-size: 0.85rem;
+  color: #4a4a68;
+}

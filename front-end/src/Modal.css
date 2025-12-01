@@ -1,0 +1,58 @@
+.quest-modal-backdrop {
+  position: fixed;
+  inset: 0;
+  background: rgba(6, 13, 30, 0.55);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 3000;
+  padding: 1.5rem;
+}
+
+.quest-modal {
+  background: #ffffff;
+  border-radius: 1rem;
+  max-width: 840px;
+  width: 100%;
+  max-height: 95vh;
+  display: flex;
+  flex-direction: column;
+  box-shadow: 0 24px 60px rgba(0, 0, 0, 0.35);
+  overflow: hidden; /* keep rounded corners on header */
+}
+
+.quest-modal-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1.25rem 1.5rem;
+  border-bottom: 1px solid #e3e3f0;
+  color: #ffffff;
+}
+
+.quest-modal-header h2 {
+  margin: 0;
+  font-size: 1.3rem;
+  color: inherit; /* white from header */
+}
+
+.quest-modal-close {
+  border: none;
+  background: transparent;
+  font-size: 1.5rem;
+  cursor: pointer;
+  line-height: 1;
+  color: #ffffff;
+}
+
+.quest-modal-body {
+  padding: 1.25rem 1.5rem 1.5rem;
+  overflow-y: auto;
+}
+
+.quest-modal-footer {
+  display: flex;
+  justify-content: flex-end;
+  gap: 0.75rem;
+  margin-top: 1rem;
+}
