@@ -1,11 +1,3 @@
-<<<<<<< HEAD
-export default function Contact() {
-  return (
-    <>
-      <h1>Quick Calm</h1>
-      <p>Track your Situatiion!</p>
-    </>
-=======
 import React, { useState } from "react";
 import deepBreathing from "../assets/deepbreathing.jpg";
 import bodyscan from "../assets/bodyscan.avif";
@@ -190,6 +182,5 @@ export default function QuickCalm() {
       )}
 
     </main>
->>>>>>> origin/2216412
   );
 }
