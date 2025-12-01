@@ -13,7 +13,6 @@ header {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  gap: 1rem;
 }
 
 /* Logo */
@@ -27,7 +26,7 @@ header {
   display: flex;
   align-items: center;
   justify-content: center;
-  gap: 1rem;
+  gap: 1.2rem;
 }
 
 /* Navigation buttons */
@@ -41,14 +40,14 @@ header {
   color: white;
   cursor: pointer;
   transition: 0.3s ease-out;
-  text-decoration: none; /* remove underline */
+  text-decoration: none;
 }
 
 /* Hover animation */
 .top-nav-button:hover {
   background-color: #c1eef9;
   color: #013c58;
-  transform: scale(1.2);
+  transform: scale(1.1);
 }
 
 /* Hamburger menu button */
@@ -106,4 +105,11 @@ header {
   .nav-bar a:first-child {
     display: none;
   }
+}
+/* CURRENT PAGE */
+.top-nav-button--active {
+  background-color: #c1eef9;
+  color: #013c58;
+  border-color: black;
+  transform: scale(1.2);
 }
