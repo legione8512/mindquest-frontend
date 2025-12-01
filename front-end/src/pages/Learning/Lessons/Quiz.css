@@ -6,18 +6,94 @@
     text-align: center;
 }
 
+/* Introductory text */
+.quiz_intro {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    background: #d2e4e9;
+    border-radius: 10px;
+    margin: auto;
+    margin-bottom: 2rem;
+    width: 700px;
+    color: #013C58;
+}
 
-/* Question text */
+/* Intro title */
+.quiz_intro h3 {
+    padding-top: 2rem;
+    padding-bottom: 1rem;
+    font-size: 1.5rem;
+    font-weight: 600;
+    margin: none;
+    text-decoration: underline;
+}
+
+/* Intro text */
+.quiz_intro p {
+    font-size: 0.9rem;
+    line-height: 1.5rem;
+    padding: 0 8rem;
+    margin: none;
+}
+
+/* Question wrapper */
 .quiz_question {
     margin-bottom: 2rem;
+    border-radius: 10px;
+    background: #c1eef9be;
+    
+}
 
+/* Question text */
+.quiz_question h3 {
+    font-size: 1.2rem;
+    font-weight: 600;
+    color: white;
+    background: #013C58;
+    padding: 1rem;
+    border-radius: 10px 10px 0 0;
+    margin-bottom: 0;
 }
 
 /* Question answers text */
 .quiz_option {
     display: flex;
-    gap: .5rem;
-    margin-bottom: .5rem;
+    font-size: 1rem;
+    padding: 1rem;
+    padding-left: 3rem;
+    margin: 0;
+    transition: .3s ease-out;
+    gap: 1rem;
+    color: #013C58;
+}
+.quiz_option:hover {
+    cursor: pointer;
+}
+
+/* Custom radio buttons */
+input:where([type="radio"]) {
+    -webkit-appearance: none;
+    appearance: none;
+    width: 22px;
+    height: 22px;
+    vertical-align: top;
+    margin: calc(0.75em - 11px) 0.25rem 0 0;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    background: #fff no-repeat center center;
+    cursor: pointer;
+}
+input[type="radio"] {
+    border-radius: 50%;
+}
+
+/* Option selected */
+input[type="radio"]:checked {
+    border: none;
+    background-color: white;
+    outline: none;
+    box-shadow: inset 0 0 0 6px #013C58;
 }
 
 /* Results page wrapper */
@@ -41,4 +117,9 @@
 .submit_quiz_button:hover {
     background: #013C58;
     color: white;
+}
+
+#back_to_lesson button {
+    width: 90%;
+    margin-top: -1rem;
 }

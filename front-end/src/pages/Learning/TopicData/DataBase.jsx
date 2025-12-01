@@ -142,7 +142,7 @@ export const topics = [
                 },
 
                 {
-                    question: "Which of the following is listed as a strategy for managing anxiety",
+                    question: "Which of the following is listed as a strategy for managing anxiety?",
                     options: [
                         "Ignoring stressul situations completely",
                         "Writing a daily journal or diary",

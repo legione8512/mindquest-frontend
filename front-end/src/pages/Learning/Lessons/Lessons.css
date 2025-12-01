@@ -36,13 +36,13 @@
 /* Text container */
 .lesson_page_text {
     margin: auto;
-    padding-left: 3.5rem;
-    padding-right: 3.5rem;
+    padding-left: 5rem;
+    padding-right: 5rem;
 }
 
 /* Subheading */
 .lesson_section h2 {
-    font-size: 2rem;
+    font-size: 1.8rem;
     color: #013C58;
     margin-bottom: 1rem;
     font-weight: 600;
@@ -50,7 +50,7 @@
 
 /* Text */
 .lesson_section p {
-    font-size: 1.2rem;
+    font-size: 1.1rem;
     line-height: 2;
     color: #013C58;
     font-weight: 500;
@@ -87,8 +87,7 @@
 }
 
 /* Navigation buttons */
-.lesson_nav_buttons button,
-.back_to_learning_wrapper button {
+.lesson_nav_buttons button {
     padding: 0.8rem 1.5rem;
     background: #013C58;
     border: none;
@@ -114,11 +113,6 @@
     pointer-events: none;
 }
 
-.lesson_footer {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-}
 /* Page counter */
 .lesson_page_counter {
     text-align: center;

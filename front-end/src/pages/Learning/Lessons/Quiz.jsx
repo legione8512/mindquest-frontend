@@ -35,7 +35,6 @@ export default function Quiz({ quiz }) {
 
     return (
         <section className="quiz_section">
-            <h2>Quiz Results</h2>
 
             {/* Only display score screen if quiz finished */}
             {submitted ? (
@@ -49,10 +48,28 @@ export default function Quiz({ quiz }) {
                 </>
             ) : (
                 <>
+                    {/* Quiz intro */}
+                    <section className="quiz_intro">
+                        <h3>Welcome to the Quiz!</h3>
+                        <p>Test your knowledge on what you've learned and earn a badge!</p>
+                        <p>This quiz has unlimited tries, but if you feel like you're not ready you can always come back to this later!</p>
+
+                        {/* Go back to the lesson button */}
+                        <section className="lesson_nav_buttons" id="back_to_lesson">
+                            <button onClick={() => {
+                                setShowQuiz(false);
+                                setCurrentPage(0);
+                            }}>
+                                Go back to the lesson
+                            </button>
+                        </section>
+
+                    </section>
+
                     {/* Quiz content */}
                     {quiz.map((q, qIndex) => (
                         <section key={qIndex} className="quiz_question">
-                            <p>{q.question}</p>
+                            <h3>{q.question}</h3>
                             {q.options.map((option, optIndex) => (
                                 <>
                                     {/* Question answers */}
