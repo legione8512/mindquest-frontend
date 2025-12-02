@@ -1,9 +1,15 @@
+// Import React so we can use JSX, and useState to store local component state
 import React, { useState } from "react";
+// Import the banner image shown at the top of the page
 import QuestsBanner from "../../assets/Cards_Images/Webp/6.webp";
+// Import the CSS file that styles this page
 import "./QuestsHubs.css";
+// Import the shared Modal component used for the "View hub" popup
 import Modal from "../../Modal";
+// Import a custom primary button component used across the app
 import PrimaryButton from "../../components/Button/PrimaryButton";
 
+// Import 16 different images used as card header options or hub covers
 import img1 from "../../assets/Cards_Images/Webp/1.webp";
 import img2 from "../../assets/Cards_Images/Webp/2.webp";
 import img3 from "../../assets/Cards_Images/Webp/3.webp";
@@ -21,8 +27,9 @@ import img14 from "../../assets/Cards_Images/Webp/14.webp";
 import img15 from "../../assets/Cards_Images/Webp/15.webp";
 import img16 from "../../assets/Cards_Images/Webp/16.webp";
 
-// Image options: give them readable names for the dropdown
+// Image options for the "Card header image" dropdown in the Create Quest modal
 const headerImageOptions = [
+  // Each object represents a selectable image: id, readable label, and the image file
   { id: "image1", label: "Calm city lights", src: img1 },
   { id: "image2", label: "Night skyline", src: img2 },
   { id: "image3", label: "Abstract waves", src: img3 },
@@ -41,7 +48,7 @@ const headerImageOptions = [
   { id: "image16", label: "Sleep better", src: img16 },
 ];
 
-// Predefined activities
+// Predefined activities users can pick when creating a quest
 const activityOptions = [
   "Mood Check-In",
   "Focus Sprint",
@@ -52,25 +59,28 @@ const activityOptions = [
 ];
 
 // Quest templates keyed by Activity title
+// This defines rules, text and fields for each activity
 const questTemplates = {
+  // Template for "Mood Check-In" activity
   "Mood Check-In": {
-    id: "mood-checkin",
-    title: "Mood Check-In",
+    id: "mood-checkin", // internal ID used for tracking progress
+    title: "Mood Check-In", // human-readable title
     shortDescription:
       "A quick 3-minute check-in to describe how you feel and what might help you feel a bit better.",
-    maxPerDay: 3,
-    pointsPerSubmission: 10,
+    maxPerDay: 3, // max times the quest can be completed per day
+    pointsPerSubmission: 10, // base points per completion
     bonus: {
-      triggerCompletion: 3,
-      points: 10,
+      triggerCompletion: 3, // on the 3rd completion today
+      points: 10, // add this bonus
     },
+    // Fields that the user must fill in to complete the quest
     fields: [
       {
-        name: "mood",
-        label: "Describe your current mood in a few words",
+        name: "mood", // key in questFormValues state
+        label: "Describe your current mood in a few words", // label shown in UI
         placeholder: 'e.g. "anxious but hopeful", "tired", "stressed", "okay"',
-        required: true,
-        minWords: 1,
+        required: true, // must be filled in
+        minWords: 1, // minimum number of words
       },
       {
         name: "whatHelps",
@@ -82,6 +92,8 @@ const questTemplates = {
       },
     ],
   },
+
+  // Template for "Focus Sprint"
   "Focus Sprint": {
     id: "focus-sprint",
     title: "Focus Sprint",
@@ -112,6 +124,8 @@ const questTemplates = {
       },
     ],
   },
+
+  // Template for "Micro Reset Break"
   "Micro Reset Break": {
     id: "micro-reset-break",
     title: "Micro Reset Break",
@@ -142,6 +156,8 @@ const questTemplates = {
       },
     ],
   },
+
+  // Template for "Gratitude Snapshot"
   "Gratitude Snapshot": {
     id: "gratitude-snapshot",
     title: "Gratitude Snapshot",
@@ -172,6 +188,8 @@ const questTemplates = {
       },
     ],
   },
+
+  // Template for "10,000 Steps Day"
   "10,000 Steps Day": {
     id: "ten-k-steps",
     title: "10,000 Steps Day",
@@ -179,15 +197,15 @@ const questTemplates = {
       "Log a day where you have walked at least 10,000 steps, ideally with a screenshot from your step counter.",
     maxPerDay: 1,
     pointsPerSubmission: 25,
-    bonus: null,
+    bonus: null, // no extra bonus for this quest
     fields: [
       {
         name: "screenshot",
         label: "Upload a screenshot that shows your steps for today",
         placeholder:
           "Image from Apple Health, Google Fit, Samsung Health, Fitbit, etc. showing at least 10,000 steps.",
-        type: "file",
-        required: false, // front-end prototype, so we keep this soft
+        type: "file", // file input instead of text
+        required: false, // not strictly required in this prototype
       },
       {
         name: "stepCount",
@@ -205,6 +223,8 @@ const questTemplates = {
       },
     ],
   },
+
+  // Template for "Tomorrow’s First Step"
   "Tomorrow’s First Step": {
     id: "tomorrows-first-step",
     title: "Tomorrow’s First Step",
@@ -234,29 +254,30 @@ const questTemplates = {
   },
 };
 
-// Simple helpers for validation + daily limits
+// Helper function to get today's date in YYYY-MM-DD format
 const getTodayKey = () => new Date().toISOString().slice(0, 10);
 
+// Helper function to count words in a string
 const countWords = (text = "") =>
   text.trim().length === 0
-    ? 0
-    : text.trim().split(/\s+/).filter(Boolean).length;
+    ? 0 // if the string is empty or only spaces, return 0
+    : text.trim().split(/\s+/).filter(Boolean).length; // split on whitespace, filter out empty, count length
 
-// Initial hubs (existing demo data)
+// Initial hubs (demo data shown when the page loads)
 const initialHubs = [
   {
-    id: 1,
-    name: "Calm Coders",
-    image: img12,
-    verified: true,
+    id: 1, // unique ID for this hub
+    name: "Calm Coders", // hub title
+    image: img12, // card header image
+    verified: true, // show Verified badge
     description:
       "Mindful study and stress relief for developers – 532 members.",
-    featuredTitle: "3-Minute Gratitude",
-    featuredStatus: "Active now — Day 5 of 7",
-    featuredText: "Write 1–3 lines of gratitude each day.",
-    frequency: "Daily",
-    type: "Individual",
-    tags: [],
+    featuredTitle: "3-Minute Gratitude", // title of the main quest in this hub
+    featuredStatus: "Active now — Day 5 of 7", // text describing status
+    featuredText: "Write 1–3 lines of gratitude each day.", // short description
+    frequency: "Daily", // used in filters and badges
+    type: "Individual", // Individual or Team
+    tags: [], // no team tags for this hub
     progressText:
       "Live progress shown when a quest is active (two-team quest, non-competitive).",
   },
@@ -273,7 +294,7 @@ const initialHubs = [
     frequency: "Weekly",
     type: "Team",
     // Team quest – show these on cards and in join dropdown
-    tags: ["Team Phoenix", "Kind Kin"],
+    tags: ["Team Phoenix", "Kind Kin"], // team names for this hub
     progressText: "Weekly cycle in progress (two-team quest).",
   },
   {
@@ -334,54 +355,62 @@ const initialHubs = [
   },
 ];
 
+// Define the main React component for this page
 const QuestsHubs = () => {
-  // Local state that will hold both the initial demo hubs and any new quests
+  // Local state holding the list of hubs (initial demo hubs + user-created quests)
   const [hubs, setHubs] = useState(initialHubs);
 
-  // Joined hubs + team: { [hubId]: { team: string | null } }
+  // State to track which hubs the user joined, and which team they chose
+  // Structure: { [hubId]: { team: string | null } }
   const [joinedHubs, setJoinedHubs] = useState({});
 
-  // Current team selection inside the "View hub" modal
+  // State for which team is selected in the "View hub" modal (for team quests)
   const [selectedTeam, setSelectedTeam] = useState("");
 
-  // Modals
+  // State to control Create Quest modal visibility (true = open)
   const [isCreateOpen, setIsCreateOpen] = useState(false);
-  const [selectedHub, setSelectedHub] = useState(null); // for "View hub" modal
+  // State for the hub currently opened in the "View hub" modal
+  const [selectedHub, setSelectedHub] = useState(null);
 
-  // Form state
+  // Form data for the Create Quest modal
   const [formData, setFormData] = useState({
-    name: "",
-    description: "",
-    imageKey: headerImageOptions[0].id, // store the ID of the selected image
-    verified: false,
-    periodPreset: "1_week", // "1_day" | "1_week" | "1_month" | "custom"
-    customDays: "",
-    startDate: "",
-    startTime: "",
-    mode: "Individual", // "Individual" | "Team"
-    teams: ["Team 1", "Team 2"],
-    activity: activityOptions[0],
+    name: "", // Hub/quest name input
+    description: "", // description textarea
+    imageKey: headerImageOptions[0].id, // id of the selected header image
+    verified: false, // whether quest is verified
+    periodPreset: "1_week", // quest period radio selection
+    customDays: "", // number input used when periodPreset = "custom"
+    startDate: "", // date input
+    startTime: "", // time input
+    mode: "Individual", // "Individual" or "Team"
+    teams: ["Team 1", "Team 2"], // default team names for Team mode
+    activity: activityOptions[0], // selected activity from dropdown
   });
 
-  // Quest template + completion data (only used inside Create Quest modal)
+  // State for dynamic quest field values inside a hub (e.g. mood text)
   const [questFormValues, setQuestFormValues] = useState({});
+  // State to track how many times a quest has been completed today, and points
   const [questProgress, setQuestProgress] = useState(() => {
-    const today = getTodayKey();
+    const today = getTodayKey(); // current day key
     const initial = {};
+    // Create initial progress for each quest template
     Object.values(questTemplates).forEach((tpl) => {
       initial[tpl.id] = {
-        dayKey: today,
-        countToday: 0,
-        pointsToday: 0,
+        dayKey: today, // which day this progress refers to
+        countToday: 0, // how many times completed today
+        pointsToday: 0, // total points earned today for this quest
       };
     });
-    return initial;
+    return initial; // initial state object
   });
 
+  // Derived value: the quest template that matches the selected activity
   const selectedQuestTemplate = questTemplates[formData.activity] || null;
 
+  // State for messages shown under the quest form (e.g. errors or success text)
   const [questMessage, setQuestMessage] = useState("");
 
+  // State for filters applied to the hub list
   const [filters, setFilters] = useState({
     mode: "All", // All | Team | Individual
     verification: "All", // All | Verified only
@@ -389,32 +418,36 @@ const QuestsHubs = () => {
     sort: "All", // All | Active | Starting soon | Finished
   });
 
-  // search text in the input box
+  // State for current text in the search input
   const [searchInput, setSearchInput] = useState("");
 
-  // committed search query (applied when user clicks Apply)
+  // State for the committed search query (applied only when user clicks Search)
   const [searchQuery, setSearchQuery] = useState("");
 
   // -------------------------
   // Filters & search handlers
   // -------------------------
 
+  // Update filters when any filter dropdown changes
   const handleFilterChange = (e) => {
-    const { name, value } = e.target;
+    const { name, value } = e.target; // read the name and value from the select
     setFilters((prev) => ({
-      ...prev,
-      [name]: value,
+      ...prev, // copy previous filters
+      [name]: value, // overwrite only the changed filter
     }));
   };
 
+  // Update searchInput when user types in the search box
   const handleSearchInputChange = (e) => {
     setSearchInput(e.target.value);
   };
 
+  // Copy searchInput into searchQuery when user clicks Search
   const handleSearchApply = () => {
     setSearchQuery(searchInput.trim());
   };
 
+  // Clear both the text in the search box and the applied search query
   const handleSearchClear = () => {
     setSearchInput("");
     setSearchQuery("");
@@ -424,47 +457,52 @@ const QuestsHubs = () => {
   // Join / started helpers
   // -------------------------
 
+  // Determine if a quest has started (based on date/time or demo status text)
   const hasQuestStarted = (hub) => {
-    // Guard against null so we never crash on render
+    // If hub is null/undefined, treat as not started to be safe
     if (!hub) return false;
 
-    // Prefer explicit start date/time if available (for newly created quests)
+    // For user-created hubs, check the explicit startDate and startTime
     if (hub.startDate) {
       const time =
         hub.startTime && hub.startTime !== "" ? hub.startTime : "00:00";
-      const start = new Date(`${hub.startDate}T${time}`);
+      const start = new Date(`${hub.startDate}T${time}`); // build full Date
 
       if (!Number.isNaN(start.getTime())) {
+        // If we have a valid date, check if start is <= now
         return start <= new Date();
       }
     }
 
-    // Fallback: infer from the status text for the demo hubs
+    // For initial demo hubs, infer started status from featuredStatus text
     if (typeof hub.featuredStatus === "string") {
       const status = hub.featuredStatus.toLowerCase();
 
+      // If status text begins with "active now", treat it as started
       if (status.startsWith("active now")) {
-        return true; // clearly already running
+        return true;
       }
 
+      // If it begins with "starts", treat it as not started yet
       if (status.startsWith("starts")) {
-        return false; // "Starts tomorrow", "Starts in 3 days", etc.
+        return false;
       }
     }
 
-    // If we can't tell, be conservative and treat it as started
+    // If unsure, default to treating it as already started
     return true;
   };
 
-  // Derive a simple status label for each quest
+  // Compute a simple status label for each quest: Active / Starting soon / Finished
   const getQuestStatus = (hub) => {
-    const started = hasQuestStarted(hub);
+    const started = hasQuestStarted(hub); // check if started
 
+    // If not started at all, return "Starting soon"
     if (!started) {
       return "Starting soon";
     }
 
-    // Try to detect "finished" from the status text
+    // If started, try to detect if finished based on text
     if (typeof hub.featuredStatus === "string") {
       const s = hub.featuredStatus.toLowerCase();
       if (
@@ -476,36 +514,42 @@ const QuestsHubs = () => {
       }
     }
 
-    // Default: started and not obviously finished
+    // Otherwise, treat it as active
     return "Active";
   };
 
+  // Helper: check if user already joined a given hub
   const hasUserJoined = (hubId) => Boolean(joinedHubs[hubId]);
 
+  // Helper: get the team name that user chose for a hub, or null
   const getUserTeamForHub = (hubId) => joinedHubs[hubId]?.team ?? null;
 
+  // Handle "Join quest" button in the View hub modal
   const handleJoinHub = (hub) => {
+    // Guard: if no hub, do nothing
     if (!hub) return;
 
-    // Block joining if already started or already joined
+    // Prevent joining if quest already started or already joined
     if (hasQuestStarted(hub) || hasUserJoined(hub.id)) {
       return;
     }
 
-    // Only require team choice if this is a Team quest with named teams
+    // For team quests with tags, user must pick a team
     const isTeamQuestWithTags =
       hub.type === "Team" && hub.tags && hub.tags.length > 0;
 
     let team = null;
 
     if (isTeamQuestWithTags) {
+      // If no team selected, do nothing (button is disabled)
       if (!selectedTeam) {
-        // Button is disabled in this state; guard anyway
         return;
       }
+      // Store selected team name
       team = selectedTeam;
     }
 
+    // Update joinedHubs state to mark this hub as joined (with optional team)
     setJoinedHubs((prev) => ({
       ...prev,
       [hub.id]: { team },
@@ -516,59 +560,68 @@ const QuestsHubs = () => {
   // Form handlers
   // -------------------------
 
-  // Generic handler for simple fields
+  // Generic handler for simple inputs in Create Quest form
   const handleChange = (e) => {
     const { name, value, type, checked } = e.target;
     setFormData((prev) => ({
       ...prev,
+      // For checkboxes, use checked; otherwise use value
       [name]: type === "checkbox" ? checked : value,
     }));
   };
 
+  // Handler for quest field changes inside a hub quest form
   const handleQuestFieldChange = (e) => {
     const { name, value } = e.target;
     setQuestFormValues((prev) => ({
       ...prev,
-      [name]: value,
+      [name]: value, // store current value keyed by field name
     }));
-    setQuestMessage("");
+    setQuestMessage(""); // clear any previous validation / success message
   };
 
+  // Update a specific team name in the Create Quest form
   const handleTeamChange = (index, value) => {
     setFormData((prev) => {
-      const updated = [...prev.teams];
-      updated[index] = value;
-      return { ...prev, teams: updated };
+      const updated = [...prev.teams]; // copy current teams array
+      updated[index] = value; // update the team at given index
+      return { ...prev, teams: updated }; // return new formData
     });
   };
 
+  // Add another team input row in the Create Quest form
   const handleAddTeam = () => {
     setFormData((prev) => ({
       ...prev,
+      // Add a new default team name at the end
       teams: [...prev.teams, `Team ${prev.teams.length + 1}`],
     }));
   };
 
+  // Remove a team by index from the Create Quest form
   const handleRemoveTeam = (index) => {
     setFormData((prev) => {
+      // Filter out the team with this index
       const updated = prev.teams.filter((_, i) => i !== index);
       return { ...prev, teams: updated };
     });
   };
 
+  // Handle changing the selected Activity in the Create Quest modal
   const handleActivityChange = (e) => {
-    const value = e.target.value;
+    const value = e.target.value; // new activity title
 
     setFormData((prev) => ({
       ...prev,
-      activity: value, // only update the selected activity
+      activity: value, // store selected activity
     }));
 
-    // Clear any previous quest answers / errors when switching quest
+    // Reset quest-specific inputs and messages when changing activity
     setQuestFormValues({});
     setQuestMessage("");
   };
 
+  // Reset the Create Quest form back to its initial values
   const resetForm = () => {
     setFormData({
       name: "",
@@ -587,28 +640,31 @@ const QuestsHubs = () => {
     setQuestMessage("");
   };
 
+  // Close the Create Quest modal and reset its form
   const closeModal = () => {
     setIsCreateOpen(false);
     resetForm();
   };
 
+  // Close the View hub modal and reset quest-related states
   const closeHubModal = () => {
-    setSelectedHub(null);
-    setSelectedTeam("");
-    setQuestFormValues({});
-    setQuestMessage("");
+    setSelectedHub(null); // no hub selected
+    setSelectedTeam(""); // clear team selection
+    setQuestFormValues({}); // clear quest fields
+    setQuestMessage(""); // clear messages
   };
 
+  // Handle submission of Create Quest form
   const handleCreateQuest = (e) => {
-    e.preventDefault();
+    e.preventDefault(); // prevent page reload
 
-    // Frequency label
+    // Map periodPreset to user-friendly frequency label
     let frequency = "Custom";
     if (formData.periodPreset === "1_day") frequency = "Daily";
     else if (formData.periodPreset === "1_week") frequency = "Weekly";
     else if (formData.periodPreset === "1_month") frequency = "Monthly";
 
-    // Period description
+    // Build a more descriptive period label
     let periodLabel = "";
     if (formData.periodPreset === "custom" && formData.customDays) {
       periodLabel = `${formData.customDays} day quest`;
@@ -620,69 +676,80 @@ const QuestsHubs = () => {
       periodLabel = "1 month quest";
     }
 
+    // Label describing when the quest starts
     const startLabel = formData.startDate
       ? `Starts on ${formData.startDate}`
       : "Scheduled quest";
 
+    // Combine start info and period info (if available)
     const featuredStatus = periodLabel
       ? `${startLabel} — ${periodLabel}`
       : startLabel;
 
+    // Find the full image object matching the selected imageKey
     const selectedImage =
       headerImageOptions.find((opt) => opt.id === formData.imageKey) ||
       headerImageOptions[0];
 
+    // Build tags based on quest mode (Solo vs Team)
     const tags = [];
     if (formData.mode === "Team") tags.push("Team quest");
     else tags.push("Solo quest");
 
+    // Construct a new hub object for the newly created quest
     const newHub = {
-      id: Date.now(), // simple unique id
-      name: formData.name || "Untitled quest",
-      image: selectedImage.src,
-      verified: formData.verified,
+      id: Date.now(), // unique ID based on current timestamp
+      name: formData.name || "Untitled quest", // fallback if name is empty
+      image: selectedImage.src, // selected header image
+      verified: formData.verified, // verified status
       description:
         formData.description ||
         "A newly created quest. Configure description to tell people what to expect.",
-      featuredTitle: formData.activity, // e.g. "Mood Check-In"
-      featuredStatus,
-      featuredText: `Activity: ${formData.activity}`,
-      frequency,
-      type: formData.mode,
-      tags,
+      featuredTitle: formData.activity, // activity name as featured title
+      featuredStatus, // constructed status text
+      featuredText: `Activity: ${formData.activity}`, // basic text about the activity
+      frequency, // frequency label
+      type: formData.mode, // Individual or Team
+      tags, // Team/Solo quest tag
       progressText: "",
       startDate: formData.startDate || null,
       startTime: formData.startTime || "",
     };
 
+    // Add the new hub at the top of the hubs list
     setHubs((prev) => [newHub, ...prev]);
+    // Close the Create Quest modal and reset
     closeModal();
   };
 
+  // Compute the preview image object for the selected imageKey
   const selectedImagePreview =
     headerImageOptions.find((opt) => opt.id === formData.imageKey) ||
     headerImageOptions[0];
 
+  // Handle submitting a quest entry inside the View hub modal
   const handleHubQuestSubmit = (e) => {
-    e.preventDefault();
-    if (!selectedHub) return;
+    e.preventDefault(); // prevent page reload
+    if (!selectedHub) return; // no hub selected: do nothing
 
-    // Find the quest template by the hub's featured title
+    // Look up the quest template by the hub's featuredTitle
     const template = questTemplates[selectedHub.featuredTitle];
-    if (!template) return;
+    if (!template) return; // if no template, do nothing
 
-    const today = getTodayKey();
+    const today = getTodayKey(); // today's date key
 
+    // Get current progress for this quest ID, or defaults
     const current = questProgress[template.id] || {
       dayKey: today,
       countToday: 0,
       pointsToday: 0,
     };
 
+    // If dayKey does not match today, reset count/points to 0
     const currentCount = current.dayKey === today ? current.countToday : 0;
     const currentPoints = current.dayKey === today ? current.pointsToday : 0;
 
-    // Daily limit
+    // Check if user already hit daily completion limit
     if (currentCount >= template.maxPerDay) {
       setQuestMessage(
         "You have reached the daily limit for this quest today. Try another quest or come back tomorrow."
@@ -690,20 +757,23 @@ const QuestsHubs = () => {
       return;
     }
 
-    // Validate all quest fields (text fields only)
+    // Validate all fields defined in the template (except file inputs)
     for (const field of template.fields) {
+      // Skip strict validation for file fields in this prototype
       if (field.type === "file") {
-        // We do not strictly validate file inputs in this prototype
         continue;
       }
 
+      // Get current value for this field, trimming whitespace
       const raw = (questFormValues[field.name] || "").trim();
 
+      // For required fields, ensure there is some content
       if (field.required && !raw) {
         setQuestMessage(`Please complete “${field.label}” before submitting.`);
         return;
       }
 
+      // If the field has a minimum word count, enforce it
       if (field.minWords) {
         const wc = countWords(raw);
         if (wc < field.minWords) {
@@ -715,15 +785,19 @@ const QuestsHubs = () => {
       }
     }
 
-    const newCount = currentCount + 1;
+    // At this point, validation passed
+    const newCount = currentCount + 1; // how many completions after this submission
 
+    // Base points from template
     let pointsToAdd = template.pointsPerSubmission;
+    // If there's a bonus and the newCount equals the trigger, add bonus points
     if (template.bonus && template.bonus.triggerCompletion === newCount) {
       pointsToAdd += template.bonus.points;
     }
 
-    const newPoints = currentPoints + pointsToAdd;
+    const newPoints = currentPoints + pointsToAdd; // total points after this submission
 
+    // Update questProgress state with new count and points
     setQuestProgress((prev) => ({
       ...prev,
       [template.id]: {
@@ -733,11 +807,12 @@ const QuestsHubs = () => {
       },
     }));
 
+    // Show success message with points and progress summary
     setQuestMessage(
       `Nice work! You earned ${pointsToAdd} points. Today: ${newCount}/${template.maxPerDay} completions · ${newPoints} total points for this quest.`
     );
 
-    // Clear the text fields so user can submit again (up to daily cap)
+    // Clear all text fields so user can submit again if under daily cap
     setQuestFormValues({});
   };
 
@@ -745,16 +820,17 @@ const QuestsHubs = () => {
   // Apply filters, search, status
   // -------------------------
 
+  // Filter hubs based on mode, verification, duration, and search text
   const filteredHubs = hubs.filter((hub) => {
-    // Quest mode
+    // Filter by quest mode (Team / Individual)
     if (filters.mode === "Team" && hub.type !== "Team") return false;
     if (filters.mode === "Individual" && hub.type !== "Individual")
       return false;
 
-    // Verification
+    // Filter by verification status
     if (filters.verification === "Verified only" && !hub.verified) return false;
 
-    // Duration (frequency)
+    // Filter by duration/frequency
     if (
       filters.duration !== "All" &&
       hub.frequency &&
@@ -763,7 +839,7 @@ const QuestsHubs = () => {
       return false;
     }
 
-    // Search (name, description, featuredTitle, featuredText)
+    // Apply search query: match against several text fields
     if (searchQuery) {
       const q = searchQuery.toLowerCase();
       const haystack = [
@@ -772,22 +848,23 @@ const QuestsHubs = () => {
         hub.featuredTitle,
         hub.featuredText,
       ]
-        .filter(Boolean)
+        .filter(Boolean) // ignore undefined/null
         .join(" ")
         .toLowerCase();
 
       if (!haystack.includes(q)) return false;
     }
 
+    // If it passed all checks, include this hub
     return true;
   });
 
-  // Filter by status: Active / Starting soon / Finished
+  // Further filter by status: Active / Starting soon / Finished
   const displayedHubs = filteredHubs.filter((hub) => {
-    if (filters.sort === "All") return true;
+    if (filters.sort === "All") return true; // no extra filter
 
-    const status = getQuestStatus(hub); // "Active", "Starting soon", "Finished"
-    return status === filters.sort;
+    const status = getQuestStatus(hub); // compute status
+    return status === filters.sort; // keep only if matches sort
   });
 
   // -------------------------
@@ -796,18 +873,22 @@ const QuestsHubs = () => {
 
   return (
     <>
-      {/* Banner like Account page, sits under the site header */}
+      {/* Top banner section, similar style to Account page */}
       <section className="quests_banner_wrapper">
+        {/* Background image for the banner */}
         <img src={QuestsBanner} className="quests_banner" alt="Quests banner" />
 
+        {/* Title text overlayed on the banner */}
         <section className="quests_banner_title">
           <h1>Quests &amp; Hubs</h1>
         </section>
       </section>
 
-      <main className="hubs-page">
-        {/* Hero / create-quest panel */}
+      {/* Main content area for the whole page */}
+      <main className="layout-container hubs-page">
+        {/* Hero section introducing quest creation */}
         <section className="hubs-hero">
+          {/* Text block on the left */}
           <div className="hubs-hero-text">
             <h2>Create a new quest</h2>
             <p className="hubs-hero-subtitle">
@@ -821,6 +902,7 @@ const QuestsHubs = () => {
             </p>
           </div>
 
+          {/* Button that opens the Create Quest modal */}
           <PrimaryButton
             className="create-quest-btn"
             onClick={() => setIsCreateOpen(true)}
@@ -829,8 +911,9 @@ const QuestsHubs = () => {
           </PrimaryButton>
         </section>
 
-        {/* Filters row */}
+        {/* Filters row above the hubs grid */}
         <section className="hubs-filters">
+          {/* Filter by quest mode */}
           <div className="filter-group">
             <label>Quest mode</label>
             <select
@@ -844,6 +927,7 @@ const QuestsHubs = () => {
             </select>
           </div>
 
+          {/* Filter by verification */}
           <div className="filter-group">
             <label>Verification</label>
             <select
@@ -856,6 +940,7 @@ const QuestsHubs = () => {
             </select>
           </div>
 
+          {/* Filter by duration/frequency */}
           <div className="filter-group">
             <label>Duration</label>
             <select
@@ -870,6 +955,7 @@ const QuestsHubs = () => {
             </select>
           </div>
 
+          {/* Filter by status (Active / Starting soon / Finished) */}
           <div className="filter-group">
             <label>Status</label>
             <select
@@ -884,6 +970,7 @@ const QuestsHubs = () => {
             </select>
           </div>
 
+          {/* Search box for hubs */}
           <div className="filter-search">
             <label>Search hubs or challenges</label>
             <div className="filter-search-row">
@@ -893,6 +980,7 @@ const QuestsHubs = () => {
                 value={searchInput}
                 onChange={handleSearchInputChange}
               />
+              {/* Clear search button */}
               <button
                 type="button"
                 className="secondary-btn"
@@ -900,6 +988,7 @@ const QuestsHubs = () => {
               >
                 Clear
               </button>
+              {/* Apply search button */}
               <PrimaryButton type="button" onClick={handleSearchApply}>
                 Search
               </PrimaryButton>
@@ -907,14 +996,16 @@ const QuestsHubs = () => {
           </div>
         </section>
 
-        {/* Hubs grid */}
+        {/* Grid of hub cards */}
         <section className="hubs-grid">
+          {/* Map through each displayed hub and render a card */}
           {displayedHubs.map((hub) => {
-            const joined = hasUserJoined(hub.id);
-            const teamName = getUserTeamForHub(hub.id);
+            const joined = hasUserJoined(hub.id); // user already joined?
+            const teamName = getUserTeamForHub(hub.id); // team name if any
 
             return (
               <article key={hub.id} className="hub-card">
+                {/* Hub cover image */}
                 <div className="hub-image-wrapper">
                   <img
                     src={hub.image}
@@ -923,14 +1014,18 @@ const QuestsHubs = () => {
                   />
                 </div>
 
+                {/* Main card body */}
                 <div className="hub-card-body">
                   <div className="hub-title-row">
+                    {/* Hub name */}
                     <h2>{hub.name}</h2>
 
+                    {/* Verified badge if hub is verified */}
                     {hub.verified && (
                       <span className="badge verified">Verified</span>
                     )}
 
+                    {/* Joined badge if user joined this hub */}
                     {joined && (
                       <span className="badge joined">
                         Joined{teamName ? ` – ${teamName}` : ""}
@@ -938,8 +1033,10 @@ const QuestsHubs = () => {
                     )}
                   </div>
 
+                  {/* Hub description text */}
                   <p className="hub-description">{hub.description}</p>
 
+                  {/* Featured challenge block */}
                   <div className="feature-block">
                     <p className="feature-label">Featured challenge:</p>
                     <p className="feature-title">{hub.featuredTitle}</p>
@@ -947,24 +1044,29 @@ const QuestsHubs = () => {
                     <p className="feature-text">{hub.featuredText}</p>
                   </div>
 
+                  {/* Meta row showing frequency and type */}
                   <div className="hub-meta-row">
                     <span className="pill">{hub.frequency}</span>
                     <span className="pill">{hub.type}</span>
                   </div>
 
+                  {/* For team hubs, show team names */}
                   {hub.type === "Team" && hub.tags && hub.tags.length > 0 && (
                     <p className="hub-tags">Teams: {hub.tags.join(" · ")}</p>
                   )}
 
+                  {/* Optional extra progress text */}
                   {hub.progressText && (
                     <p className="hub-progress">{hub.progressText}</p>
                   )}
 
+                  {/* Footer with "View hub" button */}
                   <div className="hub-card-footer">
                     <button
                       type="button"
                       className="secondary-btn"
                       onClick={() => {
+                        // Open the View hub modal for this hub
                         setSelectedHub(hub);
                         setSelectedTeam("");
                         setQuestFormValues({});
@@ -986,13 +1088,14 @@ const QuestsHubs = () => {
         <div
           className="quest-modal-backdrop"
           onClick={(e) => {
-            // Close only when clicking on the backdrop
+            // Close modal only if user clicks on the backdrop (not inside modal)
             if (e.target.classList.contains("quest-modal-backdrop")) {
               closeModal();
             }
           }}
         >
           <div className="quest-modal">
+            {/* Modal header with title and X button */}
             <header className="quest-modal-header">
               <h2>Create a new quest</h2>
               <button
@@ -1005,8 +1108,9 @@ const QuestsHubs = () => {
               </button>
             </header>
 
+            {/* Main form body for creating a quest */}
             <form className="quest-modal-body" onSubmit={handleCreateQuest}>
-              {/* Name + description */}
+              {/* Name + description section */}
               <div className="quest-field-row">
                 <div className="quest-field">
                   <label htmlFor="questName">Hub Name</label>
@@ -1053,6 +1157,7 @@ const QuestsHubs = () => {
                     ))}
                   </select>
 
+                  {/* Show a small preview of the selected image */}
                   {selectedImagePreview && (
                     <div className="image-preview">
                       <img
@@ -1064,11 +1169,12 @@ const QuestsHubs = () => {
                 </div>
               </div>
 
-              {/* Period + start */}
+              {/* Quest period and start date/time section */}
               <div className="quest-field-row">
                 <div className="quest-field">
                   <label>Quest period</label>
                   <div className="radio-group-column">
+                    {/* 1 day option */}
                     <label className="radio-option">
                       <input
                         type="radio"
@@ -1079,6 +1185,7 @@ const QuestsHubs = () => {
                       />
                       <span>1 day</span>
                     </label>
+                    {/* 1 week option */}
                     <label className="radio-option">
                       <input
                         type="radio"
@@ -1089,6 +1196,7 @@ const QuestsHubs = () => {
                       />
                       <span>1 week</span>
                     </label>
+                    {/* 1 month option */}
                     <label className="radio-option">
                       <input
                         type="radio"
@@ -1099,6 +1207,7 @@ const QuestsHubs = () => {
                       />
                       <span>1 month</span>
                     </label>
+                    {/* Custom option */}
                     <label className="radio-option">
                       <input
                         type="radio"
@@ -1110,6 +1219,7 @@ const QuestsHubs = () => {
                       <span>Custom</span>
                     </label>
 
+                    {/* If custom is selected, show an input for number of days */}
                     {formData.periodPreset === "custom" && (
                       <div className="custom-period-row">
                         <input
@@ -1126,6 +1236,7 @@ const QuestsHubs = () => {
                   </div>
                 </div>
 
+                {/* Start date and time inputs */}
                 <div className="quest-field">
                   <label>Start date and time</label>
                   <div className="start-row">
@@ -1145,11 +1256,12 @@ const QuestsHubs = () => {
                 </div>
               </div>
 
-              {/* Mode + teams */}
+              {/* Quest type (Individual / Teams) and linked Activity */}
               <div className="quest-field-row">
                 <div className="quest-field">
                   <label>Quest type</label>
                   <div className="radio-group-row">
+                    {/* Individual mode */}
                     <label className="radio-option">
                       <input
                         type="radio"
@@ -1160,6 +1272,7 @@ const QuestsHubs = () => {
                       />
                       <span>Individual</span>
                     </label>
+                    {/* Team mode */}
                     <label className="radio-option">
                       <input
                         type="radio"
@@ -1173,6 +1286,7 @@ const QuestsHubs = () => {
                   </div>
                 </div>
 
+                {/* Activity dropdown */}
                 <div className="quest-field">
                   <label htmlFor="activity">Activity</label>
                   <select
@@ -1190,6 +1304,7 @@ const QuestsHubs = () => {
                 </div>
               </div>
 
+              {/* Show summary info about the currently selected quest template */}
               {selectedQuestTemplate && (
                 <div className="quest-template-info">
                   <h4 className="quest-template-title">
@@ -1206,6 +1321,7 @@ const QuestsHubs = () => {
                 </div>
               )}
 
+              {/* Show rules (max per day, points, bonus) for selected quest template */}
               {selectedQuestTemplate && (
                 <div className="quest-template-block">
                   <p className="quest-helper">
@@ -1218,6 +1334,7 @@ const QuestsHubs = () => {
                       : "."}
                   </p>
 
+                  {/* Optional message (e.g. validation, errors) */}
                   {questMessage && (
                     <p className="quest-helper" style={{ fontWeight: 500 }}>
                       {questMessage}
@@ -1226,6 +1343,7 @@ const QuestsHubs = () => {
                 </div>
               )}
 
+              {/* When quest type is Team, allow editing multiple team names */}
               {formData.mode === "Team" && (
                 <div className="quest-field">
                   <label>Team names</label>
@@ -1266,7 +1384,7 @@ const QuestsHubs = () => {
                 </div>
               )}
 
-              {/* Verification */}
+              {/* Verification checkbox */}
               <div className="quest-field">
                 <label className="checkbox-inline">
                   <input
@@ -1282,6 +1400,7 @@ const QuestsHubs = () => {
                 </label>
               </div>
 
+              {/* Footer with Cancel and Create quest buttons */}
               <footer className="quest-modal-footer">
                 <button
                   type="button"
@@ -1300,11 +1419,12 @@ const QuestsHubs = () => {
       {/* VIEW HUB MODAL (using shared Modal component) */}
       {selectedHub && (
         <Modal
-          isOpen={!!selectedHub}
-          title={selectedHub.name}
-          onClose={closeHubModal}
+          isOpen={!!selectedHub} // modal open flag (true if selectedHub is not null)
+          title={selectedHub.name} // modal title = hub name
+          onClose={closeHubModal} // close handler
           footer={
             <>
+              {/* Close button in the modal footer */}
               <button
                 type="button"
                 className="secondary-btn"
@@ -1313,11 +1433,13 @@ const QuestsHubs = () => {
                 Close
               </button>
 
+              {/* Inline immediately-invoked function to build the Join button */}
               {(() => {
-                const started = hasQuestStarted(selectedHub);
-                const joined = hasUserJoined(selectedHub.id);
-                const teamName = getUserTeamForHub(selectedHub.id);
+                const started = hasQuestStarted(selectedHub); // quest started?
+                const joined = hasUserJoined(selectedHub.id); // user joined?
+                const teamName = getUserTeamForHub(selectedHub.id); // team name if joined
 
+                // Only require team selection if this is a Team hub with defined tags
                 const needsTeamSelection =
                   selectedHub.type === "Team" &&
                   selectedHub.tags &&
@@ -1325,11 +1447,14 @@ const QuestsHubs = () => {
                   !joined &&
                   !started;
 
+                // Disable join button if quest started, already joined, or team not chosen
                 const disabled =
                   started || joined || (needsTeamSelection && !selectedTeam);
 
+                // Default label for join button
                 let label = "Join quest";
 
+                // Adjust label based on current status
                 if (started) {
                   label = "Quest started";
                 } else if (joined) {
@@ -1340,6 +1465,7 @@ const QuestsHubs = () => {
                   label = `Join ${selectedTeam}`;
                 }
 
+                // Return the actual PrimaryButton element to render
                 return (
                   <PrimaryButton
                     type="button"
@@ -1353,7 +1479,7 @@ const QuestsHubs = () => {
             </>
           }
         >
-          {/* Cover image */}
+          {/* Cover image of the selected hub */}
           <div className="hub-image-wrapper" style={{ marginBottom: "1rem" }}>
             <img
               src={selectedHub.image}
@@ -1362,7 +1488,7 @@ const QuestsHubs = () => {
             />
           </div>
 
-          {/* Meta row */}
+          {/* Meta row: Verified badge + frequency + type */}
           <div className="hub-title-row" style={{ marginBottom: "0.75rem" }}>
             {selectedHub.verified && (
               <span className="badge verified">Verified hub</span>
@@ -1373,12 +1499,12 @@ const QuestsHubs = () => {
             <span className="pill">{selectedHub.type}</span>
           </div>
 
-          {/* Description */}
+          {/* Hub description */}
           <p className="hub-description" style={{ marginBottom: "1rem" }}>
             {selectedHub.description}
           </p>
 
-          {/* Featured challenge */}
+          {/* Featured challenge info inside modal */}
           <div className="feature-block" style={{ marginBottom: "1rem" }}>
             <p className="feature-label">Featured challenge</p>
             <p className="feature-title">{selectedHub.featuredTitle}</p>
@@ -1391,6 +1517,7 @@ const QuestsHubs = () => {
             <div className="hub-teams-block" style={{ marginBottom: "1rem" }}>
               <p className="hub-tags">Teams: {selectedHub.tags.join(" · ")}</p>
 
+              {/* If hub is a Team quest, show join or info about current team */}
               {selectedHub.type === "Team" && (
                 <>
                   {hasUserJoined(selectedHub.id) ? (
@@ -1423,21 +1550,22 @@ const QuestsHubs = () => {
             </div>
           )}
 
-          {/* Quest completion area for template-based hubs (e.g. Mood Check-In) */}
+          {/* Quest completion area for hubs that use one of the questTemplates */}
           {questTemplates[selectedHub.featuredTitle] && (
             <div className="hub-quest-block">
               {(() => {
-                const template = questTemplates[selectedHub.featuredTitle];
-                const started = hasQuestStarted(selectedHub);
-                const joined = hasUserJoined(selectedHub.id);
+                const template = questTemplates[selectedHub.featuredTitle]; // matching template
+                const started = hasQuestStarted(selectedHub); // has started?
+                const joined = hasUserJoined(selectedHub.id); // user joined?
 
+                // Current progress for this quest
                 const progress = questProgress[template.id] || {
                   dayKey: getTodayKey(),
                   countToday: 0,
                   pointsToday: 0,
                 };
 
-                // If it has not started yet
+                // If quest has not started yet, show info message
                 if (!started) {
                   return (
                     <p className="quest-helper">
@@ -1447,7 +1575,7 @@ const QuestsHubs = () => {
                   );
                 }
 
-                // Require the user to join the hub before logging
+                // Require that user joined the hub before allowing entries
                 if (!joined) {
                   return (
                     <p className="quest-helper">
@@ -1457,17 +1585,20 @@ const QuestsHubs = () => {
                   );
                 }
 
-                // Main form to complete the quest
+                // Main quest form when quest has started and user is joined
                 return (
                   <>
+                    {/* Summary of today's progress */}
                     <p className="quest-helper">
                       Today: {progress.countToday}/{template.maxPerDay}{" "}
                       completion(s) · {progress.pointsToday} points.
                     </p>
 
+                    {/* Quest entry form */}
                     <form onSubmit={handleHubQuestSubmit}>
+                      {/* Render all fields defined in the template */}
                       {template.fields.map((field) => {
-                        // File field (for 10,000 Steps screenshot)
+                        // Special case: file input field
                         if (field.type === "file") {
                           return (
                             <div key={field.name} className="quest-field">
@@ -1491,7 +1622,7 @@ const QuestsHubs = () => {
                           );
                         }
 
-                        // Textarea fields (Mood description, What could help, etc.)
+                        // Default: textarea field (mood, reflections, etc.)
                         const value = questFormValues[field.name] || "";
 
                         return (
@@ -1525,12 +1656,14 @@ const QuestsHubs = () => {
                         );
                       })}
 
+                      {/* Show validation or success message if any */}
                       {questMessage && (
                         <p className="quest-helper" style={{ fontWeight: 500 }}>
                           {questMessage}
                         </p>
                       )}
 
+                      {/* Submit button aligned to the right */}
                       <div
                         className="hub-quest-footer"
                         style={{
@@ -1550,12 +1683,14 @@ const QuestsHubs = () => {
             </div>
           )}
 
+          {/* Optional hub progress text shown under quest block */}
           {selectedHub.progressText && (
             <p className="hub-progress" style={{ marginBottom: "1rem" }}>
               {selectedHub.progressText}
             </p>
           )}
 
+          {/* Info message if quest has already started (joining is closed) */}
           {hasQuestStarted(selectedHub) && (
             <p className="hub-join-message">
               This quest has already started. You can still view the hub
@@ -1568,4 +1703,5 @@ const QuestsHubs = () => {
   );
 };
 
+// Export the component as default so it can be imported elsewhere
 export default QuestsHubs;

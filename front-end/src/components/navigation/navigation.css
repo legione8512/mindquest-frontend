@@ -13,6 +13,7 @@ header {
   display: flex;
   justify-content: space-between;
   align-items: center;
+  gap: 0.5rem;
 }
 
 /* Logo */
@@ -72,6 +73,7 @@ header {
   cursor: pointer;
   transition: 0.4s ease;
   text-decoration: none;
+  text-align: center;
 }
 
 /* Login button hover animation */
@@ -96,7 +98,6 @@ header {
 
   .login {
     padding: 1vw;
-    width: 20vw;
     font-size: 0.8rem;
   }
 }
@@ -113,4 +114,13 @@ header {
   color: #013c58;
   border-color: black;
   transform: scale(1.2);
+}
+
+@media screen and (max-width: 425px) {
+  .nav-inner {
+    justify-content: center;
+    gap: 1rem;
+    padding-right: 0;
+    padding-left: 5px;
+  }
 }
