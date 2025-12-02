@@ -24,7 +24,7 @@ export default function Home() {
         </p>
 
         <Link to="/register">
-          <button className="cta-button">Start Your Journey</button>
+          <button className="cta-rbutton">Start Your Journey</button>
         </Link>
       </section>
 
@@ -39,7 +39,7 @@ export default function Home() {
               <p> Through mood tracking, calming exercises, personal goals, and supportive community hubs, MindQuest creates a safe, stigma-free space where users can reflect, learn, and grow.
               With small daily actions, guided tools, and positive encouragement, MindQuest empowers you to understand your emotions, stay consistent with self-care, and build long-term wellbeing. 
               </p>
-          </section>
+           </section>
         </section>
         <section className="offer">
           <h4> Some of what we offer </h4>
@@ -81,7 +81,7 @@ export default function Home() {
         <h2>Begin Your MindQuest</h2>
 
         <Link to="/register">
-          <button className="cta-button-large">Join Now</button>
+          <button className="cta-jnbutton">Join Now</button>
         </Link>
       </section>
 
