@@ -1,7 +1,7 @@
 import { useRef, useEffect } from 'react';
 import { Link } from "react-router-dom";
 import "./sidebar.css";
-import logoMobile from "../../assets/mobile_logo.png";
+import logoMobile from "../../assets/Navigation/mobile_logo.png";
 
 export default function Sidebar({ isOpen, toggleSidebar }) {
 

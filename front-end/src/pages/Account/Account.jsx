@@ -2,8 +2,8 @@ import { useState } from "react";
 import "./Account.css";
 
 // Image imports
-import DefaultImage from "../../assets/example_profile_picture.jpg";
-import EmptyImage from "../../assets/empty_image.png";
+import DefaultImage from "../../assets/Account/default_profile_icon.jpg";
+import EmptyImage from "../../assets/Account/empty_profile_icon.jpg";
 
 // Form imports
 import AccountSettingsForm from "./Forms/AccountSettings_Form";

@@ -1,6 +1,6 @@
 import { useState } from "react";
-import LearningBanner from "../../assets/Learning_Banner.jpg";
-import InfoBoxImg from "../../assets/info_box.jpg";
+import LearningBanner from "../../assets/Learning/Learning_Banner.jpg";
+import InfoBoxImg from "../../assets/Learning/info_box.jpg";
 import { topics } from "./TopicData/DataBase";
 import TopicCard from "./TopicCard";
 import "./Learning.css";
@@ -46,8 +46,8 @@ export default function Learning() {
                     <section className="info_box_text_box">
                         <h2>Self learning with MindQuest</h2>
                         <p>
-                            Here at MindQuest, we make sure our users have access to resources from a wide variety of verified sources, 
-                            including NHS England, Mental Health UK, Mind, and other notable mental health providers.
+                            Here at MindQuest, we make sure our users have access to up to date and verifed resources from a wide variety of providers, 
+                            including NHS England, Mental Health UK, Mind, and more!
                         </p>
                         <p>
                             Our short micro-lessons allow you to read up and educate yourself on various aspects of mental health, and then 
