@@ -79,14 +79,15 @@ export default function QuickCalm() {
     selectedCategory == "all"
       ? exercises
       : exercises.filter((ex) => ex.category === selectedCategory);
+   // Modal Component//   
   const QuickCalmModal = ({ isOpen, onClose, exercise, children }) => {
     if (!isOpen || !exercise) return null;
 
     return (
       <section
         className="qc-modal-backdrop"
-        onClick={(e) => {
-          if (e.target.className === "qc-modal-backdrop") onClose();
+        onClick={(c) => {
+          if (c.target.className === "qc-modal-backdrop") onClose();
         }}
       >
         <section className="qc-modal">
@@ -120,15 +121,15 @@ export default function QuickCalm() {
 
       {/* Category Buttons */}
       <section className="qc-categories">
-        {categories.map((cat) => (
+        {categories.map((category) => (
           <button
-            key={cat}
+            key={category}
             className={`qc-category-btn ${
-              selectedCategory === cat ? "active" : ""
+              selectedCategory === category ? "active" : ""
             }`}
-            onClick={() => setSelectedCategory(cat)}
+            onClick={() => setSelectedCategory(category)}
           >
-            {cat}
+            {category}
           </button>
         ))}
       </section>
@@ -144,7 +145,7 @@ export default function QuickCalm() {
 
             <p className="qc-description">{ex.description}</p>
 
-            <section className="qc-info">
+            <section className="qc-duration-points">
               <span>{ex.duration}</span>
               <span className="qc-points">+{ex.points} pts</span>
             </section>
@@ -158,6 +159,7 @@ export default function QuickCalm() {
         ))}
       </section>
 
+      {/* Exercise Modal */}
       {activateExercise && (
         <QuickCalmModal
           isOpen={true}
@@ -171,7 +173,7 @@ export default function QuickCalm() {
           <p>Points: {activateExercise.points}</p>
           </section>
           <button 
-            className="qc-modal-complete-btn" 
+            className="qc-modal-ecomplete-btn" 
             onClick={() => {
               alert ("Exercise Completed!");
               setActivateExercise(null);

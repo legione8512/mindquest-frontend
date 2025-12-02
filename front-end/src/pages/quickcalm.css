@@ -27,7 +27,6 @@
 .qc-category-btn.active {
   background: #013C58;
   color: white;
-  font-size: 0.75rem;
 }
 
 /* Exercise Cards */
@@ -35,7 +34,6 @@
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(270px, 1fr));
   gap: 20px;
-
 }
 
 .qc-card {
@@ -43,6 +41,7 @@
   flex-direction: column;
   justify-content: space-between;
   align-items: center;
+  display: flex;
   padding: 20px;
   border-radius: 20px;
   border: 1px solid #d7e4ff;
@@ -55,11 +54,6 @@
   transform: translateY(-5px);
 }
 
-/* Top of card */
-.qc-card-top h3 {
-  margin: 0 0 10px 0;
-  color: #013C58;
-}
 
 /* Description */
 .qc-description {
@@ -69,7 +63,7 @@
 }
 
 /* Duration + Points */
-.qc-info {
+.qc-duration-points {
   display: flex;
   justify-content: space-between;
   margin-bottom: 15px;
@@ -191,13 +185,7 @@
   line-height: 1.6;
 }
 
-/* Add hover effect for start buttons */
 
-
-.qc-start-btn:hover {
-  background: #F5A201;
-  transform: translateY(-2px);
-}
 
 /* Modal animation */
 @keyframes slideDown {
@@ -219,7 +207,7 @@
   margin-bottom: 1rem;
 }
 
-.qc-modal-complete-btn{
+.qc-modal-ecomplete-btn{
   display:block;
   margin:1.5rem auto 0 auto;
   padding:0.75rem 1.5rem;
@@ -229,9 +217,4 @@
   border:none;
   border-radius:8px;
   cursor:pointer;
-  transition: background-color 0.3s;
-}
-.qc-modal-complete-btn:hover{
-  background-color:#013C58;
-  transform: scale (1.05);
 }
