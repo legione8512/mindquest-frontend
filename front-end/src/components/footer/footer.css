@@ -120,7 +120,6 @@ footer img {
     border-bottom: solid 1px #F5A201;
     max-width: 15rem;
     color: #F5A201;
-
 }
 
 /* Text for footer sections */
@@ -131,6 +130,19 @@ footer img {
     line-height: 1rem;
     margin-bottom: 1rem;
     display: flex;
+}
+
+/* Privacy and Security buttons */
+.footer_section ul {
+    padding-left: 0;
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+    line-height: 0.5rem;
+    text-align: left;
+}
+.footer_section ul li {
+    height: 1.5rem;
 }
 
 /* Icons for footer sections */
@@ -265,18 +277,36 @@ footer img {
     /* Footer headers */
     .footer_section h3 {
         font-size: 0.65rem;
+        margin-bottom: 1rem;
     }
 
-    .footer_section p,
-    .privacy_button {
+    /* Footer text */
+    .footer_section p {
         font-size: 0.55rem;
         line-height: 0.9rem;
     }
 
+    /* Icons for contact information */
     .footer_section i {
         font-size: 0.7rem;
         line-height: 0.9rem;
     }
 
+    /* Privacy and Security buttons */
+    .footer_section ul {
+        padding: 0;
+        margin: 0;
+        list-style: none;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        width: 100%;
+    }
+    .footer_section ul li {
+        height: 1rem;
+    }
+    .privacy_button {
+        font-size: 0.55rem;
+    }
 
 }
