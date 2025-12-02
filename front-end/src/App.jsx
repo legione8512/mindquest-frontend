@@ -13,7 +13,6 @@ import Learning from "./pages/Learning/Learning.jsx";
 import MoodCompass from "./pages/MoodCompass.jsx";
 import Account from "./pages/Account/Account.jsx";
 import Register from "./pages/Register.jsx";
-import QuestsHubs from "./pages/QuestsHubs/QuestsHubs.jsx";
 import QuickCalm from "./pages/QuickCalm.jsx";
 
 /* Components Import */
