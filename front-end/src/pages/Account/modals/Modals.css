@@ -17,9 +17,15 @@
 .modal-header {
     border-bottom: 1px solid #013C58;
     background: #013C58;
-    color: white;
+    padding: 1rem 2.3rem;
+}
+
+
+/* Header text */
+.modal-header .modal-title {
+    font-size: 1.5rem;
     font-weight: 600;
-    padding-left: 2.3rem;
+    color: white;
 }
 
 /* Close button */
@@ -46,8 +52,7 @@
 /* Body */
 .modal-body {
     font-size: 1rem;
-    line-height: 2rem;
-    color: #c1eef9;
+    line-height: 1.8rem;
 }
 
 /* Text */
@@ -59,9 +64,10 @@
 
 /* List text */
 .modal-body ul {
-    padding-left: 4rem;
+    padding-left: 3rem;
     color: #013C58;
 }
+
 .modal-body li {
     margin-bottom: 0.5rem;
     padding-left: 0.5rem;
@@ -94,4 +100,74 @@
     background: #F5A201;
     color: #013C58;
     transform: scale(1.05);
+}
+
+/**************************************** PAGE SCALING ON DIFFERENT SCREEN SIZES/ZOOM LEVELS ****************************************/
+@media (max-width: 1100px) {
+
+    /* Modal Width */
+    .modal-dialog {
+        max-width: 90%;
+    }
+}
+
+/**************************************** MOBILE MODE ****************************************/
+@media (max-width: 650px) {
+
+    /* Modal Width */
+    .modal-dialog {
+        margin-left: auto !important;
+        margin-right: auto !important;
+        max-width: 100%;
+    }
+
+    /* Close modal button */
+    .modalCloseButton {
+        font-size: 2rem;
+        right: 0.6rem;
+        top: 0.7rem;
+    }
+
+    .modal-header {
+        padding-left: 1.5rem;
+    }
+
+    /* Header text */
+    .modal-header .modal-title {
+        font-size: 1rem;
+    }
+
+    /* Body */
+    .modal-body {
+        font-size: 0.9rem;
+        line-height: 1.4rem;
+    }
+
+    /* List text */
+    .modal-body ul {
+        padding-left: 1.5rem;
+    }
+
+    .modal-body li {
+        font-size: 0.8rem;
+        line-height: 1.4rem;
+        padding-left: 0.1rem;
+        padding-right: 0.7rem;
+    }
+
+    /* Footer */
+    .modal-footer {
+        flex-direction: column;
+        gap: 0.6rem;
+    }
+
+    /* Footer buttons */
+    .modal-footer .btn-secondary,
+    .modal-footer .btn-danger {
+        width: 100%;
+        margin: auto;
+        height: 2.2rem;
+        font-size: 0.9rem;
+    }
+
 }
