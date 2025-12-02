@@ -17,12 +17,12 @@
 @keyframes fadeIn {
     from {
         opacity: 0;
-        transform: translateY(-20px);
+        transform: translateX(20px);
     }
 
     to {
         opacity: 1;
-        transform: translateY(0);
+        transform: translateX(0);
     }
 }
 
@@ -119,4 +119,100 @@
     color: #013C58;
     font-weight: 600;
     margin-bottom: 1.5rem;
+}
+
+/**************************************** RESPONSIVE DESIGN ****************************************/
+@media (max-width: 1100px) {
+
+    /* Wrapper */
+    .lesson_wrapper {
+        width: 90%;
+        padding-top: 2rem;
+    }
+
+    /* Page layout */
+    .lesson_page {
+        height: auto;
+        padding: 2rem 1.5rem;
+    }
+
+    /* Heading */
+    .lesson_section h2 {
+        font-size: 1.6rem;
+    }
+
+    /* Text + list */
+    .lesson_section p,
+    .lesson_section li {
+        font-size: 0.8rem;
+        line-height: 2rem;
+        width: 100%;
+    }
+    .lesson_section li {
+        margin-left: 2rem;
+    }
+
+    /* Image */
+    .lesson_page_image img {
+        display: none;
+    }
+
+    /* Buttons */
+    .lesson_nav_buttons button {
+        width: 12rem;
+        padding: 0.6rem 1rem;
+        font-size: 0.8rem;
+    }
+
+}
+
+
+/**************************************** MOBILE MODE ****************************************/
+@media (max-width: 650px) {
+
+    /* Wrapper */
+    .lesson_wrapper {
+        padding-top: 1.5rem;
+        width: 95%;
+    }
+
+    /* Page layout */
+    .lesson_page {
+        flex-direction: column;
+        height: auto;
+        gap: 1rem;
+        padding: 1.5rem 0;
+    }
+
+    /* Text container */
+    .lesson_page_text {
+        padding-left: 2rem;
+        padding-right: 2rem;
+    }
+
+    /* Text + List */
+    .lesson_section p,
+    .lesson_section li {
+        font-size: 0.9rem;
+        line-height: 1.8rem;
+    }
+    .lesson_section li {
+        margin-left: 1.2rem;
+    }
+
+    /* Buttons */
+    .lesson_nav_buttons {
+        width: 90%;
+        gap: 1rem;
+    }
+    .lesson_nav_buttons button {
+        font-size: 0.9rem;
+        padding: 0.9rem;
+    }
+
+    /* Page counter */
+    .lesson_page_counter p {
+        font-size: 0.9rem;
+    }
+
 }
