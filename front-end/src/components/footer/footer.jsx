@@ -74,10 +74,10 @@ export default function Footer() {
             <p>
               <i className="fa-solid fa-envelope"></i>{" "}
               <a
-                href="mailto:mindquest@something.com"
+                href="mailto:support@mindquest.uk"
                 className="footer-email privacy_button"
               >
-                SupportTeam@Mindquest.co.uk
+                Support@mindquest.uk
               </a>
             </p>
             <p>
