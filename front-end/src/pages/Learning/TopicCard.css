@@ -1,68 +1,72 @@
+/* Wrapper for each card */
+.topic_card_wrapper {
+    max-width: 95%;
+    display: flex;
+
+    flex-direction: column;
+    margin-bottom: 3rem;
+}
+
 /* Banner wrapper */
 .topic_card_banner {
-    display: flex;
-    justify-content: center;
-    width: 900px;
+    position: relative;
+    width: 700px;
     max-width: 100%;
     margin: auto;
+    cursor: pointer;
 }
 
 /* Banner image */
 .topic_card_banner img {
     width: 100%;
-    height: 80px;
+    height: 150px;
     object-fit: cover;
+    border-radius: 10px;
+    transition: 0.3s ease;
+}
+
+.topic_card_banner.open img {
     border-radius: 10px 10px 0 0;
-    cursor: pointer;
 }
 
-
-/* Wrapper for each card */
-.topic_card_wrapper {
-    max-width: 95%;
-    display: flex;
-    flex-direction: column;
-    margin-bottom: 3rem;
-}
-
-/* Topic card content */
-.topic_card {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    background: #c1eef9;
-    color: #013C58;
+/* Overlay text box */
+.topic_card_overlay {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 75%;
+    padding: 1rem;
+    background: #013c58a4;
+    color: white;
     text-align: center;
-    padding: 1.2rem;
-    border: 1px 1px solid #013C58;
-    width: 900px;
-    max-width: 100%;
-    margin: auto;
-    transition: .3s ease;
-    cursor: pointer;
+    transition: 0.3s ease;
 }
 
-/* Hover animation for the topic card */
-.topic_card_banner:hover + .topic_card {
-    background: #F5A201;
-}
-.topic_card:hover {
-    background: #F5A201;
-}
-
-/* Topic card text */
-.topic_card h2 {
+/* Overlay text box text */
+.topic_card_overlay h2 {
+    margin: 0;
     font-size: 1.5rem;
     font-weight: 600;
-    margin: auto;
 }
+
+/* Hover card animation */
+.topic_card_banner:hover .topic_card_overlay {
+    background: #F5A201;
+    width: 100%;
+}
+
+.topic_card_banner:hover img {
+    filter: brightness(0.7);
+}
+
 
 /***** TOPIC CARDS DROPDOWN MENU *****/
 .topic_dropdown_menu {
-    background: #013C58;
+    background: #c1eef9;
     border-top: none;
     list-style: none;
-    width: 900px;
+    width: 700px;
     max-width: 100%;
     border-radius: 0 0 8px 8px;
     margin: auto;
@@ -79,9 +83,9 @@
 .topic_dropdown_menu a {
     display: block;
     width: 100%;
-    padding: 1rem;
     text-align: center;
-    color: white;
+    padding: 0.8rem;
+    color: #013C58;
     font-weight: 500;
     text-decoration: none;
     box-sizing: border-box;
