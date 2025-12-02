@@ -36,8 +36,8 @@ export default function Home() {
           </h3>
           <section className="wave-block">
             <section className="wave-content">
-              <p> Through mood tracking, calming exercises, personal goals, and supportive community hubs, MindQuest creates a safe, stigma-free space where users can reflect, learn, and grow.
-              With small daily actions, guided tools, and positive encouragement, MindQuest empowers you to understand your emotions, stay consistent with self-care, and build long-term wellbeing. 
+              <p> Through mood tracking, calming exercises, and personal goals MindQuest creates a safe, stigma free space where users can reflect, learn, and grow.
+              With small daily actions, and guided tools,MindQuest empowers you to understand your emotions, stay consistent with self care, and build long term wellbeing. 
               </p>
            </section>
         </section>
