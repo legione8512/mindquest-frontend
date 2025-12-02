@@ -1,14 +1,12 @@
 /* Wrapper for banner section */
 .learning_banner_wrapper {
-    display: relative;
     width: 100%;
-
 }
 
 /* Banner image */
 .learn_banner {
     width: 100%;
-    height: 15rem;
+    height: 250px;
     object-fit: cover;
 }
 
@@ -16,7 +14,7 @@
 .learning_banner_title {
     padding: 1rem;
     position: absolute;
-    top: 11rem;
+    top: 11.75rem;
     width: 100%;
     color: white;
     font-size: 2rem;
@@ -25,31 +23,230 @@
     box-sizing: border-box;
 }
 
-/* Introductory text */
+.learning_banner_title h1 {
+    margin: 0;
+}
+
+/************ WELCOME SECTION ************/
+
+/* Wrapper */
 .learning_introduction_section {
-    background:  #c1eef979;
-    padding: 2rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 2rem;
+    background: #c1eef979;
+    padding: 3rem;
     border-radius: 10px;
-    box-shadow: 0px 4px 12px rgba(0, 0, 0, 0.1);
-    max-width: 1000px;
-    margin: 3rem auto;
+    box-shadow: 0px 10px 10px rgba(0, 0, 0, 0.329);
+    width: 100%;
+    max-width: 1100px;
+    margin: 4rem auto;
     text-align: center;
 }
 
-/* Heading Styling */
+/* Intro Heading Styling */
 .learning_introduction_section h1 {
     font-size: 2rem;
     color: #013C58;
-    margin-bottom: 1rem;
+    margin: 0;
+    font-weight: 600;
 }
 
-/* Paragraph Styling */
+/* Intro Paragraph Styling */
 .learning_introduction_section p {
     font-size: 1.1rem;
     color: #013C58;
     line-height: 1.8;
-    margin-bottom: 1.5rem;
-    max-width: 85%;
-    margin-left: auto;
-    margin-right: auto;
+    margin: 0;
+    width: 80%;
+    font-weight: 500;
+}
+
+/********** INFO BOX **********/
+
+/* Wrapper */
+.info_box_wrapper {
+    width: 100%;
+    max-width: 1200px;
+    display: flex;
+    margin: 3.5rem auto;
+}
+
+/* Information content box */
+.info_box {
+    display: flex;
+    width: 100%;
+    box-sizing: border-box;
+    max-width: 90%;
+    margin: 0 auto;
+    background: #013C58;
+    color: white;
+}
+
+/* Info box image */
+.info_box_img {
+    width: 15rem;
+    max-width: 100%;
+    height: auto;
+    object-fit: cover;
+}
+
+/* Info box text */
+.info_box_text_box {
+    display: flex;
+    flex-direction: column;
+    padding: 2rem;
+    padding-left: 5rem;
+    padding-right: 4rem;
+    gap: 1rem;
+    border-left: 5px solid #c1eef9;
+    flex: 1;
+}
+
+/* Info box text */
+.info_box h2 {
+    width: 100%;
+    font-size: 1.8rem;
+    font-weight: 600;
+    color: #F5A201;
+}
+
+/* Info box dropdown */
+.info_box p {
+    width: 95%;
+    font-size: 1rem;
+    font-weight: 500;
+    margin: 0;
+    line-height: 2rem;
+}
+
+
+/********** TOPIC CARD SECTION WRAPPER **********/
+
+/* Wrapper for the topic cards section */
+.topic_cards_section {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 1rem;
+    width: 100%;
+    margin-bottom: 10rem;
+}
+
+/**************************************** RESPONSIVE DESIGN ****************************************/
+@media (max-width: 1100px) {
+
+    /* Banner image */
+    .learn_banner {
+        width: 100%;
+        height: 200px;
+    }
+
+    /* Text overlay */
+    .learning_banner_title {
+        top: 10rem;
+        font-size: 1.7rem;
+    }
+
+    /* Wrapper */
+    .learning_introduction_section {
+        padding: 2rem;
+        width: 90%;
+        gap: 1.5rem;
+    }
+
+    /* Intro Heading Styling */
+    .learning_introduction_section h1 {
+        font-size: 1.7rem;
+    }
+
+    /* Intro Paragraph Styling */
+    .learning_introduction_section p {
+        width: 90%;
+        font-size: 0.95rem;
+        line-height: 1.6rem;
+    }
+
+    /* Info box image */
+    .info_box_img {
+        width: 10rem;
+    }
+
+    /* Info box text */
+    .info_box_text_box {
+        padding: 1.5rem 2rem;
+    }
+
+    /* Info box text */
+    .info_box h2 {
+        font-size: 1.4rem;
+    }
+    
+    /* Info box dropdown */
+    .info_box p {
+        font-size: 0.9rem;
+        line-height: 1.6rem;
+    }
+}
+
+/**************************************** MOBILE MODE ****************************************/
+@media (max-width: 650px) {
+
+    /* Banner image */
+    .learn_banner {
+        height: 120px;
+    }
+
+    /* Text overlay */
+    .learning_banner_title {
+        top: 9rem;
+        font-size: 1.5rem;
+        padding: 0.5rem;
+    }
+    
+    /* Wrapper */
+    .learning_introduction_section {
+        margin-top: 3rem;
+        padding: 1.5rem;
+        gap: 1rem;
+        width: 90%;
+    }
+
+    /* Intro Heading Styling */
+    .learning_introduction_section h1 {
+        font-size: 1.3rem;
+    }
+
+    /* Intro Paragraph Styling */
+    .learning_introduction_section p {
+        width: 100%;
+        font-size: 0.9rem;
+        line-height: 1.5rem;
+    }
+
+    /* Info box image */
+    .info_box_img {
+        display: none;
+    }
+
+    /* Info box text */
+    .info_box_text_box {
+        padding: 2rem 1.5rem;
+        border-left: none;
+        text-align: center;
+    }
+
+    /* Info box text */
+    .info_box h2 {
+        font-size: 1.2rem;
+    }
+
+    /* Info box dropdown */
+    .info_box p {
+        font-size: 0.85rem;
+        line-height: 1.4rem;
+    }
+
 }

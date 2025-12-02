@@ -43,3 +43,9 @@ html {
   --mq-accent-yellow: #F5A201;  /* Accent yellow colour (used for hover states, buttons, etc.) */
   --mq-radius-md: 10px;         /* Medium radius value, reused for consistent rounded corners */
 }
+
+/* Stop Bootstrap modal from shifting to the right */
+body.modal-open {
+    padding-right: 0 !important;
+    overflow: hidden;
+}

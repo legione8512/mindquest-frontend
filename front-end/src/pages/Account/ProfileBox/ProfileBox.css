@@ -1,0 +1,196 @@
+/* Wrapper */
+.profile_box {
+    position: relative;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    padding: 1.8rem;
+    margin-top: 5rem;
+    margin-bottom: 3rem;
+    background: #013C58;
+    width: 100%;
+    border-radius: 10px;
+    box-sizing: border-box;
+}
+
+/* Top SECTION: Profile picture, Username, Level */
+.profile_box_top {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 100%;
+    margin-bottom: 1rem;
+}
+
+/* Profile picture */
+.profile_box img {
+    width: 100px;
+    height: 100px;
+    object-fit: cover;
+    object-position: center;
+    border-radius: 50%;
+}
+
+/* Change profile picture button */
+.profile_box button {
+    position: absolute;
+    top: 6.5rem;
+    left: 6rem;
+    font-size: 1.8rem;
+    color: #c1eef9;
+    border: 5px solid #013C58;
+    background: #013C58;
+    border-radius: 50%;
+    width: 2rem;
+    height: 2rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+}
+
+/* Change profile picture button hover animation */
+.profile_box button:hover {
+    animation: rotate 0.5s ease;
+    color: #F5A201;
+}
+
+/* Rotation animation */
+@keyframes rotate {
+    0% {transform: rotate(0deg);}
+    100% {transform: rotate(360deg);}
+}
+
+/* Username and level wrapper */
+.profile_text_box {
+    text-align: right;
+}
+
+/* Username text */
+.profile_text_box h3 {
+    color: white;
+    font-size: 1.2rem;
+    font-weight: 500;
+    margin-bottom: 0.3rem;
+}
+
+/* Level text */
+.profile_text_box p {
+    color: #c1eef9;
+    font-weight: 300;
+    font-size: 0.9rem;
+}
+
+/* Streak and Points bar */
+.points_bar,
+.streak_bar {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 1rem;
+    padding: 1rem;
+    border-radius: 10px;
+    background: #c1eef9;
+    color: #013C58;
+}
+.streak_bar {
+    background: #F5A201;
+}
+
+/* Streak and Points bar text */
+.points_bar h3,
+.streak_bar h3 {
+    font-size: 1.2rem;
+    font-weight: 600;
+    margin: 0;
+}
+
+/**************************************** RESPONSIVE DESIGN ****************************************/
+@media (max-width: 1100px) {
+
+    /* Wrapper */
+    .profile_box {
+        padding: 1.2rem;
+        margin-top: 1rem;
+        margin-bottom: 1rem;
+        border-radius: 5px;
+    }
+
+    /* Profile picture */
+    .profile_box img {
+        width: 80px;
+        height: 80px;
+    }
+
+    /* Change profile picture button */
+    .profile_box button {
+        top: 5rem;
+        left: 4.5rem;
+    }
+
+    /* Username text */
+    .profile_text_box h3 {
+        font-size: 0.9rem;
+    }
+
+    /* Level text */
+    .profile_text_box p {
+        font-size: 0.7rem;
+    }
+
+    /* Streak and Points bar */
+    .points_bar,
+    .streak_bar {
+        padding: 0.5rem;
+        font-size: 0.8rem;
+        border-radius: 5px;
+    }
+
+    /* Streak and Points bar text */
+    .points_bar h3,
+    .streak_bar h3 {
+        font-size: 0.8rem;
+    }
+}
+
+/**************************************** MOBILE MODE ****************************************/
+@media (max-width: 650px) {
+    .profile_box {
+        width: 100%;
+        padding: 1rem;
+        margin-top: 0;
+        margin-bottom: 0.5rem;
+        border-radius: 5px;
+    }
+
+    /* Profile picture */
+    .profile_box img {
+        width: 60px;
+        height: 60px;
+    }
+
+    /* Change profile picture button */
+    .profile_box button {
+        top: 3.8rem;
+        left: 3.5rem;
+        width: 1.3rem;
+        height: 1.3rem;
+        font-size: 1.2rem;
+    }
+
+    /* Username text */
+    .profile_text_box h3 {
+        font-size: 0.85rem;
+    }
+
+    /* Level text */
+    .profile_text_box p {
+        font-size: 0.6rem;
+    }
+
+    /* Streak and Points bar text */
+    .points_bar h3,
+    .streak_bar h3 {
+        font-size: 0.8rem;
+    }
+}

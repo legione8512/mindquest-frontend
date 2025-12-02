@@ -1,0 +1,399 @@
+/* Wrapper */
+.quiz_section {
+    width: 900px;
+    max-width: 100%;
+    margin: 0 auto;
+    text-align: center;
+}
+
+/* Introductory text */
+.quiz_intro {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    background: #d2e4e9;
+    border-radius: 10px;
+    margin: auto;
+    margin-bottom: 2rem;
+    width: 900px;
+    color: #013C58;
+}
+
+/* Intro title */
+.quiz_intro h3 {
+    padding-top: 2rem;
+    padding-bottom: 1rem;
+    font-size: 1.5rem;
+    font-weight: 600;
+    margin: none;
+    text-decoration: underline;
+}
+
+/* Intro text */
+.quiz_intro p {
+    font-size: 0.9rem;
+    line-height: 1.5rem;
+    padding: 0 10em;
+    margin: none;
+}
+
+/* Quiz card wrapper for animation */
+.quiz_card {
+    animation: fadeIn 1s;
+    background: #c1eef98c;
+    border-radius: 10px;
+}
+
+/* Animation */
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateX(20px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateX(0);
+    }
+}
+
+/* Question wrapper */
+.quiz_question {
+    margin-bottom: 5rem;
+    border-radius: 10px;
+    background: #c1eef9;
+}
+
+/* Question text */
+.quiz_question h3 {
+    font-size: 1.2rem;
+    font-weight: 700;
+    color: white;
+    background: #013C58;
+    padding: 1.5rem;
+    border-radius: 10px 10px 0 0;
+    margin-bottom: 0;
+}
+
+/* Question answers text */
+.quiz_option {
+    display: flex;
+    font-size: 1rem;
+    font-weight: 500;
+    padding: 1rem;
+    padding-left: 4rem;
+    margin: 0;
+    transition: .3s ease-out;
+    gap: 1rem;
+    color: #013C58;
+}
+
+/* Option hover animation */
+.quiz_option:hover {
+    cursor: pointer;
+    background: #f5a401;
+}
+
+/* Custom radio buttons */
+input:where([type="radio"]) {
+    -webkit-appearance: none;
+    appearance: none;
+    width: 22px;
+    height: 22px;
+    vertical-align: top;
+    margin: calc(0.75em - 11px) 0.25rem 0 0;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    background: #fff no-repeat center center;
+    cursor: pointer;
+}
+
+/* Radio button */
+input[type="radio"] {
+    border-radius: 50%;
+}
+
+/* Option selected */
+input[type="radio"]:checked {
+    border: none;
+    background-color: white;
+    outline: none;
+    box-shadow: inset 0 0 0 6px #013C58;
+}
+
+.quiz_option:has(input[type="radio"]:checked) {
+    background: #F5A201;
+}
+
+/* Results page wrapper */
+.quiz_results {
+    text-align: center;
+    margin-top: 2rem;
+}
+
+/* Submit button for quiz */
+.submit_quiz_button {
+    padding: .8rem 1.5rem;
+    background: #F5A201;
+    border: none;
+    border-radius: 5px;
+    color: #013C58;
+    cursor: pointer;
+    font-weight: 600;
+}
+
+/* Animation for hovering submit button */
+.submit_quiz_button:hover {
+    background: #013C58;
+    color: white;
+}
+
+#back_to_lesson button {
+    margin-top: -1rem;
+}
+
+
+/********** RESULTS PAGE **********/
+.results_card {
+    background: #013C58;
+    border-radius: 10px;
+    padding: 2rem 0;
+    margin: 3rem auto;
+    margin-top: 0;
+    width: 600px;
+}
+
+/* Results header */
+.quiz_results h3 {
+    font-size: 1.6rem;
+    font-weight: 700;
+    color: #c1eef9;
+    text-decoration: underline;
+}
+
+/* Score text */
+.quiz_results_score {
+    font-size: 2rem;
+    font-weight: 700;
+    color: #f5a401;
+    margin: 1rem 0 0 0;
+}
+
+/* Message text */
+.quiz_results_text {
+    padding-left: 5rem;
+    padding-right: 5rem;
+    font-size: 1rem;
+    color: #c1eef9;
+    line-height: 2.5rem;
+}
+
+.quiz_results_text strong {
+    color: #F5A201;
+}
+
+/* Trophy icon */
+.trophy {
+    font-size: 4rem;
+    margin: 1rem 1rem 1rem;
+    display: block;
+    animation: popIn 0.5s ease-out;
+}
+
+/* Trophy colours */
+/* Bronze */
+.trophy.bronze {
+    color: #cd7f32;
+}
+
+/* Silver */
+.trophy.silver {
+    color: silver;
+}
+
+/* Gold */
+.trophy.gold {
+    color: #f5a401;
+}
+
+/* Trophy popping in animation */
+@keyframes popIn {
+    from {
+        transform: scale(0.4);
+        opacity: 0;
+    }
+
+    to {
+        transform: scale(1);
+        opacity: 1;
+    }
+}
+
+#results_buttons button {
+    background: #c1eef9;
+    color: #013C58;
+}
+
+
+
+/**************************************** RESPONSIVE DESIGN ****************************************/
+@media (max-width: 1100px) {
+
+    /* Wrapper */
+    .quiz_section {
+        width: 90%;
+    }
+
+    /* Intro section */
+    .quiz_intro {
+        width: 100%;
+        padding: 0.5rem 0;
+    }
+
+    /* Intro title */
+    .quiz_intro h3 {
+        font-size: 1.3rem;
+    }
+
+    /* Intro text */
+    .quiz_intro p {
+        padding: 0 4rem;
+        font-size: 0.9rem;
+        line-height: 1.4rem;
+    }
+
+    /* Quiz question */
+    .quiz_question h3 {
+        font-size: 1.1rem;
+        padding: 1rem;
+    }
+
+    /* Quiz options */
+    .quiz_option {
+        padding: 1rem 1.5rem;
+        font-size: 0.9rem;
+    }
+
+    /* Radio buttons */
+    input[type="radio"] {
+        width: 20px;
+        height: 20px;
+    }
+
+    /* Results message  */
+    .quiz_results_text {
+        padding-left: 3rem;
+        padding-right: 3rem;
+        font-size: 0.95rem;
+        line-height: 1.8rem;
+    }
+
+    /* Trophy size */
+    .trophy {
+        font-size: 3.2rem;
+    }
+}
+
+
+
+/**************************************** MOBILE MODE ****************************************/
+@media (max-width: 650px) {
+
+    /* Wrapper */
+    .quiz_section {
+        width: 95%;
+    }
+
+    /* Introduction box */
+    .quiz_intro {
+        padding: 0.5rem 1.5rem;
+        width: 100%;
+    }
+
+    /* Introduction header */
+    .quiz_intro h3 {
+        font-size: 1.2rem;
+        padding-top: 1.5rem;
+    }
+
+    /* Introduction text */
+    .quiz_intro p {
+        font-weight: 500;
+        padding: 0 1rem;
+        font-size: 0.85rem;
+        line-height: 1.4rem;
+    }
+
+    /* Question wrapper */
+    .quiz_question {
+        margin-bottom: 2rem;
+    }
+
+    /* Question text */
+    .quiz_question h3 {
+        font-size: 0.9rem;
+        padding: 0.7rem;
+        font-weight: 500;
+    }
+
+    /* Options text */
+    .quiz_option {
+        font-size: 0.8rem;
+        padding: 0.8rem 1rem;
+        gap: 0.5rem;
+        border-bottom: 1px solid #013C58;
+    }
+
+    .quiz_option:last-child {
+        border-bottom: none;
+    }
+
+    /* Radio buttons */
+    input[type="radio"] {
+        display: none;
+    }
+
+    /* Question counter */
+    .lesson_page_counter p {
+        font-size: 0.5rem;
+    }
+
+    /* Results wrapper */
+    .results_card {
+        max-width: 100%;
+        padding-top: 0.01rem;
+    }
+
+    /* Header */
+    .quiz_results h3 {
+        font-size: 1.2rem;
+    }
+
+    /* Results message text */
+    .quiz_results_text {
+        padding-left: 1.5rem;
+        padding-right: 1.5rem;
+        font-size: 0.75rem;
+        line-height: 2rem;
+        margin-top: 1rem;
+    }
+
+    /* Score text */
+    .quiz_results_score {
+        font-size: 1.5rem;
+    }
+
+    /* Trophy */
+    .trophy {
+        font-size: 2.6rem;
+        margin: 0.5rem auto 1rem;
+    }
+
+    #results_buttons {
+        margin-bottom: 0;
+    }
+
+    #results_buttons button {
+        font-size: 0.8rem;
+    }
+}

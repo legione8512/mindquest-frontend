@@ -9,8 +9,9 @@ import Footer from "./components/footer/footer.jsx";
 /* Page imports */
 import Home from "./pages/Home";
 import Dashboard from "./pages/Dashboard.jsx";
-import Learning from "./pages/Learning/Learning.jsx";
 import MoodCompass from "./pages/MoodCompass.jsx";
+import Learning from "./pages/Learning/Learning.jsx";
+import LessonPage from "./pages/Learning/Lessons/Lessons.jsx";
 import Account from "./pages/Account/Account.jsx";
 import Register from "./pages/Register.jsx";
 import QuestsHubs from "./pages/QuestsHubs/QuestsHubs.jsx";
@@ -34,9 +35,10 @@ function App() {
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/dashboard" element={<Dashboard />} />
-        <Route path="/learning" element={<Learning />} />
-        <Route path="/account" element={<Account />} />
         <Route path="/mood_compass" element={<MoodCompass />} />
+        <Route path="/learning" element={<Learning />} />
+        <Route path="/lessons/:topicKey/:lessonKey" element={<LessonPage />} />
+        <Route path="/account" element={<Account />} />
         <Route path="/register" element={<Register />} />
         <Route path="/hubs" element={<QuestsHubs />} />
         <Route path="/quickcalm" element={<QuickCalm />} />

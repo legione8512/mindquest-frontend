@@ -160,6 +160,19 @@ footer img {
   align-items: center;
 }
 
+/* Privacy and Security buttons */
+.footer_section ul {
+    padding-left: 0;
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+    line-height: 0.5rem;
+    text-align: left;
+}
+.footer_section ul li {
+    height: 1.5rem;
+}
+
 /* Icons for footer sections */
 .footer_section i {
   margin-right: 0.5rem;

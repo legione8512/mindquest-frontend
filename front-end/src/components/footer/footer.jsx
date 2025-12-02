@@ -1,6 +1,6 @@
 import { useState } from "react";
 import "./footer.css";
-import logo from "../../assets/mindquest_logo.png";
+import logo from "../../assets/Navigation/mindquest_logo.png";
 import { Link } from "react-router-dom";
 import Modal from "../../Modal";
 

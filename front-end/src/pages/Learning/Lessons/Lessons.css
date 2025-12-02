@@ -1,0 +1,217 @@
+/* Wrapper */
+.lesson_wrapper {
+    width: 1100px;
+    max-width: 100%;
+    margin: 0 auto;
+    box-sizing: border-box;
+    padding-top: 3rem;
+}
+
+/* Fade in animation when changing page */
+.lesson_section {
+    animation: fadeIn 1s;
+    background: #c1eef98c;
+    border-radius: 10px;
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateX(20px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateX(0);
+    }
+}
+
+/* Lesson page wrapper */
+.lesson_page {
+    display: flex;
+    gap: 0;
+    height: 500px;
+}
+
+/* Text container */
+.lesson_page_text {
+    margin: auto;
+    padding-left: 5rem;
+    padding-right: 5rem;
+}
+
+/* Subheading */
+.lesson_section h2 {
+    font-size: 1.8rem;
+    color: #013C58;
+    margin-bottom: 1rem;
+    font-weight: 600;
+}
+
+/* Text */
+.lesson_section p {
+    font-size: 1.1rem;
+    line-height: 2;
+    color: #013C58;
+    font-weight: 500;
+}
+
+/* Text (list) */
+.lesson_section li {
+    font-size: 1rem;
+    line-height: 2;
+    color: #013C58;
+    font-weight: 500;
+    margin-left: 3rem;
+}
+
+/* Right image */
+.lesson_page_image.right img {
+    border-radius: 0 10px 10px 0;
+}
+
+/* Left image */
+.lesson_page_image.left img {
+    border-radius: 10px 0 0 10px;
+}
+
+/* Navigation buttons wrapper */
+.lesson_nav_buttons {
+    display: flex;
+    justify-content: center;
+    gap: 2rem;
+    width: 100%;
+    margin: auto;
+    margin-bottom: 2rem;
+    margin-top: 2rem;
+}
+
+/* Navigation buttons */
+.lesson_nav_buttons button {
+    padding: 0.8rem 1.5rem;
+    background: #013C58;
+    border: none;
+    border-radius: 5px;
+    color: white;
+    font-weight: 600;
+    cursor: pointer;
+    transition: 0.3s ease;
+    width: 15rem;
+    line-height: 1rem;
+}
+
+/* Navigation button hover animation */
+.lesson_nav_buttons button:hover {
+    background: #F5A201;
+    color: #013C58;
+}
+
+/* Disabled buttons styling */
+.lesson_nav_buttons button:disabled {
+    background: #ccc;
+    color: #666;
+    pointer-events: none;
+}
+
+/* Page counter */
+.lesson_page_counter {
+    text-align: center;
+    color: #013C58;
+    font-weight: 600;
+    margin-bottom: 1.5rem;
+}
+
+/**************************************** RESPONSIVE DESIGN ****************************************/
+@media (max-width: 1100px) {
+
+    /* Wrapper */
+    .lesson_wrapper {
+        width: 90%;
+        padding-top: 2rem;
+    }
+
+    /* Page layout */
+    .lesson_page {
+        height: auto;
+        padding: 2rem 1.5rem;
+    }
+
+    /* Heading */
+    .lesson_section h2 {
+        font-size: 1.6rem;
+    }
+
+    /* Text + list */
+    .lesson_section p,
+    .lesson_section li {
+        font-size: 0.8rem;
+        line-height: 2rem;
+        width: 100%;
+    }
+    .lesson_section li {
+        margin-left: 2rem;
+    }
+
+    /* Image */
+    .lesson_page_image img {
+        display: none;
+    }
+
+    /* Buttons */
+    .lesson_nav_buttons button {
+        width: 12rem;
+        padding: 0.6rem 1rem;
+        font-size: 0.8rem;
+    }
+
+}
+
+/**************************************** MOBILE MODE ****************************************/
+@media (max-width: 650px) {
+
+    /* Wrapper */
+    .lesson_wrapper {
+        padding-top: 1.5rem;
+        width: 95%;
+    }
+
+    /* Page layout */
+    .lesson_page {
+        flex-direction: column;
+        height: auto;
+        gap: 1rem;
+        padding: 1.5rem 0;
+    }
+
+    /* Text container */
+    .lesson_page_text {
+        padding-left: 2rem;
+        padding-right: 2rem;
+    }
+
+    /* Text + List */
+    .lesson_section p,
+    .lesson_section li {
+        font-size: 0.9rem;
+        line-height: 1.8rem;
+    }
+    .lesson_section li {
+        margin-left: 1.2rem;
+    }
+
+    /* Buttons */
+    .lesson_nav_buttons {
+        width: 90%;
+        gap: 1rem;
+    }
+    .lesson_nav_buttons button {
+        font-size: 0.9rem;
+        padding: 0.9rem;
+    }
+
+    /* Page counter */
+    .lesson_page_counter p {
+        font-size: 0.9rem;
+    }
+
+}

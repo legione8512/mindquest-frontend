@@ -1,0 +1,74 @@
+.change_form_wrapper {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    box-sizing: border-box;
+}
+
+/* Button styling */
+.change_form_wrapper button {
+    box-sizing: border-box;
+    border: 1px solid rgb(155, 155, 155);
+    border-radius: 10px;
+    height: 50px;
+    padding: 10px;
+    margin-bottom: 1rem;
+    background: none;
+    transition: 0.3s ease;
+
+    /* Button Font */
+    color: rgb(155, 155, 155);
+    font-size: 1.2rem;
+    font-weight: 500;
+    text-align: left;
+}
+
+/* Button hover animation */
+.change_form_wrapper button:hover {
+    cursor: pointer;
+    background: #F5A201;
+    color: #013C58;
+    border: 1px solid #F5A201;
+    transform: translateX(1rem);
+}
+
+/* When form associated with button is active */
+.change_form_wrapper button.active {
+    background: #013C58;
+    color: #c1eef9;
+    border: 1px solid #c1eef9;
+    cursor: default;
+    pointer-events: none;
+}
+
+/**************************************** RESPONSIVE DESIGN ****************************************/
+@media (max-width: 1100px) {
+
+    /* Buttons */
+    .change_form_wrapper button {
+        height: 40px;
+        padding: 0.5rem;
+        margin-bottom: 0.5rem;
+        border-radius: 5px;
+
+        /* Button Font */
+        font-size: 0.8rem;
+        font-weight: 500;
+        text-align: left;
+    }
+}
+
+/**************************************** MOBILE MODE ****************************************/
+@media (max-width: 650px) {
+
+    /* Buttons */
+    .change_form_wrapper button {
+        width: 100%;
+    }
+
+    /* Button hover animation */
+    .change_form_wrapper button:hover {
+        transform: none;
+    }
+
+}

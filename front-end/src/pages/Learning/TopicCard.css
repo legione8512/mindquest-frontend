@@ -1,0 +1,154 @@
+/* Wrapper for each card */
+.topic_card_wrapper {
+    max-width: 100%;
+    max-width: 700px;
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 3rem;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+/* Banner wrapper */
+.topic_card_banner {
+    position: relative;
+    width: 100%;
+    cursor: pointer;
+}
+
+/* Banner image */
+.topic_card_banner img {
+    width: 100%;
+    height: 150px;
+    object-fit: cover;
+    border-radius: 10px;
+    transition: 0.3s ease;
+}
+
+.topic_card_banner.open img {
+    border-radius: 10px 10px 0 0;
+}
+
+/* Overlay text box */
+.topic_card_overlay {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 75%;
+    padding: 1rem;
+    background: #013c58a4;
+    color: white;
+    text-align: center;
+    transition: 0.3s ease;
+}
+
+/* Overlay text box text */
+.topic_card_overlay h2 {
+    margin: 0;
+    font-size: 1.5rem;
+    font-weight: 600;
+}
+
+/* Hover card animation */
+.topic_card_banner:hover .topic_card_overlay {
+    background: #F5A201;
+    width: 100%;
+}
+
+.topic_card_banner:hover img {
+    filter: brightness(0.7);
+}
+
+/***** TOPIC CARDS DROPDOWN MENU *****/
+.topic_dropdown_menu {
+    background: #c1eef9;
+    list-style: none;
+    width: 100%;
+    border-radius: 0 0 8px 8px;
+    margin: 0 auto;
+    padding: 0;
+}
+
+/* Dropdown list */
+.topic_dropdown_menu li {
+    margin: 0;
+    padding: 0;
+}
+
+/* Dropdown button */
+.topic_dropdown_menu a {
+    display: block;
+    width: 100%;
+    text-align: center;
+    padding: 0.8rem;
+    color: #013C58;
+    font-weight: 500;
+    text-decoration: none;
+    box-sizing: border-box;
+    background: transparent;
+    transition: 0.3s ease;
+}
+
+/* Dropdown hover effect */
+.topic_dropdown_menu a:hover {
+    background: #F5A201;
+    color: #013C58;
+}
+
+/**************************************** RESPONSIVE DESIGN ****************************************/
+@media (max-width: 1100px) {
+
+    /* Banner image */
+    .topic_card_banner img {
+        height: 130px;
+    }
+
+    /* Overlay text box text */
+    .topic_card_overlay h2 {
+        font-size: 1.3rem;
+    }
+
+    /* Overlay text box */
+    .topic_card_overlay {
+        padding: 0.8rem;
+        width: 85%;
+    }
+
+    /* Dropdown button */
+    .topic_dropdown_menu a {
+        font-size: 0.9rem;
+        padding: 0.7rem;
+    }
+}
+
+/**************************************** MOBILE MODE ****************************************/
+@media (max-width: 650px) {
+
+    /* Wrapper for each card */
+    .topic_card_wrapper {
+        max-width: 100%;
+        margin-bottom: 2rem;
+    }
+
+    /* Banner image */
+    .topic_card_banner img {
+        height: 100px;
+    }
+
+    /* Overlay text box */
+    .topic_card_overlay {
+        width: 90%;
+        padding: 0.6rem;
+    }
+
+    /* Overlay text box text */
+    .topic_card_overlay h2 {
+        font-size: 1.1rem;
+    }
+
+    /* Dropdown button */
+    .topic_dropdown_menu a {
+        font-size: 0.9rem;
+    }
+}
