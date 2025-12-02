@@ -29,33 +29,39 @@
 }
 
 /************ WELCOME SECTION ************/
+
+/* Wrapper */
 .learning_introduction_section {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 1rem;
     background: #c1eef979;
     padding: 2rem;
     border-radius: 10px;
-    box-shadow: 0px 4px 12px rgba(0, 0, 0, 0.1);
-    max-width: 1000px;
-    margin: 3.5rem auto;
+    box-shadow: 0px 10px 10px rgba(0, 0, 0, 0.329);
+    width: 1000px;
+    max-width: 90%;
+    margin: 4rem auto;
     text-align: center;
 }
 
-/* Heading Styling */
+/* Intro Heading Styling */
 .learning_introduction_section h1 {
     font-size: 2rem;
     color: #013C58;
-    margin-bottom: 1rem;
+    margin: 0;
     font-weight: 600;
 }
 
-/* Paragraph Styling */
+/* Intro Paragraph Styling */
 .learning_introduction_section p {
     font-size: 1.1rem;
     color: #013C58;
     line-height: 1.8;
-    margin-bottom: 1.5rem;
-    max-width: 85%;
-    margin-left: auto;
-    margin-right: auto;
+    margin: 0;
+    width: 80%;
     font-weight: 500;
 }
 
@@ -63,7 +69,7 @@
 
 /* Wrapper */
 .info_box_wrapper {
-    width: 1400px;
+    width: 1300px;
     max-width: 100%;
     display: flex;
     margin: 2.5rem auto;
@@ -99,7 +105,7 @@
 /* Info box text */
 .info_box h2 {
     width: 100%;
-    font-size: 1.8rem;
+    font-size: 1.5rem;
     font-weight: 700;
     color: #F5A201;
 }
@@ -107,7 +113,7 @@
 /* Info box dropdown */
 .info_box p {
     width: 100%;
-    font-size: 1rem;
+    font-size: 0.9rem;
     font-weight: 500;
     margin: 0;
     line-height: 2rem;
