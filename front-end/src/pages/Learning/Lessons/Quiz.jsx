@@ -1,5 +1,6 @@
 import { useState } from "react";
 import "./Quiz.css";
+import QuizResultsMessage from "./QuizResults";
 
 export default function Quiz({ quiz, setShowQuiz, setCurrentPage }) {
 
@@ -35,6 +36,14 @@ export default function Quiz({ quiz, setShowQuiz, setCurrentPage }) {
 
     };
 
+    // Allow user to retry the quiz if they'd like
+    const handleRetry = () => {
+        setSelected({});
+        setCurrentQuestion(0);
+        setScore(0);
+        setSubmitted(false);
+    };
+
     // Navigation handler between questions
     const nextQuestion = () => {
         if (currentQuestion < quiz.length - 1)
@@ -56,13 +65,26 @@ export default function Quiz({ quiz, setShowQuiz, setCurrentPage }) {
             {submitted ? (
                 <>
                     {/* Quiz result page */}
-                    <section key="results" className="quiz_card">
+                    <section key="results" className="quiz_card results_card">
+
                         <section className="quiz_results">
                             <h3>Your Score:</h3>
-                            <p>{score} / {quiz.length}</p>
+                            <p className="quiz_results_score">{score} / {quiz.length}</p>
 
-                            {/* Go back to the lesson button */}
-                            <section className="lesson_nav_buttons">
+                            {/* Display message */}
+                            <section className="quiz_results_text">
+                                <QuizResultsMessage score={score} total={quiz.length} />
+                            </section>
+
+                            {/* Navigation buttons */}
+                            <section className="lesson_nav_buttons" id="results_buttons">
+
+                                {/* Allow user to retry the quiz */}
+                                <button onClick={handleRetry}>
+                                    Retry Quiz
+                                </button>
+
+                                {/* Allow user to go back to the lesson */}
                                 <button onClick={() => {
                                     setShowQuiz(false);
                                     setCurrentPage(0);
