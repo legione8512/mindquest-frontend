@@ -1,10 +1,11 @@
 import { useState } from 'react'
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom'
-import Footer from './components/footer/Footer.jsx';
 
-/* Import for navigation bar and sidebar */
+
+/* Import for navigation bar, sidebar and footer */
 import Navigation from "./components/navigation/navigation.jsx";
 import Sidebar from "./components/sidebar/sidebar.jsx";
+import Footer from "./components/footer/Footer.jsx";
 
 /* Page imports */
 import Home from "./pages/Home";
@@ -37,6 +38,7 @@ function App() {
         <Route path="/register" element={<Register />} />
         <Route path="/quickcalm" element={<QuickCalm />} />
       </Routes>
+      <Footer/>
     </Router>
   )
 }
