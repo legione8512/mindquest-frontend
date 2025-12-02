@@ -3,12 +3,18 @@ import AnxietyBanner from "../../../assets/Lessons/Anxiety_Banner.jpg";
 import DepressionBanner from "../../../assets/Lessons/Depression_Banner.jpg";
 import PTSD_Banner from "../../../assets/Lessons/PTSD_Banner.jpg";
 
+// Topic mini banners
+import AnxietyImg from "../../../assets/Lessons/Anxietyimg.jpg";
+import DepressionImg from "../../../assets/Lessons/DepressionImg.jpg";
+import PTSDImg from "../../../assets/Lessons/PTSDimg.jpg";
+
 // Anxiety Lesson 1 images
 import Anxiety01_01 from "../../../assets/Lessons/Anxiety_1/Anxiety01_01.jpg";
 import Anxiety01_02 from "../../../assets/Lessons/Anxiety_1/Anxiety01_02.jpg";
 import Anxiety01_03 from "../../../assets/Lessons/Anxiety_1/Anxiety01_03.jpg";
 import Anxiety01_04 from "../../../assets/Lessons/Anxiety_1/Anxiety01_04.jpg";
 import Anxiety01_05 from "../../../assets/Lessons/Anxiety_1/Anxiety01_05.jpg";
+
 
 export const topics = [
 
@@ -17,6 +23,7 @@ export const topics = [
         id: 1,
         key: "anxiety",
         title: "Anxiety",
+        img: AnxietyImg,
         banner: AnxietyBanner,
         links: [
             "What is Anxiety?",
@@ -193,6 +200,7 @@ export const topics = [
         id: 2,
         key: "depression",
         title: "Depression",
+        img: DepressionImg,
         banner: DepressionBanner,
         links: [
             "What is Depression?",
@@ -274,6 +282,7 @@ export const topics = [
         id: 3,
         key: "PTSD",
         title: "Post-traumatic stress disorder (PTSD)",
+        img: PTSDImg,
         banner: PTSD_Banner,
         links: [
             "What is PTSD?",

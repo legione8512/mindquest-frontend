@@ -70,7 +70,7 @@
 /* Wrapper */
 .info_box_wrapper {
     width: 1200px;
-    max-width: 100%;
+    max-width: 90%;
     display: flex;
     margin: 3.5rem auto;
 }
