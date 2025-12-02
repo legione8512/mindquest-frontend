@@ -56,18 +56,20 @@ export default function Quiz({ quiz, setShowQuiz, setCurrentPage }) {
             {submitted ? (
                 <>
                     {/* Quiz result page */}
-                    <section className="quiz_results">
-                        <h3>Your Score:</h3>
-                        <p>{score} / {quiz.length}</p>
+                    <section key="results" className="quiz_card">
+                        <section className="quiz_results">
+                            <h3>Your Score:</h3>
+                            <p>{score} / {quiz.length}</p>
 
-                        {/* Go back to the lesson button */}
-                        <section className="lesson_nav_buttons">
-                            <button onClick={() => {
-                                setShowQuiz(false);
-                                setCurrentPage(0);
-                            }}>
-                                Back to the lesson
-                            </button>
+                            {/* Go back to the lesson button */}
+                            <section className="lesson_nav_buttons">
+                                <button onClick={() => {
+                                    setShowQuiz(false);
+                                    setCurrentPage(0);
+                                }}>
+                                    Back to the lesson
+                                </button>
+                            </section>
                         </section>
                     </section>
                 </>
@@ -91,29 +93,29 @@ export default function Quiz({ quiz, setShowQuiz, setCurrentPage }) {
                     </section>
 
                     {/* Quiz content */}
-                    <section classsName="quiz_question">
+                    <section key={currentQuestion} className="quiz_card">
+                        <section className="quiz_question">
 
-                        {/* Current question */}
-                        <h3>{quiz[currentQuestion].question}</h3>
+                            {/* Current question */}
+                            <h3>{quiz[currentQuestion].question}</h3>
 
-                        {/* Options */}
-                        {quiz[currentQuestion].options.map((option, optIndex) => (
-                            <label key={optIndex} className="quiz_option">
-                                <input
-                                    type="radio"
-                                    checked={selected[currentQuestion] === optIndex}
-                                    onChange={() => handleSelect(currentQuestion, optIndex)}
-                                />
-                                {option}
-                            </label>
-                        ))}
+                            {/* Options */}
+                            {quiz[currentQuestion].options.map((option, optIndex) => (
+                                <label key={optIndex} className="quiz_option">
+                                    <input
+                                        type="radio"
+                                        checked={selected[currentQuestion] === optIndex}
+                                        onChange={() => handleSelect(currentQuestion, optIndex)}
+                                    />
+                                    {option}
+                                </label>
+                            ))}
+                        </section>
                     </section>
 
                     {/* NAvigation and Submit buttons */}
                     <section className="lesson_nav_buttons">
-
                         <button onClick={prevQuestion} disabled={currentQuestion === 0}>Previous</button>
-
                         {!isLastQuestion ? (
                             <button
                                 onClick={nextQuestion}

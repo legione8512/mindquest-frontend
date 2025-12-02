@@ -104,7 +104,7 @@ export default function Lessons() {
                         {/* Navigation Buttons */}
                         <section className="lesson_nav_buttons">
                             <button onClick={prevPage} disabled={currentPage === 0}>Previous page</button>
-                            <button onClick={nextPage} disabled={currentPage === lessonPages.length - 1}>Next page</button>
+                            <button onClick={nextPage} hidden={currentPage === lessonPages.length - 1}>Next page</button>
                             <button
                                 id="start_quiz_button"
                                 hidden={!isLastPage}
