@@ -1,194 +1,192 @@
-@media (max-width: 930px) {
-    
-    .sidebar {
-        position: fixed;
-        top: 0;
-        left: 0;
-        width: 220px;
-        height: 100vh;
-        background-color: #336e8a;
-        transform: translateX(-100%); /* Move off screen by default */
-        transition: transform 0.3s ease;
-        z-index: 5000;
-        padding: 0.5rem;
-        color: white;
-        overflow-y: auto;
-    }
+@media (max-width: 1100px) {
+  .sidebar {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 220px;
+    height: 100vh;
+    background-color: #336e8a;
+    transform: translateX(-100%); /* Move off screen by default */
+    transition: transform 0.3s ease;
+    z-index: 5000;
+    padding: 0.5rem;
+    color: white;
+    overflow-y: auto;
+  }
 
-    /* Open the sidebar when button clicked */
-    .sidebar.visible {
-        transform: translateX(0);
-    }
+  /* Open the sidebar when button clicked */
+  .sidebar.visible {
+    transform: translateX(0);
+  }
 
-    /* Close button */
-    #close-button {
-        font-size: 1.5rem;
-        background: none;
-        border: none;
-        color: white;
-        cursor: pointer;
-        position: absolute;
-        top: 0.65rem;
-        right: 1rem;
-        transition: .3s ease;
-    }
-    #close-button:hover {
-        transform: scale(1.2);
-        color: #F5A201;
-        
-    }
+  /* Close button */
+  #close-button {
+    font-size: 1.5rem;
+    background: none;
+    border: none;
+    color: white;
+    cursor: pointer;
+    position: absolute;
+    top: 0.65rem;
+    right: 1rem;
+    transition: 0.3s ease;
+  }
+  #close-button:hover {
+    transform: scale(1.2);
+    color: #f5a201;
+  }
 
-    /* Sidebar header and logo section */
-    .side-header {
-        display: flex;
-        align-items: center;
-        gap: 0.4rem;
-        padding-bottom: 0.6rem;
-        margin-bottom: 0.5rem;
-        border-bottom: solid 1px #c1eef9;
-    }
+  /* Sidebar header and logo section */
+  .side-header {
+    display: flex;
+    align-items: center;
+    gap: 0.4rem;
+    padding-bottom: 0.6rem;
+    margin-bottom: 0.5rem;
+    border-bottom: solid 1px #c1eef9;
+  }
 
-    /* Mobile logo */
-    .side-logo {
-        padding-top: 5px;
-        width: 30px;
-    }
+  /* Mobile logo */
+  .side-logo {
+    padding-top: 5px;
+    width: 30px;
+  }
 
-    /* Sidebar title and text section */
-    .side-title h2 {
-        color: white;
-        font-size: 0.8rem;
-        
-    }
+  /* Sidebar title and text section */
+  .side-title h2 {
+    color: white;
+    font-size: 0.8rem;
+  }
 
-    .side-title p {
-        color: #c1eef9;
-        font-size: 0.45rem;
-        font-weight: 500;
-    }
+  .side-title p {
+    color: #c1eef9;
+    font-size: 0.45rem;
+    font-weight: 500;
+  }
 
-    /* Sidebar buttons */
-    .side-button {
-        border: none;
-        width: 100%;
-        display: flex;
-        align-items: center;
-        gap: 0.5rem;
-        padding: 0.4rem 0.4rem;
-        font-size: 0.5rem;
-        color: white;
-        background: #336e8a;
-        transition: 0.3s ease;
-        font-weight: 600;
-        margin-top: 0.3rem;
-        text-decoration: none;
-    }
+  /* Sidebar buttons */
+  .side-button {
+    border: none;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0.4rem 0.4rem;
+    font-size: 0.5rem;
+    color: white;
+    background: #336e8a;
+    transition: 0.3s ease;
+    font-weight: 600;
+    margin-top: 0.3rem;
+    text-decoration: none;
+  }
 
-    /* Remove default link styling for sidebar */
-    .side-nav a {
-        text-decoration: none;
-        display: block;
-    }
+  /* Remove default link styling for sidebar */
+  .side-nav a {
+    text-decoration: none;
+    display: block;
+  }
 
-    /* Sidenav icons */
-    .side-button i {
-        width: 20px;
-        font-size: 0.8rem;
-        text-align: center;
-        padding-left: 10px;
-    }
+  /* Sidenav icons */
+  .side-button i {
+    width: 20px;
+    font-size: 0.8rem;
+    text-align: center;
+    padding-left: 10px;
+  }
 
-    /* Sidebar button hover animation */
-    .side-button:hover {
-        background-color: #c1eef9;
-        color: #013C58;
-        transform: translateX(5px);
-        border-radius: 5px;
-        cursor: pointer;
-    }
+  /* Sidebar button hover animation */
+  .side-button:hover {
+    background-color: #c1eef9;
+    color: #013c58;
+    transform: translateX(5px);
+    border-radius: 5px;
+    cursor: pointer;
+  }
 
-    /* Card section */
-    .side-section h3 {
-        color: #c1eef9;
-        margin-top: 0.5rem;
-        margin-bottom: 0.6rem;
-        font-size: 0.5rem;
-    }
+  /* Card section */
+  .side-section h3 {
+    color: #c1eef9;
+    margin-top: 0.5rem;
+    margin-bottom: 0.6rem;
+    font-size: 0.5rem;
+  }
 
-    /* Card styling */
-    .points-card,
-    .streak-card {
-        display: flex;
-        justify-content: space-between;
-        align-items: center;
-        background: #013C58;
-        padding: 0.4rem;
-        border-radius: 8px;
-        margin-bottom: 0.5rem;
-        color: #c1eef9;
-    }
+  /* Card styling */
+  .points-card,
+  .streak-card {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background: #013c58;
+    padding: 0.4rem;
+    border-radius: 8px;
+    margin-bottom: 0.5rem;
+    color: #c1eef9;
+  }
 
-    .streak-card {
-        background: #F5A201;
-        color: #013C58;
-    }
+  .streak-card {
+    background: #f5a201;
+    color: #013c58;
+  }
 
-    /* Labels for cards */
-    .points-label, .streak-label {
-        font-size: 0.5rem;
-        font-weight: 600;
-    }
+  /* Labels for cards */
+  .points-label,
+  .streak-label {
+    font-size: 0.5rem;
+    font-weight: 600;
+  }
 
-    /* Values for cards */
-    .points-value,
-    .streak-value {
-        font-size: 0.7rem;
-        font-weight: 700;
-    }
+  /* Values for cards */
+  .points-value,
+  .streak-value {
+    font-size: 0.7rem;
+    font-weight: 700;
+  }
 
-    /* User card */
-    .user-card {
-        background: #c1eef9;
-        padding: 0.4rem;
-        border-radius: 12px;
-        display: flex;
-        align-items: center;
-        gap: 0.9rem;
-        margin-bottom: 1rem;
-    }
+  /* User card */
+  .user-card {
+    background: #c1eef9;
+    padding: 0.4rem;
+    border-radius: 12px;
+    display: flex;
+    align-items: center;
+    gap: 0.9rem;
+    margin-bottom: 1rem;
+  }
 
-    /* User profile icon */
-    .user-icon {
-        width: 25px;
-        height: 25px;
-        background: #013C58;
-        color: white;
-        border-radius: 50%;
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        font-size: 0.6rem;
-    }
+  /* User profile icon */
+  .user-icon {
+    width: 25px;
+    height: 25px;
+    background: #013c58;
+    color: white;
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 0.6rem;
+  }
 
-    /* Username */
-    .user-card h4 {
-        color: #013C58;
-        font-size: 0.5rem;
-        font-weight: 700;
-        margin-bottom: 0.1rem;
-    }
+  /* Username */
+  .user-card h4 {
+    color: #013c58;
+    font-size: 0.5rem;
+    font-weight: 700;
+    margin-bottom: 0.1rem;
+  }
 
-    /* User Level */
-    .user-card p {
-        color: #013C58;
-        font-size: 0.4rem;
-        opacity: 0.8;
-    }
+  /* User Level */
+  .user-card p {
+    color: #013c58;
+    font-size: 0.4rem;
+    opacity: 0.8;
+  }
 }
 
 /* Hide sidebar on desktop */
-@media screen and (min-width: 900px) {
-    .sidebar {
-        display: none;
-    }
+@media screen and (min-width: 1100px) {
+  .sidebar {
+    display: none;
+  }
 }

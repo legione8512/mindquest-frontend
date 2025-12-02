@@ -1,0 +1,38 @@
+/* Base styling for primary buttons */
+.primary-btn {
+  background: #013c58; /* Dark blue background (primary brand colour) */
+  border-radius: var(
+    --mq-radius-md
+  ); /* Rounded corners; value taken from a CSS variable (e.g. 10px) */
+  border: 1px solid transparent; /* Transparent border (keeps size consistent when border changes on hover) */
+  color: white; /* White text colour */
+  transition:                                  /* Smooth animation for hover effects */ transform
+      0.2s ease,
+    background 0.2s ease, color 0.2s ease;
+  padding: 0.55rem 1.4rem; /* Vertical and horizontal padding for click area */
+  font-size: 0.95rem; /* Slightly smaller than default font size */
+  cursor: none; /* Hides the mouse cursor when hovering this button (unusual behaviour) */
+}
+
+/* Hover state for primary button */
+.primary-btn:hover {
+  cursor: pointer; /* Show pointer cursor when hovering (overrides cursor: none above) */
+  transform: scale(1.2); /* Slightly enlarge the button on hover */
+  background: #f5a201; /* Change background to orange on hover */
+  color: black; /* Change text colour to black for contrast */
+  border: 1px solid black; /* Add a visible black border on hover */
+}
+
+/* Disabled state for primary button */
+.primary-btn:disabled {
+  opacity: 0.6; /* Make button look faded to indicate it is disabled */
+  cursor: not-allowed; /* Show "not allowed" cursor when hovering over disabled button */
+  transform: none; /* Remove any scaling transform */
+}
+
+/* Hover state when the button is disabled */
+.primary-btn:disabled:hover {
+  transform: none; /* Ensure no hover scaling even if hovered */
+  background: #013c58; /* Keep original background colour */
+  color: #fff; /* Keep text white */
+}
