@@ -1,12 +1,30 @@
-/* Overall page area */
+/* Overall page design */
 .home-container {
   font-family: "Sora", sans-serif;
-  background: linear-gradient(#c1eef9, #e9f8ff);
-  color: #013C58;
-  margin: 0;
-  padding: 0;
+  background: linear-gradient(#c1eef9, #e9f8ff); /* subtle gradient background */
+  color: #013C58; /*default text color for all text on the page*/
+  margin: 0; /* removes default margin */
+  padding: 0; /* removes default padding */
 }
 
+/* Button on the page */
+.cta-button {
+  background:#013C58;
+  color: #fff;
+  border: none;
+  padding: 15px 34px;
+  font-size: 1.1rem;
+  border-radius: 12px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: 0.25s ease;
+}
+
+.cta-button:hover {
+  background: #F5A201;
+  color: #013C58;
+  transform: translateY(-4px);
+}
 /* Top hero section */
 .hero {
   text-align: center;
@@ -39,11 +57,6 @@
   margin-bottom: 20px;
 }
 
-.hero-h2 {
-  font-size: 1 rem;
-  font-weight: 100;
-  margin-bottom: 30px;
-} 
 
 .hero p {
   max-width: 650px;
@@ -53,35 +66,16 @@
   opacity: 0.9;
 }
 
-/* Buttons on the page */
-.cta-button {
-  background:#013C58;
-  color: #fff;
-  border: none;
-  padding: 15px 34px;
-  font-size: 1.1rem;
-  border-radius: 12px;
-  font-weight: 600;
-  cursor: pointer;
-  transition: 0.25s ease;
-}
-
-.cta-button:hover {
-  background: #F5A201;
-  color: #013C58;
-  transform: translateY(-4px);
-}
 
 /* Middle featuring section */
 .features {
-  text-align: center;
-
+  text-align: center; 
 }
 
 .features h2 {
-  font-size: 2.2rem;
-  margin-top: 60px;
-  margin-bottom: 25px;
+  font-size: 2.2rem; /* slightly larger font size for emphasis */
+  margin-top: 60px; /* space above the heading */
+  margin-bottom: 25px; /* space below the heading */
 }
 
 /* Card layout */

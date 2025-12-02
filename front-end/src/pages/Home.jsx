@@ -14,7 +14,7 @@ export default function Home() {
       {/* Main hero section */}
       <section
         className="hero"
-        style={{ backgroundImage: `url(${people})` }}
+        style={{ backgroundImage: `url(${people})` }} /* used backgroundimage instead of img because its easier to style for hero section (using variable interplotation)as text comes on top*/
       >
       <h1>MindQuest</h1>
         <h1>Feel Better, One Step at a Time</h1>
@@ -31,11 +31,9 @@ export default function Home() {
       {/* Middle section with the feature boxes */}
       <section className="features">
         <h2>What Is MindQuest?</h2>
-        <section className="hero-h2">
           <h3>MindQuest is your personal digital well being platfrom
             where you can relax, learn, and track your mood all in one place.
           </h3>
-          </section>
           <section className="wave-block">
             <section className="wave-content">
               <p> Through mood tracking, calming exercises, personal goals, and supportive community hubs, MindQuest creates a safe, stigma-free space where users can reflect, learn, and grow.
