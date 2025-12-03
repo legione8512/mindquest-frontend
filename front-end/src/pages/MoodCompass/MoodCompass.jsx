@@ -1,6 +1,13 @@
 import { useState, useEffect, useRef } from "react";
 import "./MoodCompass.css";
-import moodBanner from "../../assets/moodpage_Banner.png";
+import moodBanner from "../../assets/moodbanner.jpg";
+import logmoodBanner from "../../assets/logmood.jpeg";
+import notesBanner from "../../assets/notes.jpeg";
+import savedMoodsBanner from "../../assets/savedmoods.png";
+import questsMoodBanner from "../../assets/quests_moodmatch.webp";
+import moodchartBanner from "../../assets/moodtracker.jpeg";
+
+
 
 export default function MoodCompass() {
 
@@ -235,8 +242,12 @@ useEffect (() => {
   return (
     <>
       <section className="moodpage_Banner">
-        <h1>My Mood Compass</h1>
-        <p>Track Your Mood for the day and Your Wellbeing</p>  
+        <img src={moodBanner} alt="Mood Compass Banner" className="moodBanner_Img" />
+        <section className="moodBanner_Text">
+          <h1>My Mood Compass</h1>
+           <p>Track Your Mood for the day and Your Wellbeing</p>   
+        </section>
+
         </section>
 
       <section className="mood_Main">
@@ -244,6 +255,8 @@ useEffect (() => {
         <section className="mood_Left">
 
           <section className="mood_Box">
+            <img src={logmoodBanner} alt="Log Your Mood" className="logBanner_Img" />
+
             <h2>Log Your Mood</h2>
 
             <section className="mood_Emoji_Row">
@@ -274,8 +287,8 @@ useEffect (() => {
               Save Your Mood
             </button>
 
-            <section className="mood_Box">
-              <h2>Daily Reminder</h2>
+            <section className="moodReminder">
+              <h3>Daily Reminder</h3>
 
               <label className="mood_Label">Reminder Message</label>
               <input 
@@ -300,7 +313,8 @@ useEffect (() => {
             </section>            
           </section>
 
-          <section className="mood_Box mood_Scroll">
+          <section className="mood_Box notes_Scroll">
+              <img src={notesBanner} alt="Write Your Thoughts" className="notesBanner_Img" />
             <h2>My Notes</h2>
 
             <textarea
@@ -332,8 +346,7 @@ useEffect (() => {
 
           <section className="mood_Box">
             <h2>Download My Mood History</h2>
-
-            <button className="mood_Button" onClick={downloadMoodHistory}>
+            <button className="export_Button" onClick={downloadMoodHistory}>
               Export Mood History (CSV)
             </button>
           </section>
@@ -342,6 +355,7 @@ useEffect (() => {
 
         <section className="mood_Right">
           <section className="mood_Box mood_Scroll">
+            <img src={savedMoodsBanner} alt="" className="savedMoods_Img" />
             <h2>My Saved Moods</h2>
 
             {moodEntries.length === 0 && (
@@ -364,7 +378,8 @@ useEffect (() => {
 
           </section>
 
-          <section className="mood_Box mood_Scroll">
+          <section className="mood_Box quest_Scroll">
+            <img src={questsMoodBanner} alt="" className="questMatch_Img" />
             <h2>Quests & Mood Match</h2>
             {matchMoods.length === 0 && (
               <p>No Quests Available to Match Yet.</p>
@@ -400,6 +415,7 @@ useEffect (() => {
           </section>
 
           <section className="mood_Box">
+            <img src={moodchartBanner} alt="" className="moodChartBanner_Img" />
             <h2>Daily Mood Chart</h2>
 
             <canvas
