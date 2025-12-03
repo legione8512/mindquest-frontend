@@ -65,7 +65,7 @@ export default function Home() {
             </section>
           </Link>
 
-          <Link to ="/moodcompass" className="card-link">
+          <Link to ="/mood_compass" className="card-link">
           <section className="card">
             <img src={smile} className="card-icon3" alt="smile icon"/>
             <h3> Track Your Mood</h3>

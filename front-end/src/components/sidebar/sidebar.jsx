@@ -70,19 +70,24 @@ export default function Sidebar({ isOpen, toggleSidebar }) {
                 <h3>Your Progress</h3>
 
                 {/* Points card */}
-                <section className="points-card">
+                <Link to="/dashboard">
+                <section className="points-card" >
                     <span className="points-label">Points</span>
                     <span className="points-value">0</span>
                 </section>
-
+                </Link>
+          
                 {/* Streak card */}
+                <Link to="/dashboard">
                 <section className="streak-card">
                     <span className="streak-label">Streak</span>
                     <span className="streak-value">0d</span>
                 </section>
+                </Link>
             </section>
 
             {/* User card */}
+            <Link to="/profile">
             <section className="user-card">
                 <section className="user-icon">U</section>
                 <section>
@@ -90,6 +95,7 @@ export default function Sidebar({ isOpen, toggleSidebar }) {
                     <p>Level 1</p>
                 </section>
             </section>
+         </Link>
         </aside>
 
     )
