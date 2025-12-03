@@ -1,15 +1,14 @@
 import { useState } from "react";
-import mindquestLogo from "../../assets/mindquest_logo.png";
+import mindquestLogo from "../../assets/Navigation/mindquest_logo.png";
 import "./Register.css";
 
 export default function Register() {
-
   const [formData, setFormData] = useState({
     name: "",
     email: "",
     password: "",
     repPassword: "",
-    tos: false
+    tos: false,
   });
 
   const mailformat = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/;
@@ -19,7 +18,7 @@ export default function Register() {
 
     setFormData((prev) => ({
       ...prev,
-      [name]: type === "checkbox" ? checked : value
+      [name]: type === "checkbox" ? checked : value,
     }));
   }
 
@@ -46,8 +45,11 @@ export default function Register() {
   const handleSubmit = async (event) => {
     event.preventDefault();
 
-    const dataToSend = (({ name, email, password }) =>
-      ({ name, email, password}))(formData);
+    const dataToSend = (({ name, email, password }) => ({
+      name,
+      email,
+      password,
+    }))(formData);
 
     if (validateForm()) {
       alert("Registration successful!");
@@ -57,10 +59,13 @@ export default function Register() {
 
   return (
     <section className="registerPage">
-
       {/* LEFT SIDE — LOGO */}
       <section className="registerLeft">
-        <img src={mindquestLogo} className="registerLogo" alt="MindQuest Logo" />
+        <img
+          src={mindquestLogo}
+          className="registerLogo"
+          alt="MindQuest Logo"
+        />
       </section>
 
       {/* RIGHT SIDE — FORM */}
@@ -69,7 +74,6 @@ export default function Register() {
           <h2>Create Your Account</h2>
 
           <form className="registration" noValidate>
-
             <label className="labelText">Name:</label>
             <input
               type="text"
@@ -127,11 +131,9 @@ export default function Register() {
             <button className="registerButton" onClick={handleSubmit}>
               Submit
             </button>
-
           </form>
         </section>
       </section>
-
     </section>
   );
 }
