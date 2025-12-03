@@ -89,21 +89,58 @@ export default function Sidebar({ isOpen, toggleSidebar }) {
           <span className="points-value">0</span>
         </section>
 
-        {/* Streak card */}
-        <section className="streak-card">
-          <span className="streak-label">Streak</span>
-          <span className="streak-value">0d</span>
-        </section>
-      </section>
+            {/* Sidebar navigation buttons */}
+            <section className="side-nav">
+                <Link to="/" onClick={() => toggleSidebar(false)}>
+                    <button className="side-button"><i className="fa fa-home"></i>Home</button>
+                </Link>
+                <Link to="/dashboard" onClick={() => toggleSidebar(false)}>
+                    <button className="side-button"><i className="fa fa-bar-chart"></i>Dashboard</button>
+                </Link>
+                <Link to="/hubs" onClick={() => toggleSidebar(false)}>
+                    <button className="side-button"><i className="fa fa-users"></i>Hubs</button>
+                </Link>
+                <Link to="/mood_compass" onClick={() => toggleSidebar(false)}>
+                    <button className="side-button"><i className="fa fa-compass"></i>Mood Compass</button>
+                </Link>
+                <Link to="/learning" onClick={() => toggleSidebar(false)}>
+                    <button className="side-button"><i className="fa fa-graduation-cap"></i>Learning</button>
+                </Link>
+                <Link to="/account" onClick={() => toggleSidebar(false)}>
+                    <button className="side-button"><i className="fa fa-user"></i>Your Account</button>
+                </Link>
+                <Link to="/quickcalm" onClick={() => toggleSidebar(false)}>
+                    <button className="side-button"><i className="fa fa-leaf"></i>QuickCalm</button>
+                </Link> 
+            </section>
 
-      {/* User card */}
-      <section className="user-card">
-        <section className="user-icon">U</section>
-        <section>
-          <h4>UserName</h4>
-          <p>Level 1</p>
-        </section>
-      </section>
-    </aside>
-  );
+            {/* Bottom Cards */}
+            <section className="side-section">
+                <h3>Your Progress</h3>
+
+                {/* Points card */}
+                <section className="points-card">
+                    <span className="points-label">Points</span>
+                    <span className="points-value">0</span>
+                </section>
+
+                {/* Streak card */}
+                <section className="streak-card">
+                    <span className="streak-label">Streak</span>
+                    <span className="streak-value">0d</span>
+                </section>
+            </section>
+
+            {/* User card */}
+            <section className="user-card">
+                <section className="user-icon">U</section>
+                <section>
+                    <h4>UserName</h4>
+                    <p>Level 1</p>
+                </section>
+            </section>
+            </section>
+        </aside>
+
+    )
 }
