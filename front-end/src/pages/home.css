@@ -1,6 +1,7 @@
 /* Entire Page settings  */
 /*removes default margin and padding so images are full*/
-html, body {
+html,
+body {
   margin: 0;
   padding: 0;
 }
@@ -9,12 +10,12 @@ html, body {
 .home-container {
   font-family: "Sora", sans-serif;
   background: linear-gradient(#c1eef9, #e9f8ff);
-  color: #013C58;
+  color: #013c58;
 }
 
 /*Buttons*/
 .cta-rbutton {
-  background: #013C58;
+  background: #013c58;
   color: #fff;
   border: none;
   padding: 15px 34px;
@@ -26,13 +27,13 @@ html, body {
 }
 
 .cta-rbutton:hover {
-  background: #F5A201;
-  color: #013C58;
+  background: #f5a201;
+  color: #013c58;
   transform: translateY(-4px);
 }
 
 .cta-jnbutton {
-  background: #013C58;
+  background: #013c58;
   color: #fff;
   border: none;
   padding: 15px 34px;
@@ -43,8 +44,8 @@ html, body {
 }
 
 .cta-jnbutton:hover {
-  background: #F5A201;
-  color: #013C58;
+  background: #f5a201;
+  color: #013c58;
 }
 
 /* Hero Section*/
@@ -118,7 +119,7 @@ html, body {
   background: white;
   padding: 26px;
   width: 300px;
-  height: 260px;
+  min-height: 386px;
   border-radius: 20px;
   box-shadow: 0 6px 16px rgba(0, 0, 0, 0.12);
   cursor: pointer;
@@ -126,11 +127,12 @@ html, body {
   flex-direction: column;
   align-items: center;
   text-align: center;
+  justify-content: space-between;
 }
 
 .card:hover {
   transform: translateY(-6px);
-  box-shadow: #013C58;
+  box-shadow: #013c58;
 }
 
 .card h3 {
@@ -140,7 +142,7 @@ html, body {
 
 .card-link {
   text-decoration: none;
-  color: #013C58;
+  color: #013c58;
   display: block;
 }
 
@@ -180,7 +182,7 @@ html, body {
 .wave-block {
   width: 100vw;
   margin: 120px 0 80px;
-  background: #013C58;
+  background: #013c58;
   color: #fff;
   padding: 60px 20px;
   position: relative;
@@ -195,20 +197,20 @@ html, body {
   left: 0;
   width: 100%;
   height: 150px;
-  background: #013C58;
+  background: #013c58;
   clip-path: polygon(
     0 50px,
-    10% 30px, 
-    20% 40px, 
+    10% 30px,
+    20% 40px,
     30% 20px,
-    40% 30px, 
-    50% 0, 
-    60% 20px, 
+    40% 30px,
+    50% 0,
+    60% 20px,
     70% 10px,
-    80% 30px, 
-    90% 20px, 
+    80% 30px,
+    90% 20px,
     100% 50px,
-    100% 100%, 
+    100% 100%,
     0 100%
   );
 }
@@ -220,25 +222,25 @@ html, body {
   left: 0;
   width: 100%;
   height: 150px;
-  background: #013C58;
+  background: #013c58;
   transform: scaleY(-1);
   clip-path: polygon(
-    0 50px, 
-    10% 30px, 
-    20% 40px, 
+    0 50px,
+    10% 30px,
+    20% 40px,
     30% 20px,
-    40% 30px, 
-    50% 0, 
-    60% 20px, 
+    40% 30px,
+    50% 0,
+    60% 20px,
     70% 10px,
-    80% 30px, 
-    90% 20px, 
+    80% 30px,
+    90% 20px,
     100% 50px,
-    100% 100%, 
+    100% 100%,
     0 100%
   );
 }
- /* inner content of the wave block */
+/* inner content of the wave block */
 .wave-content {
   position: relative;
   z-index: 2;
