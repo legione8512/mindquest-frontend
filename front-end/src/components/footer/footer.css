@@ -62,6 +62,7 @@ footer img {
   display: flex;
   flex-wrap: nowrap; /* allows wrapping on very small widths */
   gap: 0.5rem;
+  padding-left: 10px;
 }
 
 .footer_follow button {
@@ -177,11 +178,15 @@ footer img {
   color: #c1eef9;
   transition: 0.4s ease;
   letter-spacing: 0.05rem;
-  text-align: center;
+  text-align: left;
+}
+
+.footer_section ul {
+  list-style: none; /* remove bullets */
+  padding-left: 0; /* remove default indent */
 }
 
 .footer_section ul li {
-  list-style-type: none;
   margin-bottom: 0.5rem;
 }
 
@@ -256,7 +261,8 @@ footer img {
   .footer_follow {
     width: 100%;
     justify-content: center;
-    flex-wrap: wrap; /* allow wrap if needed: change to wrap */
+    flex-wrap: nowrap; /* allow wrap if needed: change to wrap */
+    padding-left: 10px;
   }
 }
 /* 1st box: logo + social */

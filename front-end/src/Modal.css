@@ -1,58 +1,70 @@
+/* Full-screen backdrop behind the modal */
 .quest-modal-backdrop {
-  position: fixed;
-  inset: 0;
-  background: rgba(6, 13, 30, 0.55);
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  z-index: 3000;
-  padding: 1.5rem;
+  position: fixed; /* Fix position relative to viewport, not the page */
+  inset: 0; /* Shorthand for top:0; right:0; bottom:0; left:0; */
+  background: rgba(
+    6,
+    13,
+    30,
+    0.55
+  ); /* Dark semi-transparent overlay over the page */
+  display: flex; /* Use flexbox to centre the modal */
+  justify-content: center; /* Horizontally centre the modal */
+  align-items: center; /* Vertically centre the modal */
+  z-index: 3000; /* High stacking order so it appears above other content */
+  padding: 1.5rem; /* Padding around the edges (for small screens) */
 }
 
+/* The white modal box itself */
 .quest-modal {
-  background: #ffffff;
-  border-radius: 1rem;
-  max-width: 840px;
-  width: 100%;
-  max-height: 95vh;
-  display: flex;
-  flex-direction: column;
-  box-shadow: 0 24px 60px rgba(0, 0, 0, 0.35);
-  overflow: hidden; /* keep rounded corners on header */
+  background: #ffffff; /* White background for the modal content */
+  border-radius: 1rem; /* Rounded corners */
+  max-width: 840px; /* Maximum width so it does not become too wide */
+  width: 100%; /* Take full available width up to max-width */
+  max-height: 95vh; /* Limit height so it fits within the viewport (with some margin) */
+  display: flex; /* Use flexbox for vertical layout: header, body, footer */
+  flex-direction: column; /* Stack header, body, footer vertically */
+  box-shadow: 0 24px 60px rgba(0, 0, 0, 0.35); /* Large drop shadow for elevation */
+  overflow: hidden; /* Clip overflowing content so the rounded corners stay visible */
 }
 
+/* Header bar at the top of the modal */
 .quest-modal-header {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  padding: 1.25rem 1.5rem;
-  border-bottom: 1px solid #e3e3f0;
-  color: #ffffff;
+  display: flex; /* Place title and close button in a row */
+  justify-content: space-between; /* Push title to the left, close button to the right */
+  align-items: center; /* Vertically centre both */
+  padding: 1.25rem 1.5rem; /* Inner spacing around header content */
+  border-bottom: 1px solid #e3e3f0; /* Subtle bottom border separating header from body */
+  color: #ffffff; /* Text colour set to white (e.g. if header background is coloured elsewhere) */
 }
 
+/* Title styling inside the modal header */
 .quest-modal-header h2 {
-  margin: 0;
-  font-size: 1.3rem;
-  color: inherit; /* white from header */
+  margin: 0; /* Remove default h2 margin */
+  font-size: 1.3rem; /* Slightly larger than normal text */
+  color: inherit; /* Inherit colour from .quest-modal-header (white) */
 }
 
+/* Close (X) button in the header */
 .quest-modal-close {
-  border: none;
-  background: transparent;
-  font-size: 1.5rem;
-  cursor: pointer;
-  line-height: 1;
-  color: #ffffff;
+  border: none; /* Remove default button border */
+  background: transparent; /* No background; blends with header */
+  font-size: 1.5rem; /* Slightly larger X symbol */
+  cursor: pointer; /* Pointer cursor on hover */
+  line-height: 1; /* Tight line height so the X is vertically centred */
+  color: #ffffff; /* White X icon/text */
 }
 
+/* Modal body: scrollable content area */
 .quest-modal-body {
-  padding: 1.25rem 1.5rem 1.5rem;
-  overflow-y: auto;
+  padding: 1.25rem 1.5rem 1.5rem; /* Inner spacing: top, sides, bottom */
+  overflow-y: auto; /* Allow vertical scrolling if content is taller than available space */
 }
 
+/* Footer area at the bottom of the modal (for action buttons) */
 .quest-modal-footer {
-  display: flex;
-  justify-content: flex-end;
-  gap: 0.75rem;
-  margin-top: 1rem;
+  display: flex; /* Layout footer contents in a row */
+  justify-content: flex-end; /* Align footer content (buttons) to the right */
+  gap: 0.75rem; /* Space between buttons (or other footer elements) */
+  margin-top: 1rem; /* Space above footer, separating it from body content */
 }

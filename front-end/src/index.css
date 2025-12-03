@@ -1,34 +1,45 @@
+/* Import the Sora font family from Google Fonts
+   We load weights 300, 400, 600, 700 so they are available in the project */
 @import url('https://fonts.googleapis.com/css2?family=Sora:wght@300;400;600;700&display=swap'); /* Fonts */
+
+/* Import Font Awesome 4.7 for icon usage (e.g. <i class="fa fa-bars">) */
 @import url('https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css'); /* Icons */
 
+
 /********** BASE HTML ******************************/
+
+/* Base styles for the <html> element */
 html {
-    overflow-y: scroll;
-    height: 100%;
+    overflow-y: scroll;   /* Always reserve space for the vertical scrollbar to avoid layout shift */
+    height: 100%;         /* Set HTML element height to full viewport height */
 }
 
+/* Global reset and typography rules for all elements */
 * {
-    margin: 0;
-    padding: 0;
-    font-family: "Sora", sans-serif;
-    font-optical-sizing: auto;
-    font-weight: 600;
-    font-style: normal;
+    margin: 0;                           /* Remove default margins from all elements */
+    padding: 0;                          /* Remove default padding from all elements */
+    font-family: "Sora", sans-serif;     /* Use Sora as the default font everywhere, fallback to generic sans-serif */
+    font-optical-sizing: auto;           /* Let the browser choose the best optical size for this variable font */
+    font-weight: 600;                    /* Set default font weight to 600 (semi-bold) across the app */
+    font-style: normal;                  /* Normal (non-italic) font style by default */
 }
 
+/* Root React container where the entire app is rendered */
 #root {
-  width: 100%;
-  margin: 0;
-  padding: 0;
+  width: 100%;       /* Allow the root element to span the full width of the page */
+  margin: 0;         /* Remove any default margin */
+  padding: 0;        /* Remove any default padding */
 }
 
+/* Generic layout wrapper used to centre content and limit width */
 .layout-container {
-    max-width: 1200px;   /* same as .page.quests-hubs */
-    margin: 0 auto;
-    padding: 0 1.5rem;  /* side padding so content doesn't touch the edge */
+    max-width: 1200px;   /* Limit content width, matching your hubs page width */
+    margin: 0 auto;      /* Centre the container horizontally */
+    padding: 0 1.5rem;   /* Horizontal padding so content does not touch the viewport edges */
 }
 
+/* CSS custom properties (variables) for the whole application */
 :root {
-  --mq-accent-yellow: #F5A201;  /* from streak button */
-  --mq-radius-md: 10px;         /* same as Account buttons */
+  --mq-accent-yellow: #F5A201;  /* Accent yellow colour (used for hover states, buttons, etc.) */
+  --mq-radius-md: 10px;         /* Medium radius value, reused for consistent rounded corners */
 }

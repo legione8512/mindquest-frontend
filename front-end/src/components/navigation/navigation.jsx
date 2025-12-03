@@ -35,13 +35,13 @@ export default function Navigation({ toggleSidebar }) {
         {/* Navigation bar */}
         <section className="nav-bar">
           <Link
-            to="/"
+            to="/quickcalm"
             className={`top-nav-button ${
-              isActive("/", true) ? "top-nav-button--active" : ""
+              isActive("/quickcalm") ? "top-nav-button--active" : ""
             }`}
-            title="Go to the MindQuest Homepage"
+            title="Go to QuickCalm"
           >
-            Home
+            QuickCalm
           </Link>
 
           <Link

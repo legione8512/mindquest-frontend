@@ -1,487 +1,565 @@
+/* Main container for the Quests & Hubs page */
 .hubs-page {
-  max-width: 1200px;
-  margin: 2rem auto 4rem;
-  padding: 0 1.5rem;
+  max-width: 1200px; /* Limit page width to 1200px so content does not stretch too wide */
+  margin: 2rem auto 4rem; /* Top margin 2rem, bottom 4rem, left/right auto to centre the block */
+  padding: 0 1.5rem; /* Horizontal inner padding so content does not touch the edges */
 }
 
 /* NEW: top banner like Account Settings */
 
+/* Wrapper for the banner image and title */
 .quests_banner_wrapper {
-  width: 100%;
+  width: 100%; /* Take full available width */
 }
 
+/* The banner image itself */
 .quests_banner {
-  width: 100%;
-  height: 15rem;
-  object-fit: cover;
+  width: 100%; /* Make the image span the full width of its container */
+  height: 15rem; /* Fixed height for the banner */
+  object-fit: cover; /* Crop the image to fill the area without distortion */
 }
 
+/* Title bar that sits over the banner image */
 .quests_banner_title {
-  padding: 1rem;
-  position: absolute;
-  top: 11rem;
-  width: 100%;
-  color: white;
-  font-size: 2rem;
-  text-align: center;
-  background: rgba(0, 60, 88, 0.6);
-  box-sizing: border-box;
+  padding: 1rem; /* Inner spacing around the text */
+  position: absolute; /* Position relative to the page (or nearest positioned ancestor) */
+  top: 11rem; /* Push the title down so it overlaps the banner near the bottom */
+  width: 100%; /* Full width so the background bar spans the banner */
+  color: white; /* White text */
+  font-size: 2rem; /* Larger title text */
+  text-align: center; /* Centre the text horizontally */
+  background: rgba(
+    0,
+    60,
+    88,
+    0.6
+  ); /* Semi-transparent dark blue background bar */
+  box-sizing: border-box; /* Include padding in the width calculation */
 }
 
-/* HERO AREA */
+/* HERO AREA – top card that explains "Create a new quest" */
 .hubs-hero {
-  background: #c1eef979;
-  border-radius: 1rem;
-  padding: 2rem 2.5rem;
-  margin-bottom: 2rem;
+  background: #c1eef979; /* Light teal/blue background with transparency */
+  border-radius: 1rem; /* Rounded corners for the hero card */
+  padding: 2rem 2.5rem; /* Inner spacing: top/bottom 2rem, left/right 2.5rem */
+  margin-bottom: 2rem; /* Space below the hero before the filters */
 
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  gap: 5rem;
+  display: flex; /* Use flexbox to lay out text and button side by side */
+  justify-content: space-between; /* Place text on left and button on right */
+  align-items: center; /* Vertically align items to the centre */
+  gap: 5rem; /* Horizontal space between text block and button */
 }
 
+/* Heading inside the hero text block */
 .hubs-hero-text h2 {
-  font-size: 1.8rem;
-  margin-bottom: 0.5rem;
+  font-size: 1.8rem; /* Large heading size */
+  margin-bottom: 0.5rem; /* Small space below the heading */
 }
 
+/* Subheading paragraph in hero */
 .hubs-hero-subtitle {
-  margin: 0 0 1.5rem;
-  color: #555;
+  margin: 0 0 1.5rem; /* Remove top margin, keep bottom margin 1.5rem */
+  color: #555; /* Medium grey text colour */
 }
 
+/* Base style for secondary buttons across this page */
 .secondary-btn {
-  border-radius: var(--mq-radius-md); /* 10px corners */
-  border: 1px solid transparent;
-  padding: 0.55rem 1.4rem;
-  font-size: 0.95rem;
-  cursor: pointer;
-  background: #fff;
-  border-color: #cfd2ea;
-  color: #333;
+  border-radius: var(
+    --mq-radius-md
+  ); /* Use global medium radius (e.g. 10px) for rounded corners */
+  border: 1px solid transparent; /* Start with transparent border */
+  padding: 0.55rem 1.4rem; /* Vertical and horizontal padding */
+  font-size: 0.95rem; /* Slightly smaller than default text */
+  cursor: pointer; /* Show pointer cursor on hover */
+  background: #fff; /* White background */
+  border-color: #cfd2ea; /* Light grey-blue border */
+  color: #333; /* Dark grey text */
 }
 
+/* Special styling for the large "Create Quest" button in the hero */
 .create-quest-btn {
-  background: #013c58; /* same as #submit */
-  border: none;
-  color: white;
-  align-self: flex-end; /* right side inside .hubs-hero */
-  width: 230px;
-  height: 150px;
-  border-radius: 10px; /* squared corners */
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  font-size: 1.05rem;
-  font-weight: 600;
-  transition: transform 0.2s ease, background 0.2s ease, color 0.2s ease;
+  background: #013c58; /* Dark blue background (aligns with primary brand colour) */
+  border: none; /* Remove default border */
+  color: white; /* White text */
+  align-self: flex-end; /* Align the button to the bottom/right within the hero flex container */
+  width: 230px; /* Fixed width for a card-like button */
+  height: 150px; /* Fixed height */
+  border-radius: 10px; /* Rounded corners */
+  display: flex; /* Use flexbox to centre the text inside */
+  align-items: center; /* Vertically centre content */
+  justify-content: center; /* Horizontally centre content */
+  font-size: 1.05rem; /* Slightly larger text */
+  font-weight: 600; /* Semi-bold for emphasis */
+  transition: transform 0.2s ease,
+    /* Smooth scaling animation on hover */ background 0.2s ease,
+    color 0.2s ease;
 }
 
+/* Hover effect for "Create Quest" button */
 .create-quest-btn:hover {
-  cursor: pointer;
-  transform: scale(1.2); /* same hover scale as #submit:hover */
-  background: #f5a201; /* hover background */
-  color: black;
-  border: none;
+  cursor: pointer; /* Show pointer cursor when hovering */
+  transform: scale(1.2); /* Enlarge the button slightly on hover */
+  background: #f5a201; /* Change background to orange on hover */
+  color: black; /* Change text colour to black for contrast */
+  border: none; /* Keep border removed */
 }
 
-/* FILTERS */
+/* FILTERS section container */
 .hubs-filters {
-  display: grid;
-  grid-template-columns: repeat(4, minmax(0, 1fr));
-  column-gap: 1rem;
-  row-gap: 1rem;
-  margin-bottom: 2rem;
+  display: grid; /* Use CSS Grid for filters layout */
+  grid-template-columns: repeat(4, minmax(0, 1fr)); /* 4 equal columns */
+  column-gap: 1rem; /* Horizontal space between columns */
+  row-gap: 1rem; /* Vertical space between rows */
+  margin-bottom: 2rem; /* Space below filters before the grid of hubs */
 }
 
+/* Labels for each filter control and the search field */
 .filter-group label,
 .filter-search label {
-  display: block;
-  font-size: 0.8rem;
-  font-weight: 600;
-  margin-bottom: 0.25rem;
+  display: block; /* Make labels block-level (each on its own line) */
+  font-size: 0.8rem; /* Smaller label text */
+  font-weight: 600; /* Semi-bold for emphasis */
+  margin-bottom: 0.25rem; /* Small space between label and input */
 }
 
+/* Dropdowns and text input styling for filters */
 .filter-group select,
 .filter-search input {
-  width: 100%;
-  padding: 0.45rem 0.6rem;
-  border-radius: 0.5rem;
-  border: 1px solid #d0d0dd;
-  font-size: 0.9rem;
+  width: 100%; /* Full width of the containing column */
+  padding: 0.45rem 0.6rem; /* Inner padding for comfortable click/tap area */
+  border-radius: 0.5rem; /* Soft rounded corners */
+  border: 1px solid #d0d0dd; /* Light grey border */
+  font-size: 0.9rem; /* Slightly smaller than base font */
 }
 
+/* Container for the search filter row */
 .filter-search {
-  grid-column: 1 / -1;
+  grid-column: 1 / -1; /* Make the search row span all 4 grid columns */
 }
 
+/* Layout for the search input + buttons row */
 .filter-search-row {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 0.5rem;
-  margin-top: 0.25rem;
+  display: flex; /* Use flexbox for search input and buttons */
+  flex-wrap: wrap; /* Allow wrapping on smaller screens */
+  gap: 0.5rem; /* Space between input and buttons */
+  margin-top: 0.25rem; /* Small gap above this row */
 }
 
+/* Set flex behaviour for the search input specifically */
 .filter-search-row input {
-  flex: 1 1 260px;
+  flex: 1 1 260px; /* Grow to take remaining space, minimum width ~260px */
 }
 
-/* HUB GRID */
+/* HUB GRID – the cards area */
 .hubs-grid {
-  display: grid;
+  display: grid; /* Use CSS Grid for cards layout */
   grid-template-columns: repeat(
     3,
     1fr
-  ); /* exactly 3 cards per row on large screens */
-  gap: 1.5rem;
+  ); /* Exactly 3 cards per row on large screens */
+  gap: 1.5rem; /* Space between cards (both rows and columns) */
 }
 
+/* Medium screen breakpoint (tablets / smaller laptops) */
 @media (max-width: 1024px) {
   .hubs-grid {
     grid-template-columns: repeat(
       2,
       1fr
-    ); /* 2 per row on tablets / smaller laptops */
+    ); /* Show 2 cards per row on narrower screens */
   }
 }
 
+/* Small screen breakpoint (mobile) */
 @media (max-width: 640px) {
   .hubs-grid {
-    grid-template-columns: 1fr; /* 1 per row on mobiles */
+    grid-template-columns: 1fr; /* Only 1 card per row on phones */
   }
 }
 
-/* Remove bullets anywhere in this page */
+/* Remove bullets from any ul inside the hubs page */
 .hubs-page ul {
-  list-style: none;
-  margin: 0;
-  padding: 0;
+  list-style: none; /* Remove list bullets */
+  margin: 0; /* Reset margins */
+  padding: 0; /* Reset padding */
 }
 
-/* CARD */
+/* CARD base styling */
 .hub-card {
-  background: #ffffff;
-  border-radius: 1rem;
-  border: 1px solid #e2e2ef;
-  padding: 0;
-  display: flex;
-  flex-direction: column;
+  background: #ffffff; /* White card background */
+  border-radius: 1rem; /* Rounded corners */
+  border: 1px solid #e2e2ef; /* Light border to separate card from background */
+  padding: 0; /* No internal padding at card container level */
+  display: flex; /* Use flexbox for vertical layout inside */
+  flex-direction: column; /* Stack children vertically */
 }
 
+/* Wrapper for the card header image */
 .hub-image-wrapper {
-  height: 110px;
-  border-radius: 1rem 1rem 0 0;
-  overflow: hidden;
+  height: 110px; /* Fixed height for image area */
+  border-radius: 1rem 1rem 0 0; /* Round top corners only */
+  overflow: hidden; /* Hide parts of the image that extend beyond the radius */
 }
 
+/* Make the card header image fill its wrapper */
 .hub-cover-image {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  display: block;
+  width: 100%; /* Full width */
+  height: 100%; /* Full height */
+  object-fit: cover; /* Crop image to fill container */
+  display: block; /* Remove inline spacing issues */
 }
 
+/* Main card body area (below the image) */
 .hub-card-body {
-  padding: 1.1rem 1.2rem 1rem;
+  padding: 1.1rem 1.2rem 1rem; /* Inner spacing: top, sides, bottom */
+  display: flex; /* Use flexbox inside the card body */
+  flex-direction: column; /* Stack content vertically */
+  flex: 1; /* Allow this body to stretch to fill card height */
 }
 
+/* Title row that contains the name and badges */
 .hub-title-row {
-  display: flex;
-  align-items: center;
-  gap: 0.5rem;
-  margin-bottom: 0.4rem;
+  display: flex; /* Place title and badges in a row */
+  align-items: center; /* Vertically centre them */
+  gap: 0.5rem; /* Space between title and badges */
+  margin-bottom: 0.4rem; /* Space below the row */
 }
 
+/* Card heading style */
 .hub-title-row h2 {
-  font-size: 1rem;
-  margin: 0;
+  font-size: 1rem; /* Compact card title size */
+  margin: 0; /* Remove default margins */
 }
 
+/* Style for the "Verified" badge */
 .badge.verified {
-  font-size: 0.75rem;
-  padding: 0.15rem 0.5rem;
-  border-radius: 999px;
-  background: #e9f9f0;
-  color: #1d7a3a;
+  font-size: 0.75rem; /* Small text */
+  padding: 0.15rem 0.5rem; /* Inner padding */
+  border-radius: 999px; /* Full pill shape */
+  background: #e9f9f0; /* Light green background */
+  color: #1d7a3a; /* Dark green text */
 }
 
+/* Hub description paragraph */
 .hub-description {
-  margin: 0 0 0.8rem;
-  font-size: 0.9rem;
-  color: #555;
+  margin: 0 0 0.8rem; /* Bottom margin only */
+  font-size: 0.9rem; /* Slightly smaller text */
+  color: #555; /* Medium grey colour */
+  max-width: 30ch; /* Limit text width to about 30 characters (short lines) */
+  overflow-wrap: anywhere; /* Break long words if needed to prevent overflow */
 }
 
+/* Block that highlights the featured challenge */
 .feature-block {
-  background: #c1eef979;
-  border-radius: 0.75rem;
-  padding: 0.6rem 0.7rem;
-  margin-bottom: 0.8rem;
-  font-size: 0.86rem;
+  background: #c1eef979; /* Light teal/blue background with transparency */
+  border-radius: 0.75rem; /* Rounded corners */
+  padding: 0.6rem 0.7rem; /* Inner spacing */
+  margin-bottom: 0.8rem; /* Space below block */
+  font-size: 0.86rem; /* Slightly smaller text than normal */
 }
 
+/* Label "Featured challenge" */
 .feature-label {
-  font-weight: 600;
-  margin: 0 0 0.1rem;
+  font-weight: 600; /* Semi-bold to emphasise label */
+  margin: 0 0 0.1rem; /* Small bottom margin */
 }
 
+/* Name of the featured challenge */
 .feature-title {
-  font-weight: 600;
-  margin: 0 0 0.1rem;
+  font-weight: 600; /* Semi-bold */
+  margin: 0 0 0.1rem; /* Small bottom margin */
 }
 
+/* Status line for the featured challenge (e.g., "Active now") */
 .feature-status {
-  font-size: 0.8rem;
-  color: #4b5bd6;
-  margin: 0 0 0.2rem;
+  font-size: 0.8rem; /* Small text */
+  color: #4b5bd6; /* Blue colour for status emphasis */
+  margin: 0 0 0.2rem; /* Bottom margin */
 }
 
+/* Additional description text for the featured challenge */
 .feature-text {
-  margin: 0;
+  margin: 0; /* No extra margin */
 }
 
+/* Row showing "Daily / Team" etc. */
 .hub-meta-row {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 0.4rem;
-  margin-bottom: 0.5rem;
+  display: flex; /* Place pills next to each other */
+  flex-wrap: wrap; /* Allow them to wrap to next line if needed */
+  gap: 0.4rem; /* Space between pills */
+  margin-bottom: 0.5rem; /* Space below meta row */
 }
 
+/* Generic pill style for small rounded tags */
 .pill {
-  font-size: 0.75rem;
-  border-radius: 999px;
-  padding: 0.15rem 0.55rem;
-  background: #eef0ff;
+  font-size: 0.75rem; /* Small text */
+  border-radius: 999px; /* Fully rounded pill shape */
+  padding: 0.15rem 0.55rem; /* Inner padding */
+  background: #eef0ff; /* Light bluish background */
 }
 
+/* Text style for team tags and progress text */
 .hub-tags,
 .hub-progress {
-  font-size: 0.8rem;
-  color: #666;
-  margin: 0 0 0.4rem;
+  font-size: 0.8rem; /* Small text size */
+  color: #666; /* Grey colour */
+  margin: 0 0 0.4rem; /* Bottom margin only */
 }
 
+/* Footer area of the card (contains the View hub button) */
 .hub-card-footer {
-  margin-top: 0.6rem;
+  margin-top: auto; /* Push footer to the bottom of the card */
+  padding-top: 0.5rem; /* Optional spacing above the button */
 }
 
-/* Small screens */
+/* Small screens – adjust layout for hero and filters */
 @media (max-width: 768px) {
   .hubs-hero {
-    padding: 1.5rem 1.25rem;
-    flex-direction: column; /* stack text + button */
-    align-items: flex-start; /* left-align content */
-    gap: 1.25rem;
+    padding: 1.5rem 1.25rem; /* Reduce padding on smaller devices */
+    flex-direction: column; /* Stack hero text and button vertically */
+    align-items: flex-start; /* Left-align items instead of centre */
+    gap: 1.25rem; /* Smaller gap between elements */
   }
 
   .hubs-hero-text {
-    width: 100%;
+    width: 100%; /* Make text block full width */
   }
 
   .create-quest-btn {
-    width: 100%; /* full-width button */
-    max-width: none; /* or remove if you want truly full width */
-    height: auto; /* let height follow padding */
-    padding: 0.9rem 0; /* vertical padding only */
-    justify-content: center; /* text centred */
+    width: 100%; /* Make button full width on small screens */
+    max-width: none; /* Remove any max-width restrictions */
+    height: auto; /* Allow height based on padding instead of fixed */
+    padding: 0.9rem 0; /* Vertical padding only for a normal button look */
+    justify-content: center; /* Keep text centred */
   }
 
   .hubs-filters {
-    grid-template-columns: 1fr 1fr;
+    grid-template-columns: 1fr 1fr; /* Use 2 columns for filters on tablets/phones */
   }
 }
 
 /* =========================================
    FORM LAYOUT INSIDE MODAL
    ========================================= */
+
+/* Base spacing for each form field block */
 .quest-field {
-  margin-bottom: 1rem;
+  margin-bottom: 1rem; /* Space between field groups */
 }
 
+/* Two-column layout for related fields (e.g. period + start date) */
 .quest-field-row {
-  display: grid;
-  grid-template-columns: repeat(2, minmax(0, 1fr));
-  gap: 1rem;
-  margin-bottom: 1rem;
+  display: grid; /* Use CSS Grid */
+  grid-template-columns: repeat(2, minmax(0, 1fr)); /* 2 equal columns */
+  gap: 1rem; /* Space between the two columns */
+  margin-bottom: 1rem; /* Space below the row */
 }
 
+/* On narrow screens, stack form fields vertically (one per row) */
 @media (max-width: 700px) {
   .quest-field-row {
-    grid-template-columns: 1fr;
+    grid-template-columns: 1fr; /* Single column layout */
   }
 }
 
+/* Label styling for fields inside the modal */
 .quest-field label {
-  font-size: 0.85rem;
-  font-weight: 600;
-  display: block;
-  margin-bottom: 0.3rem;
+  font-size: 0.85rem; /* Slightly smaller than base font */
+  font-weight: 600; /* Semi-bold for emphasis */
+  display: block; /* Each label on its own line */
+  margin-bottom: 0.3rem; /* Space between label and input */
 }
 
+/* Helper text under fields */
 .quest-helper {
-  font-size: 0.8rem;
-  color: #666;
-  margin: 0 0 0.35rem;
+  font-size: 0.8rem; /* Small helper text */
+  color: #666; /* Grey colour */
+  margin: 0 0 0.35rem; /* Bottom margin only */
 }
 
+/* Shared styles for text/number/date/time inputs, select and textarea fields */
 .quest-field input[type="text"],
 .quest-field input[type="number"],
 .quest-field input[type="date"],
 .quest-field input[type="time"],
 .quest-field select,
 .quest-field textarea {
-  width: 100%;
-  border-radius: 0.5rem;
-  border: 1px solid #d0d0dd;
-  padding: 0.45rem 0.6rem;
-  font-size: 0.9rem;
+  width: 100%; /* Full width of container */
+  border-radius: 0.5rem; /* Rounded corners */
+  border: 1px solid #d0d0dd; /* Light grey border */
+  padding: 0.45rem 0.6rem; /* Inner spacing */
+  font-size: 0.9rem; /* Slightly smaller text */
 }
 
+/* Allow textareas to be resized only vertically */
 .quest-field textarea {
-  resize: vertical;
+  resize: vertical; /* User can drag bottom edge up/down only */
 }
 
 /* =========================================
    RADIO GROUPS & CUSTOM PERIOD
    ========================================= */
+
+/* Column layout for radio buttons (e.g., quest period options) */
 .radio-group-column {
-  display: flex;
-  flex-direction: column;
-  gap: 0.35rem;
+  display: flex; /* Use flexbox */
+  flex-direction: column; /* Stack options vertically */
+  gap: 0.35rem; /* Space between options */
 }
 
+/* Row layout for radio buttons (e.g., quest type) */
 .radio-group-row {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 0.75rem;
+  display: flex; /* Use flexbox */
+  flex-wrap: wrap; /* Allow wrapping if not enough space */
+  gap: 0.75rem; /* Space between options */
 }
 
+/* Style for each radio option label */
 .radio-option {
-  display: flex;
-  align-items: center;
-  gap: 0.4rem;
-  font-size: 0.88rem;
+  display: flex; /* Align radio and text horizontally */
+  align-items: center; /* Vertically centre */
+  gap: 0.4rem; /* Space between radio input and text */
+  font-size: 0.88rem; /* Slightly smaller than base text */
 }
 
+/* Wrapper for the custom period number input and "days" label */
 .custom-period-row {
-  display: flex;
-  align-items: center;
-  gap: 0.4rem;
-  margin-top: 0.3rem;
+  display: flex; /* Position number input and label on one line */
+  align-items: center; /* Vertically centre them */
+  gap: 0.4rem; /* Small gap between input and text */
+  margin-top: 0.3rem; /* Space above custom period row */
 }
 
+/* Limit width of the custom days number input */
 .custom-period-row input[type="number"] {
-  max-width: 120px;
+  max-width: 120px; /* Prevent the input from becoming too wide */
 }
 
-/* Start date/time */
+/* Start date/time fields wrapper */
 .start-row {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 0.5rem;
+  display: flex; /* Place date and time inputs in a row */
+  flex-wrap: wrap; /* Allow them to wrap on smaller screens */
+  gap: 0.5rem; /* Spacing between date and time inputs */
 }
 
 /* =========================================
    TEAMS
    ========================================= */
+
+/* Container for the list of team name inputs */
 .teams-list {
-  display: flex;
-  flex-direction: column;
-  gap: 0.4rem;
-  margin-bottom: 0.5rem;
+  display: flex; /* Use flexbox */
+  flex-direction: column; /* Each team row stacked vertically */
+  gap: 0.4rem; /* Spacing between team rows */
+  margin-bottom: 0.5rem; /* Space below the team list */
 }
 
+/* Single row containing one team input and optional remove button */
 .team-row {
-  display: flex;
-  gap: 0.4rem;
-  align-items: center;
+  display: flex; /* Place input and remove button in the same row */
+  gap: 0.4rem; /* Space between them */
+  align-items: center; /* Vertically centre content */
 }
 
+/* Team name text input should grow to fill available space */
 .team-row input[type="text"] {
-  flex: 1;
+  flex: 1; /* Take up remaining horizontal space */
 }
 
+/* Small circular "x" button to remove a team */
 .team-remove-btn {
-  border-radius: 999px;
-  border: none;
-  width: 26px;
-  height: 26px;
-  font-size: 1.1rem;
-  line-height: 1;
-  cursor: pointer;
-  background: #f4d9dd;
-  color: #8c1b2b;
+  border-radius: 999px; /* Fully round (circle) */
+  border: none; /* No border */
+  width: 26px; /* Fixed width */
+  height: 26px; /* Fixed height */
+  font-size: 1.1rem; /* Slightly larger X symbol */
+  line-height: 1; /* Tight line height */
+  cursor: pointer; /* Pointer cursor on hover */
+  background: #f4d9dd; /* Light red/pink background */
+  color: #8c1b2b; /* Dark red text colour */
 }
 
 /* =========================================
    CHECKBOX & FOOTER
    ========================================= */
+
+/* Layout for inline checkbox + description text */
 .checkbox-inline {
-  display: flex;
-  align-items: flex-start;
-  gap: 0.5rem;
-  font-size: 0.88rem;
+  display: flex; /* Place checkbox and text in a row */
+  align-items: flex-start; /* Align checkbox and first line of text */
+  gap: 0.5rem; /* Space between checkbox and text */
+  font-size: 0.88rem; /* Slightly smaller text */
 }
 
-/* Image dropdown + preview */
+/* Image dropdown + preview row */
 .image-select-row {
-  display: flex;
-  flex-wrap: wrap;
-  align-items: flex-start;
-  gap: 0.75rem;
-  margin-top: 0.35rem;
+  display: flex; /* Place dropdown and preview side by side */
+  flex-wrap: wrap; /* Allow wrapping if space is tight */
+  align-items: flex-start; /* Align items at the top */
+  gap: 0.75rem; /* Space between select and image */
+  margin-top: 0.35rem; /* Space above the row */
 }
 
+/* Styling for the image preview thumbnail */
 .image-preview img {
-  width: 140px;
-  height: 80px;
-  object-fit: cover;
-  border-radius: 0.75rem;
-  border: 1px solid #d0d0dd;
+  width: 140px; /* Fixed width for thumbnail */
+  height: 80px; /* Fixed height */
+  object-fit: cover; /* Crop image to fill the preview box */
+  border-radius: 0.75rem; /* Rounded corners */
+  border: 1px solid #d0d0dd; /* Light grey border */
 }
 
-/* Optional: message under the modal footer */
+/* Optional: informational message under the hub modal footer */
 .hub-join-message {
-  margin: 0.75rem 1.5rem 0 1.5rem;
-  font-size: 0.85rem;
-  color: #555;
+  margin: 0.75rem 1.5rem 0 1.5rem; /* Horizontal margin to align with modal content and top margin */
+  font-size: 0.85rem; /* Small text */
+  color: #555; /* Medium grey */
 }
 
+/* Badge showing that user has joined a hub */
 .badge.joined {
-  font-size: 0.75rem;
-  padding: 0.15rem 0.5rem;
-  border-radius: 999px;
-  background: #013c58; /* or your accent colour */
-  color: #ffffff;
+  font-size: 0.75rem; /* Small text */
+  padding: 0.15rem 0.5rem; /* Inner padding */
+  border-radius: 999px; /* Pill shape */
+  background: #013c58; /* Dark blue background */
+  color: #ffffff; /* White text */
 }
+
+/* Block under the Create Quest form showing rules for the template */
 .quest-template-block {
-  margin-top: 0.75rem;
-  margin-bottom: 1.25rem;
-  padding: 0.75rem 0.9rem 0.6rem;
-  border-radius: 0.75rem;
-  background-color: #f5f5f8;
+  margin-top: 0.75rem; /* Space above block */
+  margin-bottom: 1.25rem; /* Space below block */
+  padding: 0.75rem 0.9rem 0.6rem; /* Inner spacing */
+  border-radius: 0.75rem; /* Rounded corners */
+  background-color: #f5f5f8; /* Light grey background */
 }
+
+/* Container for quest completion form in View hub modal */
 .hub-quest-block {
-  border-radius: 0.75rem;
-  background: #f5f5f8;
-  padding: 0.75rem 0.9rem 0.8rem;
+  border-radius: 0.75rem; /* Rounded corners */
+  background: #f5f5f8; /* Light grey background */
+  padding: 0.75rem 0.9rem 0.8rem; /* Inner spacing */
 }
+
+/* Block that shows short info about the linked quest template */
 .quest-template-info {
-  margin-top: 0.75rem;
-  margin-bottom: 1rem;
-  padding: 0.6rem 0.9rem;
-  border-radius: 0.75rem;
-  background-color: #f5f5f8;
+  margin-top: 0.75rem; /* Space above */
+  margin-bottom: 1rem; /* Space below */
+  padding: 0.6rem 0.9rem; /* Inner spacing */
+  border-radius: 0.75rem; /* Rounded corners */
+  background-color: #f5f5f8; /* Light grey background */
 }
 
+/* Title line inside quest template info block */
 .quest-template-title {
-  margin: 0 0 0.25rem;
-  font-size: 0.9rem;
-  font-weight: 600;
+  margin: 0 0 0.25rem; /* Bottom margin only */
+  font-size: 0.9rem; /* Slightly smaller than base text */
+  font-weight: 600; /* Semi-bold for emphasis */
 }
 
+/* Description text inside quest template info block */
 .quest-template-text {
-  margin: 0 0 0.25rem;
-  font-size: 0.85rem;
-  color: #4a4a68;
+  margin: 0 0 0.25rem; /* Bottom margin only */
+  font-size: 0.85rem; /* Small text size */
+  color: #4a4a68; /* Muted bluish-grey text colour */
 }
