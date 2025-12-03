@@ -11,7 +11,7 @@
   background-repeat: no-repeat;
 }
 
-.moodBanner_Img{
+.moodBanner_Img {
   width: 100%;
   height: 100%;
   object-fit: cover;
@@ -71,7 +71,7 @@
   object-fit: cover;
   border-radius: 14px 14px 0 0;
   display: block;
-  margin-bottom: 15px; 
+  margin-bottom: 15px;
 }
 
 .moodChartBanner_Img {
@@ -91,7 +91,8 @@
   margin-top: 3vh;
 }
 
-.mood_Left, .mood_Right {
+.mood_Left,
+.mood_Right {
   width: 50%;
 }
 
@@ -99,13 +100,13 @@
   background: #ffffff;
   padding: 1.5rem;
   border-radius: 12px;
-  box-shadow: 0 2px 6px rgba(0,0,0,.1);
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
   margin-bottom: 2rem;
   overflow: hidden;
 }
 
 .mood_Box h2 {
-  color: #013C58;
+  color: #013c58;
   margin-bottom: 1rem;
   font-size: 1.5rem;
   text-align: center;
@@ -113,13 +114,13 @@
 
 .mood_Emoji_Row {
   display: flex;
-  gap: .5rem;
+  gap: 0.5rem;
   margin-bottom: 1rem;
 }
 
 .mood_Emoji {
   font-size: 1.8rem;
-  padding: .4rem .6rem;
+  padding: 0.4rem 0.6rem;
   border: 1px solid #bcdffb;
   background: #fff;
   border-radius: 10px;
@@ -129,32 +130,32 @@
 
 .mood_Emoji:hover {
   background: #eef7ff;
-  transform: scale(1.2); 
-  background: #f5a201; 
+  transform: scale(1.2);
+  background: #f5a201;
 }
 
 .mood_Emoji.active {
   background: #c1eef9;
-  border-color: #013C58;
+  border-color: #013c58;
 }
 
 .mood_Label {
   display: block;
-  margin-bottom: .3rem;
-  color: #013C58;
+  margin-bottom: 0.3rem;
+  color: #013c58;
 }
 
 .mood_Input {
   width: 100%;
-  padding: .6rem;
+  padding: 0.6rem;
   border: 1px solid #d0d7de;
   border-radius: 8px;
   margin-bottom: 1rem;
 }
 
 .mood_Button {
-  padding: .6rem 1.1rem;
-  background: #013C58;
+  padding: 0.6rem 1.1rem;
+  background: #013c58;
   color: white;
   border-radius: 8px;
   cursor: pointer;
@@ -180,7 +181,6 @@
   margin-bottom: 1rem;
   border: 1px solid #d5e6f0;
   background: #f7fbff;
-
 }
 
 .notes_Item:hover {
@@ -192,7 +192,7 @@
 .notes_Input {
   width: 100%;
   min-height: 80px;
-  padding: .6rem;
+  padding: 0.6rem;
   border: 1px solid #d0d7de;
   border-radius: 8px;
   margin-bottom: 1rem;
@@ -209,7 +209,7 @@
 }
 
 .moodReminder h3 {
-  color: #013C58;
+  color: #013c58;
   margin-bottom: 1rem;
   font-size: 1.5rem;
   text-align: center;
@@ -221,7 +221,7 @@
 
 .reminder_Message {
   margin-top: 0.7rem;
-  color: #013C58;
+  color: #013c58;
   font-size: 0.95rem;
   opacity: 0.8;
 }
@@ -250,7 +250,7 @@
 
 .mood_Entry_Line {
   margin: 0.25rem 0;
-  color: #013C58;
+  color: #013c58;
   font-size: 1rem;
 }
 
@@ -276,7 +276,7 @@
 .mood_Chart {
   width: 100%;
   height: 120px;
-  border: 1px solid #013C58;
+  border: 1px solid #013c58;
   border-radius: 8px;
   cursor: pointer;
   transition: all 0.3s ease;
@@ -296,13 +296,13 @@
 
 .chart_Caption {
   margin-top: 10px;
-  color: #013C58;
+  color: #013c58;
   font-size: 1rem;
   text-align: center;
 }
 
 .averageMood_Main {
-  color: #013C58;
+  color: #013c58;
   font-size: 1.1rem;
   margin-bottom: 1rem;
 }
@@ -318,7 +318,7 @@
   background: white;
   border-radius: 8px;
   margin-bottom: 0.6rem;
-  border-left: 4px solid #013C58;
+  border-left: 4px solid #013c58;
 }
 
 .questMood_List {
@@ -352,7 +352,7 @@
   background: #c1eef9;
   padding: 4px 8px;
   border-radius: 6px;
-  color: #013C58;
+  color: #013c58;
   font-weight: 600;
 }
 
@@ -389,13 +389,13 @@
 
 .export_Button:hover {
   background: #02597d;
-  transform: scale(1.2); 
-  background: #f5a201; 
+  transform: scale(1.2);
+  background: #f5a201;
 }
 
 .export_note {
   margin-top: 0.6rem;
-  color: #013C58;
+  color: #013c58;
   font-size: 0.9rem;
   opacity: 0.8;
 }
@@ -403,11 +403,10 @@
 /* Mobile Mode */
 
 @media (max-width: 900px) {
-
   .moodpage_Banner {
     height: 220px;
   }
-  
+
   .moodBanner_Text h1 {
     font-size: 30px;
   }
@@ -415,7 +414,6 @@
   .moodBanner_Text p {
     font-size: 16px;
   }
-
 
   .mood_Main {
     flex-direction: column;
@@ -459,7 +457,6 @@
 }
 
 @media (max-width: 500px) {
-
   .mood_Box {
     padding: 1rem;
   }
