@@ -41,27 +41,36 @@
     display: flex;
     align-items: center;
     gap: 0.4rem;
-    padding-bottom: 0.6rem;
+    padding: 1rem 0;
     margin-bottom: 0.5rem;
     border-bottom: solid 1px #c1eef9;
   }
 
   /* Mobile logo */
   .side-logo {
-    padding-top: 5px;
+    padding-top: 0;
     width: 30px;
   }
-
+/* Text block to the right of the logo */
+.side-title {
+  display: flex;
+  flex-direction: column;     /* stack title and subtitle vertically */
+  justify-content:center;    /* centre them vertically as a block */
+}
   /* Sidebar title and text section */
   .side-title h2 {
     color: white;
     font-size: 0.8rem;
+    margin: 0;
   }
 
   .side-title p {
     color: #c1eef9;
     font-size: 0.45rem;
     font-weight: 500;
+    margin: 0;         /* small gap below the title */
+    line-height: 1.1;
+
   }
 
   /* Sidebar buttons */
