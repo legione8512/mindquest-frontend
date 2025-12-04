@@ -83,27 +83,36 @@ export default function Sidebar({ isOpen, toggleSidebar }) {
       <section className="side-section">
         <h3>Your Progress</h3>
 
-        {/* Points card */}
-        <section className="points-card">
-          <span className="points-label">Points</span>
-          <span className="points-value">0</span>
-        </section>
+                {/* Points card */}
+                <Link to="/dashboard">
+                <section className="points-card" >
+                    <span className="points-label">Points</span>
+                    <span className="points-value">0</span>
+                </section>
+                </Link>
+          
+                {/* Streak card */}
+                <Link to="/dashboard">
+                <section className="streak-card">
+                    <span className="streak-label">Streak</span>
+                    <span className="streak-value">0d</span>
+                </section>
+                </Link>
+            </section>
 
-        {/* Streak card */}
-        <section className="streak-card">
-          <span className="streak-label">Streak</span>
-          <span className="streak-value">0d</span>
-        </section>
-      </section>
+            {/* User card */}
+            <Link to="/profile">
+            <section className="user-card">
+                <section className="user-icon">U</section>
+                <section>
+                    <h4>UserName</h4>
+                    <p>Level 1</p>
+                </section>
+            </section>
+         </Link>
+        </aside>
 
-      {/* User card */}
-      <section className="user-card">
-        <section className="user-icon">U</section>
-        <section>
-          <h4>UserName</h4>
-          <p>Level 1</p>
-        </section>
-      </section>
-    </aside>
+    
+
   );
 }
