@@ -1761,13 +1761,9 @@ setFieldErrors({ name: false, description: false });
           title="Quest hub created"
           onClose={() => setIsSuccessOpen(false)}
           footer={
-            <button
-              type="button"
-              className="secondary-btn"
-              onClick={() => setIsSuccessOpen(false)}
-            >
-              Close
-            </button>
+              <PrimaryButton type="button" onClick={() => setIsSuccessOpen(false)}>
+                Close
+              </PrimaryButton>
           }
         >
           <p className="quest-helper">
