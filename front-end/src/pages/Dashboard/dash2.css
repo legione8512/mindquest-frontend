@@ -37,11 +37,11 @@ p {
 }
 
 .sidebar-toggle {
-    width: 2rem;
-    height: 2rem;
+    width: 3rem;
+    height: 3rem;
     flex-shrink: 0;
     position: fixed;
-    top: 0;
+    bottom: 2rem;
     right: 0;
 
     display: grid;

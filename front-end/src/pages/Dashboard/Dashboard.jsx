@@ -187,12 +187,6 @@ export default function Dashboard() {
                                             <section className="quest-info">
                                                 <h4>Calm Coders</h4>
                                                 <p>Mindful study and stress relief for developers - 532 members.</p>
-                                                <section className="challenge">
-                                                    <p className="colour-minor bold">Featured Challenge:</p>
-                                                    <p>3-Minute Gratitude</p>
-                                                    <p>Active now - Day 5 of 7</p>
-                                                    <p>Write 1-3 lines of gratitude each day.</p>
-                                                </section>
                                                 <section className="quest-tags">
                                                     <button className="quest-tag">Daily</button>
                                                     <button className="quest-tag">Individual</button>
@@ -207,12 +201,6 @@ export default function Dashboard() {
                                             <section className="quest-info">
                                                 <h4>Mindful Mornings Hub</h4>
                                                 <p>Start the day calm and focused - 760 members.</p>
-                                                <section className="challenge">
-                                                    <p className="colour-minor bold">Featured Challenge:</p>
-                                                    <p>Breathe & Reset</p>
-                                                    <p>Active now - Day 5 of 7</p>
-                                                    <p>3 cycles of slow breathing every morning.</p>
-                                                </section>
                                                 <section className="quest-tags">
                                                     <button className="quest-tag">Daily</button>
                                                     <button className="quest-tag">Individual</button>
@@ -227,12 +215,6 @@ export default function Dashboard() {
                                             <section className="quest-info">
                                                 <h4>Sleep Better Squad</h4>
                                                 <p>Gentle routines for deeper sleep - 602 members.</p>
-                                                <section className="challenge">
-                                                    <p className="colour-minor bold">Featured Challenge:</p>
-                                                    <p>Digital Sunset</p>
-                                                    <p>Active now - Day 12 of 30</p>
-                                                    <p>Avoid screens for 60 minutes before bedtime.</p>
-                                                </section>
                                                 <section className="quest-tags">
                                                     <button className="quest-tag">Monthly</button>
                                                     <button className="quest-tag">Individual</button>
