@@ -396,6 +396,18 @@
   resize: vertical; /* User can drag bottom edge up/down only */
 }
 
+/* Helper text under Hub Name / Description requirements */
+.field-requirement {
+  font-size: 0.8rem;
+  color: #333;           /* default: black/grey */
+  margin: 0.25rem 0 0;
+}
+
+/* Turn requirement text red when there is a validation error */
+.field-requirement.field-error {
+  color: #c62828;        /* red */
+}
+
 /* =========================================
    RADIO GROUPS & CUSTOM PERIOD
    ========================================= */
@@ -405,6 +417,7 @@
   display: flex; /* Use flexbox */
   flex-direction: column; /* Stack options vertically */
   gap: 0.35rem; /* Space between options */
+  padding-left: 0.25rem; /* or 0.5rem if you want more */
 }
 
 /* Row layout for radio buttons (e.g., quest type) */
@@ -412,6 +425,7 @@
   display: flex; /* Use flexbox */
   flex-wrap: wrap; /* Allow wrapping if not enough space */
   gap: 0.75rem; /* Space between options */
+  padding-left: 0.25rem; /* or 0.5rem if you want more */
 }
 
 /* Style for each radio option label */
