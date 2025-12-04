@@ -1,0 +1,411 @@
+* {
+    font-family: "Sora", sans-serif;
+    font-optical-sizing: auto;
+    font-weight: 300;
+    font-style: normal;
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0;
+    padding: 0;
+}
+
+p {
+    margin: 0;
+}
+
+.container{
+    display: flex;
+    height: 100vh;
+}
+
+.sidebar {
+    width: 15rem;
+    height: 100vh;
+    flex-shrink: 0;
+    position: fixed;
+    top: 0;
+    right: 0;
+
+    display: none;
+    
+    padding: .5rem;
+    background-color: #c1eef9;
+    box-shadow: 0 0 4px rgba(0,0,0,0.2);
+    font-size: small;
+}
+
+.sidebar-toggle {
+    width: 2rem;
+    height: 2rem;
+    flex-shrink: 0;
+    position: fixed;
+    top: 0;
+    right: 0;
+
+    display: grid;
+    place-items: center;
+    
+    background-color: #c1eef9;
+    border: none;
+    border-radius: 0.5rem 0 0 0.5rem;
+    cursor: pointer;
+}
+
+.sidebar-toggle:hover {
+    transition: 0.3s;
+    background-color: #a4dcec;
+}
+
+.sidebar-open .sidebar {
+    display: block;
+}
+
+.sidebar-open .icon-left-open { /*this hides the icon to open when the icon is already open*/
+    display: none;
+}
+.sidebar-open .icon-right-close {
+    display: initial;
+}
+
+.sidebar-open .sidebar-toggle {
+    right:15rem;
+}
+
+.icon {
+    width: 1.5rem;
+    height: 1.5rem;
+    padding: 0.25rem;
+}
+
+.icon-right-close {
+    display: none;
+}
+
+.profile-header {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0.5rem 0 1rem 0;
+    border-bottom: #0b5c77 solid 1px;
+}
+.profile-image {
+    width: 2.5rem;
+    height: 2.5rem;
+    border-radius: 50%;
+    margin: 0.5rem;
+}
+
+.sidebar .title {
+    font-size: small;
+    font-weight: 600;
+    color: #0b5c77;
+    padding-top: 1rem;
+    padding-bottom: 0.2rem;
+}
+
+.profile-details .name {
+    font-size: medium;
+} 
+
+.nav-menu, .tasks{
+    padding: 0.5rem;
+}
+
+.nav-menu .menu-list {
+    list-style: none;
+    margin: 0;
+    padding: 0.5rem;
+}
+
+.nav-menu .menu-link {
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+    align-items: center;
+    gap: 0.5rem;
+
+    font-size: small;
+    font-weight: 600;
+    color: black;
+    text-decoration: none;
+    padding: 0.5rem;
+}
+
+.nav-menu .menu-link:hover {
+    background-color: #a4dcec;
+    border-radius: 0.5rem;
+    transition: 0.3s;
+}
+
+.menu-link .icon {
+    width: 1.5rem;
+    height: 1.5rem;
+}
+
+/*Main Body*/
+.main {
+    flex-grow: 1;
+    padding: 1rem;
+}
+.main-content {
+    width: 90%;
+    margin: 0 auto;
+}
+.sidebar-open .main {
+    margin-right: 15rem;
+}
+
+/*Text Formatting*/
+h1, h2, h3, h4, h5, h6, p {
+    margin: 0;
+    padding-top: 0.25rem;
+    padding-bottom: 0.25rem;
+}
+
+.text-title {
+    font-weight: 600;
+}
+.text-subtitle {
+    font-size: medium;
+}
+.colour-minor {
+    color: #0b5c77;
+}
+.indent {
+    padding-left: 1rem;
+}
+p.small {
+    bottom: 0px;
+}
+
+/* General Cards */
+.card {
+    border-radius: 0.75rem;
+    padding: 1rem;
+
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    flex: 1;
+}
+
+.card.interactive:hover {
+    box-shadow: 0 0 7px rgba(1, 60, 88, 0.4);
+    transition: 0.3s;
+}
+
+.small {
+    border: 2px solid #94c4d1;
+}
+.small.interactive:hover {
+    box-shadow: 0 4px 4px 0 rgba(1, 60, 88, 0.2);
+    transform: translateY(-4px);
+    transition: 0.3s;
+    background-color: #94c4d1;
+}
+
+.card.c-grey {
+    background-color: #e0e0e0;
+}
+
+.card.c-shadow {
+    background-color: #fff;
+    box-shadow: 0 0 4px rgba(1, 60, 88, 0.2);
+}
+
+.section-inline {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-evenly;
+    align-items: center;
+}
+
+.page-link {
+    text-align: center;
+    font-size: small;
+    padding: .5rem;
+    margin: .75rem 0 0 0;
+    
+    background-color: #fff;
+    border-radius: 0.5rem;
+    border: 1px solid rgb(191, 191, 191);
+    cursor: pointer;
+}
+
+.page-link:hover{
+    background-color: rgb(223, 223, 223);
+    transition: 0.3s;
+}
+
+
+/* Overview */
+.overview {
+    display:flex;
+    flex-direction: row;
+    justify-content: space-around;
+    gap: 1rem;
+    padding: 1rem;
+    height: 1fr;
+    width: 1fr;
+
+    border-color: red;
+    border-width: 3px;
+}
+
+#desc-overview {
+    flex: 2;
+    border: 2px solid #013c58;
+}
+
+/*Analytics*/
+.analytics {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    grid-template-rows: [sect1-start] auto [sect2-start] auto [sect3-start] auto [sect3-end];
+    row-gap: 2rem;
+    column-gap: 2rem;
+    padding: 1rem;
+    margin-top: 1.5rem;
+}
+
+/*MOOD Analytics*/
+.analytics-mood {
+    justify-content: left;
+    align-items: stretch;
+}
+.analytics-mood-results {
+    justify-content: space-between;
+    margin: 0 1rem 0 1rem;
+}
+.puzzle-image {
+    max-width: 12rem;
+    height: auto;
+    padding: 0 1rem 0.5rem 0;
+    flex-shrink: 1;
+}
+
+/*ACTIVITY Analytics*/
+.analytics-graph {
+    /*WIP*/
+}
+
+/*QUEST Analytics*/
+.analytics-quests {
+    grid-column: span 2;
+}
+
+#quests-recs {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    align-items: stretch;
+    flex-wrap: wrap;
+    width: 90%;
+    height:auto;
+
+    padding: 0 3rem 0 3rem;
+    margin: 0 auto;
+}
+
+.quests-card{
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    flex: 1;
+    max-width: 300px;
+    margin: 1rem;
+    overflow: hidden;
+
+    border: 2px solid rgb(230, 230, 230);
+    border-radius: 0.75rem;
+}
+
+.quests-card:hover {
+    box-shadow: 0 4px 4px 0 rgba(1, 60, 88, 0.2);
+    transform: translateY(-4px);
+    transition: 0.3s;
+}
+
+.quest-info {
+    padding: 1rem;
+}
+
+.quest-info h4 {
+    margin: 0.5rem 0.2rem 0.5rem 0.2rem;
+    font-weight: 600;
+}
+.quest-info p {
+    margin: 0;
+    padding: 0.2rem;
+    font-weight: 400;
+    font-size: small;
+}
+
+.quest-tags {
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+    align-items: center;
+    align-content: flex-start;
+    gap: 0.25rem;
+    margin-left: 2rem;
+}
+
+.quest-tag {
+    text-align: center;
+    font-size: 0.75rem;
+    padding: .3rem;
+    margin: 0 0.2rem 0 0.2rem;
+    
+    background-color: #eef0ff;
+    border-radius: 1rem;
+    border: transparent;
+}
+
+.challenge {
+    display: flex;
+    flex-direction: column;
+    margin: 0.5rem;
+    padding: 0.5rem;
+
+    background-color: #c1eef979;
+    border-radius: 0.75rem;
+}
+
+.quest-banner {
+    width: 100%;
+    object-fit: cover;
+    display: block;
+    overflow: clip;
+}
+
+/*TOOLS Card*/
+.analytics-tools {
+    height: fit-content;
+}
+
+.analytics-tools-options {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+}
+
+.tools-card {
+    border: 2px solid rgb(230, 230, 230);
+    border-radius: 0.75rem;
+    
+    display: flex;
+    flex-direction: column;
+
+    padding: 1rem;
+    margin: 0.5rem;
+    flex: 1;
+}
+
+/*JOURNAL Card*/
+#analytics-journal {
+    /*WIP*/
+}
