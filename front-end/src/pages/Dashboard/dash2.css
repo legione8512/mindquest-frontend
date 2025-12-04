@@ -261,19 +261,70 @@ p.small {
 }
 
 /*Analytics*/
-.analytics {
+
+.analytics-graphs {
     display: grid;
-    grid-template-columns: repeat(2, 1fr);
-    grid-template-rows: [sect1-start] auto [sect2-start] auto [sect3-start] auto [sect3-end];
-    row-gap: 2rem;
+    grid-template-columns: repeat(10, 1fr);
+    grid-template-rows: [sect1-start] auto [sect2-start];
     column-gap: 2rem;
     padding: 1rem;
     margin-top: 1.5rem;
 }
 
-.card.analytics-mood .card.analytics-activity {
-    padding: 1rem;
+.card.analytics-mood{
+    padding: 2rem;
+    grid-column: span 4;
+    position: relative;
+    height: 30rem;
 
+    display:flex;
+    flex-direction: column;
+}
+
+.analytics-mood .content-wrapper {
+    display: flex;
+    flex-direction: column;
+
+    align-items: center;
+    height: 100%;
+    width: 100%;
+    margin-top: 1rem;
+    margin-bottom: 1rem;
+}
+
+.weekly-mood-graph {
+    flex: 1 1 auto;
+}
+
+.card.analytics-activity {
+    padding: 2rem;
+    grid-column: span 6;
+    position: relative;
+    height: 30rem;
+
+    display: flex;
+    flex-direction: column;
+}
+
+.analytics-activity .content-wrapper {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+}
+
+.weekly-activity-graph {
+    height: 100%;
+    flex: 1 1 auto;
+}
+
+.user-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    grid-template-rows: [sect1-start] auto [sect2-start] auto [sect2-end];
+    row-gap: 2rem;
+    column-gap: 2rem;
+    padding: 1rem;
+    margin-top: 1.5rem;
 }
 
 /*MOOD Analytics*/

@@ -20,6 +20,7 @@ export const weeklyMoodOpt = {
         },
     },
     responsive: true,
+    maintainAspectRatio: false,
 };
 
 export const weeklyMoodData = {
@@ -47,6 +48,7 @@ export const weeklyActivitiesOpt = {
         },
     },
     responsive: true,
+    maintainAspectRatio: false,
     interaction: {
         intersect: false,
     },
@@ -141,11 +143,11 @@ export default function Dashboard() {
                             </section>
 
                             {/* ANALYTICS GRID */}
-                            <section className="analytics" id="analytics">
+                            <section className="analytics-graphs" id="analytics">
                                 {/* MOOD ANALYTICS CARD */}
-                                <section className="card analytics-mood c-grey" id="analytics-mood-graph">
-                                    <section className="analytics-mood-graph" id="mood-doughnut">
-                                        <h4 className="text-title colour-minor">Mood Analysis</h4>
+                                <section className="card c-grey analytics-mood" id="analytics-mood">
+                                    <h4 className="text-title colour-minor">Mood Analysis</h4>
+                                    <section className="content-wrapper">
                                         <section className="weekly-mood-graph">
                                             <Doughnut options={weeklyMoodOpt} data={weeklyMoodData} />
                                         </section>
@@ -153,12 +155,19 @@ export default function Dashboard() {
                                 </section>
 
                                 {/* ACTIVITY GRAPH CARD*/}
-                                <section className="card analytic-activity c-shadow" id="analytics-activity">
-                                    <h4 className="text-title colour-minor">Activity Overview</h4>
-                                    <section className="analytics-activity-graph" id="activity-bar">
-                                        <Bar options={weeklyActivitiesOpt} data={weeklyActivityData}/>
+                                <section className="card c-shadow analytics-activity" id="analytics-activity">
+                                    <section className="content-wrapper">
+                                        <h4 className="text-title colour-minor">Activity Overview</h4>
+                                        <section className="weekly-activity-graph" id="activity-bar">
+                                            <Bar options={weeklyActivitiesOpt} data={weeklyActivityData} />
+                                        </section>
                                     </section>
                                 </section>
+                            </section>
+
+
+                            {/* USER GRID */}
+                            <section className="user-grid">
 
                                 {/* QUESTS CARD */}
                                 <section className="card analytics-quests c-shadow" id="analytics-quests">
