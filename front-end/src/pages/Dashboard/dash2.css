@@ -271,9 +271,40 @@ p.small {
     margin-top: 1.5rem;
 }
 
+.card.analytics-mood .card.analytics-activity {
+    padding: 1rem;
+
+}
+
 /*MOOD Analytics*/
 .analytics-mood {
-    justify-content: left;
+
+}
+.analytics-mood-results {
+
+}
+
+.analytics-mood-graph {
+
+}
+.weekly-mood-graph {
+
+}
+
+/*ACTIVITY Analytics*/
+.analytics-activity {
+    
+}
+
+.analytics-activity-graph {
+    
+}
+
+/*
+
+
+.analytics-mood {
+    justify-content: center;
     align-items: stretch;
 }
 .analytics-mood-results {
@@ -286,11 +317,39 @@ p.small {
     padding: 0 1rem 0.5rem 0;
     flex-shrink: 1;
 }
-
-/*ACTIVITY Analytics*/
-.analytics-graph {
-    /*WIP*/
+.analytics-mood-graph {
+    padding: 1rem;
 }
+.weekly-mood-graph {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin: 0 1rem 0 1rem;
+    margin-bottom: 1rem;
+    max-width: 30rem;
+}
+
+
+
+.analytics-activity {
+    padding: 2rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.analytics-activity-graph {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin: 0;
+    margin-bottom: 1rem;
+}
+
+
+*/
 
 /*QUEST Analytics*/
 .analytics-quests {
@@ -408,4 +467,5 @@ p.small {
 /*JOURNAL Card*/
 #analytics-journal {
     /*WIP*/
+    margin: 0;
 }

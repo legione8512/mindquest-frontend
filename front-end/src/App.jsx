@@ -7,7 +7,7 @@ import Sidebar from "./components/sidebar/sidebar.jsx";
 
 /* Page imports */
 import Home from "./pages/Home.jsx";
-import Dashboard from "./pages/Dashboard.jsx";
+import Dashboard from "./pages/Dashboard/Dashboard.jsx";
 import Learning from "./pages/Learning.jsx";
 import Profile from "./pages/Profile.jsx";
 import Contact from "./pages/Contact.jsx";
@@ -38,4 +38,4 @@ function App() {
   )
 }
 
-export default App
+export default App;
