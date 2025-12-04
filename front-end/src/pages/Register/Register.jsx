@@ -2,6 +2,7 @@ import { useState } from "react";
 import mindquestLogo from "../../assets/Navigation/mindquest_logo.png";
 import "./Register.css";
 
+
 export default function Register() {
   const [formData, setFormData] = useState({
     name: "",
@@ -10,6 +11,38 @@ export default function Register() {
     repPassword: "",
     tos: false,
   });
+
+  const [loginEmail, setLoginEmail] = useState("");
+  const [loginPassword, setLoginPassword] = useState("");
+
+    const handleLoginSubmit = (e) => {
+    e.preventDefault();
+
+    const emailFormat = /\S+@\S+\.\S+/;
+
+    if (loginEmail.trim() === "") {
+      alert("Please enter your email.");
+      return;
+    }
+
+    if (!emailFormat.test(loginEmail)) {
+      alert("Please enter a valid email address.");
+      return;
+    }
+
+    if (loginPassword.trim() === "") {
+      alert("Please enter your password.");
+      return;
+    }
+
+
+    if (loginPassword.length < 8) {
+      alert("Password must be at least 8 characters.");
+      return;
+    }
+
+    alert("Login Successful! (Backend integration coming later)");
+  };
 
   const mailformat = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/;
 
@@ -62,14 +95,37 @@ export default function Register() {
       {/* LEFT SIDE — LOGO */}
       <section className="registerLeft">
         <img
-          src={mindquestLogo}
-          className="registerLogo"
-          alt="MindQuest Logo"
-        />
-      </section>
+            src={mindquestLogo}
+            className="registerLogo"
+            alt="MindQuest Logo"
+          />
+        </section>
 
       {/* RIGHT SIDE — FORM */}
       <section className="registerRight">
+        <section className="loginBox">
+          <h2>Log In</h2>
+
+          <form onSubmit={handleLoginSubmit}>
+            <label className="labelText">Email:</label>
+            <input
+              className="inputText"
+              type="email"
+              value={loginEmail}
+              onChange={(e) => setLoginEmail(e.target.value)}
+            />
+
+            <label className="labelText">Password:</label>
+            <input
+              className="inputText"
+              type="password"
+              value={loginPassword}
+              onChange={(e) => setLoginPassword(e.target.value)}
+            />
+
+            <button className="registerButton">Submit</button>
+          </form>
+        </section>
         <section className="registerBox">
           <h2>Create Your Account</h2>
 
