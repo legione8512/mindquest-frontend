@@ -410,6 +410,12 @@ const QuestsHubs = () => {
   // State for messages shown under the quest form (e.g. errors or success text)
   const [questMessage, setQuestMessage] = useState("");
 
+  // Track validation errors for create quest fields
+  const [fieldErrors, setFieldErrors] = useState({
+    name: false,
+    description: false,
+  });
+
   // State for filters applied to the hub list
   const [filters, setFilters] = useState({
     mode: "All", // All | Team | Individual
@@ -566,11 +572,19 @@ const QuestsHubs = () => {
   // Generic handler for simple inputs in Create Quest form
   const handleChange = (e) => {
     const { name, value, type, checked } = e.target;
+    const newValue = type === "checkbox" ? checked : value;
+
     setFormData((prev) => ({
       ...prev,
-      // For checkboxes, use checked; otherwise use value
-      [name]: type === "checkbox" ? checked : value,
+      [name]: newValue,
     }));
+
+    // When user edits a field, clear its error state
+    if (name === "name") {
+      setFieldErrors((prev) => ({ ...prev, name: false }));
+    } else if (name === "description") {
+      setFieldErrors((prev) => ({ ...prev, description: false }));
+    }
   };
 
   // Handler for quest field changes inside a hub quest form
@@ -620,7 +634,7 @@ const QuestsHubs = () => {
     }));
 
     // Reset quest-specific inputs and messages when changing activity
-    setQuestFormValues({});
+    setQuestFormValues({ });
     setQuestMessage("");
   };
 
@@ -639,7 +653,7 @@ const QuestsHubs = () => {
       teams: ["Team 1", "Team 2"],
       activity: activityOptions[0],
     });
-    setQuestFormValues({});
+    setQuestFormValues({ });
     setQuestMessage("");
   };
 
@@ -647,19 +661,47 @@ const QuestsHubs = () => {
   const closeModal = () => {
     setIsCreateOpen(false);
     resetForm();
+    setFieldErrors({ name: false, description: false });
   };
 
   // Close the View hub modal and reset quest-related states
   const closeHubModal = () => {
     setSelectedHub(null); // no hub selected
     setSelectedTeam(""); // clear team selection
-    setQuestFormValues({}); // clear quest fields
+    setQuestFormValues({ }); // clear quest fields
     setQuestMessage(""); // clear messages
   };
 
   // Handle submission of Create Quest form
   const handleCreateQuest = (e) => {
     e.preventDefault(); // prevent page reload
+
+    // --- Validate hub name and description ---
+
+    const nameRaw = formData.name ?? "";
+    const descriptionRaw = formData.description ?? "";
+
+    const nameInvalid =
+      nameRaw.trim().length === 0 || // empty or only spaces
+      nameRaw.startsWith(" ") || // cannot start with space
+      countWords(nameRaw) < 2; // fewer than 2 words
+
+    const descriptionInvalid =
+      descriptionRaw.trim().length === 0 || // empty or only spaces
+      descriptionRaw.startsWith(" ") || // cannot start with space
+      countWords(descriptionRaw) < 5; // fewer than 5 words
+
+    if (nameInvalid || descriptionInvalid) {
+  setFieldErrors({
+    name: nameInvalid,
+    description: descriptionInvalid,
+  });
+  // Do NOT set questMessage here – errors are shown under the fields
+  return; // stop here – do not create hub
+}
+
+// If everything is valid, clear any previous error state
+setFieldErrors({ name: false, description: false });
 
     // Map periodPreset to user-friendly frequency label
     let frequency = "Custom";
@@ -818,7 +860,7 @@ const QuestsHubs = () => {
     );
 
     // Clear all text fields so user can submit again if under daily cap
-    setQuestFormValues({});
+    setQuestFormValues({ });
   };
 
   // -------------------------
@@ -1074,7 +1116,7 @@ const QuestsHubs = () => {
                         // Open the View hub modal for this hub
                         setSelectedHub(hub);
                         setSelectedTeam("");
-                        setQuestFormValues({});
+                        setQuestFormValues({ });
                         setQuestMessage("");
                       }}
                     >
@@ -1128,6 +1170,15 @@ const QuestsHubs = () => {
                     placeholder="e.g. Brunel Uni Hub"
                     required
                   />
+                  <p
+                    className={
+                      fieldErrors.name
+                        ? "field-requirement field-error"
+                        : "field-requirement"
+                    }
+                  >
+                    At least 2 words and can't begin with space.
+                  </p>
                 </div>
               </div>
 
@@ -1140,7 +1191,17 @@ const QuestsHubs = () => {
                   value={formData.description}
                   onChange={handleChange}
                   placeholder="Briefly describe what participants will do in this quest."
+                  required
                 />
+                <p
+                  className={
+                    fieldErrors.description
+                      ? "field-requirement field-error"
+                      : "field-requirement"
+                  }
+                >
+                  At least 5 words and can't begin with space.
+                </p>
               </div>
 
               {/* Image selection with dropdown + preview */}
@@ -1323,24 +1384,17 @@ const QuestsHubs = () => {
 
               {/* Show rules (max per day, points, bonus) for selected quest template */}
               {selectedQuestTemplate && (
-                <div className="quest-template-block">
-                  <p className="quest-helper">
-                    This quest can be completed up to{" "}
-                    {selectedQuestTemplate.maxPerDay} time(s) per day. Each
-                    valid submission is worth{" "}
-                    {selectedQuestTemplate.pointsPerSubmission} points
-                    {selectedQuestTemplate.bonus
-                      ? `, plus a ${selectedQuestTemplate.bonus.points} point bonus on completion ${selectedQuestTemplate.bonus.triggerCompletion} of the day.`
-                      : "."}
-                  </p>
-
-                  {/* Optional message (e.g. validation, errors) */}
-                  {questMessage && (
-                    <p className="quest-helper" style={{ fontWeight: 500 }}>
-                      {questMessage}
-                    </p>
-                  )}
-                </div>
+  <div className="quest-template-block">
+    <p className="quest-helper">
+      This quest can be completed up to{" "}
+      {selectedQuestTemplate.maxPerDay} time(s) per day. Each
+      valid submission is worth{" "}
+      {selectedQuestTemplate.pointsPerSubmission} points
+      {selectedQuestTemplate.bonus
+        ? `, plus a ${selectedQuestTemplate.bonus.points} point bonus on completion ${selectedQuestTemplate.bonus.triggerCompletion} of the day.`
+        : "."}
+    </p>
+  </div>
               )}
 
               {/* When quest type is Team, allow editing multiple team names */}
@@ -1479,7 +1533,6 @@ const QuestsHubs = () => {
             </>
           }
         >
-        
           {/* Cover image of the selected hub */}
           <div className="hub-image-wrapper" style={{ marginBottom: "1rem" }}>
             <img
@@ -1700,17 +1753,21 @@ const QuestsHubs = () => {
           )}
         </Modal>
       )}
-            {/* SUCCESS POPUP AFTER CREATING A QUEST HUB */}
+
+      {/* SUCCESS POPUP AFTER CREATING A QUEST HUB */}
       {isSuccessOpen && (
         <Modal
           isOpen={isSuccessOpen}
           title="Quest hub created"
           onClose={() => setIsSuccessOpen(false)}
           footer={
-            <PrimaryButton type="button" onClick={() => setIsSuccessOpen(false)}>
-                Close
-              </PrimaryButton>
-            
+            <button
+              type="button"
+              className="secondary-btn"
+              onClick={() => setIsSuccessOpen(false)}
+            >
+              Close
+            </button>
           }
         >
           <p className="quest-helper">
