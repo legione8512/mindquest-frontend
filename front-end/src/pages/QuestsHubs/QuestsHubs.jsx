@@ -424,6 +424,9 @@ const QuestsHubs = () => {
   // State for the committed search query (applied only when user clicks Search)
   const [searchQuery, setSearchQuery] = useState("");
 
+  // State for success popup after creating a quest
+  const [isSuccessOpen, setIsSuccessOpen] = useState(false);
+
   // -------------------------
   // Filters & search handlers
   // -------------------------
@@ -720,6 +723,8 @@ const QuestsHubs = () => {
     setHubs((prev) => [newHub, ...prev]);
     // Close the Create Quest modal and reset
     closeModal();
+    // Open the success popup
+    setIsSuccessOpen(true);
   };
 
   // Compute the preview image object for the selected imageKey
@@ -1313,11 +1318,6 @@ const QuestsHubs = () => {
                   <p className="quest-template-text">
                     {selectedQuestTemplate.shortDescription}
                   </p>
-                  <p className="quest-helper">
-                    This is just a preview of the activity from the MindQuest
-                    brief. You can still customise the quest name and
-                    description above.
-                  </p>
                 </div>
               )}
 
@@ -1479,6 +1479,7 @@ const QuestsHubs = () => {
             </>
           }
         >
+        
           {/* Cover image of the selected hub */}
           <div className="hub-image-wrapper" style={{ marginBottom: "1rem" }}>
             <img
@@ -1697,6 +1698,25 @@ const QuestsHubs = () => {
               details, but joining is closed.
             </p>
           )}
+        </Modal>
+      )}
+            {/* SUCCESS POPUP AFTER CREATING A QUEST HUB */}
+      {isSuccessOpen && (
+        <Modal
+          isOpen={isSuccessOpen}
+          title="Quest hub created"
+          onClose={() => setIsSuccessOpen(false)}
+          footer={
+            <PrimaryButton type="button" onClick={() => setIsSuccessOpen(false)}>
+                Close
+              </PrimaryButton>
+            
+          }
+        >
+          <p className="quest-helper">
+            Your quest hub has been created successfully. You can now join the
+            quest from the list of hubs.
+          </p>
         </Modal>
       )}
     </>
