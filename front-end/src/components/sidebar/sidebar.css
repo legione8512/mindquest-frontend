@@ -156,14 +156,19 @@
   /* User card */
   .user-card {
     background: #c1eef9;
-    padding: 0.4rem;
+    padding: 0 0.4rem;
     border-radius: 12px;
     display: flex;
     align-items: center;
     gap: 0.9rem;
     margin-bottom: 1rem;
   }
-
+.user-text{
+  display: flex;
+  flex-direction: column;     /* stack title and subtitle vertically */
+  justify-content:center;  
+  padding-top: 15px;
+}
   /* User profile icon */
   .user-icon {
     width: 25px;

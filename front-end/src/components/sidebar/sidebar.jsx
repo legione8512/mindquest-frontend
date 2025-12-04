@@ -104,7 +104,7 @@ export default function Sidebar({ isOpen, toggleSidebar }) {
             <Link to="/profile">
             <section className="user-card">
                 <section className="user-icon">U</section>
-                <section>
+                <section className="user-text">
                     <h4>UserName</h4>
                     <p>Level 1</p>
                 </section>
