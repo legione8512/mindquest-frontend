@@ -4,10 +4,14 @@ import "./dash2.css";
 import { Chart as ChartJS, ArcElement, CategoryScale, LinearScale, BarElement, Title, Tooltip, Legend, plugins, Interaction } from "chart.js/auto";
 import { Doughnut, Bar } from "react-chartjs-2";
 
-import neutral_puzzle from "../../assets/neutral_puzzle.png";
 import img7 from "../../assets/7.webp";
 import img12 from "../../assets/12.webp";
 import img16 from "../../assets/16.webp";
+import breathing from "../../assets/breathing.jpg";
+import deepbreathing from "../../assets/deepbreathing.jpg";
+import meditation from "../../assets/meditation.jpeg";
+import musclerelaxation from "../../assets/musclerelaxation.jpg";
+
 
 ChartJS.register(ArcElement, CategoryScale, LinearScale, BarElement, Title, Tooltip, Legend);
 
@@ -249,7 +253,21 @@ export default function Dashboard() {
                                         </section>
                                         <section className="tools-card" id="tools-quickcalm">
                                             <h4 className="text-title">QuickCalm</h4>
-                                            <a href="#"><button className="page-link">See Exercises</button></a>
+                                            <section className="quick-access-grid">
+                                                <section className="card">
+                                                    <a href="">
+                                                        <img className="image-fill" src={breathing} alt=""></img>
+                                                    </a>
+                                                </section>
+                                                <section className="card">
+                                                    <a href="">
+                                                        <img className="image-fill" src={musclerelaxation} alt=""></img>
+                                                    </a>
+                                                </section>
+                                                <section className="card">
+                                                    <a href="#"><button className="page-link">See Exercises</button></a>
+                                                </section>
+                                            </section>
                                         </section>
                                     </section>
                                 </section>
@@ -257,7 +275,7 @@ export default function Dashboard() {
                                 {/* JOURNAL CARD */}
                                 <section className="card analytics-journal c-grey" id="analytics-journal">
                                     <h4 className="text-title colour-minor">Your Journal</h4>
-                                    <p className="subtitle"> yes </p>
+                                    <p className="subtitle"> /// </p>
                                 </section>
 
                             </section>
