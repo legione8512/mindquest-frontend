@@ -51,12 +51,12 @@
     padding-top: 0;
     width: 30px;
   }
-/* Text block to the right of the logo */
-.side-title {
-  display: flex;
-  flex-direction: column;     /* stack title and subtitle vertically */
-  justify-content:center;    /* centre them vertically as a block */
-}
+  /* Text block to the right of the logo */
+  .side-title {
+    display: flex;
+    flex-direction: column; /* stack title and subtitle vertically */
+    justify-content: center; /* centre them vertically as a block */
+  }
   /* Sidebar title and text section */
   .side-title h2 {
     color: white;
@@ -68,9 +68,8 @@
     color: #c1eef9;
     font-size: 0.45rem;
     font-weight: 500;
-    margin: 0;         /* small gap below the title */
+    margin: 0; /* small gap below the title */
     line-height: 1.1;
-
   }
 
   /* Sidebar buttons */
@@ -163,12 +162,12 @@
     gap: 0.9rem;
     margin-bottom: 1rem;
   }
-.user-text{
-  display: flex;
-  flex-direction: column;     /* stack title and subtitle vertically */
-  justify-content:center;  
-  padding-top: 15px;
-}
+  .user-text {
+    display: flex;
+    flex-direction: column; /* stack title and subtitle vertically */
+    justify-content: center;
+    padding-top: 15px;
+  }
   /* User profile icon */
   .user-icon {
     width: 25px;
