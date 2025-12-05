@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import { Link } from "react-router-dom";
 import "./Dashboard.css";
 
 import { Chart as ChartJS, ArcElement, CategoryScale, LinearScale, BarElement, Title, Tooltip, Legend } from "chart.js/auto";
@@ -290,7 +291,7 @@ export default function Dashboard() {
                                             <section className="quest-info">
                                                 <h4>Calm Coders</h4>
                                                 <p>Mindful study and stress relief for developers - 532 members.</p>
-                                                <a href="#"><button className="page-link">View Quest Hub</button></a>
+                                                <a href="./hubs"><button className="page-link">View Quest Hub</button></a>
                                             </section>
                                         </section>
                                         <section className="quests-card" id="quests-s2">
@@ -300,7 +301,7 @@ export default function Dashboard() {
                                             <section className="quest-info">
                                                 <h4>Mindful Mornings Hub</h4>
                                                 <p>Start the day calm and focused - 760 members.</p>
-                                                <a href="#"><button className="page-link">View Quest Hub</button></a>
+                                                <a href="./hubs"><button className="page-link">View Quest Hub</button></a>
                                             </section>
                                         </section>
                                         <section className="quests-card" id="quests-s3">
@@ -310,7 +311,7 @@ export default function Dashboard() {
                                             <section className="quest-info">
                                                 <h4>Sleep Better Squad</h4>
                                                 <p>Gentle routines for deeper sleep - 602 members.</p>
-                                                <a href="#"><button className="page-link">View Quest Hub</button></a>
+                                                <a href="./hubs"><button className="page-link">View Quest Hub</button></a>
                                             </section>
                                         </section>
                                         <section className="quests-card" id="quests-s4">
@@ -320,7 +321,7 @@ export default function Dashboard() {
                                             <section className="quest-info">
                                                 <h4>Anxiety Relief Circle</h4>
                                                 <p>Gentle steps to reduce anxious thoughts - 218 members.</p>
-                                                <a href="#"><button className="page-link">View Quest Hub</button></a>
+                                                <a href="./hubs"><button className="page-link">View Quest Hub</button></a>
                                             </section>
                                         </section>
                                     </section>
@@ -332,53 +333,54 @@ export default function Dashboard() {
                                     <section className="analytics-tools-options" id="analytics-tools-options">
                                         <section className="tools-cards" id="tools-mood-compass">
                                             <h4 className="text-title">Mood Compass</h4>
-                                            <a href="#"><button className="page-link">Track Mood</button></a>
+                                            <a href="./mood_compass"><button className="page-link">Track Mood</button></a>
                                         </section>
                                         <section className="tools-cards container" id="tools-quickcalm">
                                             <h4 className="text-title">QuickCalm</h4>
                                             <section className="wrapper">
                                                 <section className="card interactive bodyscan ">
-                                                    <a href="" className="center">
+                                                    <a href="./quickcalm" className="center colour-minor">
                                                         Body Scan
                                                     </a>
                                                 </section>
                                                 <section className="card interactive breathing">
-                                                    <a href="" className="center">
+                                                    <a href="./quickcalm" className="center colour-minor">
                                                         Breathing
                                                     </a>
                                                 </section>
                                                 <section className="card interactive deepbreathing">
-                                                    <a href="" className="center">
+                                                    <a href="./quickcalm" className="center colour-minor">
                                                         Deep Breathing
                                                     </a>
                                                 </section>
                                                 <section className="card interactive meditation">
-                                                    <a href="" className="center">
+                                                    <a href="./quickcalm" className="center colour-minor">
                                                         Meditation
                                                     </a>
                                                 </section>
                                                 <section className="card interactive musclerelaxation">
-                                                    <a href="" className="center">
+                                                    <a href="./quickcalm" className="center colour-minor">
                                                         Muscle Relaxation
                                                     </a>
                                                 </section>
                                                 <section className="card interactive shoulderrelaxation">
-                                                    <a href="" className="center">
+                                                    <a href="./quickcalm" className="center colour-minor">
                                                         Shoulder Relaxation
                                                     </a>
                                                 </section>
                                             </section>
-                                            <a href="#"><button className="page-link">Do Exercise</button></a>
+                                            <a href="./quickcalm"><button className="page-link">Do Exercise</button></a>
                                         </section>
                                     </section>
                                 </section>
 
                                 {/* JOURNAL CARD */}
+                                {/*
                                 <section className="card analytics-journal c-grey" id="analytics-journal">
                                     <h4 className="text-title colour-minor">Your Journal</h4>
                                     <p className="subtitle"> /// </p>
                                 </section>
-
+                                */}
                             </section>
 
                         </section>

@@ -354,7 +354,6 @@ p.small {
     padding: 1rem;
     margin-top: 1.5rem;
 }
-
 /*QUEST Analytics*/
 .analytics-quests {
     grid-column: span 2;
@@ -448,6 +447,7 @@ p.small {
 /*TOOLS Card*/
 .analytics-tools {
     height: fit-content;
+    grid-column: span 2;
 }
 
 .analytics-tools-options {
