@@ -276,7 +276,7 @@ export default function Dashboard() {
                             {/* USER GRID */}
                             <section className="user-grid">
 
-                                {/* QUESTS CARD */}
+                                {/* QUESTS CARDS */}
                                 <section className="card analytics-quests c-shadow" id="analytics-quests">
                                     <h4 className="text-title colour-minor">Your Quests</h4>
                                     <p className="text-subtitle"> You currently have no active quests. Here are some quests, active and

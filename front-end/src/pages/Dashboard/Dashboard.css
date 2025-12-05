@@ -340,6 +340,10 @@ p.small {
     height: 100%;
     flex: 1 1 auto;
 }
+.monthly-activity-graph {
+    height: 100%;
+    flex: 1 1 auto;
+}
 
 .user-grid {
     display: grid;
@@ -364,7 +368,7 @@ p.small {
     height: auto;
     gap: 1rem;
 
-    padding: 0 3rem 0 3rem;
+    padding: 0 2rem 0 2rem;
     margin: 0 auto;
     margin-top: 1rem;
 }
