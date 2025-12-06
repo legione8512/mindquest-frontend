@@ -8,11 +8,11 @@ import Footer from "./components/footer/footer.jsx";
 
 /* Page imports */
 import Home from "./pages/Home";
-import Dashboard from "./pages/Dashboard.jsx";
+import Dashboard from "./pages/Dashboard/Dashboard.jsx";
 import Learning from "./pages/Learning/Learning.jsx";
 import MoodCompass from "./pages/MoodCompass.jsx";
 import Account from "./pages/Account/Account.jsx";
-import Register from "./pages/Register.jsx";
+import Register from "./pages/Register/Register.jsx";
 import QuestsHubs from "./pages/QuestsHubs/QuestsHubs.jsx";
 import QuickCalm from "./pages/QuickCalm.jsx";
 
