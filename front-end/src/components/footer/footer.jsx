@@ -1,4 +1,3 @@
-
 import { useState } from "react";
 import "./footer.css";
 import logo from "../../assets/Navigation/mindquest_logo.png";

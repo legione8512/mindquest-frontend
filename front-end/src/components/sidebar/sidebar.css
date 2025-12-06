@@ -1,3 +1,12 @@
+.sidebar a {
+  text-decoration: none !important;
+}
+
+.sidebar a:hover,
+.sidebar a:focus,
+.sidebar a:active {
+  text-decoration: none !important;
+}
 @media (max-width: 1100px) {
   .sidebar {
     position: fixed;
@@ -51,12 +60,12 @@
     padding-top: 0;
     width: 30px;
   }
-/* Text block to the right of the logo */
-.side-title {
-  display: flex;
-  flex-direction: column;     /* stack title and subtitle vertically */
-  justify-content:center;    /* centre them vertically as a block */
-}
+  /* Text block to the right of the logo */
+  .side-title {
+    display: flex;
+    flex-direction: column; /* stack title and subtitle vertically */
+    justify-content: center; /* centre them vertically as a block */
+  }
   /* Sidebar title and text section */
   .side-title h2 {
     color: white;
@@ -68,9 +77,8 @@
     color: #c1eef9;
     font-size: 0.45rem;
     font-weight: 500;
-    margin: 0;         /* small gap below the title */
+    margin: 0; /* small gap below the title */
     line-height: 1.1;
-
   }
 
   /* Sidebar buttons */
@@ -163,7 +171,12 @@
     gap: 0.9rem;
     margin-bottom: 1rem;
   }
-
+  .user-text {
+    display: flex;
+    flex-direction: column; /* stack title and subtitle vertically */
+    justify-content: center;
+    padding-top: 15px;
+  }
   /* User profile icon */
   .user-icon {
     width: 25px;
@@ -191,16 +204,15 @@
     font-size: 0.4rem;
     opacity: 0.8;
   }
-  .user-text{
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-  }
 }
 
 /* Hide sidebar on desktop */
 @media screen and (min-width: 1100px) {
   .sidebar {
     display: none;
+  }
+  .sidebar a,
+  .sidebar .menu-link {
+    text-decoration: none !important;
   }
 }
