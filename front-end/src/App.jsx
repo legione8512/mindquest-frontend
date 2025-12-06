@@ -1,14 +1,15 @@
 import { useState } from "react";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 
-/* Import for navigation bar and sidebar */
+
+/* Import for navigation bar, sidebar and footer */
 import Navigation from "./components/navigation/navigation.jsx";
 import Sidebar from "./components/sidebar/sidebar.jsx";
 import Footer from "./components/footer/footer.jsx";
 
 /* Page imports */
 import Home from "./pages/Home";
-import Dashboard from "./pages/Dashboard.jsx";
+import Dashboard from "./pages/Dashboard/Dashboard.jsx";
 import Learning from "./pages/Learning/Learning.jsx";
 import LessonPage from "./pages/Learning/Lessons/Lessons.jsx";
 import Account from "./pages/Account/Account.jsx";

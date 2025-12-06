@@ -1,3 +1,12 @@
+.sidebar a {
+  text-decoration: none !important;
+}
+
+.sidebar a:hover,
+.sidebar a:focus,
+.sidebar a:active {
+  text-decoration: none !important;
+}
 @media (max-width: 1100px) {
   .sidebar {
     position: fixed;
@@ -41,7 +50,7 @@
     display: flex;
     align-items: center;
     gap: 0.4rem;
-    padding-bottom: 0.6rem;
+    padding: 1rem 0;
     margin-bottom: 0.5rem;
     border-bottom: solid 1px #c1eef9;
   }
@@ -51,17 +60,25 @@
     padding-top: 0;
     width: 30px;
   }
-
+  /* Text block to the right of the logo */
+  .side-title {
+    display: flex;
+    flex-direction: column; /* stack title and subtitle vertically */
+    justify-content: center; /* centre them vertically as a block */
+  }
   /* Sidebar title and text section */
   .side-title h2 {
     color: white;
     font-size: 0.8rem;
+    margin: 0;
   }
 
   .side-title p {
     color: #c1eef9;
     font-size: 0.45rem;
     font-weight: 500;
+    margin: 0; /* small gap below the title */
+    line-height: 1.1;
   }
 
   /* Sidebar buttons */
@@ -147,14 +164,19 @@
   /* User card */
   .user-card {
     background: #c1eef9;
-    padding: 0.4rem;
+    padding: 0 0.4rem;
     border-radius: 12px;
     display: flex;
     align-items: center;
     gap: 0.9rem;
     margin-bottom: 1rem;
   }
-
+  .user-text {
+    display: flex;
+    flex-direction: column; /* stack title and subtitle vertically */
+    justify-content: center;
+    padding-top: 15px;
+  }
   /* User profile icon */
   .user-icon {
     width: 25px;
@@ -188,5 +210,9 @@
 @media screen and (min-width: 1100px) {
   .sidebar {
     display: none;
+  }
+  .sidebar a,
+  .sidebar .menu-link {
+    text-decoration: none !important;
   }
 }

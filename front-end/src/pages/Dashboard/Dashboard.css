@@ -1,0 +1,420 @@
+------ MAIN BODY ------- */ 
+
+/*Text Formatting*/
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+p {
+  margin: 0;
+  padding-top: 0.25rem;
+  padding-bottom: 0.25rem;
+}
+
+.text-title {
+  font-weight: 600;
+}
+h1.text-title {
+  margin-top: 2rem;
+}
+
+.text-subtitle {
+  font-size: medium;
+}
+
+.colour-minor {
+  color: #0b5c77;
+}
+
+.indent {
+  padding-left: 1rem;
+}
+
+p.small {
+  bottom: 0px;
+}
+
+/* General Cards */
+.cardz {
+  border-radius: 0.75rem;
+  padding: 1rem;
+
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  flex: 1;
+}
+
+.cardz.interactive:hover {
+  box-shadow: 0 0 7px rgba(1, 60, 88, 0.4);
+  transition: 0.3s ease-in-out;
+}
+
+.small {
+  border: 2px solid #94c4d1;
+}
+
+.small.interactive:hover {
+  box-shadow: 0 4px 4px 0 rgba(1, 60, 88, 0.2);
+  transform: translateY(-4px);
+  transition: 0.3s;
+  background-color: #94c4d1;
+}
+
+.cardz.c-grey {
+  background-color: #e0e0e0;
+}
+
+.cardz.c-shadow {
+  background-color: #fff;
+  box-shadow: 0 0 4px rgba(1, 60, 88, 0.2);
+}
+
+.section-inline {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-evenly;
+  align-items: center;
+}
+
+.page-linkz {
+  text-align: center;
+  font-size: small;
+  padding: 0.5rem;
+  margin: 0.75rem 0 0 0;
+
+  background-color: #fff;
+  border-radius: 0.5rem;
+  border: 1px solid rgb(191, 191, 191);
+  cursor: pointer;
+}
+
+.page-linkz:hover {
+  background-color: rgb(223, 223, 223);
+  transition: 0.3s;
+}
+
+/* Overview */
+.overview {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  gap: 1rem;
+  padding: 1rem;
+  height: 1fr;
+  width: 1fr;
+
+  border-color: red;
+  border-width: 3px;
+}
+
+#desc-overview {
+  flex: 2;
+  border: 2px solid #013c58;
+}
+
+/*Analytics*/
+.analytics-graphs {
+  display: grid;
+  grid-template-columns: repeat(10, 1fr);
+  grid-template-rows: [sect1-start] auto [sect2-start];
+  column-gap: 2rem;
+  padding: 1rem;
+  margin-top: 1.5rem;
+}
+
+.cardz.analytics-mood {
+  padding: 2rem;
+  grid-column: span 4;
+  position: relative;
+  height: 30rem;
+
+  display: flex;
+  flex-direction: column;
+}
+
+.analytics-mood .content-wrapper {
+  display: flex;
+  flex-direction: column;
+
+  align-items: center;
+  height: 100%;
+  width: 100%;
+  margin-top: 1rem;
+  margin-bottom: 1rem;
+}
+
+.weekly-mood-graph {
+  flex: 1 1 auto;
+}
+.monthly-mood-graph {
+  flex: 1 1 auto;
+}
+
+.cardz.analytics-activity {
+  padding: 2rem;
+  grid-column: span 6;
+  position: relative;
+  height: 30rem;
+
+  display: flex;
+  flex-direction: column;
+}
+
+.analytics-activity .content-wrapper {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+}
+
+.weekly-activity-graph {
+  height: 100%;
+  flex: 1 1 auto;
+}
+.monthly-activity-graph {
+  height: 100%;
+  flex: 1 1 auto;
+}
+
+.user-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  grid-template-rows: [sect1-start] auto [sect2-start] auto [sect2-end];
+  row-gap: 2rem;
+  column-gap: 2rem;
+  padding: 1rem;
+  margin-top: 1.5rem;
+}
+
+/*QUEST Analytics*/
+.analytics-quests {
+  grid-column: span 2;
+  width: 100%;
+}
+
+#quests-recs {
+  display: grid;
+  flex-direction: row;
+  grid-template-columns: repeat(4, 1fr);
+  max-width: 100%;
+  min-height: 280px;
+  height: auto;
+  gap: 1rem;
+
+  padding: 0 2rem 0 2rem;
+  margin: 0 auto;
+  margin-top: 1rem;
+}
+
+.quests-card {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  flex: 1;
+  max-width: 300px;
+  overflow: hidden;
+
+  border: 2px solid rgb(230, 230, 230);
+  border-radius: 0.75rem;
+}
+
+.quests-card:hover {
+  box-shadow: 0 4px 4px 0 rgba(1, 60, 88, 0.2);
+  transform: translateY(-4px);
+  transition: 0.3s;
+}
+
+.quest-info {
+  padding: 1rem;
+}
+
+.quest-info h4 {
+  margin: 0.5rem 0.2rem 0.5rem 0.2rem;
+  font-weight: 600;
+}
+
+.quest-info p {
+  margin: 0;
+  padding: 0.2rem;
+  font-weight: 400;
+  font-size: small;
+}
+
+.quest-tags {
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+  align-items: center;
+  align-content: flex-start;
+  gap: 0.25rem;
+  margin-left: 2rem;
+}
+
+.quest-tag {
+  text-align: center;
+  font-size: 0.75rem;
+  padding: 0.3rem;
+  margin: 0 0.2rem 0 0.2rem;
+
+  background-color: #eef0ff;
+  border-radius: 1rem;
+  border: transparent;
+}
+
+.challenge {
+  display: flex;
+  flex-direction: column;
+  margin: 0.5rem;
+  padding: 0.5rem;
+
+  background-color: #c1eef979;
+  border-radius: 0.75rem;
+}
+
+.quest-banner {
+  width: 100%;
+  object-fit: cover;
+  display: block;
+  overflow: clip;
+}
+
+/*TOOLS Card*/
+.analytics-tools {
+  height: fit-content;
+  width: 100%;
+}
+
+.analytics-tools-options {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  width: 100%;
+}
+
+.tools-cards {
+  border: 2px solid rgb(230, 230, 230);
+  border-radius: 0.75rem;
+
+  display: flex;
+  flex-direction: column;
+
+  padding: 01rem;
+  margin: 0.5rem;
+  flex: 1;
+}
+
+.wrapper {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  grid-template-rows: [sect1-start] auto [sect2-start] auto [sect2-end];
+  row-gap: 0.5rem;
+  column-gap: 0.5rem;
+  padding: 0;
+  margin-top: 1rem;
+}
+
+.wrapper .cardz a {
+  font-weight: 600;
+  text-align: center;
+  text-decoration: none;
+}
+
+.image-fill {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
+  display: block;
+  border-radius: 0.5rem;
+  overflow: hidden;
+  position: relative;
+}
+
+/*JOURNAL Card*/
+#analytics-journal {
+  /*WIP*/
+  margin: 0;
+  width: 100%;
+}
+
+.cardz.bodyscan {
+  background-image: url("../../assets/quickcalm/bodyscan.avif");
+}
+.cardz.breathing {
+  background-image: url("../../assets/quickcalm/breathing.jpg");
+}
+.cardz.deepbreathing {
+  background-image: url("../../assets/quickcalm/deepbreathing.jpg");
+}
+.cardz.meditation {
+  background-image: url("../../assets/quickcalm/meditation.jpeg");
+}
+.cardz.musclerelaxation {
+  background-image: url("../../assets/quickcalm/musclerelaxation.jpg");
+}
+.cardz.shoulderrelaxation {
+  background-image: url("../../assets/quickcalm/shoulderrelaxation.jpeg");
+}
+
+/* ------- RESPONSIVE QUERIES -------*/
+
+/* Phone Screen */
+@media (max-width: 850px) {
+  .overview {
+    display: grid;
+    flex-direction: column;
+    grid-template-columns: 1fr;
+    max-width: 100%;
+
+    gap: 1rem;
+    padding: 1rem;
+    border-width: 3px;
+  }
+
+  .analytics-graphs {
+    display: grid;
+    grid-template-columns: 1fr;
+    grid-template-rows: [sect1-start] auto [sect2-start] auto [sect2-end];
+    row-gap: 2rem;
+  }
+
+  .analytics-activity.cardz,
+  .analytics-mood.cardz {
+    grid-column: span 10;
+  }
+
+  .quests-card {
+    width: 100%;
+    height: auto;
+  }
+
+  .quest-recs {
+    grid-template-columns: 1fr;
+  }
+
+  .analytics-tools,
+  .analytics-journal {
+    grid-column: span 2;
+  }
+
+  .analytics-tools-options {
+    flex-direction: column;
+  }
+
+  .tools-cards .wrapper {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    grid-template-rows: auto auto auto;
+    gap: 1rem;
+    padding: 1rem;
+  }
+
+  .wrapper .cardz {
+    display: flex;
+    width: 100%;
+    height: 100%;
+    margin: 0;
+  }
+}
