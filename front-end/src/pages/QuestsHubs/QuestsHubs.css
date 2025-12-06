@@ -48,6 +48,7 @@
   justify-content: space-between; /* Place text on left and button on right */
   align-items: center; /* Vertically align items to the centre */
   gap: 5rem; /* Horizontal space between text block and button */
+  box-shadow: 0px 5px 15px #013c58;
 }
 
 /* Heading inside the hero text block */
@@ -192,6 +193,7 @@
   padding: 0; /* No internal padding at card container level */
   display: flex; /* Use flexbox for vertical layout inside */
   flex-direction: column; /* Stack children vertically */
+  box-shadow: 0px 5px 15px #013c58;
 }
 
 /* Wrapper for the card header image */
@@ -319,6 +321,7 @@
     flex-direction: column; /* Stack hero text and button vertically */
     align-items: flex-start; /* Left-align items instead of centre */
     gap: 1.25rem; /* Smaller gap between elements */
+    box-shadow: 0px 5px 15px #013c58;
   }
 
   .hubs-hero-text {
@@ -399,13 +402,13 @@
 /* Helper text under Hub Name / Description requirements */
 .field-requirement {
   font-size: 0.8rem;
-  color: #333;           /* default: black/grey */
+  color: #333; /* default: black/grey */
   margin: 0.25rem 0 0;
 }
 
 /* Turn requirement text red when there is a validation error */
 .field-requirement.field-error {
-  color: #c62828;        /* red */
+  color: #c62828; /* red */
 }
 
 /* =========================================
