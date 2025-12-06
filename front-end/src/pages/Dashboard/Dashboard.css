@@ -1,33 +1,6 @@
-* {
-  font-family: "Sora", sans-serif;
-  font-optical-sizing: auto;
-  font-weight: 300;
-  font-style: normal;
-  box-sizing: border-box;
-}
-
-body {
-  margin: 0;
-  padding: 0;
-}
-
-p {
-  margin: 0;
-}
-
-/* ------- MAIN BODY ------- */
-.main {
+------ MAIN BODY ------- */ .main {
   flex-grow: 1;
   padding: 1rem;
-}
-
-.main-content {
-  width: 90%;
-  margin: 0 auto;
-}
-
-.sidebar-open .main {
-  margin-right: 15rem;
 }
 
 /*Text Formatting*/
@@ -218,6 +191,7 @@ p.small {
 /*QUEST Analytics*/
 .analytics-quests {
   grid-column: span 2;
+  width: 100%;
 }
 
 #quests-recs {
@@ -308,6 +282,7 @@ p.small {
 /*TOOLS Card*/
 .analytics-tools {
   height: fit-content;
+  width: 100%;
 }
 
 .analytics-tools-options {
@@ -360,6 +335,7 @@ p.small {
 #analytics-journal {
   /*WIP*/
   margin: 0;
+  width: 100%;
 }
 
 .card.bodyscan {
