@@ -1,6 +1,4 @@
 import React, { useState } from "react";
-import "./Dashboard.css";
-
 import {
   Chart as ChartJS,
   ArcElement,
@@ -17,6 +15,8 @@ import img7 from "../../assets/7.webp";
 import img8 from "../../assets/8.webp";
 import img12 from "../../assets/12.webp";
 import img16 from "../../assets/16.webp";
+
+import "./Dashboard.css";
 
 ChartJS.register(
   ArcElement,
@@ -215,7 +215,7 @@ export default function Dashboard() {
 
   return (
     <>
-      <div className="layout-container">
+      <div className="layout-container dash-page">
         <section className="main">
           <section className="main-content" id="overview">
             {/* Greeting and Overview */}
@@ -228,7 +228,7 @@ export default function Dashboard() {
             {/* !!! IF TIME - Consider making reusable card component for the different types of cards throughout webpage */}
             <section>
               <section className="overview">
-                <section className="card" id="desc-overview">
+                <section className="cardz" id="desc-overview">
                   <h4 className="text-title colour-minor">Your Summary</h4>
                   <p>
                     {" "}
@@ -236,23 +236,23 @@ export default function Dashboard() {
                     us. Take a look!{" "}
                   </p>
                 </section>
-                <section className="card small interactive" id="stats-points">
+                <section className="cardz small interactive" id="stats-points">
                   <h4 className="text-title colour-minor">Points</h4>
                   <p> 0 </p>
                 </section>
-                <section className="card small interactive" id="stats-streak">
+                <section className="cardz small interactive" id="stats-streak">
                   <h4 className="text-title colour-minor">Streak</h4>
                   <p> 0 days </p>
                 </section>
-                <section className="card small interactive" id="stats-moods">
+                <section className="cardz small interactive" id="stats-moods">
                   <h4 className="text-title colour-minor">Moods Tracked</h4>
                   <p> 0 </p>
                 </section>
-                <section className="card small interactive" id="stats-quests">
+                <section className="cardz small interactive" id="stats-quests">
                   <h4 className="text-title colour-minor">Completed Quests</h4>
                   <p> 0 </p>
                 </section>
-                <section className="card small interactive" id="stats-journal">
+                <section className="cardz small interactive" id="stats-journal">
                   <h4 className="text-title colour-minor">Journal Entries</h4>
                   <p> 0 </p>
                 </section>
@@ -263,7 +263,7 @@ export default function Dashboard() {
             <section className="analytics-graphs" id="analytics">
               {/* MOOD ANALYTICS CARD */}
               <section
-                className="card c-grey analytics-mood"
+                className="cardz c-grey analytics-mood"
                 id="analytics-mood-week"
               >
                 <h4 className="text-title colour-minor">Mood Analysis</h4>
@@ -276,7 +276,7 @@ export default function Dashboard() {
 
               {/* ACTIVITY GRAPH CARD*/}
               <section
-                className="card c-shadow analytics-activity"
+                className="cardz c-shadow analytics-activity"
                 id="analytics-activity-week"
               >
                 <section className="content-wrapper">
@@ -294,7 +294,7 @@ export default function Dashboard() {
             <section className="analytics-graphs" id="analytics">
               {/* ACTIVITY GRAPH CARD*/}
               <section
-                className="card c-shadow analytics-activity"
+                className="cardz c-shadow analytics-activity"
                 id="analytics-activity-month"
               >
                 <section className="content-wrapper">
@@ -309,7 +309,7 @@ export default function Dashboard() {
               </section>
               {/* MOOD ANALYTICS CARD */}
               <section
-                className="card c-grey analytics-mood"
+                className="cardz c-grey analytics-mood"
                 id="analytics-mood-month"
               >
                 <h4 className="text-title colour-minor">Mood Analysis</h4>
@@ -325,7 +325,7 @@ export default function Dashboard() {
             <section className="user-grid">
               {/* QUESTS CARDS */}
               <section
-                className="card analytics-quests c-shadow"
+                className="cardz analytics-quests c-shadow"
                 id="analytics-quests"
               >
                 <h4 className="text-title colour-minor">Your Quests</h4>
@@ -351,7 +351,7 @@ export default function Dashboard() {
                         members.
                       </p>
                       <a href="#">
-                        <button className="page-link">View Quest Hub</button>
+                        <button className="page-linkz">View Quest Hub</button>
                       </a>
                     </section>
                   </section>
@@ -367,7 +367,7 @@ export default function Dashboard() {
                       <h4>Mindful Mornings Hub</h4>
                       <p>Start the day calm and focused - 760 members.</p>
                       <a href="#">
-                        <button className="page-link">View Quest Hub</button>
+                        <button className="page-linkz">View Quest Hub</button>
                       </a>
                     </section>
                   </section>
@@ -383,7 +383,7 @@ export default function Dashboard() {
                       <h4>Sleep Better Squad</h4>
                       <p>Gentle routines for deeper sleep - 602 members.</p>
                       <a href="#">
-                        <button className="page-link">View Quest Hub</button>
+                        <button className="page-linkz">View Quest Hub</button>
                       </a>
                     </section>
                   </section>
@@ -401,7 +401,7 @@ export default function Dashboard() {
                         Gentle steps to reduce anxious thoughts - 218 members.
                       </p>
                       <a href="#">
-                        <button className="page-link">View Quest Hub</button>
+                        <button className="page-linkz">View Quest Hub</button>
                       </a>
                     </section>
                   </section>
@@ -410,7 +410,7 @@ export default function Dashboard() {
 
               {/* TOOLS CARD */}
               <section
-                className="card analytics-tools c-shadow"
+                className="cardz analytics-tools c-shadow"
                 id="analytics-tools"
               >
                 <h4 className="text-title colour-minor">Your Tools</h4>
@@ -421,7 +421,7 @@ export default function Dashboard() {
                   <section className="tools-cards" id="tools-mood-compass">
                     <h4 className="text-title">Mood Compass</h4>
                     <a href="#">
-                      <button className="page-link">Track Mood</button>
+                      <button className="page-linkz">Track Mood</button>
                     </a>
                   </section>
                   <section
@@ -430,39 +430,39 @@ export default function Dashboard() {
                   >
                     <h4 className="text-title">QuickCalm</h4>
                     <section className="wrapper">
-                      <section className="card interactive bodyscan ">
+                      <section className="cardz interactive bodyscan ">
                         <a href="" className="center">
                           Body Scan
                         </a>
                       </section>
-                      <section className="card interactive breathing">
+                      <section className="cardz interactive breathing">
                         <a href="" className="center">
                           Breathing
                         </a>
                       </section>
-                      <section className="card interactive deepbreathing">
+                      <section className="cardz interactive deepbreathing">
                         <a href="" className="center">
                           Deep Breathing
                         </a>
                       </section>
-                      <section className="card interactive meditation">
+                      <section className="cardz interactive meditation">
                         <a href="" className="center">
                           Meditation
                         </a>
                       </section>
-                      <section className="card interactive musclerelaxation">
+                      <section className="cardz interactive musclerelaxation">
                         <a href="" className="center">
                           Muscle Relaxation
                         </a>
                       </section>
-                      <section className="card interactive shoulderrelaxation">
+                      <section className="cardz interactive shoulderrelaxation">
                         <a href="" className="center">
                           Shoulder Relaxation
                         </a>
                       </section>
                     </section>
                     <a href="#">
-                      <button className="page-link">Do Exercise</button>
+                      <button className="page-linkz">Do Exercise</button>
                     </a>
                   </section>
                 </section>
@@ -470,7 +470,7 @@ export default function Dashboard() {
 
               {/* JOURNAL CARD */}
               <section
-                className="card analytics-journal c-grey"
+                className="cardz analytics-journal c-grey"
                 id="analytics-journal"
               >
                 <h4 className="text-title colour-minor">Your Journal</h4>

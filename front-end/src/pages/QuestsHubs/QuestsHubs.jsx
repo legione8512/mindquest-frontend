@@ -634,7 +634,7 @@ const QuestsHubs = () => {
     }));
 
     // Reset quest-specific inputs and messages when changing activity
-    setQuestFormValues({ });
+    setQuestFormValues({});
     setQuestMessage("");
   };
 
@@ -653,7 +653,7 @@ const QuestsHubs = () => {
       teams: ["Team 1", "Team 2"],
       activity: activityOptions[0],
     });
-    setQuestFormValues({ });
+    setQuestFormValues({});
     setQuestMessage("");
   };
 
@@ -668,7 +668,7 @@ const QuestsHubs = () => {
   const closeHubModal = () => {
     setSelectedHub(null); // no hub selected
     setSelectedTeam(""); // clear team selection
-    setQuestFormValues({ }); // clear quest fields
+    setQuestFormValues({}); // clear quest fields
     setQuestMessage(""); // clear messages
   };
 
@@ -692,16 +692,16 @@ const QuestsHubs = () => {
       countWords(descriptionRaw) < 5; // fewer than 5 words
 
     if (nameInvalid || descriptionInvalid) {
-  setFieldErrors({
-    name: nameInvalid,
-    description: descriptionInvalid,
-  });
-  // Do NOT set questMessage here – errors are shown under the fields
-  return; // stop here – do not create hub
-}
+      setFieldErrors({
+        name: nameInvalid,
+        description: descriptionInvalid,
+      });
+      // Do NOT set questMessage here – errors are shown under the fields
+      return; // stop here – do not create hub
+    }
 
-// If everything is valid, clear any previous error state
-setFieldErrors({ name: false, description: false });
+    // If everything is valid, clear any previous error state
+    setFieldErrors({ name: false, description: false });
 
     // Map periodPreset to user-friendly frequency label
     let frequency = "Custom";
@@ -860,7 +860,7 @@ setFieldErrors({ name: false, description: false });
     );
 
     // Clear all text fields so user can submit again if under daily cap
-    setQuestFormValues({ });
+    setQuestFormValues({});
   };
 
   // -------------------------
@@ -932,7 +932,7 @@ setFieldErrors({ name: false, description: false });
       </section>
 
       {/* Main content area for the whole page */}
-      <main className="layout-container hubs-page">
+      <main className="hubs-page">
         {/* Hero section introducing quest creation */}
         <section className="hubs-hero">
           {/* Text block on the left */}
@@ -1116,7 +1116,7 @@ setFieldErrors({ name: false, description: false });
                         // Open the View hub modal for this hub
                         setSelectedHub(hub);
                         setSelectedTeam("");
-                        setQuestFormValues({ });
+                        setQuestFormValues({});
                         setQuestMessage("");
                       }}
                     >
@@ -1384,17 +1384,17 @@ setFieldErrors({ name: false, description: false });
 
               {/* Show rules (max per day, points, bonus) for selected quest template */}
               {selectedQuestTemplate && (
-  <div className="quest-template-block">
-    <p className="quest-helper">
-      This quest can be completed up to{" "}
-      {selectedQuestTemplate.maxPerDay} time(s) per day. Each
-      valid submission is worth{" "}
-      {selectedQuestTemplate.pointsPerSubmission} points
-      {selectedQuestTemplate.bonus
-        ? `, plus a ${selectedQuestTemplate.bonus.points} point bonus on completion ${selectedQuestTemplate.bonus.triggerCompletion} of the day.`
-        : "."}
-    </p>
-  </div>
+                <div className="quest-template-block">
+                  <p className="quest-helper">
+                    This quest can be completed up to{" "}
+                    {selectedQuestTemplate.maxPerDay} time(s) per day. Each
+                    valid submission is worth{" "}
+                    {selectedQuestTemplate.pointsPerSubmission} points
+                    {selectedQuestTemplate.bonus
+                      ? `, plus a ${selectedQuestTemplate.bonus.points} point bonus on completion ${selectedQuestTemplate.bonus.triggerCompletion} of the day.`
+                      : "."}
+                  </p>
+                </div>
               )}
 
               {/* When quest type is Team, allow editing multiple team names */}
