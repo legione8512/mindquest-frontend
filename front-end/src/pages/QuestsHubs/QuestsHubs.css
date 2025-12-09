@@ -36,10 +36,6 @@
   ); /* Semi-transparent dark blue background bar */
   box-sizing: border-box; /* Include padding in the width calculation */
 }
-.text-span-helper {
-  color: red;
-  margin-left: 0.25rem;
-}
 
 /* HERO AREA – top card that explains "Create a new quest" */
 .hubs-hero {
@@ -208,7 +204,6 @@
   height: 110px; /* Fixed height for image area */
   border-radius: 1rem 1rem 0 0; /* Round top corners only */
   overflow: hidden; /* Hide parts of the image that extend beyond the radius */
-  margin-bottom: 1rem; /* Space below the image */
 }
 
 /* Make the card header image fill its wrapper */
@@ -232,14 +227,13 @@
   display: flex; /* Place title and badges in a row */
   align-items: center; /* Vertically centre them */
   gap: 0.5rem; /* Space between title and badges */
-  margin-bottom: 1rem; /* Space below the row */
+  margin-bottom: 0.4rem; /* Space below the row */
 }
 
 /* Card heading style */
 .hub-title-row h2 {
   font-size: 1rem; /* Compact card title size */
   margin: 0; /* Remove default margins */
-  margin-bottom: 0.75rem;
 }
 
 /* Style for the "Verified" badge */
@@ -253,7 +247,7 @@
 
 /* Hub description paragraph */
 .hub-description {
-  margin: 0 0 1rem; /* Bottom margin only */
+  margin: 0 0 0.8rem; /* Bottom margin only */
   font-size: 0.9rem; /* Slightly smaller text */
   color: #555; /* Medium grey colour */
   max-width: 30ch; /* Limit text width to about 30 characters (short lines) */
@@ -267,7 +261,6 @@
   padding: 0.6rem 0.7rem; /* Inner spacing */
   margin-bottom: 0.8rem; /* Space below block */
   font-size: 0.86rem; /* Slightly smaller text than normal */
-  margin-bottom: 1rem;
 }
 
 /* Label "Featured challenge" */
@@ -308,7 +301,6 @@
   border-radius: 999px; /* Fully rounded pill shape */
   padding: 0.15rem 0.55rem; /* Inner padding */
   background: #eef0ff; /* Light bluish background */
-  margin: 0.5rem auto !important;
 }
 
 /* Text style for team tags and progress text */
@@ -317,7 +309,6 @@
   font-size: 0.8rem; /* Small text size */
   color: #666; /* Grey colour */
   margin: 0 0 0.4rem; /* Bottom margin only */
-  
 }
 
 /* Footer area of the card (contains the View hub button) */
@@ -390,7 +381,6 @@
 /* Helper text under fields */
 .quest-helper {
   font-size: 0.8rem; /* Small helper text */
-  font-weight: 500;
   color: #666; /* Grey colour */
   margin: 0 0 0.35rem; /* Bottom margin only */
 }
@@ -547,9 +537,6 @@
   font-size: 0.85rem; /* Small text */
   color: #555; /* Medium grey */
 }
-.hub-teams-block {
-  margin-bottom: 1rem; /* Space below the row */
-}
 
 /* Badge showing that user has joined a hub */
 .badge.joined {
@@ -574,11 +561,6 @@
   border-radius: 0.75rem; /* Rounded corners */
   background: #f5f5f8; /* Light grey background */
   padding: 0.75rem 0.9rem 0.8rem; /* Inner spacing */
-}
-.hub-quest-footer {
-  margin-top: 0.5rem;
-  display: flex;
-  justify-content: flex-end;
 }
 
 /* Block that shows short info about the linked quest template */
