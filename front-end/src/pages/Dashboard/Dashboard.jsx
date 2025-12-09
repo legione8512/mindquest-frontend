@@ -208,10 +208,12 @@ const weeklyActivityData = {
 };
 
 export default function Dashboard() {
+  /*
   const [isSidebarOpen, setIsSidebarOpen] = useState(false);
   const toggleSidebar = () => {
     setIsSidebarOpen(!isSidebarOpen);
   };
+*/
 
   return (
     <>
@@ -220,45 +222,60 @@ export default function Dashboard() {
           <section className="main-content" id="overview">
             {/* Greeting and Overview */}
             <h1 className="text-title">Welcome back, User123</h1>
-            <h3 className="text-title colour-minor indent">
-              Here's your wellbeing overview{" "}
-            </h3>
+            <>
+              <h3 className="text-title colour-minor indent">
+                Here's your wellbeing overview{" "}
+              </h3>
 
-            {/* OVERVIEW CARDS */}
-            {/* !!! IF TIME - Consider making reusable card component for the different types of cards throughout webpage */}
-            <section>
-              <section className="overview">
-                <section className="cardz" id="desc-overview">
-                  <h4 className="text-title colour-minor">Your Summary</h4>
-                  <p>
-                    {" "}
-                    Here are your overall profile stats since you first joined
-                    us. Take a look!{" "}
-                  </p>
-                </section>
-                <section className="cardz small interactive" id="stats-points">
-                  <h4 className="text-title colour-minor">Points</h4>
-                  <p> 0 </p>
-                </section>
-                <section className="cardz small interactive" id="stats-streak">
-                  <h4 className="text-title colour-minor">Streak</h4>
-                  <p> 0 days </p>
-                </section>
-                <section className="cardz small interactive" id="stats-moods">
-                  <h4 className="text-title colour-minor">Moods Tracked</h4>
-                  <p> 0 </p>
-                </section>
-                <section className="cardz small interactive" id="stats-quests">
-                  <h4 className="text-title colour-minor">Completed Quests</h4>
-                  <p> 0 </p>
-                </section>
-                <section className="cardz small interactive" id="stats-journal">
-                  <h4 className="text-title colour-minor">Journal Entries</h4>
-                  <p> 0 </p>
+              {/* OVERVIEW CARDS */}
+              {/* !!! IF TIME - Consider making reusable card component for the different types of cards throughout webpage */}
+              <section>
+                <section className="overview">
+                  <section className="cardz" id="desc-overview">
+                    <h4 className="text-title colour-minor">Your Summary</h4>
+                    <p>
+                      {" "}
+                      Here are your overall profile stats since you first joined
+                      us. Take a look!{" "}
+                    </p>
+                  </section>
+                  <section
+                    className="cardz small interactive"
+                    id="stats-points"
+                  >
+                    <h4 className="text-title colour-minor">Points</h4>
+                    <p> 0 </p>
+                  </section>
+                  <section
+                    className="cardz small interactive"
+                    id="stats-streak"
+                  >
+                    <h4 className="text-title colour-minor">Streak</h4>
+                    <p> 0 days </p>
+                  </section>
+                  <section className="cardz small interactive" id="stats-moods">
+                    <h4 className="text-title colour-minor">Moods Tracked</h4>
+                    <p> 0 </p>
+                  </section>
+                  <section
+                    className="cardz small interactive"
+                    id="stats-quests"
+                  >
+                    <h4 className="text-title colour-minor">
+                      Completed Quests
+                    </h4>
+                    <p> 0 </p>
+                  </section>
+                  <section
+                    className="cardz small interactive"
+                    id="stats-journal"
+                  >
+                    <h4 className="text-title colour-minor">Journal Entries</h4>
+                    <p> 0 </p>
+                  </section>
                 </section>
               </section>
-            </section>
-
+            </>
             {/* ANALYTICS GRID */}
             <section className="analytics-graphs" id="analytics">
               {/* MOOD ANALYTICS CARD */}
