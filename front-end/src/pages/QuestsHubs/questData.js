@@ -252,7 +252,7 @@ export const initialHubs = [
     description:
       "Mindful study and stress relief for developers – 532 members.",
     featuredTitle: "3-Minute Gratitude", // title of the main quest in this hub
-    featuredStatus: "Active now — Day 5 of 7", // text describing status
+    featuredStatus: "Active now — Day 5 of 7\nEnding: Oct 24, 6:00 PM",
     featuredText: "Write 1–3 lines of gratitude each day.", // short description
     frequency: "Daily", // used in filters and badges
     type: "Individual", // Individual or Team
@@ -268,7 +268,7 @@ export const initialHubs = [
     description:
       "Peer support and weekly gratitude quests for Brunel students – 1.2k members.",
     featuredTitle: "Mindful Breaks",
-    featuredStatus: "Active now — Week 1 of 4",
+    featuredStatus: "Active now — Week 1 of 4\nEnding: Nov 12, 12:00 PM",
     featuredText: "2–5 minute unplugged pauses during study.",
     frequency: "Weekly",
     type: "Team",
@@ -283,7 +283,7 @@ export const initialHubs = [
     verified: false,
     description: "Gentle steps to reduce anxious thoughts – 218 members.",
     featuredTitle: "Kindness Notes",
-    featuredStatus: "Starts in 3 days (Mon)",
+    featuredStatus: "Starts in 3 days (Mon)\nEnding: Oct 30, 9:00 AM",
     featuredText: "Send an encouraging message to a peer.",
     frequency: "Monthly",
     type: "Team",
@@ -297,7 +297,7 @@ export const initialHubs = [
     verified: true,
     description: "Start the day calm and focused – 760 members.",
     featuredTitle: "Breath & Reset",
-    featuredStatus: "Active now — Day 5 of 7",
+    featuredStatus: "Active now — Day 5 of 7\nEnding: Oct 24, 8:00 AM",
     featuredText: "3 cycles of slow breathing every morning.",
     frequency: "Daily",
     type: "Individual",
@@ -311,7 +311,7 @@ export const initialHubs = [
     verified: false,
     description: "Kind check-ins and progress conversations – 389 members.",
     featuredTitle: "Reach Out Friday",
-    featuredStatus: "Starts tomorrow",
+    featuredStatus: "Starts tomorrow\nEnding: Oct 21, 11:59 PM",
     featuredText: "Send a supportive message to someone.",
     frequency: "Weekly",
     type: "Team",
@@ -325,7 +325,7 @@ export const initialHubs = [
     verified: true,
     description: "Gentle routines for deeper sleep – 602 members.",
     featuredTitle: "Digital Sunset",
-    featuredStatus: "Active now — Day 12 of 30",
+    featuredStatus: "Active now — Day 12 of 30\nEnding: Nov 15, 10:00 PM",
     featuredText: "Avoid screens 60 minutes before bedtime.",
     frequency: "Monthly",
     type: "Individual",

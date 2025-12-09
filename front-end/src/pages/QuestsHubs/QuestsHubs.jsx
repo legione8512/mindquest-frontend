@@ -1,31 +1,24 @@
 // Import React so we can use JSX, and useState to store local component state
-import React, { useState } from "react";
+import React, { useState } from "react"; //*
 // Import the banner image shown at the top of the page
 import QuestsBanner from "../../assets/Cards_Images/Webp/6.webp";
 // Import the CSS file that styles this page
 import "./QuestsHubs.css";
 // Import the shared Modal component used for the "View hub" popup
-import Modal from "../../Modal";
+import Modal from "../../Modal"; //*
 // Import a custom primary button component used across the app
 import PrimaryButton from "../../components/Button/PrimaryButton";
+import CreateQuestModal from "./CreateQuestModal";
 
 import {
   headerImageOptions,
   activityOptions,
   questTemplates,
   initialHubs,
-} from "./questData";
+} from "./questData"; //*
 
 // Helper function to get today's date in YYYY-MM-DD format
 const getTodayKey = () => new Date().toISOString().slice(0, 10);
-
-// Helper function to count words in a string
-const countWords = (text = "") =>
-  text.trim().length === 0
-    ? 0 // if the string is empty or only spaces, return 0
-    : text.trim().split(/\s+/).filter(Boolean).length; // split on whitespace, filter out empty, count length
-
-// Initial hubs (demo data shown when the page loads)
 
 // Define the main React component for this page
 const QuestsHubs = () => {
@@ -44,21 +37,6 @@ const QuestsHubs = () => {
   // State for the hub currently opened in the "View hub" modal
   const [selectedHub, setSelectedHub] = useState(null);
 
-  // Form data for the Create Quest modal
-  const [formData, setFormData] = useState({
-    name: "", // Hub/quest name input
-    description: "", // description textarea
-    imageKey: headerImageOptions[0].id, // id of the selected header image
-    verified: false, // whether quest is verified
-    periodPreset: "1_week", // quest period radio selection
-    customDays: "", // number input used when periodPreset = "custom"
-    startDate: "", // date input
-    startTime: "", // time input
-    mode: "Individual", // "Individual" or "Team"
-    teams: ["Team 1", "Team 2"], // default team names for Team mode
-    activity: activityOptions[0], // selected activity from dropdown
-  });
-
   // State for dynamic quest field values inside a hub (e.g. mood text)
   const [questFormValues, setQuestFormValues] = useState({});
   // State to track how many times a quest has been completed today, and points
@@ -76,17 +54,8 @@ const QuestsHubs = () => {
     return initial; // initial state object
   });
 
-  // Derived value: the quest template that matches the selected activity
-  const selectedQuestTemplate = questTemplates[formData.activity] || null;
-
   // State for messages shown under the quest form (e.g. errors or success text)
   const [questMessage, setQuestMessage] = useState("");
-
-  // Track validation errors for create quest fields
-  const [fieldErrors, setFieldErrors] = useState({
-    name: false,
-    description: false,
-  });
 
   // State for filters applied to the hub list
   const [filters, setFilters] = useState({
@@ -241,24 +210,6 @@ const QuestsHubs = () => {
   // Form handlers
   // -------------------------
 
-  // Generic handler for simple inputs in Create Quest form
-  const handleChange = (e) => {
-    const { name, value, type, checked } = e.target;
-    const newValue = type === "checkbox" ? checked : value;
-
-    setFormData((prev) => ({
-      ...prev,
-      [name]: newValue,
-    }));
-
-    // When user edits a field, clear its error state
-    if (name === "name") {
-      setFieldErrors((prev) => ({ ...prev, name: false }));
-    } else if (name === "description") {
-      setFieldErrors((prev) => ({ ...prev, description: false }));
-    }
-  };
-
   // Handler for quest field changes inside a hub quest form
   const handleQuestFieldChange = (e) => {
     const { name, value } = e.target;
@@ -269,73 +220,6 @@ const QuestsHubs = () => {
     setQuestMessage(""); // clear any previous validation / success message
   };
 
-  // Update a specific team name in the Create Quest form
-  const handleTeamChange = (index, value) => {
-    setFormData((prev) => {
-      const updated = [...prev.teams]; // copy current teams array
-      updated[index] = value; // update the team at given index
-      return { ...prev, teams: updated }; // return new formData
-    });
-  };
-
-  // Add another team input row in the Create Quest form
-  const handleAddTeam = () => {
-    setFormData((prev) => ({
-      ...prev,
-      // Add a new default team name at the end
-      teams: [...prev.teams, `Team ${prev.teams.length + 1}`],
-    }));
-  };
-
-  // Remove a team by index from the Create Quest form
-  const handleRemoveTeam = (index) => {
-    setFormData((prev) => {
-      // Filter out the team with this index
-      const updated = prev.teams.filter((_, i) => i !== index);
-      return { ...prev, teams: updated };
-    });
-  };
-
-  // Handle changing the selected Activity in the Create Quest modal
-  const handleActivityChange = (e) => {
-    const value = e.target.value; // new activity title
-
-    setFormData((prev) => ({
-      ...prev,
-      activity: value, // store selected activity
-    }));
-
-    // Reset quest-specific inputs and messages when changing activity
-    setQuestFormValues({});
-    setQuestMessage("");
-  };
-
-  // Reset the Create Quest form back to its initial values
-  const resetForm = () => {
-    setFormData({
-      name: "",
-      description: "",
-      imageKey: headerImageOptions[0].id,
-      verified: false,
-      periodPreset: "1_week",
-      customDays: "",
-      startDate: "",
-      startTime: "",
-      mode: "Individual",
-      teams: ["Team 1", "Team 2"],
-      activity: activityOptions[0],
-    });
-    setQuestFormValues({});
-    setQuestMessage("");
-  };
-
-  // Close the Create Quest modal and reset its form
-  const closeModal = () => {
-    setIsCreateOpen(false);
-    resetForm();
-    setFieldErrors({ name: false, description: false });
-  };
-
   // Close the View hub modal and reset quest-related states
   const closeHubModal = () => {
     setSelectedHub(null); // no hub selected
@@ -344,108 +228,14 @@ const QuestsHubs = () => {
     setQuestMessage(""); // clear messages
   };
 
-  // Handle submission of Create Quest form
-  const handleCreateQuest = (e) => {
-    e.preventDefault(); // prevent page reload
-
-    // --- Validate hub name and description ---
-
-    const nameRaw = formData.name ?? "";
-    const descriptionRaw = formData.description ?? "";
-
-    const nameInvalid =
-      nameRaw.trim().length === 0 || // empty or only spaces
-      nameRaw.startsWith(" ") || // cannot start with space
-      countWords(nameRaw) < 2; // fewer than 2 words
-
-    const descriptionInvalid =
-      descriptionRaw.trim().length === 0 || // empty or only spaces
-      descriptionRaw.startsWith(" ") || // cannot start with space
-      countWords(descriptionRaw) < 5; // fewer than 5 words
-
-    if (nameInvalid || descriptionInvalid) {
-      setFieldErrors({
-        name: nameInvalid,
-        description: descriptionInvalid,
-      });
-      // Do NOT set questMessage here – errors are shown under the fields
-      return; // stop here – do not create hub
-    }
-
-    // If everything is valid, clear any previous error state
-    setFieldErrors({ name: false, description: false });
-
-    // Map periodPreset to user-friendly frequency label
-    let frequency = "Custom";
-    if (formData.periodPreset === "1_day") frequency = "Daily";
-    else if (formData.periodPreset === "1_week") frequency = "Weekly";
-    else if (formData.periodPreset === "1_month") frequency = "Monthly";
-
-    // Build a more descriptive period label
-    let periodLabel = "";
-    if (formData.periodPreset === "custom" && formData.customDays) {
-      periodLabel = `${formData.customDays} day quest`;
-    } else if (formData.periodPreset === "1_day") {
-      periodLabel = "1 day quest";
-    } else if (formData.periodPreset === "1_week") {
-      periodLabel = "1 week quest";
-    } else if (formData.periodPreset === "1_month") {
-      periodLabel = "1 month quest";
-    }
-
-    // Label describing when the quest starts
-    const startLabel = formData.startDate
-      ? `Starts on ${formData.startDate}`
-      : "Scheduled quest";
-
-    // Combine start info and period info (if available)
-    const featuredStatus = periodLabel
-      ? `${startLabel} — ${periodLabel}`
-      : startLabel;
-
-    // Find the full image object matching the selected imageKey
-    const selectedImage =
-      headerImageOptions.find((opt) => opt.id === formData.imageKey) ||
-      headerImageOptions[0];
-
-    // Build tags based on quest mode (Solo vs Team)
-    const tags = [];
-    if (formData.mode === "Team") {
-      tags.push(...formData.teams.filter((t) => t.trim() !== ""));
-    } else tags.push("Solo quest");
-
-    // Construct a new hub object for the newly created quest
-    const newHub = {
-      id: Date.now(), // unique ID based on current timestamp
-      name: formData.name || "Untitled quest", // fallback if name is empty
-      image: selectedImage.src, // selected header image
-      verified: formData.verified, // verified status
-      description:
-        formData.description ||
-        "A newly created quest. Configure description to tell people what to expect.",
-      featuredTitle: formData.activity, // activity name as featured title
-      featuredStatus, // constructed status text
-      featuredText: `Activity: ${formData.activity}`, // basic text about the activity
-      frequency, // frequency label
-      type: formData.mode, // Individual or Team
-      tags, // Team/Solo quest tag
-      progressText: "",
-      startDate: formData.startDate || null,
-      startTime: formData.startTime || "",
-    };
-
-    // Add the new hub at the top of the hubs list
+  // This function acts as the "Receiver"
+  const handleCreateQuest = (newHub) => {
+    // 1. Add the new hub to the list
     setHubs((prev) => [newHub, ...prev]);
-    // Close the Create Quest modal and reset
-    closeModal();
-    // Open the success popup
+
+    // 2. Open the success popup
     setIsSuccessOpen(true);
   };
-
-  // Compute the preview image object for the selected imageKey
-  const selectedImagePreview =
-    headerImageOptions.find((opt) => opt.id === formData.imageKey) ||
-    headerImageOptions[0];
 
   // Handle submitting a quest entry inside the View hub modal
   const handleHubQuestSubmit = (e) => {
@@ -805,345 +595,12 @@ const QuestsHubs = () => {
         </section>
       </main>
 
-      {/* CREATE QUEST MODAL */}
-      {isCreateOpen && (
-        <div
-          className="quest-modal-backdrop"
-          onClick={(e) => {
-            // Close modal only if user clicks on the backdrop (not inside modal)
-            if (e.target.classList.contains("quest-modal-backdrop")) {
-              closeModal();
-            }
-          }}
-        >
-          <div className="quest-modal">
-            {/* Modal header with title and X button */}
-            <header className="quest-modal-header">
-              <h2>Create a new quest</h2>
-              <button
-                type="button"
-                className="quest-modal-close"
-                onClick={closeModal}
-                aria-label="Close"
-              >
-                ×
-              </button>
-            </header>
-
-            {/* Main form body for creating a quest */}
-            <form className="quest-modal-body" onSubmit={handleCreateQuest}>
-              {/* Name + description section */}
-              <div className="quest-field-row">
-                <div className="quest-field">
-                  <label htmlFor="questName">Hub Name</label>
-                  <input
-                    id="questName"
-                    name="name"
-                    type="text"
-                    value={formData.name}
-                    onChange={handleChange}
-                    placeholder="e.g. Brunel Uni Hub"
-                    required
-                  />
-                  <p
-                    className={
-                      fieldErrors.name
-                        ? "field-requirement field-error"
-                        : "field-requirement"
-                    }
-                  >
-                    At least 2 words and can't begin with space.
-                  </p>
-                </div>
-              </div>
-
-              <div className="quest-field">
-                <label htmlFor="questDescription">Description</label>
-                <textarea
-                  id="questDescription"
-                  name="description"
-                  rows="3"
-                  value={formData.description}
-                  onChange={handleChange}
-                  placeholder="Briefly describe what participants will do in this quest."
-                  required
-                />
-                <p
-                  className={
-                    fieldErrors.description
-                      ? "field-requirement field-error"
-                      : "field-requirement"
-                  }
-                >
-                  At least 5 words and can't begin with space.
-                </p>
-              </div>
-
-              {/* Image selection with dropdown + preview */}
-              <div className="quest-field">
-                <label>Card header image</label>
-                <p className="quest-helper">
-                  Choose from the predefined images for this quest.
-                </p>
-                <div className="image-select-row">
-                  <select
-                    name="imageKey"
-                    value={formData.imageKey}
-                    onChange={handleChange}
-                  >
-                    {headerImageOptions.map((opt) => (
-                      <option key={opt.id} value={opt.id}>
-                        {opt.label}
-                      </option>
-                    ))}
-                  </select>
-
-                  {/* Show a small preview of the selected image */}
-                  {selectedImagePreview && (
-                    <div className="image-preview">
-                      <img
-                        src={selectedImagePreview.src}
-                        alt={selectedImagePreview.label}
-                      />
-                    </div>
-                  )}
-                </div>
-              </div>
-
-              {/* Quest period and start date/time section */}
-              <div className="quest-field-row">
-                <div className="quest-field">
-                  <label>Quest period</label>
-                  <div className="radio-group-column">
-                    {/* 1 day option */}
-                    <label className="radio-option">
-                      <input
-                        type="radio"
-                        name="periodPreset"
-                        value="1_day"
-                        checked={formData.periodPreset === "1_day"}
-                        onChange={handleChange}
-                      />
-                      <span>1 day</span>
-                    </label>
-                    {/* 1 week option */}
-                    <label className="radio-option">
-                      <input
-                        type="radio"
-                        name="periodPreset"
-                        value="1_week"
-                        checked={formData.periodPreset === "1_week"}
-                        onChange={handleChange}
-                      />
-                      <span>1 week</span>
-                    </label>
-                    {/* 1 month option */}
-                    <label className="radio-option">
-                      <input
-                        type="radio"
-                        name="periodPreset"
-                        value="1_month"
-                        checked={formData.periodPreset === "1_month"}
-                        onChange={handleChange}
-                      />
-                      <span>1 month</span>
-                    </label>
-                    {/* Custom option */}
-                    <label className="radio-option">
-                      <input
-                        type="radio"
-                        name="periodPreset"
-                        value="custom"
-                        checked={formData.periodPreset === "custom"}
-                        onChange={handleChange}
-                      />
-                      <span>Custom</span>
-                    </label>
-
-                    {/* If custom is selected, show an input for number of days */}
-                    {formData.periodPreset === "custom" && (
-                      <div className="custom-period-row">
-                        <input
-                          type="number"
-                          min="1"
-                          name="customDays"
-                          value={formData.customDays}
-                          onChange={handleChange}
-                          placeholder="Number of days"
-                        />
-                        <span>days</span>
-                      </div>
-                    )}
-                  </div>
-                </div>
-
-                {/* Start date and time inputs */}
-                <div className="quest-field">
-                  <label>Start date and time</label>
-                  <div className="start-row">
-                    <input
-                      type="date"
-                      name="startDate"
-                      value={formData.startDate}
-                      onChange={handleChange}
-                    />
-                    <input
-                      type="time"
-                      name="startTime"
-                      value={formData.startTime}
-                      onChange={handleChange}
-                    />
-                  </div>
-                </div>
-              </div>
-
-              {/* Quest type (Individual / Teams) and linked Activity */}
-              <div className="quest-field-row">
-                <div className="quest-field">
-                  <label>Quest type</label>
-                  <div className="radio-group-row">
-                    {/* Individual mode */}
-                    <label className="radio-option">
-                      <input
-                        type="radio"
-                        name="mode"
-                        value="Individual"
-                        checked={formData.mode === "Individual"}
-                        onChange={handleChange}
-                      />
-                      <span>Individual</span>
-                    </label>
-                    {/* Team mode */}
-                    <label className="radio-option">
-                      <input
-                        type="radio"
-                        name="mode"
-                        value="Team"
-                        checked={formData.mode === "Team"}
-                        onChange={handleChange}
-                      />
-                      <span>Teams</span>
-                    </label>
-                  </div>
-                </div>
-
-                {/* Activity dropdown */}
-                <div className="quest-field">
-                  <label htmlFor="activity">Activity</label>
-                  <select
-                    id="activity"
-                    name="activity"
-                    value={formData.activity}
-                    onChange={handleActivityChange}
-                  >
-                    {activityOptions.map((act) => (
-                      <option key={act} value={act}>
-                        {act}
-                      </option>
-                    ))}
-                  </select>
-                </div>
-              </div>
-
-              {/* Show summary info about the currently selected quest template */}
-              {selectedQuestTemplate && (
-                <div className="quest-template-info">
-                  <h4 className="quest-template-title">
-                    Linked activity: {selectedQuestTemplate.title}
-                  </h4>
-                  <p className="quest-template-text">
-                    {selectedQuestTemplate.shortDescription}
-                  </p>
-                </div>
-              )}
-
-              {/* Show rules (max per day, points, bonus) for selected quest template */}
-              {selectedQuestTemplate && (
-                <div className="quest-template-block">
-                  <p className="quest-helper">
-                    This quest can be completed up to{" "}
-                    {selectedQuestTemplate.maxPerDay} time(s) per day. Each
-                    valid submission is worth{" "}
-                    {selectedQuestTemplate.pointsPerSubmission} points
-                    {selectedQuestTemplate.bonus
-                      ? `, plus a ${selectedQuestTemplate.bonus.points} point bonus on completion ${selectedQuestTemplate.bonus.triggerCompletion} of the day.`
-                      : "."}
-                  </p>
-                </div>
-              )}
-
-              {/* When quest type is Team, allow editing multiple team names */}
-              {formData.mode === "Team" && (
-                <div className="quest-field">
-                  <label>Team names</label>
-                  <p className="quest-helper">
-                    Add the teams that will take part in this quest.
-                  </p>
-                  <div className="teams-list">
-                    {formData.teams.map((team, index) => (
-                      <div key={index} className="team-row">
-                        <input
-                          type="text"
-                          value={team}
-                          onChange={(e) =>
-                            handleTeamChange(index, e.target.value)
-                          }
-                          placeholder={`Team ${index + 1} name`}
-                        />
-                        {formData.teams.length > 1 && (
-                          <button
-                            type="button"
-                            className="team-remove-btn"
-                            onClick={() => handleRemoveTeam(index)}
-                            aria-label="Remove team"
-                          >
-                            ×
-                          </button>
-                        )}
-                      </div>
-                    ))}
-                  </div>
-                  <button
-                    type="button"
-                    className="secondary-btn small"
-                    onClick={handleAddTeam}
-                  >
-                    + Add another team
-                  </button>
-                </div>
-              )}
-
-              {/* Verification checkbox */}
-              <div className="quest-field">
-                <label className="checkbox-inline">
-                  <input
-                    type="checkbox"
-                    name="verified"
-                    checked={formData.verified}
-                    onChange={handleChange}
-                  />
-                  <span>
-                    This quest is created by a verified institution (show
-                    Verified badge)
-                  </span>
-                </label>
-              </div>
-
-              {/* Footer with Cancel and Create quest buttons */}
-              <footer className="quest-modal-footer">
-                <button
-                  type="button"
-                  className="secondary-btn"
-                  onClick={closeModal}
-                >
-                  Cancel
-                </button>
-                <PrimaryButton type="submit">Create quest</PrimaryButton>
-              </footer>
-            </form>
-          </div>
-        </div>
-      )}
+      {/* The new component handles everything now */}
+      <CreateQuestModal
+        isOpen={isCreateOpen}
+        onClose={() => setIsCreateOpen(false)}
+        onCreate={handleCreateQuest}
+      />
 
       {/* VIEW HUB MODAL (using shared Modal component) */}
       {selectedHub && (
