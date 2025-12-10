@@ -15,6 +15,7 @@ import img7 from "../../assets/7.webp";
 import img8 from "../../assets/8.webp";
 import img12 from "../../assets/12.webp";
 import img16 from "../../assets/16.webp";
+import DashBanner from "../../assets/DashBanner.jpg";
 
 import "./Dashboard.css";
 
@@ -215,12 +216,19 @@ export default function Dashboard() {
 
   return (
     <>
+      <section className="dash-banner-wrapper">
+        <img src={DashBanner} className="dash-banner" alt="Dashboard Banner" />
+        <section className="dash-banner-title">
+          <h1>Dashboard</h1>
+        </section>
+      </section>
+
       <div className="layout-container dash-page">
         <section className="main">
           <section className="main-content" id="overview">
             {/* Greeting and Overview */}
             <h1 className="text-title">Welcome back, User123</h1>
-            <h3 className="text-title colour-minor indent">
+            <h3 className="text-title colour-minor">
               Here's your wellbeing overview{" "}
             </h3>
 
@@ -263,10 +271,12 @@ export default function Dashboard() {
             <section className="analytics-graphs" id="analytics">
               {/* MOOD ANALYTICS CARD */}
               <section
-                className="cardz c-grey analytics-mood"
+                className="cardz c-grey deep-shadow analytics-mood"
                 id="analytics-mood-week"
               >
-                <h4 className="text-title colour-minor">Mood Analysis</h4>
+                <h4 className="text-title colour-minor">
+                  Weekly Mood Analysis
+                </h4>
                 <section className="content-wrapper">
                   <section className="weekly-mood-graph">
                     <Doughnut options={weeklyMoodOpt} data={weeklyMoodData} />
@@ -276,11 +286,13 @@ export default function Dashboard() {
 
               {/* ACTIVITY GRAPH CARD*/}
               <section
-                className="cardz c-shadow analytics-activity"
+                className="cardz deep-shadow analytics-activity"
                 id="analytics-activity-week"
               >
                 <section className="content-wrapper">
-                  <h4 className="text-title colour-minor">Activity Overview</h4>
+                  <h4 className="text-title colour-minor">
+                    Weekly Activity Overview
+                  </h4>
                   <section className="weekly-activity-graph" id="activity-bar">
                     <Bar
                       options={weeklyActivitiesOpt}
@@ -294,11 +306,13 @@ export default function Dashboard() {
             <section className="analytics-graphs" id="analytics">
               {/* ACTIVITY GRAPH CARD*/}
               <section
-                className="cardz c-shadow analytics-activity"
+                className="cardz deep-shadow analytics-activity"
                 id="analytics-activity-month"
               >
                 <section className="content-wrapper">
-                  <h4 className="text-title colour-minor">Activity Overview</h4>
+                  <h4 className="text-title colour-minor">
+                    Monthly Activity Overview
+                  </h4>
                   <section className="monthly-activity-graph" id="activity-bar">
                     <Bar
                       options={monthlyActivitiesOpt}
@@ -309,10 +323,12 @@ export default function Dashboard() {
               </section>
               {/* MOOD ANALYTICS CARD */}
               <section
-                className="cardz c-grey analytics-mood"
+                className="cardz c-grey deep-shadow analytics-mood"
                 id="analytics-mood-month"
               >
-                <h4 className="text-title colour-minor">Mood Analysis</h4>
+                <h4 className="text-title colour-minor">
+                  Monthly Mood Analysis
+                </h4>
                 <section className="content-wrapper">
                   <section className="monthly-mood-graph">
                     <Doughnut options={monthlyMoodOpt} data={monthlyMoodData} />
@@ -325,7 +341,7 @@ export default function Dashboard() {
             <section className="user-grid">
               {/* QUESTS CARDS */}
               <section
-                className="cardz analytics-quests c-shadow"
+                className="cardz analytics-quests deep-shadow"
                 id="analytics-quests"
               >
                 <h4 className="text-title colour-minor">Your Quests</h4>
@@ -335,73 +351,85 @@ export default function Dashboard() {
                   active and recommended for you:
                 </p>{" "}
                 {/*This should change once they have chosen and active quests*/}
-                <section className="quest-recs" id="quests-recs">
-                  <section className="quests-card" id="quests-s1">
-                    <section className="quest-banner">
+                {/*QUESTFIX*/}
+                <section className="grid2 grid-small" id="quest-recs">
+                  <section className="quest-cardz">
+                    {/*
+                    ONE section for the quest information
+                    ONE button for the quest linkz */}
+                    <section className="quest-banner-wrapper">
                       <img
                         src={img12}
                         alt="Calm Coders Banner"
                         className="quest-banner"
                       />
                     </section>
-                    <section className="quest-info">
-                      <h4>Calm Coders</h4>
-                      <p>
-                        Mindful study and stress relief for developers - 532
-                        members.
-                      </p>
-                      <a href="#">
-                        <button className="page-linkz">View Quest Hub</button>
+                    <section className="quest-text">
+                      <section className="quest-info">
+                        <h4>Calm Coders</h4>
+                        <p>
+                          Mindful study and stress relief for developers - 532
+                          members.
+                        </p>
+                      </section>
+                      <a href="./hubs">
+                        <button className="quest-linkz">View Quest Hub</button>
                       </a>
                     </section>
                   </section>
-                  <section className="quests-card" id="quests-s2">
-                    <section className="quest-banner">
+                  <section className="quest-cardz">
+                    <section className="quest-banner-wrapper">
                       <img
                         src={img7}
                         alt="Mindful Mornings Banner"
                         className="quest-banner"
                       />
                     </section>
-                    <section className="quest-info">
-                      <h4>Mindful Mornings Hub</h4>
-                      <p>Start the day calm and focused - 760 members.</p>
-                      <a href="#">
-                        <button className="page-linkz">View Quest Hub</button>
+                    <section className="quest-text">
+                      <section className="quest-info">
+                        <h4>Mindful Mornings Hub</h4>
+                        <p>Start the day calm and focused - 760 members.</p>
+                      </section>
+                      <a href="./hubs">
+                        <button className="quest-linkz">View Quest Hub</button>
                       </a>
                     </section>
                   </section>
-                  <section className="quests-card" id="quests-s3">
-                    <section className="quest-banner">
+                  <section className="quest-cardz">
+                    <section className="quest-banner-wrapper">
                       <img
                         src={img16}
                         alt="Sleep Better Banner"
                         className="quest-banner"
                       />
                     </section>
-                    <section className="quest-info">
-                      <h4>Sleep Better Squad</h4>
-                      <p>Gentle routines for deeper sleep - 602 members.</p>
-                      <a href="#">
-                        <button className="page-linkz">View Quest Hub</button>
+                    <section className="quest-text">
+                      <section className="quest-info">
+                        <h4>Sleep Better Squad</h4>
+                        <p>Gentle routines for deeper sleep - 602 members.</p>
+                      </section>
+                      <a href="./hubs">
+                        <button className="quest-linkz">View Quest Hub</button>
                       </a>
                     </section>
                   </section>
-                  <section className="quests-card" id="quests-s4">
-                    <section className="quest-banner">
+                  <section className="quest-cardz">
+                    <section className="quest-banner-wrapper">
                       <img
                         src={img8}
                         alt="Anxiety Relief"
                         className="quest-banner"
                       />
                     </section>
-                    <section className="quest-info">
-                      <h4>Anxiety Relief Circle</h4>
-                      <p>
-                        Gentle steps to reduce anxious thoughts - 218 members.
-                      </p>
-                      <a href="#">
-                        <button className="page-linkz">View Quest Hub</button>
+                    <section className="quest-text">
+                      <section className="quest-info">
+                        <h4>Anxiety Relief Circle</h4>
+                        <p>
+                          Gentle steps to reduce anxious thoughts - 218 members.
+                        </p>
+                      </section>
+                      <a href="./hubs">
+                        <button className="quest-linkz">View Quest Hub</button>
                       </a>
                     </section>
                   </section>
@@ -410,7 +438,7 @@ export default function Dashboard() {
 
               {/* TOOLS CARD */}
               <section
-                className="cardz analytics-tools c-shadow"
+                className="cardz analytics-tools deep-shadow "
                 id="analytics-tools"
               >
                 <h4 className="text-title colour-minor">Your Tools</h4>
@@ -418,64 +446,93 @@ export default function Dashboard() {
                   className="analytics-tools-options"
                   id="analytics-tools-options"
                 >
-                  <section className="tools-cards" id="tools-mood-compass">
-                    <h4 className="text-title">Mood Compass</h4>
-                    <a href="#">
-                      <button className="page-linkz">Track Mood</button>
-                    </a>
-                  </section>
                   <section
                     className="tools-cards container"
                     id="tools-quickcalm"
                   >
                     <h4 className="text-title">QuickCalm</h4>
-                    <section className="wrapper">
-                      <section className="cardz interactive bodyscan ">
-                        <a href="" className="center">
-                          Body Scan
-                        </a>
+                    {/*QUICKCALM FIX*/}
+                    <section className="grid3 grid-small">
+                      <section className="card2 interactive bodyscan">
+                        <section className="overlay">
+                          <h4>
+                            <a href="./quickcalm" className="qc-link">
+                              Body Scan
+                            </a>
+                          </h4>
+                        </section>
                       </section>
-                      <section className="cardz interactive breathing">
-                        <a href="" className="center">
-                          Breathing
-                        </a>
+                      <section className="card2 interactive breathing">
+                        <section className="overlay">
+                          <h4>
+                            <a href="./quickcalm" className="qc-link">
+                              Breathing
+                            </a>
+                          </h4>
+                        </section>
                       </section>
-                      <section className="cardz interactive deepbreathing">
-                        <a href="" className="center">
-                          Deep Breathing
-                        </a>
+                      <section className="card2 interactive deepbreathing">
+                        <section className="overlay">
+                          <h4>
+                            <a href="./quickcalm" className="qc-link">
+                              Deep Breathing
+                            </a>
+                          </h4>
+                        </section>
                       </section>
-                      <section className="cardz interactive meditation">
-                        <a href="" className="center">
-                          Meditation
-                        </a>
+                      <section className="card2 interactive meditation">
+                        <section className="overlay">
+                          <h4>
+                            <a href="./quickcalm" className="qc-link">
+                              Meditation
+                            </a>
+                          </h4>
+                        </section>
                       </section>
-                      <section className="cardz interactive musclerelaxation">
-                        <a href="" className="center">
-                          Muscle Relaxation
-                        </a>
+                      <section className="card2 interactive musclerelaxation">
+                        <section className="overlay">
+                          <h4>
+                            <a href="./quickcalm" className="qc-link">
+                              Muscle Relaxation
+                            </a>
+                          </h4>
+                        </section>
                       </section>
-                      <section className="cardz interactive shoulderrelaxation">
-                        <a href="" className="center">
-                          Shoulder Relaxation
-                        </a>
+                      <section className="card2 interactive shoulderrelaxation">
+                        <section className="overlay">
+                          <h4>
+                            <a href="./quickcalm" className="qc-link">
+                              Shoulder Relaxation
+                            </a>
+                          </h4>
+                        </section>
                       </section>
                     </section>
-                    <a href="#">
+
+                    <a href="./quickcalm">
                       <button className="page-linkz">Do Exercise</button>
                     </a>
                   </section>
                 </section>
+
+                <section className="tools-cards" id="tools-mood-compass">
+                  <h4 className="text-title">Mood Compass</h4>
+                  <a href=".mood">
+                    <button className="page-linkz">Track Mood</button>
+                  </a>
+                </section>
               </section>
 
-              {/* JOURNAL CARD */}
+              {/* JOURNAL CARD 
               <section
-                className="cardz analytics-journal c-grey"
+                className="cardz analytics-journal c-grey deep-shadow"
                 id="analytics-journal"
               >
                 <h4 className="text-title colour-minor">Your Journal</h4>
                 <p className="subtitle"> /// </p>
               </section>
+              
+              */}
             </section>
           </section>
         </section>
