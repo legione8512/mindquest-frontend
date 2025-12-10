@@ -301,7 +301,7 @@
   font-size: 0.75rem; /* Small text */
   border-radius: 999px; /* Fully rounded pill shape */
   padding: 0.15rem 0.55rem; /* Inner padding */
-  background: #eef0ff; /* Light bluish background */
+  background: #eef0ff !important; /* Light bluish background */
 }
 
 /* Text style for team tags and progress text */

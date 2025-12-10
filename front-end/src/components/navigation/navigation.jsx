@@ -2,9 +2,9 @@ import "./navigation.css";
 import logo from "../../assets/Navigation/mindquest_logo.png";
 import { Link, useLocation } from "react-router-dom";
 
-export default function Navigation({ toggleSidebar }) {
+function Navigation({ onSidebarToggle }) {
   const location = useLocation();
-  const { pathname } = location;
+  const pathname = location.pathname;
 
   const isActive = (path, exact = false) => {
     if (exact) {
@@ -12,12 +12,13 @@ export default function Navigation({ toggleSidebar }) {
     }
     return pathname.startsWith(path);
   };
+  
 
   return (
     <header>
       <section className="layout-container nav-inner">
         {/* Hamburger menu button */}
-        <button className="menu-icon" onClick={toggleSidebar}>
+        <button className="menu-icon" onClick={onSidebarToggle}>
           <i className="fa fa-bars"></i>
         </button>
 
@@ -107,3 +108,4 @@ export default function Navigation({ toggleSidebar }) {
     </header>
   );
 }
+export default Navigation;

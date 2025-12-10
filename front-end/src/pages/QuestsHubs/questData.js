@@ -36,6 +36,8 @@ export const headerImageOptions = [
   { id: "image15", label: "Mindful notes", src: img15 },
   { id: "image16", label: "Sleep better", src: img16 },
 ];
+//This file is The "Database" :)
+
 
 // Predefined activities users can pick when creating a quest
 export const activityOptions = [
@@ -243,6 +245,7 @@ export const questTemplates = {
   },
 };
 
+//A list of initial hubs. Each object represents one "Hub" (ID, name, image, description).
 export const initialHubs = [
   {
     id: 1, // unique ID for this hub

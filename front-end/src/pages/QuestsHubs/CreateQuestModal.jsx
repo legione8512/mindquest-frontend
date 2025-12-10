@@ -506,13 +506,16 @@ export default function CreateQuestModal({ isOpen, onClose, onCreate }) {
                 </div>
               ))}
             </div>
-            <button
-              type="button"
-              className="secondary-btn small"
-              onClick={handleAddTeam}
-            >
-              + Add another team
-            </button>
+            {/* Only show this button if we have fewer than 2 teams */}
+            {formData.teams.length < 2 && (
+              <button
+                type="button"
+                className="secondary-btn small"
+                onClick={handleAddTeam}
+              >
+                + Add another team
+              </button>
+            )}
           </div>
         )}
 

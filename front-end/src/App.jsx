@@ -24,13 +24,15 @@ import "./components/footer/footer.css";
 function App() {
   // Sidebar toggle //
   const [isOpen, setIsOpen] = useState(false);
-  const toggleSidebar = () => setIsOpen(!isOpen);
+  const handleSidebarToggle = () => {
+  setIsOpen((prevIsOpen) => !prevIsOpen);
+};
 
   return (
     // Navigation between pages
     <Router>
-      <Navigation toggleSidebar={toggleSidebar} />
-      <Sidebar isOpen={isOpen} toggleSidebar={toggleSidebar} />
+      <Navigation onSidebarToggle={handleSidebarToggle} />
+      <Sidebar isOpen={isOpen} onSidebarToggle={handleSidebarToggle}  />
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/dashboard" element={<Dashboard />} />
