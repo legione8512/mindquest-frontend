@@ -37,6 +37,46 @@
   box-sizing: border-box; /* Include padding in the width calculation */
 }
 
+/* =========================================
+   MODAL & FORM UTILITIES (Replacing Inline Styles)
+   ========================================= */
+
+/* The red asterisk for required fields */
+.required-star {
+  color: red;
+  margin-left: 0.25rem;
+}
+
+.input-error {
+  border-color: red !important; /* Force red border on error */
+}
+
+/* Bold text for success/error messages */
+.quest-message {
+  font-weight: 500;
+}
+
+/* Footer container for the submit button */
+.hub-quest-footer {
+  margin-top: 0.5rem;
+  display: flex;
+  justify-content: flex-end;
+}
+
+/* Generic spacing for modal elements */
+.modal-mb {
+  margin-bottom: 1rem;
+}
+
+.modal-mb-sm {
+  margin-bottom: 0.75rem;
+}
+
+/* Pushes an element to the far right (used for the frequency pill) */
+.push-right {
+  margin-left: auto;
+}
+
 /* HERO AREA – top card that explains "Create a new quest" */
 .hubs-hero {
   background: #c1eef979; /* Light teal/blue background with transparency */

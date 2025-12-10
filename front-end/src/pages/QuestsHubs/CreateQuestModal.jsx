@@ -381,7 +381,7 @@ export default function CreateQuestModal({ isOpen, onClose, onCreate }) {
 
           <div className="quest-field">
             <label>
-              Start date and time <span style={{ color: "red" }}>*</span>
+              Start date and time <span className="required-star">*</span>
             </label>
             <div className="start-row">
               <input
@@ -390,7 +390,7 @@ export default function CreateQuestModal({ isOpen, onClose, onCreate }) {
                 value={formData.startDate}
                 onChange={handleChange}
                 required // HTML validation
-                style={fieldErrors.startDate ? { borderColor: "red" } : {}}
+                className={fieldErrors.startDate ? "input-error" : ""}
               />
               <input
                 type="time"
@@ -398,7 +398,7 @@ export default function CreateQuestModal({ isOpen, onClose, onCreate }) {
                 value={formData.startTime}
                 onChange={handleChange}
                 required // HTML validation
-                style={fieldErrors.startTime ? { borderColor: "red" } : {}}
+                className={fieldErrors.startTime ? "input-error" : ""}
               />
             </div>
             {/* Show error message if either is missing */}

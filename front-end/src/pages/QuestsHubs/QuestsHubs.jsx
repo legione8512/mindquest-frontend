@@ -666,7 +666,7 @@ const QuestsHubs = () => {
           }
         >
           {/* Cover image of the selected hub */}
-          <div className="hub-image-wrapper" style={{ marginBottom: "1rem" }}>
+          <div className="hub-image-wrapper modal-mb">
             <img
               src={selectedHub.image}
               alt={`${selectedHub.name} cover`}
@@ -675,23 +675,19 @@ const QuestsHubs = () => {
           </div>
 
           {/* Meta row: Verified badge + frequency + type */}
-          <div className="hub-title-row" style={{ marginBottom: "0.75rem" }}>
+          <div className="hub-title-row modal-mb-sm">
             {selectedHub.verified && (
               <span className="badge verified">Verified hub</span>
             )}
-            <span className="pill" style={{ marginLeft: "auto" }}>
-              {selectedHub.frequency}
-            </span>
+            <span className="pill push-right">{selectedHub.frequency}</span>
             <span className="pill">{selectedHub.type}</span>
           </div>
 
           {/* Hub description */}
-          <p className="hub-description" style={{ marginBottom: "1rem" }}>
-            {selectedHub.description}
-          </p>
+          <p className="hub-description modal-mb">{selectedHub.description}</p>
 
           {/* Featured challenge info inside modal */}
-          <div className="feature-block" style={{ marginBottom: "1rem" }}>
+          <div className="feature-block modal-mb">
             <p className="feature-label">Featured challenge</p>
             <p className="feature-title">{selectedHub.featuredTitle}</p>
             <p className="feature-status">{selectedHub.featuredStatus}</p>
@@ -700,7 +696,7 @@ const QuestsHubs = () => {
 
           {/* Teams / tags and team join UI */}
           {selectedHub.tags && selectedHub.tags.length > 0 && (
-            <div className="hub-teams-block" style={{ marginBottom: "1rem" }}>
+            <div className="hub-teams-block modal-mb">
               <p className="hub-tags">Teams: {selectedHub.tags.join(" · ")}</p>
 
               {/* If hub is a Team quest, show join or info about current team */}
@@ -816,14 +812,7 @@ const QuestsHubs = () => {
                             <label>
                               {field.label}
                               {field.required && (
-                                <span
-                                  style={{
-                                    color: "red",
-                                    marginLeft: "0.25rem",
-                                  }}
-                                >
-                                  *
-                                </span>
+                                <span className="required-star">*</span>
                               )}
                             </label>
                             <textarea
@@ -844,20 +833,13 @@ const QuestsHubs = () => {
 
                       {/* Show validation or success message if any */}
                       {questMessage && (
-                        <p className="quest-helper" style={{ fontWeight: 500 }}>
+                        <p className="quest-helper quest-message">
                           {questMessage}
                         </p>
                       )}
 
                       {/* Submit button aligned to the right */}
-                      <div
-                        className="hub-quest-footer"
-                        style={{
-                          marginTop: "0.5rem",
-                          display: "flex",
-                          justifyContent: "flex-end",
-                        }}
-                      >
+                      <div className="hub-quest-footer">
                         <PrimaryButton type="submit">
                           Submit today&apos;s entry
                         </PrimaryButton>
@@ -871,9 +853,7 @@ const QuestsHubs = () => {
 
           {/* Optional hub progress text shown under quest block */}
           {selectedHub.progressText && (
-            <p className="hub-progress" style={{ marginBottom: "1rem" }}>
-              {selectedHub.progressText}
-            </p>
+            <p className="hub-progress modal-mb">{selectedHub.progressText}</p>
           )}
 
           {/* Info message if quest has already started (joining is closed) */}
