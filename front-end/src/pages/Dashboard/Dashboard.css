@@ -38,6 +38,10 @@ p.small {
   bottom: 0px;
 }
 
+p {
+  padding: 0.5rem 0;
+}
+
 /* ------- DASHBOARD BANNER ------- */
 .dash-banner-wrapper {
     width: 100vw;
