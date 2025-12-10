@@ -37,6 +37,46 @@
   box-sizing: border-box; /* Include padding in the width calculation */
 }
 
+/* =========================================
+   MODAL & FORM UTILITIES (Replacing Inline Styles)
+   ========================================= */
+
+/* The red asterisk for required fields */
+.required-star {
+  color: red;
+  margin-left: 0.25rem;
+}
+
+.input-error {
+  border-color: red !important; /* Force red border on error */
+}
+
+/* Bold text for success/error messages */
+.quest-message {
+  font-weight: 500;
+}
+
+/* Footer container for the submit button */
+.hub-quest-footer {
+  margin-top: 0.5rem;
+  display: flex;
+  justify-content: flex-end;
+}
+
+/* Generic spacing for modal elements */
+.modal-mb {
+  margin-bottom: 1rem;
+}
+
+.modal-mb-sm {
+  margin-bottom: 0.75rem;
+}
+
+/* Pushes an element to the far right (used for the frequency pill) */
+.push-right {
+  margin-left: auto;
+}
+
 /* HERO AREA – top card that explains "Create a new quest" */
 .hubs-hero {
   background: #c1eef979; /* Light teal/blue background with transparency */
@@ -83,8 +123,11 @@
   border: none; /* Remove default border */
   color: white; /* White text */
   align-self: flex-end; /* Align the button to the bottom/right within the hero flex container */
-  width: 230px; /* Fixed width for a card-like button */
-  height: 150px; /* Fixed height */
+  width: 200px; /* Fixed width for a card-like button */
+  aspect-ratio: 1 / 1; /* always keep it square */
+  height: auto;
+  padding: 0;
+  box-sizing: border-box; /* Include padding and border in size calculations */
   border-radius: 10px; /* Rounded corners */
   display: flex; /* Use flexbox to centre the text inside */
   align-items: center; /* Vertically centre content */
@@ -277,6 +320,7 @@
   font-size: 0.8rem; /* Small text */
   color: #4b5bd6; /* Blue colour for status emphasis */
   margin: 0 0 0.2rem; /* Bottom margin */
+  white-space: pre-line;
 }
 
 /* Additional description text for the featured challenge */
@@ -297,7 +341,7 @@
   font-size: 0.75rem; /* Small text */
   border-radius: 999px; /* Fully rounded pill shape */
   padding: 0.15rem 0.55rem; /* Inner padding */
-  background: #eef0ff; /* Light bluish background */
+  background: #eef0ff !important; /* Light bluish background */
 }
 
 /* Text style for team tags and progress text */
@@ -330,12 +374,14 @@
 
   .create-quest-btn {
     width: 100%; /* Make button full width on small screens */
-    max-width: none; /* Remove any max-width restrictions */
     height: auto; /* Allow height based on padding instead of fixed */
     padding: 0.9rem 0; /* Vertical padding only for a normal button look */
     justify-content: center; /* Keep text centred */
+    aspect-ratio: auto; /* reset, no longer forced square */
   }
-
+  .hub-btn {
+    width: 100%; /* Make hub buttons full width on small screens */
+  }
   .hubs-filters {
     grid-template-columns: 1fr 1fr; /* Use 2 columns for filters on tablets/phones */
   }
