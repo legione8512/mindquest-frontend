@@ -233,7 +233,7 @@ export default function Dashboard() {
                             <section className="analytics-graphs" id="analytics">
                                 {/* MOOD ANALYTICS CARD */}
                                 <section className="card c-grey analytics-mood" id="analytics-mood-week">
-                                    <h4 className="text-title colour-minor">Weekly Mood Overview</h4>
+                                    <h4 className="text-title colour-minor">Mood Analysis</h4>
                                     <section className="content-wrapper">
                                         <section className="weekly-mood-graph">
                                             <Doughnut options={weeklyMoodOpt} data={weeklyMoodData} />
@@ -244,7 +244,7 @@ export default function Dashboard() {
                                 {/* ACTIVITY GRAPH CARD*/}
                                 <section className="card c-shadow analytics-activity" id="analytics-activity-week">
                                     <section className="content-wrapper">
-                                        <h4 className="text-title colour-minor">Weekly Activity Overview</h4>
+                                        <h4 className="text-title colour-minor">Activity Overview</h4>
                                         <section className="weekly-activity-graph" id="activity-bar">
                                             <Bar options={weeklyActivitiesOpt} data={weeklyActivityData} />
                                         </section>
@@ -256,7 +256,7 @@ export default function Dashboard() {
                                 {/* ACTIVITY GRAPH CARD*/}
                                 <section className="card c-shadow analytics-activity" id="analytics-activity-month">
                                     <section className="content-wrapper">
-                                        <h4 className="text-title colour-minor">Monthly Activity Overview</h4>
+                                        <h4 className="text-title colour-minor">Activity Overview</h4>
                                         <section className="monthly-activity-graph" id="activity-bar">
                                             <Bar options={monthlyActivitiesOpt} data={monthlyActivityData} />
                                         </section>
@@ -264,7 +264,7 @@ export default function Dashboard() {
                                 </section>
                                 {/* MOOD ANALYTICS CARD */}
                                 <section className="card c-grey analytics-mood" id="analytics-mood-month">
-                                    <h4 className="text-title colour-minor">Monthly Mood Overview</h4>
+                                    <h4 className="text-title colour-minor">Mood Analysis</h4>
                                     <section className="content-wrapper">
                                         <section className="monthly-mood-graph">
                                             <Doughnut options={monthlyMoodOpt} data={monthlyMoodData} />
@@ -283,7 +283,7 @@ export default function Dashboard() {
                                     <p className="text-subtitle"> You currently have no active quests. Here are some quests, active and
                                         recommended for you:</p> {/*This should change once they have chosen and active quests*/}
 
-                                    <section className="quests-recs" id="quests-recs">
+                                    <section className="quest-recs" id="quests-recs">
                                         <section className="quests-card" id="quests-s1">
                                             <section className="quest-banner">
                                                 <img src={img12} alt="Calm Coders Banner" className="quest-banner" />
@@ -410,27 +410,24 @@ export default function Dashboard() {
 
                 {/* SIDEBAR */}
                 <section className={`sidebar ${isSidebarOpen ? "Open" : ""}`}>
-
-                    {/* SIDEBAR HEADER 2*/}
-                    <section className="profile-view">
-                        <section className="profile-large">
+                    {/* SIDEBAR HEADER */}
+                    <section className="profile-header">
+                        <section className="profile-image">
                             <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5}
-                                stroke="currentColor" className="size-6">
+                                stroke="currentColor" className="size-6" id="defaultProfileSVG">
                                 <path strokeLinecap="round" strokeLinejoin="round"
                                     d="M17.982 18.725A7.488 7.488 0 0 0 12 15.75a7.488 7.488 0 0 0-5.982 2.975m11.963 0a9 9 0 1 0-11.963 0m11.963 0A8.966 8.966 0 0 1 12 21a8.966 8.966 0 0 1-5.982-2.275M15 9.75a3 3 0 1 1-6 0 3 3 0 0 1 6 0Z" />
                             </svg>
                         </section>
-                        <section className="profile-info">
+                        <section className="profile-details">
                             <p className="text-title">MindQuest Warrior</p>
                             <p className="name">User123</p>
                         </section>
-                        <section className="stats-bar" id="points-bar">
-                            <p className="bold">Points</p>
-                            <p>0</p>
-                        </section>
-                        <section className="stats-bar" id="streaks-bar">
-                            <p className="bold">Streaks</p>
-                            <p>0 days</p>
+                        <section className="sidebar-button">
+                            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth="1.5"
+                                stroke="currentColor" className="size-6">
+                                <path strokeLinecap="round" strokeLinejoin="round" d="m8.25 4.5 7.5 7.5-7.5 7.5" />
+                            </svg>
                         </section>
                     </section>
 
@@ -438,7 +435,6 @@ export default function Dashboard() {
                     <section className="nav-menu">
                         <section className="menu">
                             <p className="text-title">Dashboard</p>
-
                             <ul className="menu-list">
                                 <li>
                                     <a href="#overview" className="menu-link" id="navlink-overview">
@@ -451,7 +447,7 @@ export default function Dashboard() {
                                     </a>
                                 </li>
                                 <li>
-                                    <a href="#analytics-mood-week" className="menu-link" id="navlink-moods">
+                                    <a href="#analytics-mood" className="menu-link" id="navlink-moods">
                                         <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
                                             strokeWidth="1.5" stroke="currentColor" className="size-6 icon">
                                             <path strokeLinecap="round" strokeLinejoin="round"
@@ -461,7 +457,7 @@ export default function Dashboard() {
                                     </a>
                                 </li>
                                 <li>
-                                    <a href="#analytics-activity-week" className="menu-link" id="navlink-activity">
+                                    <a href="#analytics-graph" className="menu-link" id="navlink-activity">
                                         <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
                                             strokeWidth="1.5" stroke="currentColor" className="size-6 icon">
                                             <path strokeLinecap="round" strokeLinejoin="round"

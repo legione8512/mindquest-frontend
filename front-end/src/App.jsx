@@ -7,7 +7,7 @@ import Sidebar from "./components/sidebar/sidebar.jsx";
 
 /* Page imports */
 import Home from "./pages/Home.jsx";
-import Dashboard from "./pages/Dashboard/Dashboard2.jsx";
+import Dashboard from "./pages/Dashboard/Dashboard.jsx";
 import Learning from "./pages/Learning.jsx";
 import MoodCompass from "./pages/MoodCompass.jsx";
 import Account from "./pages/Account.jsx";
