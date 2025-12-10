@@ -141,7 +141,7 @@ export default function CreateQuestModal({ isOpen, onClose, onCreate }) {
     const dateInvalid = !formData.startDate;
     const timeInvalid = !formData.startTime;
 
-    if (nameInvalid || descriptionInvalid) {
+    if (nameInvalid || descriptionInvalid || dateInvalid || timeInvalid) {
       setFieldErrors({
         name: nameInvalid,
         description: descriptionInvalid,
@@ -242,7 +242,7 @@ export default function CreateQuestModal({ isOpen, onClose, onCreate }) {
   // 5. RENDER (Wrap your form in the Modal)
   return (
     <Modal isOpen={isOpen} title="Create a new quest" onClose={handleClose}>
-      <form className="quest-modal-body" onSubmit={handleSubmit}>
+      <form className="quest-modal-body" onSubmit={handleSubmit} noValidate>
         {/* Hub Name */}
         <div className="quest-field-row">
           <div className="quest-field">
