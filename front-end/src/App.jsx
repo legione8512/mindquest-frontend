@@ -1,7 +1,6 @@
 import { useState } from "react";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 
-
 /* Import for navigation bar, sidebar and footer */
 import Navigation from "./components/navigation/navigation.jsx";
 import Sidebar from "./components/sidebar/sidebar.jsx";
@@ -26,13 +25,15 @@ import "./components/footer/footer.css";
 function App() {
   // Sidebar toggle //
   const [isOpen, setIsOpen] = useState(false);
-  const toggleSidebar = () => setIsOpen(!isOpen);
+  const handleSidebarToggle = () => {
+    setIsOpen((prevIsOpen) => !prevIsOpen);
+  };
 
   return (
     // Navigation between pages
     <Router>
-      <Navigation toggleSidebar={toggleSidebar} />
-      <Sidebar isOpen={isOpen} toggleSidebar={toggleSidebar} />
+      <Navigation onSidebarToggle={handleSidebarToggle} />
+      <Sidebar isOpen={isOpen} onSidebarToggle={handleSidebarToggle} />
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/dashboard" element={<Dashboard />} />

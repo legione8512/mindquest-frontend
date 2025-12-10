@@ -2,10 +2,9 @@
   display: flex;
   height: 100vh;
   width: 100%;
-  background: linear-gradient(135deg, #013C58, #036c9e);
+  background: linear-gradient(135deg, #013c58, #036c9e);
   color: white;
 }
-
 
 .registerLeft {
   flex: 1;
@@ -32,23 +31,24 @@
   gap: 3rem;
 }
 
-.loginBox, .registerBox {
+.loginBox,
+.registerBox {
   background: white;
-  color: #013C58;
+  color: #013c58;
   padding: 2rem 2.5rem;
   border-radius: 15px;
   width: 80%;
   max-width: 420px;
-  box-shadow: 0 4px 12px rgba(0,0,0,0.25);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.25);
 }
 
-.loginBox h2, .registerBox h2 {
+.loginBox h2,
+.registerBox h2 {
   text-align: center;
   margin-bottom: 1.5rem;
   font-size: 1.8rem;
-  color: #013C58;
+  color: #013c58;
 }
-
 
 .registration {
   display: flex;
@@ -58,7 +58,7 @@
 .labelText {
   margin-bottom: 5px;
   font-weight: 600;
-  color: #013C58;
+  color: #013c58;
 }
 
 .inputText {
@@ -75,7 +75,6 @@
   box-shadow: 0 0 0 1000px white inset !important;
 }
 
-
 .checkboxRow {
   display: flex;
   align-items: center;
@@ -85,15 +84,14 @@
 
 .checkboxRow label {
   font-size: 0.9rem;
-  color: #013C58;
+  color: #013c58;
 }
-
 
 .registerButton {
   width: 100%;
   padding: 12px;
   border: none;
-  background: #013C58;
+  background: #013c58;
   color: white;
   border-radius: 8px;
   cursor: pointer;
@@ -105,10 +103,9 @@
 .registerButton:hover {
   background: #024d73;
   transform: translateY(-2px);
-  transform: scale(1.2); 
+  transform: scale(1.2);
   background: #f5a201;
 }
-
 
 @media (max-width: 900px) {
   .registerPage {
@@ -130,7 +127,8 @@
     gap: 2rem;
   }
 
-  .loginBox, .registerBox {
+  .loginBox,
+  .registerBox {
     width: 100%;
     max-width: 380px;
   }

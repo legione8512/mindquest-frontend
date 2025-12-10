@@ -25,7 +25,7 @@
 }
 
 .qc-category-btn.active {
-  background: #013C58;
+  background: #013c58;
   color: white;
 }
 
@@ -45,7 +45,7 @@
   padding: 20px;
   border-radius: 20px;
   border: 1px solid #d7e4ff;
-  box-shadow: 0px 5px 15px #013C58;
+  box-shadow: 0px 5px 15px #013c58;
   box-sizing: border-box;
   height: 100%;
 }
@@ -53,7 +53,6 @@
 .qc-card:hover {
   transform: translateY(-5px);
 }
-
 
 /* Description */
 .qc-description {
@@ -72,11 +71,11 @@
 
 .qc-points {
   font-weight: bold;
-  color: #013C58;
+  color: #013c58;
 }
 
 .qc-start-btn {
-  background: #013C58 ;
+  background: #013c58;
   color: white;
   width: 100%;
   padding: 0.6rem 1.2rem;
@@ -88,11 +87,10 @@
 }
 
 .qc-start-btn:hover {
-  background: #F5A201 ; 
-  color: #013C58 ;
+  background: #f5a201;
+  color: #013c58;
   transform: translateY(-2px);
 }
-
 
 .qc-card-img {
   width: 100%;
@@ -121,7 +119,7 @@
   padding: 40px 20px;
   font-size: 1.5rem;
 }
-.qc-hero::before{
+.qc-hero::before {
   content: "";
   position: absolute;
   inset: 0;
@@ -159,7 +157,7 @@
 
 /* Header */
 .qc-modal-header {
-  background: #013C58;
+  background: #013c58;
   color: white;
   padding: 1rem 1.5rem;
   display: flex;
@@ -185,8 +183,6 @@
   line-height: 1.6;
 }
 
-
-
 /* Modal animation */
 @keyframes slideDown {
   0% {
@@ -199,22 +195,22 @@
   }
 }
 
-.qc-modal-img{
+.qc-modal-img {
   width: 100%;
   max-height: 250px;
-  object-fit:cover;
+  object-fit: cover;
   border-radius: 12px;
   margin-bottom: 1rem;
 }
 
-.qc-modal-ecomplete-btn{
-  display:block;
-  margin:1.5rem auto 0 auto;
-  padding:0.75rem 1.5rem;
-  background-color:#013C58;
-  color:white;
+.qc-modal-ecomplete-btn {
+  display: block;
+  margin: 1.5rem auto 0 auto;
+  padding: 0.75rem 1.5rem;
+  background-color: #013c58;
+  color: white;
   font-size: 1rem;
-  border:none;
-  border-radius:8px;
-  cursor:pointer;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
 }

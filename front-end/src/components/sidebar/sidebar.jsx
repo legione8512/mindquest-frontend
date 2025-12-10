@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 import logoMobile from "../../assets/Navigation/mobile_logo.png";
 import "./sidebar.css";
 
-export default function Sidebar({ isOpen, toggleSidebar }) {
+export default function Sidebar({ isOpen, onSidebarToggle }) {
   const sidebarRef = useRef(null);
 
   // Allow user to click outside the sidebar to close it
@@ -16,7 +16,7 @@ export default function Sidebar({ isOpen, toggleSidebar }) {
         !e.target.classList.contains("menu-icon") &&
         !e.target.classList.contains("fa-bars")
       ) {
-        toggleSidebar(false);
+        onSidebarToggle(false);
       }
     }
     document.addEventListener("click", handler);
@@ -31,7 +31,7 @@ export default function Sidebar({ isOpen, toggleSidebar }) {
       <button
         id="close-button"
         className="fa fa-times-circle"
-        onClick={() => toggleSidebar(false)}
+        onClick={() => onSidebarToggle(false)}
       ></button>
 
       {/* Logo and title */}
@@ -47,32 +47,32 @@ export default function Sidebar({ isOpen, toggleSidebar }) {
 
       {/* Sidebar navigation buttons */}
       <section className="side-nav">
-        <Link to="/quickcalm" onClick={() => toggleSidebar(false)}>
+        <Link to="/quickcalm" onClick={() => onSidebarToggle(false)}>
           <button className="side-button">
             <i className="fa fa-leaf"></i>QuickCalm
           </button>
         </Link>
-        <Link to="/dashboard" onClick={() => toggleSidebar(false)}>
+        <Link to="/dashboard" onClick={() => onSidebarToggle(false)}>
           <button className="side-button">
             <i className="fa fa-bar-chart"></i>Dashboard
           </button>
         </Link>
-        <Link to="/hubs" onClick={() => toggleSidebar(false)}>
+        <Link to="/hubs" onClick={() => onSidebarToggle(false)}>
           <button className="side-button">
             <i className="fa fa-users"></i>Hubs
           </button>
         </Link>
-        <Link to="/mood_compass" onClick={() => toggleSidebar(false)}>
+        <Link to="/mood_compass" onClick={() => onSidebarToggle(false)}>
           <button className="side-button">
             <i className="fa fa-compass"></i>Mood Compass
           </button>
         </Link>
-        <Link to="/learning" onClick={() => toggleSidebar(false)}>
+        <Link to="/learning" onClick={() => onSidebarToggle(false)}>
           <button className="side-button">
             <i className="fa fa-graduation-cap"></i>Learning
           </button>
         </Link>
-        <Link to="/account" onClick={() => toggleSidebar(false)}>
+        <Link to="/account" onClick={() => onSidebarToggle(false)}>
           <button className="side-button">
             <i className="fa fa-user"></i>Your Account
           </button>

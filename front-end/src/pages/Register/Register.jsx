@@ -2,7 +2,6 @@ import { useState } from "react";
 import mindquestLogo from "../../assets/Navigation/mindquest_logo.png";
 import "./Register.css";
 
-
 export default function Register() {
   const [formData, setFormData] = useState({
     name: "",
@@ -15,7 +14,7 @@ export default function Register() {
   const [loginEmail, setLoginEmail] = useState("");
   const [loginPassword, setLoginPassword] = useState("");
 
-    const handleLoginSubmit = (e) => {
+  const handleLoginSubmit = (e) => {
     e.preventDefault();
 
     const emailFormat = /\S+@\S+\.\S+/;
@@ -34,7 +33,6 @@ export default function Register() {
       alert("Please enter your password.");
       return;
     }
-
 
     if (loginPassword.length < 8) {
       alert("Password must be at least 8 characters.");
@@ -95,11 +93,11 @@ export default function Register() {
       {/* LEFT SIDE — LOGO */}
       <section className="registerLeft">
         <img
-            src={mindquestLogo}
-            className="registerLogo"
-            alt="MindQuest Logo"
-          />
-        </section>
+          src={mindquestLogo}
+          className="registerLogo"
+          alt="MindQuest Logo"
+        />
+      </section>
 
       {/* RIGHT SIDE — FORM */}
       <section className="registerRight">
