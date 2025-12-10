@@ -1,5 +1,3 @@
-<<<<<<< HEAD
-
 # React + Vite
 
 This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
@@ -34,7 +32,6 @@ The React Compiler is not enabled on this template because of its impact on dev 
 
 ### Start-up Members:
 
-| ---------------------- | ---------- | ------------------------------------------------------ |
 | Name                   | Student ID | Feature Contribution                                   |
 | ---------------------- | ---------- | ------------------------------------------------------ |
 | Marius-Robert Gheorghe | 2436938    | Quests Hubs page                                       |
@@ -42,8 +39,6 @@ The React Compiler is not enabled on this template because of its impact on dev 
 | Adam Imane             | 2425290    | Learning hub, Account/Profile pages, Header and Footer |
 | Aayisha Ahamed         | 2216412    | Landing and QuickCalm pages                            |
 | Alexandra Bolor        | 2459610    | Dashboard page                                         |
-| ---------------------- | ---------- | ------------------------------------------------------ |
-
 
 ---
 
@@ -92,25 +87,25 @@ MindQuest aims to **reduce this friction** by providing a single, friendly web a
 
 Current prototype features (front-end):
 
-- **Home / Landing page**  
+**Home / Landing page**  
   Introduces MindQuest, explains the concept of quests and hubs, and provides clear calls-to-action.
 
-  **Dashboard page**  
+**Dashboard page**  
   The main page after user is logged in.
 
-- **Hubs page**  
+**Hubs page**  
   Themed hubs (e.g. “Stress & Overwhelm”, “Sleep & Energy”, “Confidence & Social Life”) that group related quests and resources so users can focus on one challenge at a time.
 
-- **Quests**  
+**Quests**  
   Small, concrete actions students can do in a short time (for example, a short breathing exercise, planning a study break, or noting one positive thing about their day). Quests are displayed as cards with titles, descriptions, and tags.
 
-- **Learning & Signposting**  
+**Learning & Signposting**  
   A “Learning” area that signposts to university services, trusted charities, helplines, and digital tools. This helps students move from self-help to formal support when appropriate.
 
-- **Account / Profile (prototype)**  
+**Account / Profile (prototype)**  
   A prototype profile page that demonstrates how future versions could store preferences, show recent quests, and provide personalisation.
 
-- **Responsive layout**  
+**Responsive layout**  
   The UI is designed to work on desktop and mobile devices, with a consistent navigation bar and footer.
 
 Planned (future) features which are not yet implemented in this prototype:
