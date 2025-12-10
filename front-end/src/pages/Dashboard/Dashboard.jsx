@@ -345,7 +345,7 @@ export default function Dashboard() {
                 {/*This should change once they have chosen and active quests*/}
                 {/*QUESTFIX*/}
                 <section className="grid2 grid-small" id="quest-recs">
-                  <section className="quest-card card">
+                  <section className="quest-cardz cardz">
                     {/*
                     ONE section for the quest information
                     ONE button for the quest linkz */}
@@ -371,7 +371,7 @@ export default function Dashboard() {
                       </a>
                     </section>
                   </section>
-                  <section className="quest-card card">
+                  <section className="quest-cardz cardz">
                     <section className="quest-banner-wrapper">
                       <img
                         src={img7}
@@ -391,7 +391,7 @@ export default function Dashboard() {
                       </a>
                     </section>
                   </section>
-                  <section className="quest-card card">
+                  <section className="quest-cardz cardz">
                     <section className="quest-banner-wrapper">
                       <img
                         src={img16}
@@ -411,7 +411,7 @@ export default function Dashboard() {
                       </a>
                     </section>
                   </section>
-                  <section className="quest-card card">
+                  <section className="quest-cardz cardz">
                     <section className="quest-banner-wrapper">
                       <img
                         src={img8}
