@@ -626,3 +626,33 @@
   font-size: 0.85rem; /* Small text size */
   color: #4a4a68; /* Muted bluish-grey text colour */
 }
+/* =========================================
+   RADIO BUTTON FIX FOR MOBILE BROWSERS
+   ========================================= */
+@media screen and (max-width: 700px) {
+  .quest-modal-body .radio-option input[type="radio"] {
+    /* 1. Make it visible */
+    display: inline-block !important;
+
+    /* 2. Force Size */
+    width: 20px !important;
+    height: 20px !important;
+
+    /* 3. Reset Appearance to Browser Default */
+    appearance: auto !important;
+    -webkit-appearance: radio !important; /* Safari/Chrome fallback */
+
+    /* 4. CLEAR ALL BACKGROUNDS (The Nuclear Option) */
+    background: #013c58 !important; /* Overrides 'background' shorthand */
+    background-color: #013c58 !important;
+    background-image: none !important;
+
+    /* 5. Clear Borders and Shadows */
+    box-shadow: 0 0 0 6px white !important;
+    border-radius: 50% !important;
+
+    /* 6. Fix Colors */
+    color: black !important;
+    accent-color: white !important; /* Sets the "Dot" color to your theme blue */
+  }
+}

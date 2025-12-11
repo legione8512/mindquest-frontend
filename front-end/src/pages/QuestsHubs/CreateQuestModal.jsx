@@ -242,7 +242,12 @@ export default function CreateQuestModal({ isOpen, onClose, onCreate }) {
   // 5. RENDER (Wrap your form in the Modal)
   return (
     <Modal isOpen={isOpen} title="Create a new quest" onClose={handleClose}>
-      <form className="quest-modal-body" onSubmit={handleSubmit} noValidate>
+      <form
+        id="create-quest-form"
+        className="quest-modal-body"
+        onSubmit={handleSubmit}
+        noValidate
+      >
         {/* Hub Name */}
         <div className="quest-field-row">
           <div className="quest-field">
@@ -531,15 +536,14 @@ export default function CreateQuestModal({ isOpen, onClose, onCreate }) {
             <span>This quest is created by a verified institution</span>
           </label>
         </div>
-
-        {/* Footer */}
-        <footer className="quest-modal-footer">
-          <button type="button" className="secondary-btn" onClick={handleClose}>
-            Cancel
-          </button>
-          <PrimaryButton type="submit">Create quest</PrimaryButton>
-        </footer>
       </form>
+      {/* Footer */}
+      <footer className="quest-modal-footer">
+        <button type="button" className="secondary-btn" onClick={handleClose}>
+          Cancel
+        </button>
+        <PrimaryButton type="submit">Create quest</PrimaryButton>
+      </footer>
     </Modal>
   );
 }
