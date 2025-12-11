@@ -542,7 +542,16 @@ export default function CreateQuestModal({ isOpen, onClose, onCreate }) {
         <button type="button" className="secondary-btn" onClick={handleClose}>
           Cancel
         </button>
-        <PrimaryButton type="submit">Create quest</PrimaryButton>
+        <PrimaryButton
+          type="button"
+          onClick={() => {
+            // Manually find the form and request a submit
+            // This triggers your handleSubmit function!
+            document.getElementById("create-quest-form").requestSubmit();
+          }}
+        >
+          Create quest
+        </PrimaryButton>
       </footer>
     </Modal>
   );
