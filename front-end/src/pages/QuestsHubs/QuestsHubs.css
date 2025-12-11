@@ -66,10 +66,14 @@
 /* Generic spacing for modal elements */
 .modal-mb {
   margin-bottom: 1rem;
+  border-radius: 0 !important;
 }
 
 .modal-mb-sm {
   margin-bottom: 0.75rem;
+}
+.feature-block.modal-mb {
+  border-radius: 1rem !important;
 }
 
 /* Pushes an element to the far right (used for the frequency pill) */
@@ -402,6 +406,7 @@
   grid-template-columns: repeat(2, minmax(0, 1fr)); /* 2 equal columns */
   gap: 1rem; /* Space between the two columns */
   margin-bottom: 1rem; /* Space below the row */
+  margin-top: 1rem;
 }
 
 /* On narrow screens, stack form fields vertically (one per row) */
@@ -655,4 +660,8 @@
     color: black !important;
     accent-color: white !important; /* Sets the "Dot" color to your theme blue */
   }
+}
+
+.modal-body-wrapp {
+  padding: 0 10px;
 }

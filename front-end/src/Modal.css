@@ -34,7 +34,6 @@
   justify-content: space-between; /* Push title to the left, close button to the right */
   align-items: center; /* Vertically centre both */
   padding: 1.25rem 1.5rem; /* Inner spacing around header content */
-  border-bottom: 1px solid #e3e3f0; /* Subtle bottom border separating header from body */
   color: #ffffff; /* Text colour set to white (e.g. if header background is coloured elsewhere) */
 }
 

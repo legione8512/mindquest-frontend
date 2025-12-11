@@ -673,196 +673,203 @@ const QuestsHubs = () => {
               className="hub-cover-image"
             />
           </div>
-
-          {/* Meta row: Verified badge + frequency + type */}
-          <div className="hub-title-row modal-mb-sm">
-            {selectedHub.verified && (
-              <span className="badge verified">Verified hub</span>
-            )}
-            <span className="pill push-right">{selectedHub.frequency}</span>
-            <span className="pill">{selectedHub.type}</span>
-          </div>
-
-          {/* Hub description */}
-          <p className="hub-description modal-mb">{selectedHub.description}</p>
-
-          {/* Featured challenge info inside modal */}
-          <div className="feature-block modal-mb">
-            <p className="feature-label">Featured challenge</p>
-            <p className="feature-title">{selectedHub.featuredTitle}</p>
-            <p className="feature-status">{selectedHub.featuredStatus}</p>
-            <p className="feature-text">{selectedHub.featuredText}</p>
-          </div>
-
-          {/* Teams / tags and team join UI */}
-          {selectedHub.tags && selectedHub.tags.length > 0 && (
-            <div className="hub-teams-block modal-mb">
-              <p className="hub-tags">Teams: {selectedHub.tags.join(" · ")}</p>
-
-              {/* If hub is a Team quest, show join or info about current team */}
-              {selectedHub.type === "Team" && (
-                <>
-                  {hasUserJoined(selectedHub.id) ? (
-                    <p className="hub-joined-team">
-                      You are in{" "}
-                      <strong>{getUserTeamForHub(selectedHub.id)}</strong>. Your
-                      team choice is locked for this quest.
-                    </p>
-                  ) : (
-                    <div className="hub-team-select-row">
-                      <label htmlFor="teamSelect">
-                        Choose your team to join
-                      </label>
-                      <select
-                        id="teamSelect"
-                        value={selectedTeam}
-                        onChange={(e) => setSelectedTeam(e.target.value)}
-                      >
-                        <option value="">Select a team…</option>
-                        {selectedHub.tags.map((team) => (
-                          <option key={team} value={team}>
-                            {team}
-                          </option>
-                        ))}
-                      </select>
-                    </div>
-                  )}
-                </>
+          <div className="modal-body-wrapp">
+            {/* Meta row: Verified badge + frequency + type */}
+            <div className="hub-title-row modal-mb-sm">
+              {selectedHub.verified && (
+                <span className="badge verified">Verified hub</span>
               )}
+              <span className="pill push-right">{selectedHub.frequency}</span>
+              <span className="pill">{selectedHub.type}</span>
             </div>
-          )}
 
-          {/* Quest completion area for hubs that use one of the questTemplates */}
-          {questTemplates[selectedHub.featuredTitle] && (
-            <div className="hub-quest-block">
-              {(() => {
-                const template = questTemplates[selectedHub.featuredTitle]; // matching template
-                const started = hasQuestStarted(selectedHub); // has started?
-                const joined = hasUserJoined(selectedHub.id); // user joined?
+            {/* Hub description */}
+            <p className="hub-description modal-mb">
+              {selectedHub.description}
+            </p>
 
-                // Current progress for this quest
-                const progress = questProgress[template.id] || {
-                  dayKey: getTodayKey(),
-                  countToday: 0,
-                  pointsToday: 0,
-                };
+            {/* Featured challenge info inside modal */}
+            <div className="feature-block modal-mb">
+              <p className="feature-label">Featured challenge</p>
+              <p className="feature-title">{selectedHub.featuredTitle}</p>
+              <p className="feature-status">{selectedHub.featuredStatus}</p>
+              <p className="feature-text">{selectedHub.featuredText}</p>
+            </div>
 
-                // If quest has not started yet, show info message
-                if (!started) {
-                  return (
-                    <p className="quest-helper">
-                      This quest has not started yet. You will be able to log
-                      your entries once it starts.
-                    </p>
-                  );
-                }
+            {/* Teams / tags and team join UI */}
+            {selectedHub.tags && selectedHub.tags.length > 0 && (
+              <div className="hub-teams-block modal-mb">
+                <p className="hub-tags">
+                  Teams: {selectedHub.tags.join(" · ")}
+                </p>
 
-                // Require that user joined the hub before allowing entries
-                if (!joined) {
-                  return (
-                    <p className="quest-helper">
-                      Join this hub to start logging your{" "}
-                      {template.title.toLowerCase()} entries.
-                    </p>
-                  );
-                }
-
-                // Main quest form when quest has started and user is joined
-                return (
+                {/* If hub is a Team quest, show join or info about current team */}
+                {selectedHub.type === "Team" && (
                   <>
-                    {/* Summary of today's progress */}
-                    <p className="quest-helper">
-                      Today: {progress.countToday}/{template.maxPerDay}{" "}
-                      completion(s) · {progress.pointsToday} points.
-                    </p>
+                    {hasUserJoined(selectedHub.id) ? (
+                      <p className="hub-joined-team">
+                        You are in{" "}
+                        <strong>{getUserTeamForHub(selectedHub.id)}</strong>.
+                        Your team choice is locked for this quest.
+                      </p>
+                    ) : (
+                      <div className="hub-team-select-row">
+                        <label htmlFor="teamSelect">
+                          Choose your team to join
+                        </label>
+                        <select
+                          id="teamSelect"
+                          value={selectedTeam}
+                          onChange={(e) => setSelectedTeam(e.target.value)}
+                        >
+                          <option value="">Select a team…</option>
+                          {selectedHub.tags.map((team) => (
+                            <option key={team} value={team}>
+                              {team}
+                            </option>
+                          ))}
+                        </select>
+                      </div>
+                    )}
+                  </>
+                )}
+              </div>
+            )}
 
-                    {/* Quest entry form */}
-                    <form onSubmit={handleHubQuestSubmit}>
-                      {/* Render all fields defined in the template */}
-                      {template.fields.map((field) => {
-                        // Special case: file input field
-                        if (field.type === "file") {
+            {/* Quest completion area for hubs that use one of the questTemplates */}
+            {questTemplates[selectedHub.featuredTitle] && (
+              <div className="hub-quest-block">
+                {(() => {
+                  const template = questTemplates[selectedHub.featuredTitle]; // matching template
+                  const started = hasQuestStarted(selectedHub); // has started?
+                  const joined = hasUserJoined(selectedHub.id); // user joined?
+
+                  // Current progress for this quest
+                  const progress = questProgress[template.id] || {
+                    dayKey: getTodayKey(),
+                    countToday: 0,
+                    pointsToday: 0,
+                  };
+
+                  // If quest has not started yet, show info message
+                  if (!started) {
+                    return (
+                      <p className="quest-helper">
+                        This quest has not started yet. You will be able to log
+                        your entries once it starts.
+                      </p>
+                    );
+                  }
+
+                  // Require that user joined the hub before allowing entries
+                  if (!joined) {
+                    return (
+                      <p className="quest-helper">
+                        Join this hub to start logging your{" "}
+                        {template.title.toLowerCase()} entries.
+                      </p>
+                    );
+                  }
+
+                  // Main quest form when quest has started and user is joined
+                  return (
+                    <>
+                      {/* Summary of today's progress */}
+                      <p className="quest-helper">
+                        Today: {progress.countToday}/{template.maxPerDay}{" "}
+                        completion(s) · {progress.pointsToday} points.
+                      </p>
+
+                      {/* Quest entry form */}
+                      <form onSubmit={handleHubQuestSubmit}>
+                        {/* Render all fields defined in the template */}
+                        {template.fields.map((field) => {
+                          // Special case: file input field
+                          if (field.type === "file") {
+                            return (
+                              <div key={field.name} className="quest-field">
+                                <label>{field.label}</label>
+                                <input
+                                  type="file"
+                                  name={field.name}
+                                  onChange={(e) =>
+                                    setQuestFormValues((prev) => ({
+                                      ...prev,
+                                      [field.name]: e.target.files?.[0] || null,
+                                    }))
+                                  }
+                                />
+                                {field.placeholder && (
+                                  <p className="quest-helper">
+                                    {field.placeholder}
+                                  </p>
+                                )}
+                              </div>
+                            );
+                          }
+
+                          // Default: textarea field (mood, reflections, etc.)
+                          const value = questFormValues[field.name] || "";
+
                           return (
                             <div key={field.name} className="quest-field">
-                              <label>{field.label}</label>
-                              <input
-                                type="file"
+                              <label>
+                                {field.label}
+                                {field.required && (
+                                  <span className="required-star">*</span>
+                                )}
+                              </label>
+                              <textarea
                                 name={field.name}
-                                onChange={(e) =>
-                                  setQuestFormValues((prev) => ({
-                                    ...prev,
-                                    [field.name]: e.target.files?.[0] || null,
-                                  }))
-                                }
+                                rows={3}
+                                value={value}
+                                onChange={handleQuestFieldChange}
+                                placeholder={field.placeholder}
                               />
-                              {field.placeholder && (
+                              {field.minWords && (
                                 <p className="quest-helper">
-                                  {field.placeholder}
+                                  At least {field.minWords} words.
                                 </p>
                               )}
                             </div>
                           );
-                        }
+                        })}
 
-                        // Default: textarea field (mood, reflections, etc.)
-                        const value = questFormValues[field.name] || "";
+                        {/* Show validation or success message if any */}
+                        {questMessage && (
+                          <p className="quest-helper quest-message">
+                            {questMessage}
+                          </p>
+                        )}
 
-                        return (
-                          <div key={field.name} className="quest-field">
-                            <label>
-                              {field.label}
-                              {field.required && (
-                                <span className="required-star">*</span>
-                              )}
-                            </label>
-                            <textarea
-                              name={field.name}
-                              rows={3}
-                              value={value}
-                              onChange={handleQuestFieldChange}
-                              placeholder={field.placeholder}
-                            />
-                            {field.minWords && (
-                              <p className="quest-helper">
-                                At least {field.minWords} words.
-                              </p>
-                            )}
-                          </div>
-                        );
-                      })}
+                        {/* Submit button aligned to the right */}
+                        <div className="hub-quest-footer">
+                          <PrimaryButton type="submit">
+                            Submit today&apos;s entry
+                          </PrimaryButton>
+                        </div>
+                      </form>
+                    </>
+                  );
+                })()}
+              </div>
+            )}
 
-                      {/* Show validation or success message if any */}
-                      {questMessage && (
-                        <p className="quest-helper quest-message">
-                          {questMessage}
-                        </p>
-                      )}
+            {/* Optional hub progress text shown under quest block */}
+            {selectedHub.progressText && (
+              <p className="hub-progress modal-mb">
+                {selectedHub.progressText}
+              </p>
+            )}
 
-                      {/* Submit button aligned to the right */}
-                      <div className="hub-quest-footer">
-                        <PrimaryButton type="submit">
-                          Submit today&apos;s entry
-                        </PrimaryButton>
-                      </div>
-                    </form>
-                  </>
-                );
-              })()}
-            </div>
-          )}
-
-          {/* Optional hub progress text shown under quest block */}
-          {selectedHub.progressText && (
-            <p className="hub-progress modal-mb">{selectedHub.progressText}</p>
-          )}
-
-          {/* Info message if quest has already started (joining is closed) */}
-          {hasQuestStarted(selectedHub) && (
-            <p className="hub-join-message">
-              This quest has already started. You can still view the hub
-              details, but joining is closed.
-            </p>
-          )}
+            {/* Info message if quest has already started (joining is closed) */}
+            {hasQuestStarted(selectedHub) && (
+              <p className="hub-join-message">
+                This quest has already started. You can still view the hub
+                details, but joining is closed.
+              </p>
+            )}
+          </div>
         </Modal>
       )}
 
